@@ -1,9 +1,31 @@
 # GDI Specification
 
-[![Checks](https://github.com/signalfx/gdi-specification/workflows/Checks/badge.svg?branch=main)](https://github.com/signalfx/gdi-specification/actions?query=workflow%3A%22Checks%22+branch%3Amain)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/signalfx/gdi-specification.svg)
 
-The GDI specification describes the cross-repository requirements and expectations.
+The GDI specification describes the cross-repository requirements and
+expectations. It is applicable to GDI projects.
+
+> Anything OpenTelemetry or anything that should be in OpenTelemetry will be
+> handled upstream. For information on OpenTelemetry, see the [OpenTelemetry
+> Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md)
+
+The following components are currently in scope:
+
+- [Configuration](docs/configuration.md)
+- [Repository](docs/repository.md)
+
+## Terms
+
+- Collector: A single binary that can be deployed as an agent or gateway.
+  Refers to `splunk-otel-collector`.
+- GDI: Getting Data In
+- GDI Project: A project in the `signalfx` GitHub that starts with
+  `splunk-otel-\*`
+- Instrumentation Library: The way to emit telemetry data from an application.
+  Refers to `splunk-otel-<language>`.
+- Maintainer: Someone responsible for the specification or a project
+- Specification: A set of requirements for projects
+- Project: A GitHub repository
 
 ## Notation Conventions and Compliance
 
@@ -25,11 +47,10 @@ defined in the [specification](./docs/overview.md).
 
 ## Versioning the Specification
 
-Changes to the [specification](./docs/overview.md) are versioned
-according to [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html) and
-described in [CHANGELOG.md](CHANGELOG.md). Layout changes are not versioned.
-Specific implementations of the specification should specify which version they
-implement.
+Changes to the GDI specification are versioned according to [Semantic
+Versioning 2.0](https://semver.org/spec/v2.0.0.html) and described in
+[CHANGELOG.md](CHANGELOG.md). Layout changes are not versioned. GDI projects
+that implement the specification MUST specify which version they implement.
 
 Changes to the change process itself are not currently versioned but may be
 independently versioned in the future.
@@ -40,6 +61,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on contribution process.
 
 ## License
 
-By contributing to GDI Specification repository, you agree that your
-contributions will be licensed under its [Apache 2.0
-License](LICENSE).
+By contributing, you agree that your contributions will be licensed under its
+[Apache 2.0 License](LICENSE).
