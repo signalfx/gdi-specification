@@ -5,9 +5,9 @@ it can release a `1.0.0` version.
 
 ## Required Files
 
+- MUST have a `CHANGELOG.md` updated for every release
 - MUST add the [CODE_OF_CONDUCT](CODE_OF_CONDUCT)
 - MUST add the [CONTRIBUTING.md](CONTRIBUTING.md)
-- MUST have a `CHANGELOG.md`
 - MUST have a `.github/CODEOWNERS` file with at least two currently full-time Splunkers listed
   - MUST NOT have any not currently full-time Splunkers listed in `.github/CODEOWNERS`
 - MUST have an Apache 2.0 `LICENSE` file
@@ -18,6 +18,7 @@ it can release a `1.0.0` version.
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
+- MUST have a `RELEASE.md` documenting the release process
 
 ## Required Configuration
 

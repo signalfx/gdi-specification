@@ -43,7 +43,6 @@ supported including a specific default value.
 | Name                | Type   | Default value | Required | Description                                    |
 | :-----------------: | :----: | :-----------: | :------: | :-----------------------------------:          |
 | SPLUNK_ACCESS_TOKEN | string |               | Yes [1]  | Access token added to exported data.           |
-| SPLUNK_CLUSTER_NAME | string |               | No [2]   | Value that will identify a Kubernetes cluster. |
 | SPLUNK_CONFIG       | string |               | No       | Configuration file to use.                     |
 | SPLUNK_REALM        | string |               | Yes [1]  | Realm configured for the exporter endpoint.    |
 
@@ -52,7 +51,6 @@ supported including a specific default value.
   configured as an agent and the agent is configured to send to a Collector
   running as a gateway then this is not required. If `SPLUNK_CONFIG` is defined
   then this is not required.
-- [2]: Required when deploying via a Helm chart.
 
 ### Instrumentation Libraries
 
@@ -74,15 +72,15 @@ In addition, the following OpenTelemetry options MUST be supported:
 - [OTEL_EXPORTER_OTLP_ENDPOINT]
   - MUST default to `localhost:4317`
 - [OTEL_RESOURCE_ATTRIBUTES]
-  - MUST require `service.name` defined
-  - MUST suggest `deployment.server` defined
-  - MUST NOT suggest `deployment` defined
+  - MUST allow `service.name` to be defined and MUST offer a default, non-empty value
+  - MUST allow `deployment.server` to be defined and MUST not send unless explicitly defined
+  - MUST NOT suggest `deployment` to be used as the key
 - [OTEL_TRACE_ENABLED]
   - MUST default to `true`
   - MUST support `false` which disables emitting spans
 - [OTEL_TRACES_EXPORTER]
+  - MUST offer `jaeger-thrift-splunk` and `otlp` as values
   - MUST default to `jaeger-thrift-splunk` value
-  - MUST also support `otlp` value
 
 ## Environment variable alternatives
 
