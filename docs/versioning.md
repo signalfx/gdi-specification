@@ -13,8 +13,9 @@ GDI projects MUST be designed in a manner that allows experimental components
 to be created without breaking the stability guarantees of existing components.
 
 GDI projects MUST NOT be designed in a manner that breaks existing users when a
-components transitions from experimental to stable. This would punish users of
-the release candidate, and hinder adoption.
+new component beyond the project's first component transitions from
+experimental to stable. This would punish users of the release candidate
+component, and hinder adoption.
 
 Terms which denote stability, such as `experimental` MUST NOT be used as part
 of a directory or import name. Package version numbers MAY include a suffix,
