@@ -14,15 +14,19 @@ The following components are currently in scope:
 - [Configuration](docs/configuration.md)
 - [Repository](docs/repository.md)
 
+GDI projects MUST adopt GDI specification changes by their next minor release
+and within three months (whichever is sooner). The GDI specification and GDI
+projects MUST remove any deprecated specification at the next major release.
+
 ## Terms
 
 - Collector: A single binary that can be deployed as an agent or gateway.
-  Refers to `splunk-otel-collector`.
+  Refers to `splunk-otel-collector` project.
 - GDI: Getting Data In
 - GDI Project: A project in the `signalfx` GitHub that starts with
   `splunk-otel-\*`
 - Instrumentation Library: The way to emit telemetry data from an application.
-  Refers to `splunk-otel-<language>`.
+  Refers to `splunk-otel-<language>` projects.
 - Maintainer: Someone responsible for the specification or a project
 - Specification: A set of requirements for projects
 - Project: A GitHub repository
