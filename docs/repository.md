@@ -18,9 +18,9 @@ it can release a `1.0.0` version.
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
-- MUST have a `RELEASE.md` documenting the release process
+- MUST have a `RELEASING.md` documenting the release process
 - MUST add the [SECURITY.md](templates/SECURITY.md)
-- SHOULD add dependabot information to SECURITY.md if applicable
+- SHOULD add dependabot information to `SECURITY.md` if applicable
 
 ## Required Configuration
 
