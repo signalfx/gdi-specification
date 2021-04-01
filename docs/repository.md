@@ -5,7 +5,7 @@ it can release a `1.0.0` version.
 
 ## Required Files
 
-- MUST have a `CHANGELOG.md` updated for every release
+- MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
 - MUST add the [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add the [CONTRIBUTING.md](templates/CONTRIBUTING.md)
 - MUST have a `.github/CODEOWNERS` file with at least two currently full-time Splunkers listed
