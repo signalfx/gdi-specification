@@ -89,5 +89,6 @@ In addition to environment variables, other ways of defining configuration also 
 - [Java System
   Properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html):
   These properties MUST match the environment variables converting to lower
-  case and replacing underscores with periods. For example:
-  `splunk.access.token`.
+  case and replacing underscores with hyphens or periods. For example:
+  system property `splunk.context.server-timing.enabled` is equivalent to environment
+  variable `SPLUNK_CONTEXT_SERVER_TIMING_ENABLED`.
