@@ -39,11 +39,11 @@ supported including a specific default value.
 
 ### Collector
 
-| Name                | Type   | Default value | Required | Description                                    |
-| :-----------------: | :----: | :-----------: | :------: | :-----------------------------------:          |
-| SPLUNK_ACCESS_TOKEN | string |               | Yes [1]  | Access token added to exported data.           |
-| SPLUNK_CONFIG       | string |               | No  [2]  | Configuration file to use.                     |
-| SPLUNK_REALM        | string |               | Yes [1]  | Realm configured for the exporter endpoint.    |
+| Name                  | Type   | Default value | Required | Description                                 |
+| :-------------------: | :----: | :-----------: | :------: | :-----------------------------------:       |
+| `SPLUNK_ACCESS_TOKEN` | string |               | Yes [1]  | Access token added to exported data.        |
+| `SPLUNK_CONFIG`       | string |               | No  [2]  | Configuration file to use.                  |
+| `SPLUNK_REALM`        | string |               | Yes [1]  | Realm configured for the exporter endpoint. |
 
 - [1]: If the Collector is configured to export data to a Splunk back-end these
   options MUST be defined with valid values (this is the default behavior for
@@ -57,14 +57,14 @@ supported including a specific default value.
 
 ### Instrumentation Libraries
 
-| Name                                 | Type    | Default value                    | Required | Description                                                                                         |
-| :----------------------------------: | :----:  | :-----------:                    | :------: | :--------------------------------------------------------:                                          |
-| OTEL_EXPORTER_JAEGER_ENDPOINT        | string  | `http://localhost:9080/v1/trace` | Yes      | Where to export data if `OTEL_TRACES_EXPORTER=jaeger-thrift-splunk`.                                |
-| OTEL_EXPORTER_OTLP_ENDPOINT          | string  | `localhost:4317`                 | No       | Where to export data if `OTEL_TRACES_EXPORTER=otlp`.                                                |
-| OTEL_RESOURCE_ATTRIBUTES             | string  | `unknown_service[:<process>]`    | Yes      | Key/Value resource information. MUST define `service.name`. SHOULD define `deployment.environment`. |
-| OTEL_TRACES_EXPORTER                 | string  | `jaeger-thrift-splunk`           | Yes      | Exported data format. MUST support `jaeger-thrift-splunk` and `otlp`.                               |
-| SPLUNK_ACCESS_TOKEN                  | string  |                                  | No [1]   | Access token added to exported data.                                                                |
-| SPLUNK_CONTEXT_SERVER_TIMING_ENABLED | boolean | `false`                          | No [2]   | Whether `Server-Timing` header is added to HTTP responses.                                          |
+| Name                                   | Type    | Default value                    | Required | Description                                                                                         |
+| :------------------------------------: | :----:  | :-----------:                    | :------: | :--------------------------------------------------------:                                          |
+| `OTEL_EXPORTER_JAEGER_ENDPOINT`        | string  | `http://localhost:9080/v1/trace` | Yes      | Where to export data if `OTEL_TRACES_EXPORTER=jaeger-thrift-splunk`.                                |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`          | string  | `localhost:4317`                 | No       | Where to export data if `OTEL_TRACES_EXPORTER=otlp`.                                                |
+| `OTEL_RESOURCE_ATTRIBUTES`             | string  | `unknown_service[:<process>]`    | Yes      | Key/Value resource information. MUST define `service.name`. SHOULD define `deployment.environment`. |
+| `OTEL_TRACES_EXPORTER`                 | string  | `jaeger-thrift-splunk`           | Yes      | Exported data format. MUST support `jaeger-thrift-splunk` and `otlp`.                               |
+| `SPLUNK_ACCESS_TOKEN`                  | string  |                                  | No [1]   | Access token added to exported data.                                                                |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | boolean | `true`                           | No [2]   | Whether `Server-Timing` header is added to HTTP responses.                                          |
 
 - [1]: Not required if another system performs the authentication. For example,
   instrumentation libraries SHOULD send data to a locally running agent. The
