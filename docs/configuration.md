@@ -87,9 +87,11 @@ In addition to environment variables, other ways of defining configuration also 
 
 ## Making backwards incompatible changes
 
-Whenever a configuration variable changes its name a stable GDI project MUST
-support both old and new names for at least one release. GDI projects that are
-not yet stable SHOULD follow this rule, but they are not required to.
+Whenever a configuration variable changes its name a stable GDI project
+(version >= 1.0) MUST support both old and new names for at least one release.
+The old configuration variable MUST NOT be removed in a minor release.
+GDI projects that are not yet stable (version < 1.0) SHOULD follow this rule,
+but they are not required to.
 
 When it is detected that a user uses the old configuration variable a warning
 SHOULD be logged: the warning SHOULD state that the old variable is deprecated,
