@@ -41,13 +41,12 @@ in [BCP 14](https://tools.ietf.org/html/bcp14)
 [[RFC8174](https://tools.ietf.org/html/rfc8174)] when, and only when, they
 appear in all capitals, as shown here.
 
-An implementation of the [specification](./docs/overview.md) is not
-compliant if it fails to satisfy one or more of the "MUST", "MUST NOT",
-"REQUIRED", "SHALL", or "SHALL NOT" requirements defined in the
-[specification](./docs/overview.md). Conversely, an implementation of
-the [specification](./docs/overview.md) is compliant if it satisfies
-all the "MUST", "MUST NOT", "REQUIRED", "SHALL", and "SHALL NOT" requirements
-defined in the [specification](./docs/overview.md).
+An implementation of the GDI specification is not compliant if it fails to
+satisfy one or more of the "MUST", "MUST NOT", "REQUIRED", "SHALL", or "SHALL
+NOT" requirements defined in the GDI specification. Conversely, an
+implementation of the GDI specification is compliant if it satisfies all the
+"MUST", "MUST NOT", "REQUIRED", "SHALL", and "SHALL NOT" requirements defined
+in the GDI specification.
 
 ## Versioning the Specification
 
@@ -65,5 +64,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on contribution process.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under its
-[Apache 2.0 License](LICENSE).
+[Apache Software License version 2.0](./LICENSE).
