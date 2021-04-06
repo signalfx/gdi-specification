@@ -1,7 +1,14 @@
-- name: Lychee Broken Link Checker
-  # You may pin to the exact commit or the version.
-  # uses: lycheeverse/lychee-action@e8f5f9c353907e8d2d5bc8b4e2ee70f016fb6ce7
-  uses: lycheeverse/lychee-action@v1.0.6
-  with:
-    # lychee arguments
-    args: # optional, default is --verbose --no-progress *.md
+name: Lychee Broken Link Checker
+uses: lycheeverse/lychee-action@v1.0.6
+
+on: push
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: lychee Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.0.6
+      - name: Fail if there were link errors
+        run: exit ${{ steps.lychee.outputs.exit_code }}
