@@ -1,5 +1,7 @@
 name: Lychee Broken Link Checker
 uses: lycheeverse/lychee-action@v1.0.6
+with:
+  args: --verbose --no-progress *.md
 
 on: push
 jobs:
