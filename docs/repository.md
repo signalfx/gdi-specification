@@ -13,8 +13,9 @@ it can release a `1.0.0` version.
 - MUST have an Apache 2.0 `LICENSE` file
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`
-  - MUST have badges on `README.md` with code coverage and build status
-  - SHOULD have badges on `README.md` for other relevant things including artifacts
+  - MUST have a badge on the `README.md` with build status
+  - SHOULD have a badge on the `README.md` with code coverage
+  - SHOULD have badges on the `README.md` for other relevant things including artifacts
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
