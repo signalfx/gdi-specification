@@ -14,7 +14,7 @@ it can release a `1.0.0` version.
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`
   - MUST have a badge on the `README.md` with build status
-  - SHOULD have a badge on the `README.md` with code coverage
+  - SHOULD have a badge on the `README.md` with code coverage, if appropriate.
   - SHOULD have badges on the `README.md` for other relevant things including artifacts
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
