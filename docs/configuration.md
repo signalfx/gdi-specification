@@ -84,3 +84,17 @@ In addition to environment variables, other ways of defining configuration also 
   case and replacing underscores with hyphens or periods. For example:
   system property `splunk.context.server-timing.enabled` is equivalent to environment
   variable `SPLUNK_CONTEXT_SERVER_TIMING_ENABLED`.
+
+## Making backwards incompatible changes
+
+Whenever a configuration variable changes its name, a stable GDI project
+(version >= 1.0) MUST support both old and new names until the next major release is done.
+The old configuration variable MUST NOT be removed in a minor release.
+GDI projects that are not yet stable (version < 1.0) SHOULD follow this rule,
+but they are not required to.
+
+When it is detected that a user uses the old configuration variable a warning
+SHOULD be logged: the warning SHOULD state that the old variable is deprecated,
+the new one should be used instead, and that the old one will be removed in the
+next major release (not stable GDI projects MAY remove deprecated features in any
+future release).
