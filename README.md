@@ -58,7 +58,7 @@ that implement the specification MUST specify which version they implement.
 Changes to the change process itself are not currently versioned but may be
 independently versioned in the future.
 
-Additionally, the GDI specification uses following [Document Statuses](docs/doc_status.md).
+Additionally, the GDI specification uses following [Document Statuses](docs/document-status.md).
 
 ## Contributions
 
