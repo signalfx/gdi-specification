@@ -3,6 +3,8 @@
 Every GDI project repository MUST adhere to the following specification before
 it can release a `1.0.0` version.
 
+Note: if there is an **upstream** project, it MUST be in GA (>= `1.0.0`) 
+
 ## Required Files
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
