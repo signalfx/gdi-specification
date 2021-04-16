@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-The format is roughly inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on the [Splunk GDI specification](https://github.com/signalfx/gdi-specification/blob/f70eda04ec15685f892edc4b8f05bed557d20206/docs/repository.md#required-files),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased:
