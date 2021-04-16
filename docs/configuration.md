@@ -62,6 +62,7 @@ supported including a specific default value.
 | `OTEL_EXPORTER_JAEGER_ENDPOINT`        | string  | `http://localhost:9080/v1/trace` | Yes      | Where to export data if `OTEL_TRACES_EXPORTER=jaeger-thrift-splunk`.                                |
 | `OTEL_EXPORTER_OTLP_ENDPOINT`          | string  | `localhost:4317`                 | No       | Where to export data if `OTEL_TRACES_EXPORTER=otlp`.                                                |
 | `OTEL_RESOURCE_ATTRIBUTES`             | string  | `unknown_service[:<process>]`    | Yes      | Key/Value resource information. MUST define `service.name`. SHOULD define `deployment.environment`. |
+| `OTEL_TRACES_ENABLED`                  | boolean | `true`                           | No       | Whether instrumentation will create spans to participate in traces or not.                          |
 | `OTEL_TRACES_EXPORTER`                 | string  | `jaeger-thrift-splunk`           | Yes      | Exported data format. MUST support `jaeger-thrift-splunk` and `otlp`.                               |
 | `SPLUNK_ACCESS_TOKEN`                  | string  |                                  | No [1]   | Access token added to exported data.                                                                |
 | `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | boolean | `true`                           | No [2]   | Whether `Server-Timing` header is added to HTTP responses.                                          |
