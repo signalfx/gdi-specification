@@ -35,7 +35,7 @@ projects MUST remove any deprecated specification at the next major release.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in the
-[specification](./docs/overview.md) are to be interpreted as described
+specification are to be interpreted as described
 in [BCP 14](https://tools.ietf.org/html/bcp14)
 [[RFC2119](https://tools.ietf.org/html/rfc2119)]
 [[RFC8174](https://tools.ietf.org/html/rfc8174)] when, and only when, they
@@ -57,6 +57,8 @@ that implement the specification MUST specify which version they implement.
 
 Changes to the change process itself are not currently versioned but may be
 independently versioned in the future.
+
+Additionally, the GDI specification uses following [Document Statuses](docs/document-status.md).
 
 ## Contributions
 

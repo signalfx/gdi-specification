@@ -1,4 +1,4 @@
-# Definitions of Document Statuses
+# Document Statuses
 
 Specification documents (files) MAY explicitly define a "Status". If they do,
 they MUST display a status immediately after the document title. When present,
