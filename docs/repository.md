@@ -3,7 +3,7 @@
 Every GDI project repository MUST adhere to the following specification before
 it can release a `1.0.0` version.
 
-Note: if there is an **upstream** project, it MUST be in GA (>= `1.0.0`) 
+Note: the **upstream** components that you depend on (if any) MUST be stable
 
 ## Required Files
 
