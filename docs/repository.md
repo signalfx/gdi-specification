@@ -13,7 +13,7 @@ it can release a `1.0.0` version.
   releases at the top of the file, after the `Unreleased` section.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality area (if applicable).
-  The following sub-sub-sections MAY be used, as appropriate.
+  The following sub-sections MAY be used, as appropriate.
     - `General Notes` - General comments about the release that users should know about.
     - `Breaking Changes` - Any changes that will break backward compatibility with previous versions.
     - `Bugfixes` - Details of bugs that were fixed.
