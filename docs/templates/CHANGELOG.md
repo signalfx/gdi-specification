@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version 0.1.0 - 2021-04-01
 
-### General Notes
+### General
 
 - This release marks the first release of the project.
 
