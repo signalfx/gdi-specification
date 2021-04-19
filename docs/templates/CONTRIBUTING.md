@@ -30,6 +30,12 @@ When filing an issue, please do *NOT* include:
 - Internal identifiers such as JIRA tickets
 - Any sensitive information related to your environment, users, etc.
 
+## Reporting Security Issues
+
+Please *DO NOT* report security vulnerabilities with public GitHub issue
+reports. Please [report security issues here](
+https://www.splunk.com/en_us/product-security/report.html).
+
 ## Contributing via Pull Requests
 
 Contributions via Pull Requests (PRs) are much appreciated. Before sending us a
