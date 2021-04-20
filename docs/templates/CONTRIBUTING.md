@@ -32,7 +32,7 @@ When filing an issue, please do *NOT* include:
 
 ## Reporting Security Issues
 
-See: [SECURITY.md](SECURITY.md#reporting-security-issues)
+See [SECURITY.md](SECURITY.md#reporting-security-issues) for detailed instructions.
 
 ## Contributing via Pull Requests
 
