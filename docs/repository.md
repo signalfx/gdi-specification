@@ -36,6 +36,7 @@ it can release a `1.0.0` version.
 
 ## Releases
 
+- SHOULD be [signed tagged](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 - SHOULD have a signature or checksums pushed to a file in the `main`
 
 ## Collector
