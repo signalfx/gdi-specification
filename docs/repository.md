@@ -36,8 +36,9 @@ it can release a `1.0.0` version.
 
 ## Releases
 
+- SHOULD have artifacts stored in a public and secured location (not GitHub Releases, because the artifacts can be modified)
+- SHOULD have a signature or a checksum available (for all artifacts) in a public and secured location
 - SHOULD be [signed tagged](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
-- SHOULD have a signature or a checksum available in a public and secured location
 
 ## Collector
 
