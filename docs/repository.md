@@ -34,12 +34,7 @@ it can release a `1.0.0` version.
 
 ## Releases
 
-- MUST have a signature or at least a checksums pushed to a file in the `main`
-
-## Developers
-
-- MUST use two-factor authentication using a security key or a TOTP mobile app
-- MUST use password protected SSH keys
+- SHOULD have a signature or checksums pushed to a file in the `main`
 
 ## Collector
 
