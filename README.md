@@ -12,6 +12,7 @@ expectations. It is applicable to GDI projects.
 The following components are currently in scope:
 
 - [Configuration](docs/configuration.md)
+- [Developer](docs/developer.md)
 - [Repository](docs/repository.md)
 
 GDI projects MUST adopt GDI specification changes by their next minor release
