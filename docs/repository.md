@@ -30,6 +30,7 @@ it can release a `1.0.0` version.
 - MUST require signed commits on `main`
 - MUST NOT grant `Write`, `Maintain`, `Admin` to anyone else than maintainers
 - MUST require at least one CODEOWNER to approve a PR prior to merge
+- MUST use [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to store sensitive data (auth tokens, passwords) and use them only in steps where they are needed
 - MUST have dependabot properly configured
 
 ## Releases
