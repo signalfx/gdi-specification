@@ -26,7 +26,7 @@ it can release a `1.0.0` version.
 ## Required Configuration
 
 - MUST have a primary branch named `main`
-- MUST NOT allow anyone (including admnistrators) pushing directly to `main`
+- MUST NOT allow anyone (including administrators) pushing directly to `main`
 - MUST require signed commits on `main`
 - MUST allow ONLY squash merging
 - MUST NOT grant `Write`, `Maintain`, `Admin` to anyone else than maintainers
