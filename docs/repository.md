@@ -14,7 +14,7 @@ it can release a `1.0.0` version.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality area (if applicable).
   The following sub-sections MAY be used, as appropriate.
-    - `General` - General comments about the release that users should know about
+    - `General` - General comments about the release that users should know about.
     - `Breaking Changes` - Any changes that will break backward compatibility with previous versions.
     - `Bugfixes` - Details of bugs that were fixed.
     - `Enhancements` - New features that have been added to the project.
