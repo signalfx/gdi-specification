@@ -96,7 +96,7 @@ beyond the OpenTelemetry specification exist.
   - Distribution MUST default to `1000` for `OTEL_SPAN_LINK_COUNT_LIMIT` (not OpenTelemetry default)
   - Distribution MUST be `unset` (unlimited) for all others (not OpenTelemetry default)
 - Zipkin exporter
-  - Distribution MUST NOT listed Zipkin exporter as supported (not supported by Smart Agent)
+  - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
 - `OTEL_TRACES_EXPORTER`
   - Distribution MUST default to `otlp`
   - Distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
