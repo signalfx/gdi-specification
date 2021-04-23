@@ -3,7 +3,7 @@
 Every GDI project repository MUST adhere to the following specification before
 it can release a `1.0.0` version.
 
-Note: the **upstream** components that you depend on (if any) MUST be stable
+Note: the **upstream** project signal you depend on (if any) MUST be stable
 
 ## Required Files
 
