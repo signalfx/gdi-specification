@@ -76,7 +76,7 @@ projects MAY remove deprecated features in any future release).
   agent. The agent can define the access token that is used. If the component
   is configured to send data directly to a SaaS endpoint then this variable
   MUST be defined. This environment variable MUST work for `otlp` and
-  `jaeger-thrift-splunk exporters`.
+  `jaeger-thrift-splunk` exporters.
 - [2]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
 
