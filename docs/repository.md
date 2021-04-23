@@ -9,7 +9,6 @@ it can release a GA (`1.0.0`) release.
 - MUST NOT allow pushing direct to `main`
 - MUST require status checks to pass before merge to `main`
 - MUST require at least one CODEOWNER to approve a PR prior to merge
-- MUST have Assign to One project action configured
 - MUST have Codecov GitHub App configured
 - MUST have Dependabot configured
 - MUST have Jira GitHub App configured
