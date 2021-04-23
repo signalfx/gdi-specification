@@ -31,15 +31,14 @@ it can release a `1.0.0` version.
 - MUST allow ONLY squash merging
 - MUST NOT grant `Write`, `Maintain`, `Admin` to anyone else than maintainers
 - MUST require at least one CODEOWNER to approve a PR prior to merge
-- MUST use [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to store sensitive data (auth tokens, passwords) and use them only in steps where they are needed
+- MUST use [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) or [CircleCI contexts](https://circleci.com/docs/2.0/contexts/) to store sensitive data (auth tokens, passwords) and limit their usage to only required places
 - MUST have dependabot properly configured
 - SHOULD use pinned versions for all build dependencies (e.g. libraries, binaries, scripts, docker images)
 
 ## Releases
 
 - SHOULD avoid using external tools in the release pipeline; if one is used its integrity MUST be checked if possible
-- SHOULD have artifacts stored in a public and secured location (not GitHub Releases, because the artifacts can be modified)
-- SHOULD have a signature or a checksum available (for all artifacts) in a public and secured location
+- SHOULD have a signature or a checksum available for all binary artifacts
 - SHOULD be [signed tagged](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 
 ## Collector
