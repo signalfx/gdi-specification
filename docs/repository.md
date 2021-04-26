@@ -16,7 +16,7 @@ it can release a GA (`1.0.0`) release.
 - MUST use pinned versions for all build dependencies (e.g. libraries, binaries, scripts, docker images) if possible
 - MUST have Dependabot configured
 - MUST have Jira GitHub App configured
-- SHOULD avoid using external tools in the release pipeline; if one is used its integrity MUST be checked if possible
+- SHOULD avoid using external tools in the release pipeline; if one is used its integrity MUST be checked with exception to the tools that are available out-of-the-box
 - SHOULD have a signature or a checksum available for all binary release artifacts
 - SHOULD use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 - SHOULD have Codecov GitHub App configured
