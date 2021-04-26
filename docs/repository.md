@@ -11,7 +11,7 @@ it can release a GA (`1.0.0`) release.
 - MUST require status checks to pass before merge to `main`
 - MUST require at least one CODEOWNER to approve a PR prior to merge
 - MUST require signed commits on `main`
-- MUST allow ONLY squash merging
+- MUST allow ONLY squash or rebase merging
 - MUST use [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to store sensitive data (auth tokens, passwords) and limit their usage to only required places
 - MUST use pinned versions for all build dependencies (e.g. libraries, binaries, scripts, docker images) if possible
 - MUST have Dependabot configured
