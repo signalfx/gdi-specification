@@ -42,7 +42,7 @@ it can release a GA (`1.0.0`) release.
 - MUST have a `RELEASING.md` documenting the release process
   - SHOULD be able to release by pushing a tag
 - MUST add the [SECURITY.md](templates/SECURITY.md)
-- SHOULD add dependabot information to `SECURITY.md` if applicable
+  - SHOULD add dependabot information to `SECURITY.md` if applicable
 
 ## Collector
 
