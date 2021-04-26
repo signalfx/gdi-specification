@@ -7,7 +7,7 @@ it can release a GA (`1.0.0`) release.
 
 - MUST NOT grant `Write`, `Maintain`, `Admin` to anyone else than maintainers
 - MUST have a primary branch named `main`
-- MUST NOT allow anyone (including administrators) pushing direct to `main`
+- MUST NOT allow anyone (including administrators) pushing directly to `main`
 - MUST require status checks to pass before merge to `main`
 - MUST require at least one CODEOWNER to approve a PR prior to merge
 - MUST require signed commits on `main`
