@@ -2,7 +2,7 @@
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/signalfx/gdi-specification.svg)
 
-The GDI specification describes the cross-repository requirements and
+The GDI specification describes cross-repository requirements and
 expectations. It is applicable to GDI projects.
 
 > Anything OpenTelemetry or anything that should be in OpenTelemetry will be
@@ -17,6 +17,9 @@ The following components are currently in scope:
 GDI projects MUST adopt GDI specification changes by their next minor release
 and within three months (whichever is sooner). The GDI specification and GDI
 projects MUST remove any deprecated specification at the next major release.
+
+The GDI specification is meant for GDI projects and MUST NOT be required
+reading by GDI project consumers.
 
 ## Terms
 
