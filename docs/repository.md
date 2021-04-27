@@ -19,7 +19,20 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
 ## Required Files
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
-  - SHOULD automate population of CHANGELOG.md
+  - The CHANGELOG.md is intended to be consumed by humans, and not machines.
+  - The file SHOULD contain an `Unreleased` section at the top, which includes changes that
+  have not yet been released.
+  - The file MUST be in reverse chronological order, with the most recent
+  releases at the top of the file, after the `Unreleased` section.
+  - Each release SHOULD be separated by a line separator (`---`) from the other relases.
+  - Each release SHOULD contain separate sections for each major functionality area (if applicable).
+  The following sub-sections MAY be used, as appropriate.
+    - `General` - General comments about the release that users should know about.
+    - `Breaking Changes` - Any changes that will break backward compatibility with previous versions.
+    - `Bugfixes` - Details of bugs that were fixed.
+    - `Enhancements` - New features that have been added to the project.
+  - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant from an end-user point of view. Anyone who is
+  interested in all the details of every change in the project can use the git log for that.
 - MUST add the [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add the [CONTRIBUTING.md](templates/CONTRIBUTING.md)
 - MUST have a `.github/CODEOWNERS` file with at least two currently full-time Splunkers listed
