@@ -2,8 +2,8 @@
 
 Every GDI project repository MUST adhere to the following specification before
 it can release a GA (`1.0.0`) release. GDI projects MUST submit a GitHub issue
-requesting approval to GA. Until the approval is granted, GDI projects MUST NOT
-cut a GA release.
+on the GDI specification using the `Project GA approval` type. Until the
+approval is granted, GDI projects MUST NOT cut a GA release.
 
 ## Required Configuration
 
