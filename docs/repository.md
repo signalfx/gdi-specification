@@ -14,6 +14,8 @@ it can release a GA (`1.0.0`) release.
 - MUST have Jira GitHub App configured
 - SHOULD have Lychee Link Checker GitHub Action configured
 
+Note: the **upstream** project signal you depend on (if any) MUST be stable
+
 ## Required Files
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
