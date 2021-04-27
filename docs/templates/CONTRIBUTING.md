@@ -30,6 +30,10 @@ When filing an issue, please do *NOT* include:
 - Internal identifiers such as JIRA tickets
 - Any sensitive information related to your environment, users, etc.
 
+## Reporting Security Issues
+
+See [SECURITY.md](SECURITY.md#reporting-security-issues) for detailed instructions.
+
 ## Contributing via Pull Requests
 
 Contributions via Pull Requests (PRs) are much appreciated. Before sending us a

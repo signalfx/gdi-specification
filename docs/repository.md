@@ -1,7 +1,20 @@
 # Repository
 
 Every GDI project repository MUST adhere to the following specification before
-it can release a `1.0.0` version.
+it can release a GA (`1.0.0`) release.
+
+## Required Configuration
+
+- MUST have a primary branch named `main`
+- MUST NOT allow pushing direct to `main`
+- MUST require status checks to pass before merge to `main`
+- MUST require at least one CODEOWNER to approve a PR prior to merge
+- SHOULD have Codecov GitHub App configured
+- MUST have Dependabot configured
+- MUST have Jira GitHub App configured
+- SHOULD have Lychee Link Checker GitHub Action configured
+
+Note: the **upstream** project signal you depend on (if any) MUST be stable
 
 ## Required Files
 
@@ -34,15 +47,9 @@ it can release a `1.0.0` version.
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
 - MUST have a `RELEASING.md` documenting the release process
+  - SHOULD be able to release by pushing a tag
 - MUST add the [SECURITY.md](templates/SECURITY.md)
-- SHOULD add dependabot information to `SECURITY.md` if applicable
-
-## Required Configuration
-
-- MUST have a primary branch named `main`
-- MUST NOT allow pushing direct to `main`
-- MUST require at least one CODEOWNER to approve a PR prior to merge
-- MUST have dependabot properly configured
+  - SHOULD add dependabot information to `SECURITY.md` if applicable
 
 ## Collector
 
@@ -54,3 +61,5 @@ it can release a `1.0.0` version.
 - MUST document all supported configuration parameters
 - MUST document how to configure manual instrumentation
 - MUST document how to configure log correlation
+- MUST define minimum supported version of each auto-instrumentation framework
+  - SHOULD define maximum supported version of each auto-instrumentation framework

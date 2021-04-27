@@ -29,21 +29,30 @@ declared as stable in the GDI specification and later the OpenTelemetry
 specification declares a similar variable as stable, the GDI specification
 MUST adopt the OpenTelemetry configuration variable and SHOULD mark the GDI
 specification configuration variable as deprecated by the next minor release.
-
 In addition to defining Splunk-specification configuration variables, the GDI
 specification MAY require specific OpenTelemetry configuration variables be
 supported. If it does, the GDI specification MAY require certain values be
 supported including a specific default value.
 
+Whenever a configuration variable changes its name, a stable GDI project
+(version >= 1.0) MUST support both old and new names until the next major
+release is done. The old configuration variable MUST NOT be removed in a minor
+release. GDI projects that are not yet stable (version < 1.0) SHOULD follow
+this rule, but they are not required to. When it is detected that a user uses
+the old configuration variable a warning SHOULD be logged: the warning SHOULD
+state that the old variable is deprecated, the new one should be used instead,
+and that the old one will be removed in the next major release (not stable GDI
+projects MAY remove deprecated features in any future release).
+
 ## Environment variables
 
 ### Collector
 
-| Name                  | Type   | Default value | Required | Description                                 |
-| :-------------------: | :----: | :-----------: | :------: | :-----------------------------------:       |
-| `SPLUNK_ACCESS_TOKEN` | string |               | Yes [1]  | Access token added to exported data.        |
-| `SPLUNK_CONFIG`       | string |               | No  [2]  | Configuration file to use.                  |
-| `SPLUNK_REALM`        | string |               | Yes [1]  | Realm configured for the exporter endpoint. |
+| Name (default value)     | Description                                     |
+| :-------------------:    | :-----------------------------------:           |
+| `SPLUNK_ACCESS_TOKEN` () | Access token added to exported data. [1]        |
+| `SPLUNK_CONFIG` ()       | Configuration file to use. [2]                  |
+| `SPLUNK_REALM` ()        | Realm configured for the exporter endpoint. [1] |
 
 - [1]: If the Collector is configured to export data to a Splunk back-end these
   options MUST be defined with valid values (this is the default behavior for
@@ -57,23 +66,40 @@ supported including a specific default value.
 
 ### Instrumentation Libraries
 
-| Name                                   | Type    | Default value                    | Required | Description                                                                                         |
-| :------------------------------------: | :----:  | :-----------:                    | :------: | :--------------------------------------------------------:                                          |
-| `OTEL_EXPORTER_JAEGER_ENDPOINT`        | string  | `http://localhost:9080/v1/trace` | Yes      | Where to export data if `OTEL_TRACES_EXPORTER=jaeger-thrift-splunk`.                                |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`          | string  | `localhost:4317`                 | No       | Where to export data if `OTEL_TRACES_EXPORTER=otlp`.                                                |
-| `OTEL_RESOURCE_ATTRIBUTES`             | string  | `unknown_service[:<process>]`    | Yes      | Key/Value resource information. MUST define `service.name`. SHOULD define `deployment.environment`. |
-| `OTEL_TRACES_ENABLED`                  | boolean | `true`                           | No       | Whether instrumentation will create spans to participate in traces or not.                          |
-| `OTEL_TRACES_EXPORTER`                 | string  | `jaeger-thrift-splunk`           | Yes      | Exported data format. MUST support `jaeger-thrift-splunk` and `otlp`.                               |
-| `SPLUNK_ACCESS_TOKEN`                  | string  |                                  | No [1]   | Access token added to exported data.                                                                |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | boolean | `true`                           | No [2]   | Whether `Server-Timing` header is added to HTTP responses.                                          |
+| Name (default value)                            | Description                                                    |
+| :------------------------------------:          | :--------------------------------------------------------:     |
+| `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                       |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [2] |
 
-- [1]: Not required if another system performs the authentication. For example,
-  instrumentation libraries SHOULD send data to a locally running agent. The
-  agent can define the access token that is used. If the component is
-  configured to send data directly to a SaaS endpoint then this variable MUST
-  be defined.
+- [1]: Not user required if another system performs the authentication. For
+  example, instrumentation libraries SHOULD send data to a locally running
+  agent. The agent can define the access token that is used. If the component
+  is configured to send data directly to a SaaS endpoint then this variable
+  MUST be defined. This environment variable MUST work for `otlp` and
+  `jaeger-thrift-splunk` exporters.
 - [2]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
+
+In addition to Splunk-specific environment variables, several requirements
+beyond the OpenTelemetry specification exist.
+
+#### [OpenTelemetry Environment Variable](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
+
+- `OTEL_RESOURCE_ATTRIBUTES`
+  - User MUST define `service.name`
+  - User SHOULD define `deployment.environment`
+  - User SHOULD define `service.version`
+- `OTEL_PROPAGATORS`
+  - Distribution MUST default to `"tracecontext,baggage"`
+  - Distribution MUST support and document how to switch to `b3multi`
+- Span Collection Limits
+  - Distribution MUST default to `1000` for `OTEL_SPAN_LINK_COUNT_LIMIT` (not OpenTelemetry default)
+  - Distribution MUST be `unset` (unlimited) for all others (not OpenTelemetry default)
+- Zipkin exporter
+  - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
+- `OTEL_TRACES_EXPORTER`
+  - Distribution MUST default to `otlp`
+  - Distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
 
 ## Environment variable alternatives
 
@@ -85,17 +111,3 @@ In addition to environment variables, other ways of defining configuration also 
   case and replacing underscores with hyphens or periods. For example:
   system property `splunk.context.server-timing.enabled` is equivalent to environment
   variable `SPLUNK_CONTEXT_SERVER_TIMING_ENABLED`.
-
-## Making backwards incompatible changes
-
-Whenever a configuration variable changes its name, a stable GDI project
-(version >= 1.0) MUST support both old and new names until the next major release is done.
-The old configuration variable MUST NOT be removed in a minor release.
-GDI projects that are not yet stable (version < 1.0) SHOULD follow this rule,
-but they are not required to.
-
-When it is detected that a user uses the old configuration variable a warning
-SHOULD be logged: the warning SHOULD state that the old variable is deprecated,
-the new one should be used instead, and that the old one will be removed in the
-next major release (not stable GDI projects MAY remove deprecated features in any
-future release).
