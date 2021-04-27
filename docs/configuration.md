@@ -48,21 +48,25 @@ projects MAY remove deprecated features in any future release).
 
 ### Collector
 
-| Name (default value)     | Description                                     |
-| :-------------------:    | :-----------------------------------:           |
-| `SPLUNK_ACCESS_TOKEN` () | Access token added to exported data. [1]        |
-| `SPLUNK_CONFIG` ()       | Configuration file to use. [2]                  |
-| `SPLUNK_REALM` ()        | Realm configured for the exporter endpoint. [1] |
+| Name (default value)     | Description                                        |
+| :-------------------:    | :-----------------------------------:              |
+| `SPLUNK_ACCESS_TOKEN` () | Access token added to exported data. [1][2]        |
+| `SPLUNK_CONFIG` ()       | Configuration file to use. [1]                     |
+| `SPLUNK_REALM` ()        | Realm configured for the exporter endpoint. [1][2] |
 
-- [1]: If the Collector is configured to export data to a Splunk back-end these
+- [1]: Either `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM` MUST be defined or
+  `SPLUNK_CONFIG` MUST be defined. If `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM`
+  are defined, `SPLUNK_CONFIG` MAY be defined. If `SPLUNK_CONFIG` is
+  defined, either, neither, or both of `SPLUNK_ACCESS_TOKEN` and
+  `SPLUNK_REALM` MAY be defined.
+- [2]: If the Collector is configured to export data to a Splunk back-end these
   options MUST be defined with valid values (this is the default behavior for
   the Collector). If the Collector is configured as an agent and the agent is
   configured to send to a Collector running as a gateway then these options are
-  not required. If `SPLUNK_CONFIG` is defined then these options are not
-  required.
-- [2]: Either `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM` MUST be defined or
-  `SPLUNK_CONFIG` MUST be defined. If `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM`
-  is defined, `SPLUNK_CONFIG` MAY be defined.
+  not required but MAY be defined (to support
+  [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
+  If `SPLUNK_CONFIG` is defined then these options are not required but MAY be
+  defined.
 
 ### Instrumentation Libraries
 
@@ -73,10 +77,13 @@ projects MAY remove deprecated features in any future release).
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
-  agent. The agent can define the access token that is used. If the component
-  is configured to send data directly to a SaaS endpoint then this variable
-  MUST be defined. This environment variable MUST work for `otlp` and
-  `jaeger-thrift-splunk` exporters.
+  agent. The agent MAY define the access token that is used. If the
+  instrumentation library is configured to send data directly to a Splunk
+  back-end then this variable MUST be defined. Even when sending to an agent,
+  instrumentation libraries MAY define this option (to support
+  [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
+  This environment variable MUST work for `otlp` and `jaeger-thrift-splunk`
+  exporters.
 - [2]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
 
@@ -86,9 +93,9 @@ beyond the OpenTelemetry specification exist.
 #### [OpenTelemetry Environment Variable](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
 
 - `OTEL_RESOURCE_ATTRIBUTES`
-  - User MUST define `service.name`
-  - User SHOULD define `deployment.environment`
-  - User SHOULD define `service.version`
+  - User MUST define [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
+  - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment)
+  - User SHOULD define [`service.version`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
 - `OTEL_PROPAGATORS`
   - Distribution MUST default to `"tracecontext,baggage"`
   - Distribution MUST support and document how to switch to `b3multi`
