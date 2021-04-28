@@ -32,6 +32,11 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST use [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to store sensitive data (auth tokens, passwords) and limit their usage to only required places
 - MUST NOT use [Personal Access Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) in GitHub Actions
 
+### CircleCI
+
+- MUST use [CircleCI context](https://circleci.com/docs/2.0/contexts/) to store sensitive data (auth tokens, passwords) and limit their usage to only required places
+- MUST NOT use [Personal Access Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) in CircleCI pipelines
+
 ### GitHub Applications
 
 - MUST have Jira GitHub App configured
