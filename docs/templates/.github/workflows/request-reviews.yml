@@ -2,14 +2,12 @@ name: Request review on PRs
 
 on:
   pull_request:
-    types:
-      - opened
+    types: [ opened ]
 
 jobs:
   request:
     name: Request reviews on opened PRs
     runs-on: ubuntu-20.04
-
     steps:
       - name: Create PR review request
         env:
