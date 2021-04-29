@@ -68,7 +68,7 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
   interested in all the details of every change in the project can use the git log for that.
 - MUST add the [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add the [CONTRIBUTING.md](templates/CONTRIBUTING.md)
-- MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with maintainers
+- MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with a maintainers team
 - SHOULD have a [.github/workflows/request-reviews.yml](templates/.github/workflows/request-reviews.yml) to automate
   requesting reviews from approvers
 - MUST have an Apache 2.0 `LICENSE` file
