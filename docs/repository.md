@@ -7,6 +7,15 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 
 ## Required Configuration
 
+### Teams
+
+- MUST have a maintainers team
+  - MUST have `-maintainers` suffix
+  - MUST include at least two currently full-time Splunkers
+  - MUST NOT include any non-full-time Splunkers
+- SHOULD have an approvers team
+  - MUST have `-approvers` suffix
+
 ### Permissions
 
 - MUST grant `Admin` [permission level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization) to maintainers
@@ -59,9 +68,9 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
   interested in all the details of every change in the project can use the git log for that.
 - MUST add the [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add the [CONTRIBUTING.md](templates/CONTRIBUTING.md)
-- MUST have a `.github/CODEOWNERS` file with approvers
-  - MUST include at least two currently full-time Splunkers
-  - MUST NOT include any non-full-time Splunkers
+- MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with maintainers
+- SHOULD have a [.github/workflows/request-reviews.yml](templates/.github/workflows/request-reviews.yml) to automate
+  requesting reviews from approvers
 - MUST have an Apache 2.0 `LICENSE` file
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`
