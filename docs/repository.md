@@ -87,7 +87,8 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
 
 ## GitHub Releases
 
-- MUST have a signature or a checksum available for all binary release artifacts
+- MUST have a signature or a checksum with signature for all release artifacts
+  - SHOULD use Splunk signing key
 - MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 
 ## Collector
