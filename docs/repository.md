@@ -87,8 +87,8 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
 
 ## GitHub Releases
 
-- SHOULD have a signature or a checksum available for all binary release artifacts
-- SHOULD use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
+- MUST have a signature or a checksum available for all binary release artifacts
+- MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 
 ## Collector
 
