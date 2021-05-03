@@ -13,6 +13,7 @@ The following components are currently in scope:
 
 - [Configuration](docs/configuration.md)
 - [Repository](docs/repository.md)
+- [Versioning](docs/versioning.md)
 
 GDI projects MUST adopt GDI specification changes by their next minor release
 and within three months (whichever is sooner). The GDI specification and GDI
