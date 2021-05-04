@@ -8,6 +8,8 @@ jobs:
   request:
     name: Request reviews on opened PRs
     runs-on: ubuntu-20.04
+    permissions:
+      issues: write
     steps:
       - name: Create PR review request
         env:
