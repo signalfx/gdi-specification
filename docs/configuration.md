@@ -46,7 +46,7 @@ projects MAY remove deprecated features in any future release).
 
 ## Environment variables
 
-### Collector
+### Data Collector
 
 | Name (default value)     | Description                                        |
 | :-------------------:    | :-----------------------------------:              |
@@ -59,11 +59,11 @@ projects MAY remove deprecated features in any future release).
   are defined, `SPLUNK_CONFIG` MAY be defined. If `SPLUNK_CONFIG` is
   defined, either, neither, or both of `SPLUNK_ACCESS_TOKEN` and
   `SPLUNK_REALM` MAY be defined.
-- [2]: If the Collector is configured to export data to a Splunk back-end these
-  options MUST be defined with valid values (this is the default behavior for
-  the Collector). If the Collector is configured as an agent and the agent is
-  configured to send to a Collector running as a gateway then these options are
-  not required but MAY be defined (to support
+- [2]: If the Data Collector is configured to export data to a Splunk back-end
+  these options MUST be defined with valid values (this is the default behavior
+  for the Data Collector). If the Data Collector is configured as an agent and
+  the agent is configured to send to a Data Collector running as a gateway then
+  these options are not required but MAY be defined (to support
   [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
   If `SPLUNK_CONFIG` is defined then these options are not required but MAY be
   defined.
