@@ -37,8 +37,8 @@ and experimental projects.
 
 Once an experimental component has gone through rigorous beta testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
-component. The initial stable release version number MUST be `1.0.0` and strict
-Semantic Versioning 2.0 MUST be followed going forward.
+component. The initial stable release version number MUST be `1.0.0` and follow
+Semantic Versioning 2.0 for all subsequent releases.
 
 All components MAY become stable together, or MAY transition to
 stability component-by-component.
