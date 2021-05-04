@@ -1,17 +1,28 @@
 # Versioning
 
+All GDI projects MUST be versioned according to [Semantic Versioning
+2.0](https://semver.org/spec/v2.0.0.html). GDI projects are versioned
+separately from OpenTelemetry components as Splunk-specific breaking changes
+MAY be introduced. GDI projects MUST indicate what version of OpenTelemetry
+components they are based on through release notes and SHOULD indicate through
+logging. Additional version number constraints can be found in the sections
+below.
+
 ## Experimental
 
 Everything in the specification starts as experimental, which covers alpha,
-beta, and release candidate versions. While any component in the specification
-is experimental, breaking changes and performance issues MAY occur. Components
-SHOULD NOT be expected to be feature-complete. In some cases, the experiment
-MAY be discarded and removed entirely. Long-term dependencies SHOULD NOT be
-taken against experimental components.
+beta, and release candidate versions. Version numbers for releases MUST be less
+than `1.0.0` while experimental. The minor version number SHOULD be increased
+when significant or breaking changes are introduced.
+
+While any component in the specification is experimental, breaking changes and
+performance issues MAY occur. Components SHOULD NOT be expected to be
+feature-complete. In some cases, the experiment MAY be discarded and removed
+entirely. Long-term dependencies SHOULD NOT be taken against experimental
+components.
 
 GDI projects MUST be designed in a manner that allows experimental components
 to be created without breaking the stability guarantees of existing components.
-
 GDI projects MUST NOT be designed in a manner that breaks existing users when a
 new component beyond the project's first component transitions from
 experimental to stable. This would punish users of the release candidate
@@ -26,7 +37,8 @@ and experimental projects.
 
 Once an experimental component has gone through rigorous beta testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
-component.
+component. The initial stable release version number MUST be `1.0.0` and follow
+Semantic Versioning 2.0 for all subsequent releases.
 
 All components MAY become stable together, or MAY transition to
 stability component-by-component.

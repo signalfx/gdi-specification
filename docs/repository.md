@@ -18,14 +18,22 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 
 ### Permissions
 
-- MUST grant `Admin` [permission level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization) to maintainers
-- MUST grant `Triage` [permission level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization) to approvers
-- MUST NOT grant `Write`, `Maintain`, `Admin` [permission level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization) to anyone else than maintainers
+- MUST grant `Admin` [permission
+  level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
+  to maintainers
+- MUST grant `Triage` [permission
+  level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
+  to approvers
+- MUST NOT grant `Write`, `Maintain`, `Admin` [permission
+  level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
+  to anyone else than maintainers
 
 ### Branch protection
 
 - MUST have a primary branch named `main`
-- MUST NOT allow anyone (including administrators) pushing directly to `main`; **EXCEPTION:** temporarily while firefighting outstanding issues on `main` - direct push MUST be disabled as soon as the issues are resolved
+- MUST NOT allow anyone (including administrators) pushing directly to `main`;
+  **EXCEPTION:** temporarily while firefighting outstanding issues on `main` -
+  direct push MUST be disabled as soon as the issues are resolved
 - MUST require status checks to pass before merge to `main`
 - MUST require at least one CODEOWNER to approve a PR prior to merge
 - MUST require signed commits on `main`
@@ -33,13 +41,20 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 
 ### Dependencies
 
-- MUST lock the versions of all build dependencies (e.g. libraries, binaries, scripts, docker images) or vendor them; **EXCEPTION:** tools that are available out-of-the-box
+- MUST lock the versions of all build dependencies (e.g. libraries, binaries,
+  scripts, docker images) or vendor them; **EXCEPTION:** tools that are
+  available out-of-the-box
 - MUST have Dependabot configured
 
 ### GitHub Actions
 
-- MUST use [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to store sensitive data (auth tokens, passwords) and limit their usage to only required places
-- MUST NOT use [Personal Access Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) in GitHub Actions
+- MUST use [GitHub
+  secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to
+  store sensitive data (auth tokens, passwords) and limit their usage to only
+  required places
+- MUST NOT use [Personal Access
+  Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+  in GitHub Actions
 - MUST [limit permissions of `GITHUB_TOKEN`](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token) when used
   - MUST only set the absolutely required `permissions` (least privilege)
   - MUST set `permissions` for individual `jobs`
@@ -93,6 +108,7 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
 - MUST have a signature or a checksum with signature for all release artifacts
   - SHOULD use Splunk signing key
 - MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
+- MUST state version of OpenTelemetry components built against if applicable
 
 ## Collector
 
