@@ -31,13 +31,11 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 ### Branch protection
 
 - MUST have a primary branch named `main`
-- MUST NOT allow anyone (including administrators) pushing directly to `main`;
-  **EXCEPTION:** temporarily while firefighting outstanding issues on `main` -
-  direct push MUST be disabled as soon as the issues are resolved
+- MUST NOT allow anyone (including administrators) pushing directly to `main`
 - MUST require status checks to pass before merge to `main`
 - MUST require at least one CODEOWNER to approve a PR prior to merge
 - MUST require signed commits on `main`
-- MUST allow ONLY squash or rebase merging
+- MUST NOT allow merge commit (squash or rebase merging only)
 
 ### Dependencies
 
@@ -54,8 +52,9 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   required places
 - MUST NOT use [Personal Access
   Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-  in GitHub Actions
-- MUST [limit permissions of `GITHUB_TOKEN`](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token) when used
+- MUST [limit permissions of
+  `GITHUB_TOKEN`](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)
+  when used
   - MUST only set the absolutely required `permissions` (least privilege)
   - MUST set `permissions` for individual `jobs`
 
@@ -64,8 +63,6 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST have Jira GitHub App configured
 - SHOULD have Codecov GitHub App configured
 - SHOULD have Lychee Link Checker GitHub Action configured
-
-Note: the **upstream** project signal you depend on (if any) MUST be stable
 
 ## Required Files
 
@@ -77,22 +74,27 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
   releases at the top of the file, after the `Unreleased` section.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality area (if applicable).
-  The following sub-sections MAY be used, as appropriate.
+  The following sub-sections MAY or if specified MUST/SHOULD be used, as appropriate.
     - `General` - General comments about the release that users should know about.
-    - `Breaking Changes` - Any changes that will break backward compatibility with previous versions.
-    - `Bugfixes` - Details of bugs that were fixed.
-    - `Enhancements` - New features that have been added to the project.
-  - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant from an end-user point of view. Anyone who is
-  interested in all the details of every change in the project can use the git log for that.
-- MUST add the [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
-- MUST add the [CONTRIBUTING.md](templates/CONTRIBUTING.md)
+    - `Breaking Changes` - Any changes that will break backward compatibility
+      with previous versions. MUST list all breaking changes.
+    - `Bugfixes` - Details of bugs that were fixed. SHOULD list all bug fixes.
+    - `Enhancements` - New features that have been added to the project. SHOULD
+      list all new features.
+  - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant
+    from an end-user point of view. Anyone who is interested in all the details
+    of every change in the project can use the git log for that.
+- MUST add [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
+- MUST add [CONTRIBUTING.md](templates/CONTRIBUTING.md)
 - MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with a maintainers team
-- SHOULD have a [.github/workflows/request-reviews.yml](templates/.github/workflows/request-reviews.yml) to automate
-  requesting reviews from approvers
+- SHOULD have a
+  [.github/workflows/request-reviews.yml](templates/.github/workflows/request-reviews.yml)
+  to automate requesting reviews from approvers
 - MUST have an Apache 2.0 `LICENSE` file
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`
   - MUST have a badge on the `README.md` with build status
+  - MUST have a badge on the `README.md` with GDI specification version supported
   - SHOULD have a badge on the `README.md` with code coverage, if appropriate.
   - SHOULD have badges on the `README.md` for other relevant things including artifacts
   - MUST have getting started information in `README.md`
