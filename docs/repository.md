@@ -55,6 +55,9 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST NOT use [Personal Access
   Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
   in GitHub Actions
+- MUST [limit permissions of `GITHUB_TOKEN`](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token) when used
+  - MUST only set the absolutely required `permissions` (least privilege)
+  - MUST set `permissions` for individual `jobs`
 
 ### GitHub Applications
 
