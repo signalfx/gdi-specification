@@ -74,7 +74,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   releases at the top of the file, after the `Unreleased` section.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality area (if applicable).
-  The following sub-sections MAY or if specified MUST/SHOULD be used, as appropriate.
+  The following sub-sections MAY be used, as appropriate or specified.
     - `General` - General comments about the release that users should know about.
     - `Breaking Changes` - Any changes that will break backward compatibility
       with previous versions. MUST list all breaking changes.
