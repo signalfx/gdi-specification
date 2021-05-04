@@ -24,12 +24,12 @@ reading by GDI project consumers.
 
 ## Terms
 
-- Collector: A single binary that can be deployed as an agent or gateway.
+- Data Collector: A way to collect telemetry data within an environment.
   Refers to `splunk-otel-collector` project.
 - GDI: Getting Data In
 - GDI Project: A project in the `signalfx` GitHub that starts with
   `splunk-otel-\*`
-- Instrumentation Library: The way to emit telemetry data from an application.
+- Instrumentation Library: A way to emit telemetry data from an application.
   Refers to `splunk-otel-<language>` projects.
 - Maintainer: Someone responsible for the specification or a project
 - Specification: A set of requirements for projects

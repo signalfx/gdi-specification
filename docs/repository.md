@@ -110,7 +110,7 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
 - MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 - MUST state version of OpenTelemetry components built against if applicable
 
-## Collector
+## Data Collector
 
 - MUST document all supported configuration parameters
 - MUST document sizing guidelines for all signals
