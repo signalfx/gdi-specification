@@ -104,6 +104,12 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   - SHOULD be able to release by pushing a tag
 - MUST add the [SECURITY.md](templates/SECURITY.md)
   - SHOULD add dependabot information to `SECURITY.md` if applicable
+- SHOULD NOT contain comprehensive application examples. Application examples
+  showing multi-system interactions or even cross-language use cases SHOULD be
+  put in the [Splunk OpenTelemetry example
+  repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing).
+  Smaller, developer focused, examples MAY be included in the repository if it
+  is customary to do so for the coding language used.
 
 ## GitHub Releases
 
@@ -111,6 +117,9 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   - SHOULD use Splunk signing key
 - MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 - MUST state version of OpenTelemetry components built against if applicable
+- MUST update all examples in the [Splunk OpenTelemetry example
+  repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing)
+  that depends on the repository to use the latest release.
 
 ## Data Collector
 
