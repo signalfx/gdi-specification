@@ -11,9 +11,9 @@ expectations. It is applicable to GDI projects.
 
 The following components are currently in scope:
 
-- [Configuration](docs/configuration.md)
-- [Repository](docs/repository.md)
-- [Versioning](docs/versioning.md)
+- [Configuration](specification/configuration.md)
+- [Repository](specification/repository.md)
+- [Versioning](specification/versioning.md)
 
 GDI projects MUST adopt GDI specification changes by their next minor release
 and within three months (whichever is sooner). The GDI specification and GDI
@@ -62,7 +62,7 @@ that implement the specification MUST specify which version they implement.
 Changes to the change process itself are not currently versioned but may be
 independently versioned in the future.
 
-Additionally, the GDI specification uses following [Document Statuses](docs/document-status.md).
+Additionally, the GDI specification uses following [Document Statuses](specification/document-status.md).
 
 ## Contributions
 
