@@ -96,7 +96,8 @@ beyond the OpenTelemetry specification exist.
   - User MUST define [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
     resource attribute.
   - Distribution MUST log a warning when this resource attribute is not set. The warning message MUST clearly describe how to set the attribute or link to relevant documentation.
-  - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment) resource attribute.
+  - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment)
+    resource attribute.
   - User SHOULD define [`service.version`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
 - `OTEL_PROPAGATORS`
   - Distribution MUST default to `"tracecontext,baggage"`
