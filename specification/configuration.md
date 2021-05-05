@@ -93,7 +93,8 @@ beyond the OpenTelemetry specification exist.
 #### [OpenTelemetry Environment Variable](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
 
 - `OTEL_RESOURCE_ATTRIBUTES`
-  - User MUST define [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service) resource attribute.
+  - User MUST define [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
+    resource attribute.
   - Distribution MUST log a warning when this resource attribute is not set. The warning message MUST clearly describe how to set the attribute or link to relevant documentation.
   - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment) resource attribute.
   - User SHOULD define [`service.version`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
