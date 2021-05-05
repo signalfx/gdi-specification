@@ -18,7 +18,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 
 ### Permissions
 
-- MUST grand `Admin` [permission
+- MUST grant `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to `gdi-admins` team
 - MUST grant `Maintain` [permission
@@ -29,7 +29,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   to approvers team
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to anyone other user or team
+  to any other user nor team
 
 ### Branch protection
 
