@@ -102,6 +102,11 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
   - SHOULD be able to release by pushing a tag
 - MUST add the [SECURITY.md](templates/SECURITY.md)
   - SHOULD add dependabot information to `SECURITY.md` if applicable
+- SHOULD NOT contain end-to-end example code. Code showing end-to-end examples
+  SHOULD be put in the [Splunk OpenTelemetry example
+  repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing).
+  Smaller, developer focused, examples MAY be included in the repository if it
+  is customary to do so for the coding language used.
 
 ## GitHub Releases
 
@@ -109,6 +114,9 @@ Note: the **upstream** project signal you depend on (if any) MUST be stable
   - SHOULD use Splunk signing key
 - MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
 - MUST state version of OpenTelemetry components built against if applicable
+- MUST update all examples in the [Splunk OpenTelemetry example
+  repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing)
+  that depends on the repository to use the latest release.
 
 ## Data Collector
 
