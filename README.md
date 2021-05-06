@@ -1,6 +1,6 @@
 # GDI Specification
 
-![Release](https://img.shields.io/github/v/release/signalfx/gdi-specification?include_prereleases&style=for-the-badge)
+![Release](https://img.shields.io/github/tag/signalfx/gdi-specification?include_prereleases&style=for-the-badge)
 
 The GDI specification describes cross-repository requirements and
 expectations. It is applicable to GDI projects.
