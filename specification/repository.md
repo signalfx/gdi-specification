@@ -20,13 +20,16 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 
 - MUST grant `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to maintainers
+  to admins team
+- MUST grant `Maintain` [permission
+  level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
+  to maintainers team
 - MUST grant `Triage` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to approvers
+  to approvers team
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to anyone else than maintainers
+  to any other user nor team
 
 ### Branch protection
 
