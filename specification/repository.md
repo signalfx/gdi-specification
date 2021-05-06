@@ -20,7 +20,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 
 - MUST grant `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to `gdi-admins` team
+  to admins team
 - MUST grant `Maintain` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to maintainers team
