@@ -30,6 +30,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to any other user nor team
+- MUST NOT grant any permission (including read-only) to any individual
 
 ### Branch protection
 
