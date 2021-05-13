@@ -1,4 +1,6 @@
 #  https://help.github.com/en/articles/about-code-owners
 #
 # Global Owners
-* gdi-TEAM-maintainers gdi-TEAM-approvers
+* @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers
+
+CODEOWNERS @signalfx/gdi-TEAM-maintainers
