@@ -10,3 +10,5 @@
 #
 # Global Owners
 * @signalfx/gdi-specification-approvers @signalfx/gdi-specification-maintainers
+
+.github/CODEOWNERS @signalfx/gdi-specification-maintainers
