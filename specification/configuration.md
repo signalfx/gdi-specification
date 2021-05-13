@@ -44,6 +44,16 @@ state that the old variable is deprecated, the new one should be used instead,
 and that the old one will be removed in the next major release (not stable GDI
 projects MAY remove deprecated features in any future release).
 
+Installation and configuration MUST optimize for customer experience and
+time-to-value. Installation and configuration MAY provide a mechanism for
+advanced or custom settings. As an example, the default installation for
+instrumentation libraries should provide everything needed to configure W3C and
+B3 as well as OTLP and Jaeger Thrift even though the default configuration is
+set to W3C and OTLP. Installing all of these dependencies by default may result
+in a large package, but makes it easy for users to switch settings via
+configuration. An advanced installation process can be provided where the user
+chooses which components to install limiting the configuration options.
+
 ## Environment variables
 
 ### Data Collector
