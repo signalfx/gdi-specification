@@ -3,4 +3,4 @@
 # Global Owners
 * @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers
 
-CODEOWNERS @signalfx/gdi-TEAM-maintainers
+.github/CODEOWNERS @signalfx/gdi-TEAM-maintainers
