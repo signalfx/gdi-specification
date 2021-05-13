@@ -24,7 +24,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST grant `Maintain` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to maintainers team
-- MUST grant `Triage` [permission
+- MUST grant `Write` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to approvers team
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
@@ -91,9 +91,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST add [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add [CONTRIBUTING.md](templates/CONTRIBUTING.md)
 - MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with a maintainers team
-- SHOULD have a
-  [.github/workflows/request-reviews.yml](templates/.github/workflows/request-reviews.yml)
-  to automate requesting reviews from approvers
+- SHOULD have an approvers team in CODEOWNERS
 - MUST have an Apache 2.0 `LICENSE` file
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`

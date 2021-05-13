@@ -1,5 +1,6 @@
-# Learn about CODEOWNERS file format:
 #  https://help.github.com/en/articles/about-code-owners
 #
 # Global Owners
-* @signalfx/TEAM-maintainers
+* @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers
+
+.github/CODEOWNERS @signalfx/gdi-TEAM-maintainers
