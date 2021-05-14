@@ -12,6 +12,7 @@ expectations. It is applicable to GDI projects.
 The following components are currently in scope:
 
 - [Configuration](specification/configuration.md)
+- [Semantic Conventions](specification/semantic_conventions.md)
 - [Repository](specification/repository.md)
 - [Versioning](specification/versioning.md)
 
