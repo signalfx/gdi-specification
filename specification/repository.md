@@ -59,6 +59,8 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - MUST [limit permissions of
   `GITHUB_TOKEN`](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)
   when used
+  - MUST set [the repository's default permission](https://docs.github.com/en/github/administering-a-repository/disabling-or-limiting-github-actions-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)
+    to just read access for the `contents` scope.
   - MUST only set the absolutely required `permissions` (least privilege)
   - MUST set `permissions` for individual `jobs`
 
