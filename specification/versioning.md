@@ -64,4 +64,5 @@ function against all future `MINOR` versions of the same `MAJOR` version.
 
 Stable components MUST be deprecated for at least six months before being
 removed. Deprecated components MUST be removed as part of a `MAJOR` version
-number increase. Deprecated components MUST continue to function until removed.
+number increase but MAY remain deprecated across multple `MAJOR` versions.
+Deprecated components MUST continue to function until removed.
