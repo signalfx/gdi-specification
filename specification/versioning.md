@@ -1,10 +1,10 @@
 # Versioning
 
-All GDI repositories MUST be versioned according to [Semantic Versioning
-2.0](https://semver.org/spec/v2.0.0.html). GDI repositories are versioned
-separately from OpenTelemetry repositories as Splunk-specific breaking changes
-MAY be introduced. GDI repositories MUST indicate what version of OpenTelemetry
-repositories they are based on through release notes and SHOULD indicate through
+All GDI components MUST be versioned according to [Semantic Versioning
+2.0](https://semver.org/spec/v2.0.0.html). GDI components are versioned
+separately from OpenTelemetry components as Splunk-specific breaking changes
+MAY be introduced. GDI components MUST indicate what version of OpenTelemetry
+components they are based on through release notes and SHOULD indicate through
 logging. Additional version number constraints can be found in the sections
 below.
 
@@ -31,7 +31,7 @@ would punish users of the release candidate component, and hinder adoption.
 Terms which denote stability, such as `experimental` MUST NOT be used as part
 of a directory or import name. Package version numbers MAY include a suffix,
 such as `-alpha`, `-beta`, `-rc`, or `-experimental`, to differentiate stable
-and experimental repositories.
+and experimental components.
 
 GDI repository components SHOULD start as experimental. All non-OpenTelemetry
 experimental components MUST be disabled by default, MUST require a
@@ -39,7 +39,7 @@ configuration variable to enable, and MUST clearly be marked as experimental.
 
 ## Stable
 
-The initial stable release version number for GDI repositories MUST be `1.0.0` and
+The initial stable release version number for GDI components MUST be `1.0.0` and
 follow Semantic Versioning 2.0 for all subsequent releases. Once an
 experimental component has gone through rigorous beta testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
@@ -64,4 +64,5 @@ function against all future `MINOR` versions of the same `MAJOR` version.
 
 Stable components MUST be deprecated for at least six months before being
 removed. Deprecated components MUST be removed as part of a `MAJOR` version
-number increase. Deprecated components MUST continue to function until removed.
+number increase but MAY remain deprecated across multple `MAJOR` versions.
+Deprecated components MUST continue to function until removed.
