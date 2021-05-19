@@ -14,7 +14,7 @@ All Splunk distributions of OpenTelemetry,
   - `telemetry.sdk.language`
 
 - SHOULD set the following resource attributes when applicable:
-  - `telemery.auto.version`
+  - `telemetry.auto.version`
 
 
 ## Splunk Resource Attributes
