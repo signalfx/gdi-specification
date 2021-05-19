@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to our project! Whether it's a bug
+Thank you for your interest in contributing to our repository! Whether it's a bug
 report, new feature, question, or additional documentation, we greatly value
 feedback and contributions from our community. Read through this document
 before submitting any issues or pull requests to ensure we have all the
@@ -66,13 +66,13 @@ request](https://help.github.com/articles/creating-a-pull-request/).
 ## Finding contributions to work on
 
 Looking at the existing issues is a great way to find something to contribute
-on. As our projects, by default, use the default GitHub issue labels
+on. As our repositories, by default, use the default GitHub issue labels
 (enhancement/bug/duplicate/help wanted/invalid/question/wontfix), looking at
 any 'help wanted' issues is a great place to start.
 
 ## Licensing
 
-See the [LICENSE](LICENSE) file for our project's licensing. We will ask you to
+See the [LICENSE](LICENSE) file for our repository's licensing. We will ask you to
 confirm the licensing of your contribution.
 
 We may ask you to sign a [Contributor License Agreement

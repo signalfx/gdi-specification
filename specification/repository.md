@@ -1,9 +1,9 @@
 # Repository
 
-Every GDI project repository MUST adhere to the following specification before
-it can release a GA (`1.0.0`) release. GDI projects MUST submit a GitHub issue
-on the GDI specification using the `Project GA approval` type. Until the
-approval is granted, GDI projects MUST NOT cut a GA release.
+Every GDI repository MUST adhere to the following specification before
+it can release a GA (`1.0.0`) release. GDI repositories MUST submit a GitHub issue
+on the GDI specification using the `Repository GA approval` type. Until the
+approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ## Required Configuration
 
@@ -85,11 +85,11 @@ approval is granted, GDI projects MUST NOT cut a GA release.
     - `Breaking Changes` - Any changes that will break backward compatibility
       with previous versions. MUST list all breaking changes.
     - `Bugfixes` - Details of bugs that were fixed. SHOULD list all bug fixes.
-    - `Enhancements` - New features that have been added to the project. SHOULD
+    - `Enhancements` - New features that have been added to the repository. SHOULD
       list all new features.
   - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant
     from an end-user point of view. Anyone who is interested in all the details
-    of every change in the project can use the git log for that.
+    of every change in the repository can use the git log for that.
 - MUST add [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add [CONTRIBUTING.md](templates/CONTRIBUTING.md)
 - MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with a maintainers team
@@ -107,7 +107,7 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
 - MAY have a `RELEASING.md` file that documents the release process, but this
-  file MUST NOT document private processes. For projects that use private release
+  file MUST NOT document private processes. For repositories that use private release
   jobs, the `RELEASING.md` file SHOULD be absent or, if included, just contain the following note:
   > The release process involves signing built packages and binaries and thus
   > must be kept private and not exposed publicly.
