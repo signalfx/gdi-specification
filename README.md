@@ -9,22 +9,23 @@ expectations. It is applicable to GDI projects.
 > handled upstream. For information on OpenTelemetry, see the [OpenTelemetry
 > Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md)
 
-The following components are currently in scope:
+The following specification sections are currently in scope:
 
 - [Configuration](specification/configuration.md)
 - [Semantic Conventions](specification/semantic_conventions.md)
 - [Repository](specification/repository.md)
 - [Versioning](specification/versioning.md)
 
-GDI projects MUST adopt GDI specification changes by their next minor release
+GDI projects MUST adopt GDI specification changes by their next `MINOR` release
 and within three months (whichever is sooner). The GDI specification and GDI
-projects MUST remove any deprecated specification at the next major release.
+projects MUST remove any deprecated specification at the next `MAJOR` release.
 
 The GDI specification is meant for GDI projects and MUST NOT be required
 reading by GDI project consumers.
 
 ## Terms
 
+- Component: Specific feature-set of a GDI project.
 - Data Collector: A way to collect telemetry data within an environment.
   Refers to `splunk-otel-collector` project.
 - GDI: Getting Data In
@@ -32,9 +33,9 @@ reading by GDI project consumers.
   `splunk-otel-\*`
 - Instrumentation Library: A way to emit telemetry data from an application.
   Refers to `splunk-otel-<language>` projects.
-- Maintainer: Someone responsible for the specification or a project
-- Specification: A set of requirements for projects
-- Project: A GitHub repository
+- Maintainer: Someone responsible for the specification or a project.
+- Specification: A set of requirements for projects.
+- Project: A GitHub repository.
 
 ## Notation Conventions and Compliance
 
