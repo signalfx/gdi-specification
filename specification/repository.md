@@ -106,7 +106,6 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
-- MUST NOT have a `RELEASING.md` file or any release process documentation
 - MAY have a `RELEASING.md` file that documents the release process, but this
   file MUST NOT document private processes. For projects that use private release
   jobs, the `RELEASING.md` file may be absent or just contain the following note:
