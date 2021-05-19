@@ -98,6 +98,8 @@ approval is granted, GDI projects MUST NOT cut a GA release.
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`
   - MUST have a badge on the `README.md` with build status
+    - CI and PR builds and all tests/checks that are executed in them MUST be
+      publicly accessible by anyone.
   - MUST have a badge on the `README.md` with GDI specification version supported
   - SHOULD have a badge on the `README.md` with code coverage, if appropriate.
   - SHOULD have badges on the `README.md` for other relevant things including artifacts
@@ -105,7 +107,9 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
 - MUST NOT have a `RELEASING.md` file or any release process documentation
-  - The release process is private and should not be exposed publicly.
+  - The release process involves signing built packages and binaries and thus
+    must be kept private and not exposed publicly.
+  - Exception: Go libraries
 - MUST add the [SECURITY.md](templates/SECURITY.md)
   - SHOULD add dependabot information to `SECURITY.md` if applicable
 - SHOULD NOT contain comprehensive application examples. Application examples
