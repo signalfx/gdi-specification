@@ -23,6 +23,12 @@
 - Relaxed requirement to include a `RELEASING.md` file. Projects with private
   build processes should not publish this information.
 
+### Versioning
+
+#### Enhancements
+
+- Clarified that the versioning policy applies to components of repositories.
+
 ---
 
 ## 1.0.0-rc.1 - 2021-05-06
