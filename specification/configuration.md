@@ -52,7 +52,7 @@ B3 as well as OTLP and Jaeger Thrift even though the default configuration is
 set to W3C and OTLP. Installing all of these dependencies by default may result
 in a large package, but makes it easy for users to switch settings via
 configuration. An advanced installation process can be provided where the user
-chooses which components to install limiting the configuration options.
+chooses what to install limiting the configuration options.
 
 ## Environment variables
 
