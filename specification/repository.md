@@ -104,8 +104,8 @@ approval is granted, GDI projects MUST NOT cut a GA release.
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
   - MUST have license information in `README.md`
-- MUST have a `RELEASING.md` documenting the release process
-  - SHOULD be able to release by pushing a tag
+- MUST NOT have a `RELEASING.md` file or any release process documentation
+  - The release process is private and should not be exposed publicly.
 - MUST add the [SECURITY.md](templates/SECURITY.md)
   - SHOULD add dependabot information to `SECURITY.md` if applicable
 - SHOULD NOT contain comprehensive application examples. Application examples
