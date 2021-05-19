@@ -3,7 +3,7 @@
 ![Release](https://img.shields.io/github/v/tag/signalfx/gdi-specification?include_prereleases&style=for-the-badge)
 
 The GDI specification describes cross-repository requirements and
-expectations. It is applicable to GDI projects.
+expectations. It is applicable to GDI repositories.
 
 > Anything OpenTelemetry or anything that should be in OpenTelemetry will be
 > handled upstream. For information on OpenTelemetry, see the [OpenTelemetry
@@ -16,26 +16,25 @@ The following specification sections are currently in scope:
 - [Repository](specification/repository.md)
 - [Versioning](specification/versioning.md)
 
-GDI projects MUST adopt GDI specification changes by their next `MINOR` release
+GDI repositories MUST adopt GDI specification changes by their next `MINOR` release
 and within three months (whichever is sooner). The GDI specification and GDI
-projects MUST remove any deprecated specification at the next `MAJOR` release.
+repositories MUST remove any deprecated specification at the next `MAJOR` release.
 
-The GDI specification is meant for GDI projects and MUST NOT be required
-reading by GDI project consumers.
+The GDI specification is meant for GDI repositories and MUST NOT be required
+reading by GDI repository consumers.
 
 ## Terms
 
-- Component: Specific feature-set of a GDI project.
+- Component: Specific feature-set of a GDI repository.
 - Data Collector: A way to collect telemetry data within an environment.
-  Refers to `splunk-otel-collector` project.
+  Refers to `splunk-otel-collector` repository.
 - GDI: Getting Data In
-- GDI Project: A project in the `signalfx` GitHub that starts with
+- GDI repository: A repository in the `signalfx` GitHub that starts with
   `splunk-otel-\*`
 - Instrumentation Library: A way to emit telemetry data from an application.
-  Refers to `splunk-otel-<language>` projects.
-- Maintainer: Someone responsible for the specification or a project.
-- Specification: A set of requirements for projects.
-- Project: A GitHub repository.
+  Refers to `splunk-otel-<language>` repositories.
+- Maintainer: Someone responsible for the specification or a repository.
+- Specification: A set of requirements for repositories.
 
 ## Notation Conventions and Compliance
 
@@ -58,7 +57,7 @@ in the GDI specification.
 
 Changes to the GDI specification are versioned according to [Semantic
 Versioning 2.0](https://semver.org/spec/v2.0.0.html) and described in
-[CHANGELOG.md](CHANGELOG.md). Layout changes are not versioned. GDI projects
+[CHANGELOG.md](CHANGELOG.md). Layout changes are not versioned. GDI repositories
 that implement the specification MUST specify which version they implement.
 
 Changes to the change process itself are not currently versioned but may be

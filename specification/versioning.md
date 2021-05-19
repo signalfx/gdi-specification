@@ -1,10 +1,10 @@
 # Versioning
 
-All GDI projects MUST be versioned according to [Semantic Versioning
-2.0](https://semver.org/spec/v2.0.0.html). GDI projects are versioned
-separately from OpenTelemetry projects as Splunk-specific breaking changes
-MAY be introduced. GDI projects MUST indicate what version of OpenTelemetry
-projects they are based on through release notes and SHOULD indicate through
+All GDI repositories MUST be versioned according to [Semantic Versioning
+2.0](https://semver.org/spec/v2.0.0.html). GDI repositories are versioned
+separately from OpenTelemetry repositories as Splunk-specific breaking changes
+MAY be introduced. GDI repositories MUST indicate what version of OpenTelemetry
+repositories they are based on through release notes and SHOULD indicate through
 logging. Additional version number constraints can be found in the sections
 below.
 
@@ -21,29 +21,29 @@ feature-complete. In some cases, the experiment MAY be discarded and removed
 entirely. Long-term dependencies SHOULD NOT be taken against experimental
 sections.
 
-GDI projects MAY consist of one or more components. GDI projects MUST be
+GDI repositories MAY consist of one or more components. GDI repositories MUST be
 designed in a manner that allows experimental components to be created without
-breaking the stability guarantees of existing components. GDI projects MUST NOT
+breaking the stability guarantees of existing components. GDI repositories MUST NOT
 be designed in a manner that breaks existing users when a new component beyond
-the project's first component transitions from experimental to stable. This
+the repository's first component transitions from experimental to stable. This
 would punish users of the release candidate component, and hinder adoption.
 
 Terms which denote stability, such as `experimental` MUST NOT be used as part
 of a directory or import name. Package version numbers MAY include a suffix,
 such as `-alpha`, `-beta`, `-rc`, or `-experimental`, to differentiate stable
-and experimental projects.
+and experimental repositories.
 
-GDI project components SHOULD start as experimental. All non-OpenTelemetry
+GDI repository components SHOULD start as experimental. All non-OpenTelemetry
 experimental components MUST be disabled by default, MUST require a
 configuration variable to enable, and MUST clearly be marked as experimental.
 
 ## Stable
 
-The initial stable release version number for GDI projects MUST be `1.0.0` and
+The initial stable release version number for GDI repositories MUST be `1.0.0` and
 follow Semantic Versioning 2.0 for all subsequent releases. Once an
 experimental component has gone through rigorous beta testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
-component. When a new stable component is introduced to a GDI project with an
+component. When a new stable component is introduced to a GDI repository with an
 existing stable release, the `MINOR` version number MUST be incremented and the
 component MUST clearly be marked as stable.
 

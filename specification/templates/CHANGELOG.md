@@ -1,9 +1,9 @@
 # Changelog
 
-All notable changes to this project are documented in this file.
+All notable changes to this repository are documented in this file.
 
 The format is based on the [Splunk GDI specification](https://github.com/signalfx/gdi-specification/blob/f70eda04ec15685f892edc4b8f05bed557d20206/docs/repository.md#required-files),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
 
@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### General
 
-- This release marks the first release of the project.
+- This release marks the first release of the repository.
 
 ### Functional Section 1
 

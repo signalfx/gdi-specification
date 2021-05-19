@@ -1,27 +1,27 @@
 # Configuration
 
 One or more configuration variables MAY be needed to properly configure GDI
-projects. Configuration of these variables MUST be supported by environment
-variables and MAY be supported by additional methods. GDI projects MUST adopt
+repositories. Configuration of these variables MUST be supported by environment
+variables and MAY be supported by additional methods. GDI repositories MUST adopt
 stable and SHOULD adopt experimental configuration variables in the
 [OpenTelemetry
 Specification](https://github.com/open-telemetry/opentelemetry-specification)
 before proposing variables to the GDI specification. If a new configuration
-variable is needed by a GDI project it MUST be brought to the GDI specification
+variable is needed by a GDI repository it MUST be brought to the GDI specification
 as a GitHub issue. The GDI specification maintainers SHOULD consider
-introducing needed configuration variables to the OpenTelemetry project before
+introducing needed configuration variables to the OpenTelemetry repository before
 approving Splunk-specific configuration variables.
 
-If a GDI project requires an immediate configuration variable that is not
+If a GDI repository requires an immediate configuration variable that is not
 available in the OpenTelemetry specification and not available in the GDI
-specification, the project MAY introduce a project-specific configuration
+specification, the repository MAY introduce a repository-specific configuration
 variable until the GDI specification maintainers make a decision. Any
-project-specific configuration variable defined SHOULD be prefixed with
+repository-specific configuration variable defined SHOULD be prefixed with
 `SPLUNK_` and MUST NOT be marked as stable unless added to the GDI
-specification. Upon resolution by the GDI specification, the GDI project MUST
-change the project-specific configuration variable by the project's next minor
+specification. Upon resolution by the GDI specification, the GDI repository MUST
+change the repository-specific configuration variable by the repository's next minor
 release. This change MAY result in a breaking change so caution should be
-exhibited when considering project-specific configuration variables.
+exhibited when considering repository-specific configuration variables.
 
 Splunk-specific configuration variables defined in the GDI specification MUST
 be prefixed with `SPLUNK_`. If a Splunk-specific configuration variable is
@@ -34,15 +34,15 @@ specification MAY require specific OpenTelemetry configuration variables be
 supported. If it does, the GDI specification MAY require certain values be
 supported including a specific default value.
 
-Whenever a configuration variable changes its name, a stable GDI project
+Whenever a configuration variable changes its name, a stable GDI repository
 (version >= 1.0) MUST support both old and new names until the next major
 release is done. The old configuration variable MUST NOT be removed in a minor
-release. GDI projects that are not yet stable (version < 1.0) SHOULD follow
+release. GDI repositories that are not yet stable (version < 1.0) SHOULD follow
 this rule, but they are not required to. When it is detected that a user uses
 the old configuration variable a warning SHOULD be logged: the warning SHOULD
 state that the old variable is deprecated, the new one should be used instead,
 and that the old one will be removed in the next major release (not stable GDI
-projects MAY remove deprecated features in any future release).
+repositories MAY remove deprecated features in any future release).
 
 Installation and configuration MUST optimize for customer experience and
 time-to-value. Installation and configuration MAY provide a mechanism for
