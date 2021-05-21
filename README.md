@@ -53,7 +53,7 @@ implementation of the GDI specification is compliant if it satisfies all the
 "MUST", "MUST NOT", "REQUIRED", "SHALL", and "SHALL NOT" requirements defined
 in the GDI specification.
 
-## Versioning the Specification
+## Versioning and Status of the Specification
 
 Changes to the GDI specification are versioned according to [Semantic
 Versioning 2.0](https://semver.org/spec/v2.0.0.html) and described in
@@ -63,7 +63,46 @@ that implement the specification MUST specify which version they implement.
 Changes to the change process itself are not currently versioned but may be
 independently versioned in the future.
 
-Additionally, the GDI specification uses following [Document Statuses](specification/document-status.md).
+Specification documents (files) MAY explicitly define a "Status". If they do,
+they MUST display a status immediately after the document title. When
+present, the "Status" applies to the individual document only and not to the
+entire specification or any other documents.
+
+### Lifecycle status
+
+The support guarantees and allowed changes are governed by the lifecycle of the
+document. Lifecycle stages are defined in the
+[versioning](./specification/versioning.md) document.
+
+|Status              |Explanation|
+|--------------------|-----------|
+|No explicit "Status"|Equivalent to Experimental.|
+|Experimental        |Breaking changes are allowed.|
+|Stable              |Breaking changes are no longer allowed. [1]|
+|Deprecated          |Changes are no longer allowed, except for editorial changes.|
+
+- [1]: See [stability guarantees](./specification/versioning.md) for details.
+
+### Feature freeze
+
+In addition to the statuses above, documents may be marked as `Feature-freeze`.
+These documents are not currently accepting new feature requests, to allow the
+GDI specification maintainers time to focus on other areas of the specification.
+Editorial changes are still accepted. Changes that address production issues
+with existing features are still accepted.
+
+Feature freeze is separate from a lifecycle status. The lifecycle represents
+the support requirements for the document, feature freeze only indicates the
+current focus of the specification community. The feature freeze label may be
+applied to a document at any lifecycle stage. By definition, deprecated
+documents have a feature freeze in place.
+
+### Mixed
+
+Some documents have individual sections with different statues. These documents
+MUST be marked with the status `Mixed` at the top, for clarity. If a document's
+status is marked as `Mixed` then it MUST define at least two different statuses
+in sections that follow within the document.
 
 ## Contributions
 
