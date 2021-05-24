@@ -1,6 +1,6 @@
 # Configuration
 
-**Status**: [Stable](../README.md)
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 One or more configuration variables MAY be needed to properly configure GDI
 repositories. Configuration of these variables MUST be supported by environment
