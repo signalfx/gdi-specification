@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.0.0-rc.3 - 2021-05-25
+
+### General
+
+- Update stability guarantee for all specification documents.
+
 ---
 
 ## 1.0.0-rc.2 - 2021-05-19
