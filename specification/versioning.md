@@ -1,5 +1,7 @@
 # Versioning
 
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+
 All GDI components MUST be versioned according to [Semantic Versioning
 2.0](https://semver.org/spec/v2.0.0.html). GDI components are versioned
 separately from OpenTelemetry components as Splunk-specific breaking changes

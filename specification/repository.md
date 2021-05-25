@@ -1,5 +1,7 @@
 # Repository
 
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+
 Every GDI repository MUST adhere to the following specification before
 it can release a GA (`1.0.0`) release. GDI repositories MUST submit a GitHub issue
 on the GDI specification using the `Repository GA approval` type. Until the

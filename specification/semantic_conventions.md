@@ -1,5 +1,7 @@
 # Semantic Conventions
 
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+
 This document defines the OpenTelemetry and Splunk specific standard attributes for Splunk distributions of OpenTelemetry.
 
 ## OpenTelemetry Resource Attributes
