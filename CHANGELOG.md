@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 1.0.0 - 2021-06-01
+
+### General
+
+- First stable release of the GDI specification. This release includes stable
+  requirements and recommendations for GDI repository composition and
+  versioning and Splunk distributions of OpenTelemetry configuration.
+
 ## 1.0.0-rc.3 - 2021-05-25
 
 ### General
