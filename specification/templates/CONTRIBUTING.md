@@ -77,4 +77,4 @@ confirm the licensing of your contribution.
 
 ## CLA
 
-All contributors must sign the [Splunk Contributor License Agreement (CLA)](https://www.splunk.com/en_us/form/contributions.html).
+Before contributing, you must sign the [Splunk Contributor License Agreement (CLA)](https://www.splunk.com/en_us/form/contributions.html).
