@@ -144,3 +144,9 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST document how to configure log correlation
 - MUST define minimum supported version of each auto-instrumentation framework
   - SHOULD define maximum supported version of each auto-instrumentation framework
+
+## Real User Monitoring Libraries
+
+- MUST document all supported configuration parameters and how to set them
+- MUST document how to configure manual instrumentation
+- MUST document supported instrumentations and telemetry produced by each of them

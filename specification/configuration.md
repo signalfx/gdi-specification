@@ -56,9 +56,12 @@ in a large package, but makes it easy for users to switch settings via
 configuration. An advanced installation process can be provided where the user
 chooses what to install limiting the configuration options.
 
-## Environment variables
+## Configuration options
 
 ### Data Collector
+
+It MUST be possible to configure a Data Collector instance using the following
+environment variables:
 
 | Name (default value)     | Description                                        |
 | :-------------------:    | :-----------------------------------:              |
@@ -81,6 +84,9 @@ chooses what to install limiting the configuration options.
   defined.
 
 ### Instrumentation Libraries
+
+It MUST be possible to configure an Instrumentation Library instance using the following
+environment variables:
 
 | Name (default value)                            | Description                                                    |
 | :------------------------------------:          | :--------------------------------------------------------:     |
@@ -129,6 +135,27 @@ beyond the OpenTelemetry specification exist.
 - `OTEL_TRACES_EXPORTER`
   - Distribution MUST default to `otlp`
   - Distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
+
+### Real User Monitoring Libraries
+
+Real User Monitoring (RUM) instrumentation libraries cannot use environment variables for configuration.
+Instead, they MUST expose a `SplunkRum` object/class/namespace (depending on the language used) that allows
+setting the following properties (in a language-specific way: Java may use builders, Swift can use named
+parameters with default values, JavaScript can use objects, etc.):
+
+| Configuration property (default value) | Description                                                                                                                                                                                                 |
+| -------------------------------------- | -----------                                                                                                                                                                                                 |
+| `beaconUrl` ()                         | RUM beacon URL, ex. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. [1]                                                                                                                                   |
+| `rumAccessToken` ()                    | RUM authentication token. [1]                                                                                                                                                                               |
+| `applicationName` ()                   | Instrumented application name. [1]                                                                                                                                                                          |
+| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes) that will be added to every span produced by the RUM library. |
+
+- [1] These configuration properties are mandatory and MUST be provided by the user. If any of these is missing,
+  the RUM instrumentation library MUST fail to start.
+
+Other requirements:
+- RUM library MUST use the Zipkin span exporter by default
+- RUM library MUST limit the number of sent spans to 100 in a 30 second window per `component` attribute value
 
 ## Environment variable alternatives
 

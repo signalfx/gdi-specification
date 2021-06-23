@@ -18,6 +18,7 @@ All Splunk distributions of OpenTelemetry,
 - SHOULD set the following resource attributes when applicable:
   - `telemetry.auto.version`
 
+Note: this section does not apply to Real User Monitoring libraries, as they do not use the OpenTelemetry Resource.
 
 ## Splunk Resource Attributes
 
@@ -27,3 +28,26 @@ All Splunk distributions of OpenTelemetry,
 | Attribute  | Type | Description  | Examples  | Required |
 |---|---|---|---|---|
 | `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0` | Yes |
+
+Note: this section does not apply to Real User Monitoring libraries, as they do not use the OpenTelemetry Resource.
+
+## Real User Monitoring Spans and Attributes
+
+The following attributes MUST be added to all spans emitted by Real User Monitoring (RUM)
+instrumentation libraries:
+
+| Name                  | Type   | Description                                                           |
+| ----                  | ----   | -----------                                                           |
+| `app`                 | string | The value of the `applicationName` property configured in `SplunkRum` |
+| `splunk.rumSessionId` | string | The RUM session ID                                                    |
+| `splunk.rumVersion`   | string | Version of the RUM library                                            |
+| `component`           | string | Name of the instrumentation that produced this span                   |
+
+
+Mobile RUM libraries (iOS, Android) MUST add device and system information to all spans:
+
+| Name                | Type   | Description        |
+| ----                | ----   | -----------        |
+| `device.model.name` | string | Name of the device |
+| `os.type`           | string | `iOS` or `Android` |
+| `os.version`        | string | Version of the OS  |
