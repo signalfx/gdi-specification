@@ -33,16 +33,24 @@ Note: this section does not apply to Real User Monitoring libraries, as they do 
 
 ## Real User Monitoring Spans and Attributes
 
-The following attributes MUST be added to all spans emitted by Real User Monitoring (RUM)
-instrumentation libraries:
+Real User Monitoring (RUM) libraries MUST set the `service.name` resource attribute to the value of the `applicationName`
+configuration property. This is the only resource attribute that RUM libraries are supposed to set because it's the only one
+the Zipkin exporter can understand.
 
-| Name                  | Type   | Description                                                           |
-| ----                  | ----   | -----------                                                           |
-| `app`                 | string | The value of the `applicationName` property configured in `SplunkRum` |
-| `splunk.rumSessionId` | string | The RUM session ID                                                    |
-| `splunk.rumVersion`   | string | Version of the RUM library                                            |
-| `component`           | string | Name of the instrumentation that produced this span                   |
+The following attributes MUST be added to all spans emitted by RUM libraries:
 
+| Name                    | Type   | Description                                                                                                       |
+| ----                    | ----   | -----------                                                                                                       |
+| `app`                   | string | The value of the `applicationName` property configured in `SplunkRum`; same as `service.name` resource attribute. |
+| `splunk.rum.session_id` | string | The RUM session ID                                                                                                |
+| `splunk.rum.version`    | string | Version of the RUM library                                                                                        |
+| `component`             | string | Name of the instrumentation that produced this span                                                               |
+
+The following attributes MAY be added to all spans emitted by RUM libraries:
+
+| Name                     | Type   | Description                                                                     |
+| ----                     | ----   | -----------                                                                     |
+| `deployment.environment` | string | Value of the `deploymentEnvironment` property configured in `SplunkRum`, if any |
 
 Mobile RUM libraries (iOS, Android) MUST add device and system information to all spans:
 

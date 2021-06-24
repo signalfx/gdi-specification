@@ -149,4 +149,4 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST document all supported configuration parameters and how to set them
 - MUST document how to configure manual instrumentation
-- MUST document supported instrumentations and telemetry produced by each of them
+- MUST document supported instrumentations

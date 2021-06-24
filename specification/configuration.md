@@ -143,15 +143,19 @@ Instead, they MUST expose a `SplunkRum` object/class/namespace (depending on the
 setting the following properties (in a language-specific way: Java may use builders, Swift can use named
 parameters with default values, JavaScript can use objects, etc.):
 
-| Configuration property (default value) | Description                                                                                                                                                                                                 |
-| -------------------------------------- | -----------                                                                                                                                                                                                 |
-| `beaconUrl` ()                         | RUM beacon URL, ex. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. [1]                                                                                                                                   |
-| `rumAccessToken` ()                    | RUM authentication token. [1]                                                                                                                                                                               |
-| `applicationName` ()                   | Instrumented application name. [1]                                                                                                                                                                          |
-| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes) that will be added to every span produced by the RUM library. |
+| Configuration property (default value) | Description                                                                                                                                                                                                 | Required |
+| -------------------------------------- | -----------                                                                                                                                                                                                 | -------- |
+| `beaconUrl` ()                         | RUM beacon URL, ex. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. [1] [2]                                                                                                                               | Yes      |
+| `rumAccessToken` ()                    | RUM authentication token. [1]                                                                                                                                                                               | Yes      |
+| `applicationName` ()                   | Instrumented application name. [1]                                                                                                                                                                          | Yes      |
+| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes) that will be added to every span produced by the RUM library. | Yes      |
+| `allowInsecureBeacon` (false)          | Allows sending data to insecure endpoints not using https. [2]                                                                                                                                              | No       |
+| `deploymentEnvironment` ()             | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                               | Yes      |
 
 - [1] These configuration properties are mandatory and MUST be provided by the user. If any of these is missing,
   the RUM instrumentation library MUST fail to start.
+- [2] Implementations MUST enforce by default that `beaconUrl`s are https only, and reject/fail to start otherwise.
+  Implementations MAY offer an `allowInsecureBeacon` option (default false) for customers wishing to use that.
 
 Other requirements:
 - RUM library MUST use the Zipkin span exporter by default
