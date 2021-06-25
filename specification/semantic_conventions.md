@@ -39,12 +39,12 @@ the Zipkin exporter can understand.
 
 The following attributes MUST be added to all spans emitted by RUM libraries:
 
-| Name                    | Type   | Description                                                                                                       |
-| ----                    | ----   | -----------                                                                                                       |
-| `app`                   | string | The value of the `applicationName` property configured in `SplunkRum`; same as `service.name` resource attribute. |
-| `splunk.rum.session_id` | string | The RUM session ID                                                                                                |
-| `splunk.rum.version`    | string | Version of the RUM library                                                                                        |
-| `component`             | string | Name of the instrumentation that produced this span                                                               |
+| Name                  | Type   | Description                                                                                                       |
+| ----                  | ----   | -----------                                                                                                       |
+| `app`                 | string | The value of the `applicationName` property configured in `SplunkRum`; same as `service.name` resource attribute. |
+| `splunk.rumSessionId` | string | The RUM session ID                                                                                                |
+| `splunk.rum.version`  | string | Version of the RUM library                                                                                        |
+| `component`           | string | Name of the instrumentation that produced this span                                                               |
 
 The following attributes MAY be added to all spans emitted by RUM libraries:
 
