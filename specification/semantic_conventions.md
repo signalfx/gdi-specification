@@ -37,7 +37,7 @@ Real User Monitoring (RUM) libraries MUST set the `service.name` resource attrib
 configuration property. This is the only resource attribute that RUM libraries are supposed to set because it's the only one
 the Zipkin exporter can understand.
 
-The following attributes MUST be added to all spans emitted by RUM libraries:
+The following attributes MUST be added to all spans produced by RUM libraries:
 
 | Name                  | Type   | Description                                                                                                       |
 | ----                  | ----   | -----------                                                                                                       |
