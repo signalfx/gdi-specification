@@ -59,3 +59,10 @@ Mobile RUM libraries (iOS, Android) MUST add device and system information to al
 | `device.model.name` | string | Name of the device |
 | `os.type`           | string | `iOS` or `Android` |
 | `os.version`        | string | Version of the OS  |
+
+Web RUM library MUST add the following attributes to all spans:
+
+| Name                     | Type   | Description                                                                                                                    |
+| ----                     | ----   | -----------                                                                                                                    |
+| `location.href`          | string | Value of [`location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href) at the moment of creating the span. |
+| `splunk.script_instance` | string | A 64bit identifier, unique to every instance of the `SplunkRum` script.                                                        |
