@@ -150,3 +150,4 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST document all supported configuration parameters and how to set them
 - MUST document how to configure manual instrumentation
 - MUST document supported instrumentations
+- MUST document supported platforms: browsers, OS versions, API requirements
