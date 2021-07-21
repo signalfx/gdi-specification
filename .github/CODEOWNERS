@@ -12,3 +12,14 @@
 * @signalfx/gdi-specification-approvers @signalfx/gdi-specification-maintainers
 
 .github/CODEOWNERS @signalfx/gdi-specification-maintainers
+
+#####################################################
+#
+# Docs reviewers
+#
+#####################################################
+
+*.md @signalfx/docs
+*.rst @signalfx/docs
+docs/ @signalfx/docs
+README @signalfx/docs @signalfx/gdi-specification-approvers @signalfx/gdi-specification-maintainers
