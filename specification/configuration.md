@@ -56,9 +56,12 @@ in a large package, but makes it easy for users to switch settings via
 configuration. An advanced installation process can be provided where the user
 chooses what to install limiting the configuration options.
 
-## Environment variables
+## Configuration options
 
 ### Data Collector
+
+It MUST be possible to configure a Data Collector instance using the following
+environment variables:
 
 | Name (default value)     | Description                                        |
 | :-------------------:    | :-----------------------------------:              |
@@ -81,6 +84,9 @@ chooses what to install limiting the configuration options.
   defined.
 
 ### Instrumentation Libraries
+
+It MUST be possible to configure an Instrumentation Library instance using the following
+environment variables:
 
 | Name (default value)                            | Description                                                    |
 | :------------------------------------:          | :--------------------------------------------------------:     |
@@ -129,6 +135,34 @@ beyond the OpenTelemetry specification exist.
 - `OTEL_TRACES_EXPORTER`
   - Distribution MUST default to `otlp`
   - Distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
+
+#### Real User Monitoring Libraries
+
+Real User Monitoring (RUM) instrumentation libraries cannot use environment variables for configuration.
+Instead, they MUST expose a `SplunkRum` object/class/namespace (depending on the language used) that allows
+setting the properties listed below (in a language-specific way: Java may use builders, Swift can use named
+parameters with default values, JavaScript can use objects, etc.).
+
+RUM instrumentation libraries MUST support the following configuration properties:
+
+| Property (default value)               | Description                                                                                                                                                                                                 |
+| -------------------------------------- | -----------                                                                                                                                                                                                 |
+| `realm` ()                             | Splunk realm, e.g. `us0`, `us1`. If set, value of `beaconEndpoint` will be automatically computed based on this. [1] [2] [3]                                                                                |
+| `beaconEndpoint` ()                    | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                         |
+| `rumAccessToken` ()                    | RUM authentication token. [1]                                                                                                                                                                               |
+| `applicationName` ()                   | Instrumented application name. [1]                                                                                                                                                                          |
+| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes) that will be added to every span produced by the RUM library. |
+| `deploymentEnvironment` ()             | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                               |
+
+- [1] Application name, authentication token and either realm or the beacon URL MUST be provided by the user.
+  If any of these is missing, the RUM instrumentation library MUST fail to start.
+- [2] Implementations MUST enforce by default that `beaconEndpoint`s are https only, and reject/fail to start otherwise.
+  Implementations MAY offer an unsupported `allowInsecureBeacon` option (default false) that turns off that check.
+- [3] If both `realm` and `beaconEndpoint` are set, a warning saying that `realm` will be ignored SHOULD be logged.
+
+Other requirements:
+- RUM library MUST use the Zipkin v2 JSON span exporter by default
+- RUM library MUST limit the number of sent spans to 100 in a 30 second window per `component` attribute value
 
 ## Environment variable alternatives
 
