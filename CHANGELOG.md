@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Repository
+
+#### Enhancements
+
+- Add support for the `OTEL_SERVICE_NAME` environment variable.
+
 ## 1.0.0 - 2021-06-01
 
 ### General

@@ -110,17 +110,25 @@ beyond the OpenTelemetry specification exist.
 
 #### [OpenTelemetry Environment Variable](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
 
-- `OTEL_RESOURCE_ATTRIBUTES`
-  - User MUST define [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
-    resource attribute.
-  - Distribution MUST log a warning when the `service.name` resource attribute is not set. The
-    warning message MUST clearly describe how to set the attribute or link to relevant documentation.
-    E.g.
+- `OTEL_SERVICE_NAME`
+  - Users MUST define a name for the service they are instrumenting. The
+    service name can either be defined using the `OTEL_SERVICE_NAME` or
+    `OTEL_RESOURCE_ATTRIBUTES` environment variable. If the user fails to
+    define a service name with these environment variables the distribution
+    MUST log a warning. The warning message MUST clearly describe how to set
+    the attribute or link to relevant documentation. E.g.
     ```
     service.name attribute is not set, your service is unnamed and will be difficult to identify.
-    set your service name using the OTEL_RESOURCE_ATTRIBUTES environment variable.
-    E.g. `OTEL_RESOURCE_ATTRIBUTES="service.name=<YOUR_SERVICE_NAME_HERE>"`
+    set your service name using the OTEL_SERVICE_NAME environment variable.
+    E.g. `OTEL_SERVICE_NAME="<YOUR_SERVICE_NAME_HERE>"`
     ```
+  - The service name value MUST be used for the
+    [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
+    resource attribute.
+  - If a service name is defined in both `OTEL_SERVICE_NAME` and
+    `OTEL_RESOURCE_ATTRIBUTES` the value set for `OTEL_SERVICE_NAME` MUST be
+    used. An message SHOULD be logged indicating this choice if appropriate.
+- `OTEL_RESOURCE_ATTRIBUTES`
   - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment)
     resource attribute.
   - User SHOULD define [`service.version`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
