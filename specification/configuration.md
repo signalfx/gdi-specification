@@ -113,10 +113,10 @@ beyond the OpenTelemetry specification exist.
 - `OTEL_SERVICE_NAME`
   - Users MUST define a name for the service they are instrumenting. The
     service name can either be defined using the `OTEL_SERVICE_NAME` or
-    `OTEL_RESOURCE_ATTRIBUTES` environment variable. If the user fails to
-    define a service name with these environment variables the distribution
-    MUST log a warning. The warning message MUST clearly describe how to set
-    the attribute or link to relevant documentation. E.g.
+    `OTEL_RESOURCE_ATTRIBUTES` environment variable, or directly in their code.
+    If the user fails to define a service name the distribution MUST log a
+    warning. The warning message MUST clearly describe how to set the service
+    name or link to relevant documentation. E.g.
     ```
     service.name attribute is not set, your service is unnamed and will be difficult to identify.
     set your service name using the OTEL_SERVICE_NAME environment variable.
@@ -125,9 +125,13 @@ beyond the OpenTelemetry specification exist.
   - The service name value MUST be used for the
     [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
     resource attribute.
+  - If a service name is defined with an environment variable and in the
+    application code, the value from the environment SHALL take precedence. A
+    message SHOULD be logged indicating this action.
   - If a service name is defined in both `OTEL_SERVICE_NAME` and
-    `OTEL_RESOURCE_ATTRIBUTES` the value set for `OTEL_SERVICE_NAME` MUST be
-    used. An message SHOULD be logged indicating this choice if appropriate.
+    `OTEL_RESOURCE_ATTRIBUTES` environment variables, the value set for
+    `OTEL_SERVICE_NAME` SHALL take precedence. A message SHOULD be logged
+    indicating this action.
 - `OTEL_RESOURCE_ATTRIBUTES`
   - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment)
     resource attribute.
