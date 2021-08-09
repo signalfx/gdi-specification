@@ -122,16 +122,6 @@ beyond the OpenTelemetry specification exist.
     set your service name using the OTEL_SERVICE_NAME environment variable.
     E.g. `OTEL_SERVICE_NAME="<YOUR_SERVICE_NAME_HERE>"`
     ```
-  - The service name value MUST be used for the
-    [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
-    resource attribute.
-  - If a service name is defined with an environment variable and in the
-    application code, the value from the environment SHALL take precedence. A
-    message SHOULD be logged indicating this action.
-  - If a service name is defined in both `OTEL_SERVICE_NAME` and
-    `OTEL_RESOURCE_ATTRIBUTES` environment variables, the value set for
-    `OTEL_SERVICE_NAME` SHALL take precedence. A message SHOULD be logged
-    indicating this action.
 - `OTEL_RESOURCE_ATTRIBUTES`
   - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment)
     resource attribute.
