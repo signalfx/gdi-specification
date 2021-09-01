@@ -121,9 +121,6 @@ beyond the OpenTelemetry specification exist.
     set your service name using the OTEL_RESOURCE_ATTRIBUTES environment variable.
     E.g. `OTEL_RESOURCE_ATTRIBUTES="service.name=<YOUR_SERVICE_NAME_HERE>"`
     ```
-  - User SHOULD define [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md#deployment)
-    resource attribute.
-  - User SHOULD define [`service.version`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
 - `OTEL_PROPAGATORS`
   - Distribution MUST default to `"tracecontext,baggage"`
   - Distribution MUST support and document how to switch to `b3multi`
