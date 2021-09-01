@@ -2,8 +2,11 @@
 
 ## Unreleased
 
+### Repository
+
 ### Configuration
 
+- Add support for the `OTEL_SERVICE_NAME` environment variable.
 - Remove suggestion for end users of instrumentation libraries to provide
   configuration.
 

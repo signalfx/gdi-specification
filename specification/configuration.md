@@ -110,16 +110,17 @@ beyond the OpenTelemetry specification exist.
 
 #### [OpenTelemetry Environment Variable](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
 
-- `OTEL_RESOURCE_ATTRIBUTES`
-  - User MUST define [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service)
-    resource attribute.
-  - Distribution MUST log a warning when the `service.name` resource attribute is not set. The
-    warning message MUST clearly describe how to set the attribute or link to relevant documentation.
-    E.g.
+- `OTEL_SERVICE_NAME`
+  - Users MUST define a name for the service they are instrumenting. The
+    service name can either be defined using the `OTEL_SERVICE_NAME` or
+    `OTEL_RESOURCE_ATTRIBUTES` environment variable, or directly in their code.
+    If the user fails to define a service name the distribution MUST log a
+    warning. The warning message MUST clearly describe how to set the service
+    name or link to relevant documentation. E.g.
     ```
     service.name attribute is not set, your service is unnamed and will be difficult to identify.
-    set your service name using the OTEL_RESOURCE_ATTRIBUTES environment variable.
-    E.g. `OTEL_RESOURCE_ATTRIBUTES="service.name=<YOUR_SERVICE_NAME_HERE>"`
+    set your service name using the OTEL_SERVICE_NAME environment variable.
+    E.g. `OTEL_SERVICE_NAME="<YOUR_SERVICE_NAME_HERE>"`
     ```
 - `OTEL_PROPAGATORS`
   - Distribution MUST default to `"tracecontext,baggage"`
