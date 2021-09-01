@@ -4,9 +4,11 @@
 
 ### Repository
 
-#### Enhancements
+### Configuration
 
 - Add support for the `OTEL_SERVICE_NAME` environment variable.
+- Remove suggestion for end users of instrumentation libraries to provide
+  configuration.
 
 ## 1.0.0 - 2021-06-01
 
