@@ -11,11 +11,11 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ### Teams
 
-- MUST have a maintainers team
+- MUST have a maintainers team and teams MAY be shared between repositories
   - MUST have `-maintainers` suffix
   - MUST include at least two currently full-time Splunkers
   - MUST NOT include any non-full-time Splunkers
-- SHOULD have an approvers team
+- SHOULD have an approvers team and teams MAY be shared between repositories
   - MUST have `-approvers` suffix
 
 ### Permissions
