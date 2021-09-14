@@ -107,6 +107,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
   - SHOULD have badges on the `README.md` for other relevant things including artifacts
   - MUST have getting started information in `README.md`
   - MUST have troubleshooting information in `README.md`
+  - MUST link to official Splunk docs if they exist
   - MUST have license information in `README.md`
 - MAY have a `RELEASING.md` file that documents the release process, but this
   file MUST NOT document private processes. For repositories that use private release
