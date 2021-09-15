@@ -33,12 +33,12 @@ See [SECURITY.md](SECURITY.md#reporting-security-issues) for instructions.
 
 ## Documentation
 
-The documentation of Splunk Observability is open source and is maintained
-in the `signalfx/product-docs` repository, which contains all the prescriptive
-guidance for Splunk Observability products. Prescriptive guidance consists of 
-step-by-step instructions, conceptual material, and decision support for customers.
+The documentation of Splunk Observability is maintained in a private repository,
+which contains all the prescriptive guidance for Splunk Observability products. 
+Prescriptive guidance consists of step-by-step instructions, conceptual material,
+and decision support for customers.
 
-To contribute to Splunk Observability docs, go to the [product-docs repo](https://github.com/signalfx/product-docs).
+To contribute to Splunk Observability docs, contact the Splunk Observability docs team.
 
 ## Contributing via Pull Requests
 
