@@ -75,7 +75,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 ## Required Files
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
-  - The CHANGELOG.md is intended to be consumed by humans, and not machines.
+  - The `CHANGELOG.md` is intended to be consumed by humans, and not machines.
   - The file SHOULD contain an `Unreleased` section at the top, which includes changes that
   have not yet been released.
   - The file MUST be in reverse chronological order, with the most recent
@@ -96,7 +96,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST add [CONTRIBUTING.md](templates/CONTRIBUTING.md)
 - MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with a maintainers team
 - SHOULD have an approvers team in CODEOWNERS
-- MUST have an Apache 2.0 `LICENSE` file
+- MUST add [`LICENSE`](templates/LICENSE)
 - SHOULD have a `MIGRATING.md` if applicable
 - MUST have a `README.md`
   - MUST have a badge on the `README.md` with build status
