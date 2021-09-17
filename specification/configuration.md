@@ -127,7 +127,8 @@ beyond the OpenTelemetry specification exist.
   - Distribution MUST support and document how to switch to `b3multi`
 - Span Collection Limits
   - Distribution MUST default to `1000` for `OTEL_SPAN_LINK_COUNT_LIMIT` (not OpenTelemetry default)
-  - Distribution MUST be `unset` (unlimited) for all others (not OpenTelemetry default)
+  - Distribution MUST default to `1200` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` (not OpenTelemetry default)
+  - Distribution MUST be unset `""` (unlimited) for all others (not OpenTelemetry default)
 - Zipkin exporter
   - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
 - `OTEL_TRACES_EXPORTER`
