@@ -132,8 +132,8 @@ beyond the OpenTelemetry specification exist.
 - Zipkin exporter
   - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
 - `OTEL_TRACES_EXPORTER`
-  - Distribution MUST default to `otlp`
-  - Distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
+  - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
+  - Non-RUM distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
 
 #### Real User Monitoring Libraries
 
