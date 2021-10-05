@@ -5,19 +5,6 @@
 This document describes the specific behavior and conventions for Splunk
 agents that contain profiling features.
 
-- [Profiling Conventions](#profiling-conventions)
-    * [Activation](#activation)
-    * [Call Stack Sampling](#call-stack-sampling)
-        + [Call Stack Filtering](#call-stack-filtering)
-        + [Call Stack Span Association](#call-stack-span-association)
-        + [Call Stack Ingest](#call-stack-ingest)
-    * [ResourceLogs](#resourcelogs)
-        - [InstrumentationLibraryLogs](#instrumentationlibrarylogs)
-        - [LogRecord Common Attributes](#logrecord-common-attributes)
-        - [LogRecord Fields](#logrecord-fields)
-            * [Call Stack Format](#call-stack-format)
-- [References](#references)
-
 ## Activation
 
 Agents may choose to activate or deactivate their profiler by default.
