@@ -152,7 +152,10 @@ line is:
   cannot be determined (eg. when symbols have been excluded), the value MUST be `unknown`
 * literal `)`
 * literal `:` - REQUIRED if `<line>` is known, OPTIONAL otherwise.
-* `<lineno>` - The line of source code that corresponds
+* `<lineno>` or `<lineno>:<lineno>` - RECOMMENDED - The line of source code that corresponds with the function invocation point. If the runtime 
+provides a range of lines, the second `lineno` can be provided after a colon `:`.
+* ` <col>` or ` <col>:<col>` - OPTIONAL - If the runtime provides a column or column range, it MAY be provided
+after the `lineno`, separated by a space.
 
 # References
 
