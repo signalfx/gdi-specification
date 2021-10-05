@@ -71,7 +71,7 @@ Agents SHOULD reuse persistent gRPC/OTLP connections from other components (trac
 
 ## ResourceLogs
 
-ResourceLogs is the upstream protobuf data type. It MUST be populated with the attributes
+`ResourceLogs` is the upstream protobuf data type. It MUST be populated with the attributes
 from the OpenTelemetry resource.
 
 #### InstrumentationLibraryLogs
