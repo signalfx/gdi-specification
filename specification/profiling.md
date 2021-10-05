@@ -137,21 +137,22 @@ provided first and the bottom of the stack provided last. The format of each sta
 line is:
 
 ```
-        at <class>.<method>(<source-module>:<line>)
+        at <namespace>.<function>(<source-module>:<lineno>)
 ```
 
 * OPTIONAL leading whitespace
 * OPTIONAL "at "
-* `<class>` - REQUIRED. Fully scoped name of the class or module. If the function being executed is globally scoped this MUST be
-  set to `global`. If class is unknown, the value MUST be set to `unknown`.
-* `<method>` - Name of the method or function being invoked
+* `<namespace>` - REQUIRED. Fully qualified namespace of the function call. For object-oriented
+  languages this SHOULD be the module/package and class name. If the function being executed is globally 
+  scoped this MUST be set to `global`. If class is unknown, the value MUST be set to `unknown`.
+* `<function>` - Name of the function or class method being invoked
 * literal `(`
-* `<source-module>` - REQUIRED. The name of the source code file (including filename extension). If the function being
+* `<file>` - REQUIRED. The name of the source code file (including filename extension). If the function being
   executed is OS native, an implementation-specific indication SHOULD be used. If the source module
   cannot be determined (eg. when symbols have been excluded), the value MUST be `unknown`
 * literal `)`
 * literal `:` - REQUIRED if `<line>` is known, OPTIONAL otherwise.
-* `<line>` - The line of source code that corresponds
+* `<lineno>` - The line of source code that corresponds
 
 # References
 
