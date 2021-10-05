@@ -65,7 +65,7 @@ variable. If this variable is not set, then the agent must default back to the g
 default (https://localhost:4317).
 
 The agent must allow the destination for profiling logs to be overridden with 
-the environment variable SPLUNK_PROFILER_LOGS_ENDPOINT.
+the environment variable `SPLUNK_PROFILER_LOGS_ENDPOINT`.
 
 Agents SHOULD reuse persistent gRPC/OTLP connections from other components (traces, metrics).
 
