@@ -3,31 +3,31 @@
 **Status**: [experimental](../README.md#versioning-and-status-of-the-specification)
 
 This document describes the specific behavior and conventions for Splunk
-agents that contain profiling features.
+instrumentation libraries that contain profiling features.
 
 ## Activation
 
-Agents may choose to activate or deactivate their profiler by default.
-Agents MUST NOT activate the profiler by default unless the feature is 
+Instrumentation libraries may choose to activate or deactivate their profiler by default.
+Instrumentation libraries MUST NOT activate the profiler by default unless the feature is 
 classified as stable.
 A configuration setting MUST be provided to allow overriding the default: 
 
 * `SPLUNK_PROFILER_ENABLED` environment variable
 
 The default setting for `SPLUNK_PROFILER_ENABLED` MUST be clearly documented. 
-The agent SHOULD NOT allow changing the setting at runtime, and the initial 
+The instrumentation library SHOULD NOT allow changing the setting at runtime, and the initial 
 setting SHOULD be used for the entire lifespan of the application run.
 
-An agent whose profiling capability is deactivated MUST NOT introduce
+An instrumentation library whose profiling capability is deactivated MUST NOT introduce
 additional profiling-based overhead. It also MUST NOT emit profiling-based
 data.
 
 ## Call Stack Sampling
 
-An agent that has profiling capabilities MUST be able to sample call stacks
+An instrumentation library that has profiling capabilities MUST be able to sample call stacks
 at a fixed interval. This default interval MUST default to 1 second.
 
-If a language agent runtime supports threading, stacks MUST be sampled across
+When a language runtime supports threading, stacks MUST be sampled across
 all process threads. The samples for all threads SHOULD be taken instantaneously
 and, in the event that this is not feasible, MUST be taken as close together
 as possible. If the samples are taken consecutively, then the profiler MUST 
@@ -38,7 +38,7 @@ threads.
 
 Various runtimes MAY contain internal and other threads that are undesirable
 to include for profiling. This could include threads that are internal to 
-runtime behavior or agent internal workings. The choice of which threads are 
+runtime behavior or instrumentation library internal workings. The choice of which threads are 
 undesirable is implementation specific and not defined.
 
 The profiler SHOULD NOT collect call stacks from undesirable threads.
@@ -60,14 +60,14 @@ LogRecord MUST be populated (see below).
 Call stacks MUST be ingested as [OpenTelemetry Logs](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs).
 The logs containing profiling data MUST be sent via OTLP/gRPC. 
 
-By default, the agent MUST send logs to the value in the `OTEL_EXPORTER_OTLP_ENDPOINT` environment
-variable. If this variable is not set, then the agent must default back to the gRPC/OTLP
+By default, the instrumentation library MUST send logs to the value in the `OTEL_EXPORTER_OTLP_ENDPOINT` environment
+variable. If this variable is not set, then the instrumentation library must default back to the gRPC/OTLP
 default (`https://localhost:4317`).
 
-The agent must allow the destination for profiling logs to be overridden with 
+The instrumentation library must allow the destination for profiling logs to be overridden with 
 the environment variable `SPLUNK_PROFILER_LOGS_ENDPOINT`.
 
-Agents SHOULD reuse persistent gRPC/OTLP connections from other components (traces, metrics).
+Instrumentation libraries SHOULD reuse persistent gRPC/OTLP connections from other components (traces, metrics).
 
 ## ResourceLogs
 
