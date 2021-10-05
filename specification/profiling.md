@@ -41,7 +41,7 @@ to include for profiling. This could include threads that are internal to
 runtime behavior or agent internal workings. The choice of which threads are 
 undesirable is implementation specific and not defined.
 
-The profiler SHOULD not collect call stacks from undesirable threads.
+The profiler SHOULD NOT collect call stacks from undesirable threads.
 If this is not possible, the profiler SHOULD filter these out afterward 
 and omit these call stacks from ingest. 
 
