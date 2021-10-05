@@ -19,7 +19,7 @@ The agent SHOULD NOT allow changing the setting at runtime, and the initial
 setting SHOULD be used for the entire lifespan of the application run.
 
 An agent whose profiling capability is deactivated MUST NOT introduce
-additional profiling-based overhead. It also MUST NOT ingest profiling-based
+additional profiling-based overhead. It also MUST NOT emit profiling-based
 data.
 
 ## Call Stack Sampling
