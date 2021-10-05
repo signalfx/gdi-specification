@@ -8,6 +8,8 @@ agents that contain profiling features.
 ## Activation
 
 Agents may choose to activate or deactivate their profiler by default.
+Agents MUST NOT activate the profiler by default unless the feature is 
+classified as stable.
 A configuration setting MUST be provided to allow overriding the default: 
 
 * `SPLUNK_PROFILER_ENABLED` environment variable
