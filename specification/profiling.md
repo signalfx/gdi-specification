@@ -62,7 +62,7 @@ The logs containing profiling data MUST be sent via OTLP/gRPC.
 
 By default, the agent MUST send logs to the value in the `OTEL_EXPORTER_OTLP_ENDPOINT` environment
 variable. If this variable is not set, then the agent must default back to the gRPC/OTLP
-default (https://localhost:4317).
+default (`https://localhost:4317`).
 
 The agent must allow the destination for profiling logs to be overridden with 
 the environment variable `SPLUNK_PROFILER_LOGS_ENDPOINT`.
