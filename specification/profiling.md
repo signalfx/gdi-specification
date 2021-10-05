@@ -74,7 +74,7 @@ Instrumentation libraries SHOULD reuse persistent gRPC/OTLP connections from oth
 `ResourceLogs` is the upstream protobuf data type. It MUST be populated with the attributes
 from the OpenTelemetry resource.
 
-#### InstrumentationLibraryLogs
+### InstrumentationLibraryLogs
 
 Each `ResourceLogs` instance has an instance of `InstrumenationLibraryLogs`. 
 For each `InstrumentationLibraryLogs` instance:
@@ -82,7 +82,7 @@ For each `InstrumentationLibraryLogs` instance:
 * `name` - MUST be set to `otel.profiling`
 * `version` - MUST be set to `0.1.0` 
 
-#### LogRecord Common Attributes
+### LogRecord Common Attributes
 
 Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord` instances. For each 
 `LogRecord` instance:
@@ -91,7 +91,7 @@ Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord` insta
 * `source.event.period` MUST contain the sampling period for call stack sampler
 * `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 
-#### LogRecord Fields
+### LogRecord Fields
 
 * [Name](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-name)
   MUST be set to the constant value `otel.profiling`.
@@ -104,7 +104,7 @@ Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord` insta
 * [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
   MUST be populated with the line-terminated call stack (see below)
 
-##### Call Stack Format
+#### Call Stack Format
 
 The call stack is a series of lines separated by newlines (`\n`).
 The first line of the call stack is a REQUIRED thread metadata line.
