@@ -163,6 +163,35 @@ Other requirements:
 - RUM library MUST use the Zipkin v2 JSON span exporter by default
 - RUM library MUST limit the number of sent spans to 100 in a 30 second window per `component` attribute value
 
+#### Serverless 
+
+Current serverless offering is composed of separate metrics (SFx-based) and traces (OTel-based) solutions. 
+It is also assumed that all the components send data directly to Splunk Observability Cloud (direct ingest). Therefore a set of specific configuration properties needs to be defined for the best user experience.
+   
+All serverless solution (wrappers, extensions and other vendor-specific ones) MUST honour following environment variables: 
+
+| Name                                   | Default value                                                              | Description                                                   |
+| -------------------------------------- | -------------------                                                        | ------------------------------------------------------------- |
+| `SPLUNK_ACCESS_TOKEN`                  | None                                                                       | Access token added to exported data.                          |
+| `SPLUNK_REALM`                         | `us0`                                                                      | Realm configured for the exporter endpoint. [1]               |
+| `SPLUNK_DEBUG`                         | false                                                                      | If set to true, additional debug information will be logged   |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true                                                                       | Whether Server-Timing header is added to HTTP responses       |
+
+OpenTelemetry-based wrappers MUST honour all configuration properties as defined by the OTel spec.
+Following properties MUST have default values set, as specified:
+- `OTEL_TRACES_EXPORTER` - defaults to `otlp-http`
+- `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` [1]
+- `OTEL_PROPAGATORS` - defaults to `tracecontext,baggage`
+- `OTEL_SPAN_LINK_COUNT_LIMIT` - defaults to 1000
+- `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` - defaults to 12000
+- `OTEL_METRICS_EXPORTER` - unset
+
+Metrics components MUST honour following configuration values and defaults:
+- `SPLUNK_METRICS_INGEST_URL` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com` [1]                                  
+
+[1] If `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` or `SPLUNK_METRICS_INGEST_URL` is set, takes precedence over the `SPLUNK_REALM` setting.
+
+
 ## Environment variable alternatives
 
 In addition to environment variables, other ways of defining configuration also exist:
