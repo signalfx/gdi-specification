@@ -137,7 +137,7 @@ provided first and the bottom of the stack provided last. The format of each sta
 line is:
 
 ```
-        at <namespace>.<function>(<source-module>:<lineno>)
+        at <namespace>.<function>(<file>:<lineno>)
 ```
 
 * OPTIONAL leading whitespace
