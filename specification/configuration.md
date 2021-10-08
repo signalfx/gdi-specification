@@ -168,7 +168,7 @@ Other requirements:
 Current serverless offering is composed of separate metrics (SFx-based) and traces (OTel-based) solutions. 
 It is also assumed that all the components send data directly to Splunk Observability Cloud (direct ingest). Therefore a set of specific configuration properties needs to be defined for the best user experience.
    
-All serverless solution (wrappers, extensions and other vendor-specific ones) MUST honour following environment variables: 
+All serverless solution (wrappers, extensions and other vendor-specific ones) MUST honour the following environment variables: 
 
 | Name                                   | Default value                                                              | Description                                                   |
 | -------------------------------------- | -------------------                                                        | ------------------------------------------------------------- |
