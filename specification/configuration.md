@@ -165,7 +165,7 @@ Other requirements:
 
 #### Serverless 
 
-Current serverless offering is composed of separate metrics (SFx-based) and traces (OTel-based) solutions. 
+Current serverless offering is composed of separate metrics (non OTel) and traces (OTel) solutions. 
 It is also assumed that all the components send data directly to Splunk Observability Cloud (direct ingest). Therefore a set of specific configuration properties needs to be defined for the best user experience.
    
 All serverless solution (wrappers, extensions and other vendor-specific ones) MUST honour the following environment variables: 
@@ -184,10 +184,10 @@ Following properties MUST have default values set, as specified:
 - `OTEL_PROPAGATORS` - defaults to `tracecontext,baggage`
 - `OTEL_SPAN_LINK_COUNT_LIMIT` - defaults to 1000
 - `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` - defaults to 12000
-- `OTEL_METRICS_EXPORTER` - unset
+- `OTEL_METRICS_EXPORTER` - defaults to `none`
 
 Metrics components MUST honour following configuration values and defaults:
-- `SPLUNK_METRICS_INGEST_URL` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com` [1]                                  
+- `SPLUNK_METRICS_ENDPOINT` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com` [1]                                  
 
 [1] If `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` or `SPLUNK_METRICS_INGEST_URL` is set, takes precedence over the `SPLUNK_REALM` setting.
 
