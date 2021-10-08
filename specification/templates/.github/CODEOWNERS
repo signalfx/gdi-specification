@@ -11,7 +11,7 @@
 #
 #####################################################
 
-*.md    @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/docs
-*.rst   @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/docs
-docs/   @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/docs
-README* @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/docs @signalfx/gdi-specification-approvers @signalfx/gdi-specification-maintainers
+*.md    @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs
+*.rst   @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs
+docs/   @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs
+README* @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs @signalfx/gdi-specification-approvers @signalfx/gdi-specification-maintainers
