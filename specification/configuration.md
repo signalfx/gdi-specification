@@ -187,7 +187,7 @@ Following properties MUST have default values set, as specified:
 - `OTEL_METRICS_EXPORTER` - defaults to `none`
 
 Metrics components MUST honour following configuration values and defaults:
-- `SPLUNK_METRICS_ENDPOINT` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com` [1]                                  
+- `SPLUNK_METRICS_ENDPOINT` - defaults to `https://ingest.<realm>.signalfx.com` [1]
 
 [1] If `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` or `SPLUNK_METRICS_INGEST_URL` is set, takes precedence over the `SPLUNK_REALM` setting.
 
