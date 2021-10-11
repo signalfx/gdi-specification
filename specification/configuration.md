@@ -183,7 +183,7 @@ Following properties MUST have default values set, as specified:
 - `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` [1]
 - `OTEL_PROPAGATORS` - defaults to `tracecontext,baggage`
 - `OTEL_SPAN_LINK_COUNT_LIMIT` - defaults to `1000`
-- `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` - defaults to 12000
+- `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` - defaults to `12000`
 - `OTEL_METRICS_EXPORTER` - defaults to `none`
 
 Metrics components MUST honour following configuration values and defaults:
