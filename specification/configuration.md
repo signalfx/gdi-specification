@@ -179,7 +179,8 @@ All serverless solution (wrappers, extensions and other vendor-specific ones) MU
 
 OpenTelemetry-based wrappers MUST honour all configuration properties as defined by the OTel spec.
 Following properties MUST have default values set, as specified:
-- `OTEL_TRACES_EXPORTER` - defaults to `otlp-http`
+- `OTEL_TRACES_EXPORTER` - defaults to `otlp`
+- `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` - defaults to `http/protobuf`
 - `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` [1]
 - `OTEL_PROPAGATORS` - defaults to `tracecontext,baggage`
 - `OTEL_SPAN_LINK_COUNT_LIMIT` - defaults to `1000`
