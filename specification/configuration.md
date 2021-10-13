@@ -165,7 +165,7 @@ Other requirements:
 
 #### Serverless 
 
-Current serverless offering is composed of separate metrics (non OTel) and traces (OTel) solutions. 
+Current serverless offering is composed of separate metrics (non OpenTelemetry) and traces (OpenTelemetry) solutions. 
 It is also assumed that all the components send data directly to Splunk Observability Cloud (direct ingest). Therefore a set of specific configuration properties needs to be defined for the best user experience.
    
 All serverless solution (wrappers, extensions and other vendor-specific ones) MUST honour the following environment variables: 
@@ -177,7 +177,7 @@ All serverless solution (wrappers, extensions and other vendor-specific ones) MU
 | `SPLUNK_DEBUG`                         | false                                                                      | If set to true, additional debug information will be logged   |
 | `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true                                                                       | Whether Server-Timing header is added to HTTP responses       |
 
-OpenTelemetry-based wrappers MUST honour all configuration properties as defined by the OTel spec.
+OpenTelemetry-based wrappers MUST honour all configuration properties as defined by the OpenTelemetry specification.
 Following properties MUST have default values set, as specified:
 - `OTEL_TRACES_EXPORTER` - defaults to `otlp`
 - `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` - defaults to `http/protobuf`
