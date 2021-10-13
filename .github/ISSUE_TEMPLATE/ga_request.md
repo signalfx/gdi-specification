@@ -10,8 +10,40 @@ assignees: ''
 **Which GDI repository do you wish to GA?**
 Name and link to repository
 
-**Does the repository follow the latest tagged minor release in GDI specification?**
-yes/no; if no then please complete before submission
+**Does the repository follow the latest tagged minor release in [GDI specification](../../specification/repository.md)?**
+  - [ ] Has an appropriate [maintainers team](../../specification/repository.md#teams).
+  - [ ] [Permissions](../../specification/repository.md#permissions) set correctly.
+  - [ ] [Branch protection](../../specification/repository.md#branch-protection) in place.
+  - [ ] [Dependencies](../../specification/repository.md#dependencies) appropriately locked down.
+  - [ ] [GitHub Applications](../../specification/repository.md#github-applications) set up per spec. 
+  - [ ] [Required Files](../../specification/repository.md#required-files) in place.
+    - [ ] CHANGELOG.md
+    - [ ] CODE_OF_CONDUCT.md
+    - [ ] CONTRIBUTING.md
+    - [ ] .github/CODEOWNERS
+    - [ ] LICENSE
+    - [ ] README.md
+      - [ ] Build status badge
+      - [ ] Getting started
+      - [ ] Troubleshooting
+      - [ ] Link to official Splunk docs
+      - [ ] License information
+    - [ ] SECURITY.md
+  - [ ] [Releases](../../specification/repository.md#github-releases) done to spec.
+  - [ ] Type specific requirements (remove what doesn't apply)
+    - [ ] [Data Collector](../../specification/repository.md#data-collector)
+      - [ ] Documents all supported configuration parameters.
+      - [ ] Documents sizing guidelines
+    - [ ] [Instrumentation Library](../../specification/repository.md#instrumentation-libraries)
+      - [ ] Documents all supported configuration parameters.
+      - [ ] Documents how to configure manual instrumentation.
+      - [ ] Documents how to configure log correlation.
+      - [ ] Documents minimum supported version of each auto-instrumentation framework.
+    - [ ] [Real User Monitoring Library](../../specification/repository.md#real-user-monitoring-libraries)
+      - [ ] Documents all supported configuration parameters.
+      - [ ] Documents how to configure manual instrumentation.
+      - [ ] Documents supported instrumentation.
+      - [ ] Documents supported platforms.
 
 **How long has the GDI repository been public?**
 Approximate amount of time
