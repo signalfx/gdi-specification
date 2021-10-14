@@ -16,6 +16,8 @@ Name and link to repository
   - [ ] [Branch protection](../../specification/repository.md#branch-protection) in place.
   - [ ] [Dependencies](../../specification/repository.md#dependencies) appropriately locked down.
   - [ ] [GitHub Applications](../../specification/repository.md#github-applications) set up per spec. 
+  - [ ] Follows the [configuration requirements](../../specification/configuration.md), if appropriate.
+  - [ ] Follows the [semantic convention requirements](../../specification/semantic_conventions.md), if appropriate.
   - [ ] [Required Files](../../specification/repository.md#required-files) in place.
     - [ ] CHANGELOG.md
     - [ ] CODE_OF_CONDUCT.md
