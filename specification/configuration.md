@@ -165,34 +165,25 @@ Other requirements:
 
 #### Serverless 
 
-Current serverless offering is composed of separate metrics (non OpenTelemetry) and traces (OpenTelemetry) solutions. 
-It is also assumed that all the components send data directly to Splunk Observability Cloud (direct ingest). Therefore a set of specific configuration properties needs to be defined for the best user experience.
+Current serverless offering is composed of separate metrics (non OpenTelemetry) and traces (OpenTelemetry) solutions. By default, the serverless components send data directly to Splunk Observability Cloud (direct ingest). 
    
-All serverless solution (wrappers, extensions and other vendor-specific ones) MUST honour the following environment variables: 
+Apart from standard set of configuration properties for instrumentation libraries based on OpenTelemetry, serverless MUST honour the following:  
 
-| Name                                   | Default value                                                              | Description                                                   |
-| -------------------------------------- | -------------------                                                        | ------------------------------------------------------------- |
-| `SPLUNK_ACCESS_TOKEN`                  | None                                                                       | Access token added to exported data.                          |
-| `SPLUNK_REALM`                         | `us0`                                                                      | Realm configured for the exporter endpoint. [1]               |
-| `SPLUNK_DEBUG`                         | false                                                                      | If set to true, additional debug information will be logged   |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true                                                                       | Whether Server-Timing header is added to HTTP responses       |
+| Name                | Default value        | Description                                            |
+| ------------------- | -------------------  | ------------------------------------------------------ |
+| `SPLUNK_REALM`      | none                 | Splunk Observability Cloud ingest realm [1]            |
 
-OpenTelemetry-based wrappers MUST honour all configuration properties as defined by the OpenTelemetry specification.
-Following properties MUST have default values set, as specified:
-- `OTEL_TRACES_EXPORTER` - defaults to `otlp`
-- `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` - defaults to `http/protobuf`
-- `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` - defaults to `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` [1]
-- `OTEL_PROPAGATORS` - defaults to `tracecontext,baggage`
-- `OTEL_SPAN_LINK_COUNT_LIMIT` - defaults to `1000`
-- `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` - defaults to `12000`
-- `OTEL_METRICS_EXPORTER` - defaults to `none`
+- [1] Either `SPLUNK_REALM` or relevant traces exporter endpoint property and `SPLUNK_METRICS_INGEST_URL` MUST be set.
 
-Metrics components MUST honour following configuration values and defaults:
-- `SPLUNK_METRICS_ENDPOINT` - defaults to `https://ingest.<realm>.signalfx.com` [1]
-
-[1] If `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` or `SPLUNK_METRICS_INGEST_URL` is set, takes precedence over the `SPLUNK_REALM` setting.
-
-
+    If `SPLUNK_REALM` is defined, both relevant traces and metrics exporter endpoints will have following values:
+    - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` 
+    - traces (all other cases):`https://ingest.REALM.signalfx.com/v2/trace`
+    - metrics: `https://ingest.${SPLUNK_REALM}.signalfx.com`
+    
+    If relevant traces exporter endpoint property (eg `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or `SPLUNK_METRICS_INGEST_URL` is set, it takes precedence over the `SPLUNK_REALM` setting.
+    
+As there is no deployment phase in case of Serverless functions, if a required configuration property is missing, the serverless component MUST log an error.
+  
 ## Environment variable alternatives
 
 In addition to environment variables, other ways of defining configuration also exist:
