@@ -92,7 +92,7 @@ environment variables:
 | :------------------------------------:          | :--------------------------------------------------------:     |
 | `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                       |
 | `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [2] |
-| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for non-OTel metrics data ingest.                     |
+| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                     |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
