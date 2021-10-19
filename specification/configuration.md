@@ -92,6 +92,7 @@ environment variables:
 | :------------------------------------:          | :--------------------------------------------------------:     |
 | `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                       |
 | `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [2] |
+| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                     |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
@@ -163,6 +164,29 @@ Other requirements:
 - RUM library MUST use the Zipkin v2 JSON span exporter by default
 - RUM library MUST limit the number of sent spans to 100 in a 30 second window per `component` attribute value
 
+#### Serverless 
+
+By default, serverless components MUST send data directly to Splunk Observability Cloud (direct ingest). 
+   
+Apart from standard set of configuration properties for instrumentation libraries based on OpenTelemetry, serverless MUST honour the following:  
+
+| Name (default value)  | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| `SPLUNK_REALM` ()     | Splunk Observability Cloud realm [1]                   |
+
+- [1] Either `SPLUNK_REALM` or relevant traces exporter endpoint property and `SPLUNK_METRICS_ENDPOINT` MUST be set.
+
+    If `SPLUNK_REALM` is set, `SPLUNK_ACCESS_TOKEN` MUST be set as well.
+    
+    With `SPLUNK_REALM` set, both traces and metrics exporter endpoints will have following values:
+    - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` 
+    - traces (all other cases):`https://ingest.REALM.signalfx.com/v2/trace`
+    - metrics: `https://ingest.${SPLUNK_REALM}.signalfx.com`
+    
+    If relevant traces exporter endpoint property (eg `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or `SPLUNK_METRICS_ENDPOINT` is set, it takes precedence over the `SPLUNK_REALM` setting.
+    
+As there is no deployment phase in case of Serverless functions, if a required configuration property is missing, the serverless component MUST log an error but MUST still execute.
+  
 ## Environment variable alternatives
 
 In addition to environment variables, other ways of defining configuration also exist:
