@@ -133,7 +133,10 @@ beyond the OpenTelemetry specification exist.
 - Zipkin exporter
   - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
 - `OTEL_TRACES_EXPORTER`
-  - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
+  - Non-RUM distribution MUST support following, additional values:
+    - `otlp-grpc` as an alias for `OTEL_EXPORTER_OTLP_PROTOCOL` value `grpc`
+    - `otlp-http` as an alias for `OTEL_EXPORTER_OTLP_PROTOCOL` value `http/protobuf`
+  - Non-RUM distribution MUST default to `otlp-grpc` with an endpoint of `localhost:4317`
   - Non-RUM distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
 
 #### Real User Monitoring Libraries
