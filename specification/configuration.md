@@ -3,7 +3,7 @@
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 One or more configuration variables MAY be needed to properly configure GDI
-repositories. Configuration of these variables MUST be supported by environment
+repositories. Configuration of these variables SHOULD be supported by environment
 variables and MAY be supported by additional methods. GDI repositories MUST adopt
 stable and SHOULD adopt experimental configuration variables in the
 [OpenTelemetry
