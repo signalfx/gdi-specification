@@ -2,17 +2,23 @@
 
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
-One or more configuration variables MAY be needed to properly configure GDI
-repositories. Configuration of these variables MUST be supported by environment
-variables and MAY be supported by additional methods. GDI repositories MUST adopt
-stable and SHOULD adopt experimental configuration variables in the
-[OpenTelemetry
+One or more configuration variables may be needed to properly configure GDI
+repositories. Components that can be configured with environment variables MUST
+support configuration of these variables using environment variables. Any
+component that cannot be configured with environment variables MUST support
+configuration of these variables using an alternate method and that method MUST
+be defined in a section below (see the [Real User Monitoring Libraries
+section](#real-user-monitoring-libraries) as an example). Any component MAY
+support configuration of these variables by additional methods.
+
+GDI repositories MUST adopt stable and SHOULD adopt experimental configuration
+variables in the [OpenTelemetry
 Specification](https://github.com/open-telemetry/opentelemetry-specification)
 before proposing variables to the GDI specification. If a new configuration
-variable is needed by a GDI repository it MUST be brought to the GDI specification
-as a GitHub issue. The GDI specification maintainers SHOULD consider
-introducing needed configuration variables to the OpenTelemetry repository before
-approving Splunk-specific configuration variables.
+variable is needed by a GDI repository it MUST be brought to the GDI
+specification as a GitHub issue. The GDI specification maintainers SHOULD
+consider introducing needed configuration variables to the OpenTelemetry
+repository before approving Splunk-specific configuration variables.
 
 If a GDI repository requires an immediate configuration variable that is not
 available in the OpenTelemetry specification and not available in the GDI
