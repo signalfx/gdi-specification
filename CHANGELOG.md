@@ -1,16 +1,31 @@
 # Changelog
 
-## Unreleased
+## [Unreleased]
+
+## [1.1.0] - 2021-10-26
 
 ### Repository
+
+- Update template CODEOWNERS file to include the Splunk documentation team.
+- Add repository LICENSE template.
+- Clarify maintainer and approver teams can be shared across repositories.
 
 ### Configuration
 
 - Add support for the `OTEL_SERVICE_NAME` environment variable.
 - Remove suggestion for end users of instrumentation libraries to provide
   configuration.
+- Add RUM libraries configuration specification.
+- Set the default value for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` to `12000`,
+  instead of the default OpenTelemetry of unlimited.
+- Require repositories to link to official Splunk docs in `README.md`.
+- Add Serverless libraries configuration specification.
 
-## 1.0.0 - 2021-06-01
+### Profiling
+
+- Initial, experimental, specification for profiling libraries added.
+
+## [1.0.0] - 2021-06-01
 
 ### General
 
@@ -18,7 +33,7 @@
   requirements and recommendations for GDI repository composition and
   versioning and Splunk distributions of OpenTelemetry configuration.
 
-## 1.0.0-rc.3 - 2021-05-25
+## [1.0.0-rc.3] - 2021-05-25
 
 ### General
 
@@ -26,7 +41,7 @@
 
 ---
 
-## 1.0.0-rc.2 - 2021-05-19
+## [1.0.0-rc.2] - 2021-05-19
 
 ### General
 
@@ -53,7 +68,7 @@
 
 ---
 
-## 1.0.0-rc.1 - 2021-05-06
+## [1.0.0-rc.1] - 2021-05-06
 
 ### General
 
@@ -65,3 +80,10 @@
 
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
+
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.1.0
+[1.0.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0
+[1.0.0-rc.3]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0-rc.3
+[1.0.0-rc.2]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0-rc.2
+[1.0.0-rc.1]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0-rc.1
