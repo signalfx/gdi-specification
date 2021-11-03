@@ -55,7 +55,7 @@ stability component-by-component.
 Different packaging options may exist for GDI repositories. Packaging MAY have
 its own GDI repository. For example, the Helm chart for the Data Collector
 exists in its own repository. Packaging that exists in a dedicated GDI
-repositories MAY go stable even if components contained within the packaging
+repository MAY go stable even if components contained within the packaging
 are not stable.
 
 Once a component is marked as stable, the following rules MUST apply
