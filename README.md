@@ -25,7 +25,7 @@ reading by GDI repository consumers.
 
 ## Terms
 
-- Component: Specific feature-set of a GDI repository.
+- Component: Specific subset of a GDI repository.
 - Data Collector: A way to collect telemetry data within an environment.
   Refers to `splunk-otel-collector` repository.
 - GDI: Getting Data In

@@ -156,7 +156,7 @@ In addition to environment variables, other ways of defining configuration also 
 
 ### Real User Monitoring Libraries
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Feature-freeze](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) instrumentation libraries cannot use environment
 variables for configuration. Instead, they MUST expose a `SplunkRum`
@@ -196,8 +196,8 @@ Other requirements:
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
-By default, serverless components MUST send data directly to Splunk
-Observability Cloud (direct ingest).
+By default, serverless instrumentation libraries MUST send data directly
+to Splunk Observability Cloud (direct ingest).
 
 Apart from standard set of configuration properties for instrumentation
 libraries based on OpenTelemetry, serverless MUST honour the following:
@@ -222,5 +222,5 @@ libraries based on OpenTelemetry, serverless MUST honour the following:
     `SPLUNK_REALM` setting.
 
 As there is no deployment phase in case of Serverless functions, if a required
-configuration property is missing, the serverless component MUST log an error
-but MUST still execute.
+configuration property is missing, the serverless instrumentation library MUST
+log an error but MUST still execute.
