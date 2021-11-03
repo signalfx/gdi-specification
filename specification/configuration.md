@@ -180,10 +180,11 @@ properties:
 - [1] Application name, authentication token and either realm or the beacon URL
   MUST be provided by the user. If any of these is missing, the RUM
   instrumentation library MUST fail to start.
-- [2] Implementations MUST enforce by default that `beaconEndpoint`s are https
-  only, and reject/fail to start otherwise. Implementations MAY offer an
-  unsupported `allowInsecureBeacon` option (default false) that turns off that
-  check.
+- [2] Systems that allow implementations to enforce the `beaconEndpoint` value
+  is https (i.e. not Android) MUST do so. These implementations need to
+  reject/fail to start if this condition is not meet. Implementations MAY offer
+  an unrecommended `allowInsecureBeacon` option (default false) that turns off
+  the check.
 - [3] If both `realm` and `beaconEndpoint` are set, a warning saying that
   `realm` will be ignored SHOULD be logged.
 
