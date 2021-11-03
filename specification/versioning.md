@@ -52,6 +52,12 @@ component MUST clearly be marked as stable.
 All components MAY become stable together, or MAY transition to
 stability component-by-component.
 
+Different packaging options may exist for GDI repositories. Packaging MAY have
+its own GDI repository. For example, the Helm chart for the Data Collector
+exists in its own repository. Packaging that exists in a dedicated GDI
+repositories MAY go stable even if components contained within the packaging
+are not stable.
+
 Once a component is marked as stable, the following rules MUST apply
 until the end of that component’s existence.
 
