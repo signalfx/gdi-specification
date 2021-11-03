@@ -34,6 +34,7 @@ reading by GDI repository consumers.
 - Instrumentation Library: A way to emit telemetry data from an application.
   Refers to `splunk-otel-<language>` repositories.
 - Maintainer: Someone responsible for the specification or a repository.
+- Packaging: Deployment method for a GDI repository.
 - Specification: A set of requirements for repositories.
 
 ## Notation Conventions and Compliance
