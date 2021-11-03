@@ -172,7 +172,7 @@ Other requirements:
 
 #### Serverless 
 
-By default, serverless components MUST send data directly to Splunk Observability Cloud (direct ingest). 
+By default, serverless instrumentation libraries MUST send data directly to Splunk Observability Cloud (direct ingest). 
    
 Apart from standard set of configuration properties for instrumentation libraries based on OpenTelemetry, serverless MUST honour the following:  
 
@@ -191,7 +191,7 @@ Apart from standard set of configuration properties for instrumentation librarie
     
     If relevant traces exporter endpoint property (eg `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or `SPLUNK_METRICS_ENDPOINT` is set, it takes precedence over the `SPLUNK_REALM` setting.
     
-As there is no deployment phase in case of Serverless functions, if a required configuration property is missing, the serverless component MUST log an error but MUST still execute.
+As there is no deployment phase in case of Serverless functions, if a required configuration property is missing, the serverless instrumentation library MUST log an error but MUST still execute.
   
 ## Environment variable alternatives
 

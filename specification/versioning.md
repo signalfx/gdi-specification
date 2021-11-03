@@ -2,11 +2,11 @@
 
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
-All GDI components MUST be versioned according to [Semantic Versioning
-2.0](https://semver.org/spec/v2.0.0.html). GDI components are versioned
-separately from OpenTelemetry components as Splunk-specific breaking changes
-MAY be introduced. GDI components MUST indicate what version of OpenTelemetry
-components they are based on through release notes and SHOULD indicate through
+All GDI repositories MUST be versioned according to [Semantic Versioning
+2.0](https://semver.org/spec/v2.0.0.html). GDI repositories are versioned
+separately from OpenTelemetry repositories as Splunk-specific breaking changes
+MAY be introduced. GDI repositories MUST indicate what version of OpenTelemetry
+repositories they are based on through release notes and SHOULD indicate through
 logging. Additional version number constraints can be found in the sections
 below.
 
@@ -41,7 +41,7 @@ configuration variable to enable, and MUST clearly be marked as experimental.
 
 ## Stable
 
-The initial stable release version number for GDI components MUST be `1.0.0` and
+The initial stable release version number for GDI repositories MUST be `1.0.0` and
 follow Semantic Versioning 2.0 for all subsequent releases. Once an
 experimental component has gone through rigorous beta testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
@@ -49,8 +49,8 @@ component. When a new stable component is introduced to a GDI repository with an
 existing stable release, the `MINOR` version number MUST be incremented and the
 component MUST clearly be marked as stable.
 
-All components MAY become stable together, or MAY transition to
-stability component-by-component.
+All components within a GDI repository MAY become stable together, or MAY
+transition to stability component-by-component.
 
 Once a component is marked as stable, the following rules MUST apply
 until the end of that component’s existence.

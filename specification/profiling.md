@@ -67,7 +67,7 @@ default (`https://localhost:4317`).
 The instrumentation library must allow the destination for profiling logs to be overridden with 
 the environment variable `SPLUNK_PROFILER_LOGS_ENDPOINT`.
 
-Instrumentation libraries SHOULD reuse persistent gRPC/OTLP connections from other components (traces, metrics).
+Instrumentation libraries SHOULD reuse persistent gRPC/OTLP connections from other signals (traces, metrics).
 
 ## ResourceLogs
 
