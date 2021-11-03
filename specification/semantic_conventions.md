@@ -2,15 +2,21 @@
 
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
-This document defines the OpenTelemetry and Splunk specific standard attributes for Splunk distributions of OpenTelemetry.
+This document defines the OpenTelemetry and Splunk specific standard attributes
+for Splunk distributions of OpenTelemetry instrumentation.
+
+Note: No semantic conventions for data collection exist at this time.
 
 ## OpenTelemetry Resource Attributes
 
-**Description:** Required and recommended OpenTelemetry [resource semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk).
+**Description:** Required and recommended OpenTelemetry [resource semantic
+conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk).
 
 All Splunk distributions of OpenTelemetry,
 
-- MUST set the following OpenTelemetry resource attributes according to the [OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk):
+- MUST set the following OpenTelemetry resource attributes according to the
+  [OpenTelemetry Semantic
+  Conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk):
   - `telemetry.sdk.name`
   - `telemetry.sdk.version`
   - `telemetry.sdk.language`
@@ -18,24 +24,28 @@ All Splunk distributions of OpenTelemetry,
 - SHOULD set the following resource attributes when applicable:
   - `telemetry.auto.version`
 
-Note: this section does not apply to Real User Monitoring libraries, as they do not use the OpenTelemetry Resource.
+Note: this section does not apply to Real User Monitoring libraries, as they do
+not use the OpenTelemetry Resource.
 
 ## Splunk Resource Attributes
 
-**Description:** Set of attributes used to uniquely identify a Splunk distro version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
+**Description:** Set of attributes used to uniquely identify a Splunk distro
+version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 
 
 | Attribute  | Type | Description  | Examples  | Required |
 |---|---|---|---|---|
 | `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0` | Yes |
 
-Note: this section does not apply to Real User Monitoring libraries, as they do not use the OpenTelemetry Resource.
+Note: this section does not apply to Real User Monitoring libraries, as they do
+not use the OpenTelemetry Resource.
 
 ## Real User Monitoring Spans and Attributes
 
-Real User Monitoring (RUM) libraries MUST set the `service.name` resource attribute to the value of the `applicationName`
-configuration property. This is the only resource attribute that RUM libraries are supposed to set because it's the only one
-the Zipkin exporter can understand.
+Real User Monitoring (RUM) libraries MUST set the `service.name` resource
+attribute to the value of the `applicationName` configuration property. This is
+the only resource attribute that RUM libraries are supposed to set because it's
+the only one the Zipkin exporter can understand.
 
 The following attributes MUST be added to all spans produced by RUM libraries:
 

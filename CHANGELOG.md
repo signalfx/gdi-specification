@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+### General
+
+#### Bug fixes
+
+- Properly use the terms "component" and "GDI repository".
+
+### Configuration
+
+#### Bug fixes
+
+- Properly specify configuration statuses for RUM and serverless.
+
+### Versioning
+
+#### Enhancements
+
+- Add packaging specification information
+
 ## [1.1.0] - 2021-10-26
 
 ### Repository

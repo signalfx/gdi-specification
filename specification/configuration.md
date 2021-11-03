@@ -1,6 +1,6 @@
 # Configuration
 
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Mixed](../README.md#versioning-and-status-of-the-specification)
 
 One or more configuration variables may be needed to properly configure GDI
 repositories. Components that can be configured with environment variables MUST
@@ -62,9 +62,9 @@ in a large package, but makes it easy for users to switch settings via
 configuration. An advanced installation process can be provided where the user
 chooses what to install limiting the configuration options.
 
-## Configuration options
+## Data Collector
 
-### Data Collector
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 It MUST be possible to configure a Data Collector instance using the following
 environment variables:
@@ -89,10 +89,13 @@ environment variables:
   If `SPLUNK_CONFIG` is defined then these options are not required but MAY be
   defined.
 
-### Instrumentation Libraries
+## Instrumentation Libraries
 
-It MUST be possible to configure an Instrumentation Library instance using the following
-environment variables:
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+
+For all use-cases that support environment variables (e.g. applications and
+serverless), it MUST be possible to configure an Instrumentation Library
+instance using the following environment variables:
 
 | Name (default value)                            | Description                                                    |
 | :------------------------------------:          | :--------------------------------------------------------:     |
@@ -112,10 +115,10 @@ environment variables:
 - [2]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
 
-In addition to Splunk-specific environment variables, several requirements
-beyond the OpenTelemetry specification exist.
-
-#### [OpenTelemetry Environment Variable](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
+In addition to Splunk-specific environment variables, the following
+[OpenTelemetry environment
+variables](https://github.com/open-telemetry/opentelemetry-specification/blob/f228a83e652e5cd3ba96b9f780b704ee7a7daa4c/specification/sdk-environment-variables.md)
+are required.
 
 - `OTEL_SERVICE_NAME`
   - Users MUST define a name for the service they are instrumenting. The
@@ -142,14 +145,28 @@ beyond the OpenTelemetry specification exist.
   - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
   - Non-RUM distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
 
-#### Real User Monitoring Libraries
+In addition to environment variables, other ways of defining configuration also exist:
 
-Real User Monitoring (RUM) instrumentation libraries cannot use environment variables for configuration.
-Instead, they MUST expose a `SplunkRum` object/class/namespace (depending on the language used) that allows
-setting the properties listed below (in a language-specific way: Java may use builders, Swift can use named
-parameters with default values, JavaScript can use objects, etc.).
+- [Java System
+  Properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html):
+  These properties MUST match the environment variables converting to lower
+  case and replacing underscores with hyphens or periods. For example:
+  system property `splunk.context.server-timing.enabled` is equivalent to environment
+  variable `SPLUNK_CONTEXT_SERVER_TIMING_ENABLED`.
 
-RUM instrumentation libraries MUST support the following configuration properties:
+### Real User Monitoring Libraries
+
+**Status**: [Feature-freeze](../README.md#versioning-and-status-of-the-specification)
+
+Real User Monitoring (RUM) instrumentation libraries cannot use environment
+variables for configuration. Instead, they MUST expose a `SplunkRum`
+object/class/namespace (depending on the language used) that allows setting the
+properties listed below (in a language-specific way: Java may use builders,
+Swift can use named parameters with default values, JavaScript can use objects,
+etc.).
+
+RUM instrumentation libraries MUST support the following configuration
+properties:
 
 | Property (default value)               | Description                                                                                                                                                                                                 |
 | -------------------------------------- | -----------                                                                                                                                                                                                 |
@@ -160,46 +177,50 @@ RUM instrumentation libraries MUST support the following configuration propertie
 | `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes) that will be added to every span produced by the RUM library. |
 | `deploymentEnvironment` ()             | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                               |
 
-- [1] Application name, authentication token and either realm or the beacon URL MUST be provided by the user.
-  If any of these is missing, the RUM instrumentation library MUST fail to start.
-- [2] Implementations MUST enforce by default that `beaconEndpoint`s are https only, and reject/fail to start otherwise.
-  Implementations MAY offer an unsupported `allowInsecureBeacon` option (default false) that turns off that check.
-- [3] If both `realm` and `beaconEndpoint` are set, a warning saying that `realm` will be ignored SHOULD be logged.
+- [1] Application name, authentication token and either realm or the beacon URL
+  MUST be provided by the user. If any of these is missing, the RUM
+  instrumentation library MUST fail to start.
+- [2] Implementations MUST enforce by default that `beaconEndpoint`s are https
+  only, and reject/fail to start otherwise. Implementations MAY offer an
+  unsupported `allowInsecureBeacon` option (default false) that turns off that
+  check.
+- [3] If both `realm` and `beaconEndpoint` are set, a warning saying that
+  `realm` will be ignored SHOULD be logged.
 
 Other requirements:
 - RUM library MUST use the Zipkin v2 JSON span exporter by default
-- RUM library MUST limit the number of sent spans to 100 in a 30 second window per `component` attribute value
+- RUM library MUST limit the number of sent spans to 100 in a 30 second window
+  per `component` attribute value
 
-#### Serverless 
+### Serverless
 
-By default, serverless instrumentation libraries MUST send data directly to Splunk Observability Cloud (direct ingest). 
-   
-Apart from standard set of configuration properties for instrumentation libraries based on OpenTelemetry, serverless MUST honour the following:  
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+By default, serverless instrumentation libraries MUST send data directly
+to Splunk Observability Cloud (direct ingest).
+
+Apart from standard set of configuration properties for instrumentation
+libraries based on OpenTelemetry, serverless MUST honour the following:
 
 | Name (default value)  | Description                                            |
 | --------------------- | ------------------------------------------------------ |
 | `SPLUNK_REALM` ()     | Splunk Observability Cloud realm [1]                   |
 
-- [1] Either `SPLUNK_REALM` or relevant traces exporter endpoint property and `SPLUNK_METRICS_ENDPOINT` MUST be set.
+- [1] Either `SPLUNK_REALM` or relevant traces exporter endpoint property and
+  `SPLUNK_METRICS_ENDPOINT` MUST be set.
 
     If `SPLUNK_REALM` is set, `SPLUNK_ACCESS_TOKEN` MUST be set as well.
-    
+
     With `SPLUNK_REALM` set, both traces and metrics exporter endpoints will have following values:
-    - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp` 
+    - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp`
     - traces (all other cases):`https://ingest.REALM.signalfx.com/v2/trace`
     - metrics: `https://ingest.${SPLUNK_REALM}.signalfx.com`
-    
-    If relevant traces exporter endpoint property (eg `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or `SPLUNK_METRICS_ENDPOINT` is set, it takes precedence over the `SPLUNK_REALM` setting.
-    
-As there is no deployment phase in case of Serverless functions, if a required configuration property is missing, the serverless instrumentation library MUST log an error but MUST still execute.
-  
-## Environment variable alternatives
 
-In addition to environment variables, other ways of defining configuration also exist:
+    If relevant traces exporter endpoint property (eg
+    `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or
+    `SPLUNK_METRICS_ENDPOINT` is set, it takes precedence over the
+    `SPLUNK_REALM` setting.
 
-- [Java System
-  Properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html):
-  These properties MUST match the environment variables converting to lower
-  case and replacing underscores with hyphens or periods. For example:
-  system property `splunk.context.server-timing.enabled` is equivalent to environment
-  variable `SPLUNK_CONTEXT_SERVER_TIMING_ENABLED`.
+As there is no deployment phase in case of Serverless functions, if a required
+configuration property is missing, the serverless instrumentation library MUST
+log an error but MUST still execute.
