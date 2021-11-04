@@ -97,42 +97,45 @@ environment variables, package management solutions such as Helm charts and
 Operators require YAML-based configuration. As a result, Kubernetes package
 management solutions MUST support the following YAML configuration options:
 
-- `splunkCommon`
-  - `clusterName` ()          : [REQUIRED] Name of the cluster.
-  - `distro` ()               : Which distribution of Kubernetes is deployed.
-  - `environment` ()          : Name of the environment; if not defined then skipped.
-  - `logsEngine` (`fluentd`)  : How to collect logs.
-  - `modes`
-    - `agent`                 : Deployed as a DaemonSet.
-      - `config` ()           : Updates configuration. Non-list options merged, list options override.
-    - `k8sClusterReceiver`    : Deployed as a standalone service.
-      - `config` ()           : Updates configuration. Non-list options merged, list options override.
-    - `gateway`               : Deployed as a clustered Service.
-      - `enabled` (`false`)   : Whether mode is deployed.
-      - `config` ()           : Updates configuration. Non-list options merged, list options override.
-  - `provider` ()             : Where Kubernetes is deployed.
+- `clusterName` ()            : [REQUIRED] Name of the cluster.
+- `environment` ()            : Name of the environment; if not defined then skipped.
+- `distro` ()                 : Which distribution of Kubernetes is deployed.
+- `provider` ()               : Where Kubernetes is deployed.
+- `logsEngine` (`fluentd`)    : How to collect logs.
+- `agent`                     : Deployed as a DaemonSet.
+  - `enabled` (`true`)        : Whether agent is deployed.
+  - `config` ()               : Updates configuration. Non-list options merged, list options override.
+- `gateway`                   : Deployed as a clustered Service and receives data from agent.
+  - `enabled` (`false`)       : Whether gateway is deployed.
+  - `config` ()               : Updates configuration. Non-list options merged, list options override.
+- `k8sClusterReceiver`        : Deployed as a standalone service and collects Kubernetes API telemetry.
+  - `enabled` (`true`)        : Whether k8sClusteReceiver is deployed. Ignored if `metricsEnabled` is `false`.
+  - `config` ()               : Updates configuration. Non-list options merged, list options override.
+
+In addition, at least one of the following sections MUST be specified:
+
 - `splunkObservability`
   - `accessToken` ()          : [REQUIRED] Access token added to exported data.
-  - `logsEnabled` (`false`)   : Whether logs are collected and sent.
+  - `logsEnabled` (`true`)    : Whether logs are collected and sent.
   - `metricsEnabled` (`true`) : Whether metrics are collected, received, and sent.
   - `realm` ()                : [REQUIRED] Realm configured for the exporter endpoint.
   - `tracesEnabled` (`true`)  : Whether traces can be received and sent.
 - `splunkPlatform`
   - `endpoint` ()             : [REQUIRED] Where to send exported data.
-  - `logsEnabled` (`false`)   : Whether logs are collected and sent.
+  - `logsEnabled` (`true`)    : Whether logs are collected and sent.
   - `metricsEnabled` (`true`) : Whether metrics are collected, received, and sent.
   - `token` ()                : [REQUIRED] Token added to exported data.
 
-In addition, the following Kubernetes secret configuration options MUST be
+Finally, the following Kubernetes secret configuration options MUST be
 supported:
 
 - Splunk Observability
   - `splunk_observability_access_token`
 - Splunk Platform
   - `splunk_platform_hec_token`
-  - `hec_client_cert`
-  - `hec_client_key`
-  - `hec_ca_file`
+  - `splunk_platform_hec_client_cert`
+  - `splunk_platform_hec_client_key`
+  - `splunk_platform_hec_ca_file`
 
 ## Instrumentation Libraries
 
