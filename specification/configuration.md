@@ -95,9 +95,11 @@ environment variables:
 While Kubernetes supports container technology that can be configured using
 environment variables, package management solutions such as Helm charts and
 Operators require YAML-based configuration. As a result, Kubernetes package
-management solutions MUST support the YAML configuration options specified below.
+management solutions MUST support the YAML configuration options specified
+below.
 
-> Any option description listed as REQUIRED means a value for the option MUST be specified.
+> Any option description listed as REQUIRED means a value for the option MUST
+> be specified.
 
 - `clusterName` ()             : [REQUIRED] Name of the cluster.
 - `cloudProvider` ()           : Where Kubernetes is deployed.
@@ -113,10 +115,15 @@ management solutions MUST support the YAML configuration options specified below
   - `enabled` (`true`)         : Whether k8sClusteReceiver is deployed. Ignored if `metricsEnabled` is `false`.
   - `config` ()                : Updates configuration. Non-list options merged, list options override.
 
-In addition, at least one of the below configuration groups, 
+In addition, at least one of the below configuration groups,
 `splunkObservability` or `splunkPlatform`, MUST be specified.
 
-> Any option description listed as REQUIRED means a value for the option MUST be specified.
+> Any option description listed as REQUIRED means a value for the option MUST
+> be specified. Both `accessToken` and `token` values are stored as Kubernetes
+> secrets. The secret key names are specified after this section. If Kubernetes
+> secret keys are specified they will override the values specified below. In
+> short, `accessToken` and `token` are required only if not specified in
+> Kubernetes secrets.
 
 - `splunkObservability`
   - `accessToken` ()           : [REQUIRED] Access token added to exported data.
@@ -130,7 +137,7 @@ In addition, at least one of the below configuration groups,
   - `logsEnabled` (`true`)     : Whether logs are collected and sent.
   - `metricsEnabled` (`true`)  : Whether metrics are collected, received, and sent.
 
-Finally, the following Kubernetes secret configuration options MUST be
+Finally, the below Kubernetes secret configuration options MUST be
 supported:
 
 - Splunk Observability
