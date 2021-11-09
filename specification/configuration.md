@@ -90,7 +90,7 @@ environment variables:
   If `SPLUNK_CONFIG` is defined then these options are not required but MAY be
   defined.
 
-### Kubernetes
+### Kubernetes Package Management Solutions
 
 While Kubernetes supports container technology that can be configured using
 environment variables, package management solutions such as Helm charts and
