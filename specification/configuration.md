@@ -95,7 +95,9 @@ environment variables:
 While Kubernetes supports container technology that can be configured using
 environment variables, package management solutions such as Helm charts and
 Operators require YAML-based configuration. As a result, Kubernetes package
-management solutions MUST support the following YAML configuration options:
+management solutions MUST support the YAML configuration options specified below.
+
+> Any option description listed as REQUIRED means a value for the option MUST be specified.
 
 - `clusterName` ()             : [REQUIRED] Name of the cluster.
 - `cloudProvider` ()           : Where Kubernetes is deployed.
