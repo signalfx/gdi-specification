@@ -13,6 +13,8 @@
 #### Bug fixes
 
 - Properly specify configuration statuses for RUM and serverless.
+- Clarify requirement for RUM `beaconEndpoint` configuration value to be HTTPS
+  only on systems that allow such enforcement.
 
 ### Versioning
 
