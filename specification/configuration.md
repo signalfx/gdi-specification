@@ -111,7 +111,7 @@ management solutions MUST support the following YAML configuration options:
   - `enabled` (`true`)         : Whether k8sClusteReceiver is deployed. Ignored if `metricsEnabled` is `false`.
   - `config` ()                : Updates configuration. Non-list options merged, list options override.
 
-In addition, at least one of the following sections MUST be specified:
+In addition, at least one of the the following configuration groups, `splunkObservability` or `splunkPlatform`, MUST be specified:
 
 - `splunkObservability`
   - `accessToken` ()           : [REQUIRED] Access token added to exported data.
