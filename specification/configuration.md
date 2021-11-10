@@ -119,11 +119,11 @@ In addition, at least one of the below configuration groups,
 `splunkObservability` or `splunkPlatform`, MUST be specified.
 
 > Any option description listed as REQUIRED means a value for the option MUST
-> be specified. Both `accessToken` and `token` values are stored as Kubernetes
-> secrets. The secret key names are specified after this section. If Kubernetes
-> secret keys are specified they will override the values specified below. In
-> short, `accessToken` and `token` are required only if not specified in
-> Kubernetes secrets.
+> be specified in that section. Both `accessToken` and `token` values are
+> stored as Kubernetes secrets. The secret key names are specified after this
+> section. If Kubernetes secret keys are specified they will override the
+> values specified below. In short, `accessToken` and `token` are required only
+> if not specified in Kubernetes secrets.
 
 - `splunkObservability`
   - `accessToken` ()           : [REQUIRED] Access token added to exported data.
