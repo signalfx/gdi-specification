@@ -46,7 +46,7 @@ not use the OpenTelemetry Resource.
 
 ## Real User Monitoring Spans and Attributes
 
-**Status**: [Feature-freeze](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) libraries MUST set the `service.name` resource
 attribute to the value of the `applicationName` configuration property. This is
@@ -87,8 +87,9 @@ Web RUM library MUST add the following attributes to all spans:
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
-`ResourceLogs` is the upstream protobuf data type. It MUST be populated with
-the attributes from the OpenTelemetry resource.
+`ResourceLogs` is the [upstream protobuf data
+type](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L47).
+It MUST be populated with the attributes from the OpenTelemetry resource.
 
 ### InstrumentationLibraryLogs
 
@@ -157,6 +158,11 @@ The format of each stack trace line is:
 
 ```
         at <namespace>.<function>(<file>:<lineno>)
+<<<<<<< HEAD
+=======
+        at <namespace>.<function>(<file>:<lineno> <col>)
+        at <namespace>.<function>(<file>:<lineno>:<lineno> <col>:<col>)
+>>>>>>> c19146b (Add behaviors)
 ```
 
 - OPTIONAL leading whitespace
