@@ -46,7 +46,7 @@ not use the OpenTelemetry Resource.
 
 ## Real User Monitoring Spans and Attributes
 
-**Status**: [Feature-freeze](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) libraries MUST set the `service.name` resource
 attribute to the value of the `applicationName` configuration property. This is

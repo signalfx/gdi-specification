@@ -39,7 +39,11 @@ happen as close to the sampling point as feasible, but MAY occur later in a
 processing pipeline.
 
 After the association has been made, the `TraceId` and `SpanId` fields of the
+<<<<<<< HEAD
 [LogRecord](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L113)
+=======
+LogRecord](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L113)
+>>>>>>> a62423a (Add behaviors)
 MUST be populated (see [below](#logrecord-fields)).
 
 ### Call Stack Ingest
