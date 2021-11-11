@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2021-11-11
+
 ### General
 
 #### Bug fixes
@@ -10,9 +12,15 @@
 
 ### Configuration
 
+#### Enhancements
+
+- Add experimental configuration for Kubernetes package management solutions.
+
 #### Bug fixes
 
-- Properly specify configuration statuses for RUM and serverless.
+- Properly specify configuration statuses for RUM and serverless. These
+  sections of the configuration specification are not stable and are correctly
+  identified as such now.
 - Clarify requirement for RUM `beaconEndpoint` configuration value to be HTTPS
   only on systems that allow such enforcement.
 
@@ -20,7 +28,9 @@
 
 #### Enhancements
 
-- Add packaging specification information
+- Add information about packaging project versioning. This allows packaging
+  projects to be released as stable without the need for the project they
+  package to be stable.
 
 ## [1.1.0] - 2021-10-26
 
@@ -101,7 +111,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.2.0
 [1.1.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.1.0
 [1.0.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0
 [1.0.0-rc.3]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0-rc.3

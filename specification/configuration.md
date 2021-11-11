@@ -92,6 +92,8 @@ environment variables:
 
 ### Kubernetes Package Management Solutions
 
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
 While Kubernetes supports container technology that can be configured using
 environment variables, package management solutions such as Helm charts and
 Operators require YAML-based configuration. As a result, Kubernetes package
