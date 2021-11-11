@@ -14,7 +14,8 @@
 
 #### Enhancements
 
-- Add experimental configuration for Kubernetes package management solutions.
+- Add experimental specification for the configuration for Kubernetes package
+  management solutions.
 
 #### Bug fixes
 
