@@ -156,11 +156,13 @@ For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
 instance using the following environment variables:
 
-| Name (default value)                            | Description                                                    |
-| :------------------------------------:          | :--------------------------------------------------------:     |
-| `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                       |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [2] |
-| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                     |
+| Name (default value)                            | Description                                                                     |
+| :------------------------------------:          | :--------------------------------------------------------:                      |
+| `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                                        |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [2]                  |
+| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                                               |
+| `SPLUNK_PROFILER_ENABLED` (`false`)             | Whether profiling is enabled. [3]                                               |
+| `SPLUNK_PROFILER_LOGS_ENDPOINT` ()              | Where profiling data is sent. By default `OTLP_EXPORTER_OTLP_ENDPOINT` is used. |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
@@ -173,6 +175,11 @@ instance using the following environment variables:
   exporters.
 - [2]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
+- [3]: The instrumentation library SHOULD NOT allow changing the setting at
+  runtime, and the initial setting SHOULD be used for the entire lifespan of
+  the application run. An instrumentation library whose profiling capability is
+  deactivated MUST NOT introduce additional profiling-based overhead. It also
+  MUST NOT emit profiling-based data.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment
