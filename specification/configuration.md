@@ -6,9 +6,7 @@ One or more configuration variables may be needed to properly configure GDI
 repositories. Components that can be configured with environment variables MUST
 support configuration of these variables using environment variables. Any
 component that cannot be configured with environment variables MUST support
-configuration of these variables using an alternate method and that method MUST
-be defined in a section below (see the [Real User Monitoring Libraries
-section](#real-user-monitoring-libraries) as an example). Any component MAY
+configuration of these variables using an alternate method. Any component MAY
 support configuration of these variables by additional methods.
 
 GDI repositories MUST adopt stable and SHOULD adopt experimental configuration
@@ -32,15 +30,18 @@ release. This change MAY result in a breaking change so caution should be
 exhibited when considering repository-specific configuration variables.
 
 Splunk-specific configuration variables defined in the GDI specification MUST
-be prefixed with `SPLUNK_`. If a Splunk-specific configuration variable is
-declared as stable in the GDI specification and later the OpenTelemetry
-specification declares a similar variable as stable, the GDI specification
-MUST adopt the OpenTelemetry configuration variable and SHOULD mark the GDI
-specification configuration variable as deprecated by the next minor release.
-In addition to defining Splunk-specification configuration variables, the GDI
-specification MAY require specific OpenTelemetry configuration variables be
-supported. If it does, the GDI specification MAY require certain values be
-supported including a specific default value.
+be prefixed with `SPLUNK_`. Furthermore, configuration specific to Splunk
+Observability Cloud MUST be prefixed with `SPLUNK_OBSERVABILITY_` and to Splunk
+Enterprise or Splunk Cloud MUST be prefixed with `SPLUNK_PLATFORM_`. If a
+Splunk-specific configuration variable is declared as stable in the GDI
+specification and later the OpenTelemetry specification declares a similar
+variable as stable, the GDI specification MUST adopt the OpenTelemetry
+configuration variable and SHOULD mark the GDI specification configuration
+variable as deprecated by the next minor release. In addition to defining
+Splunk-specification configuration variables, the GDI specification MAY require
+specific OpenTelemetry configuration variables be supported. If it does, the
+GDI specification MAY require certain values be supported including a specific
+default value.
 
 Whenever a configuration variable changes its name, a stable GDI repository
 (version >= 1.0) MUST support both old and new names until the next major
@@ -69,11 +70,11 @@ chooses what to install limiting the configuration options.
 It MUST be possible to configure a Data Collector instance using the following
 environment variables:
 
-| Name (default value)     | Description                                        |
-| :-------------------:    | :-----------------------------------:              |
-| `SPLUNK_ACCESS_TOKEN` () | Access token added to exported data. [1][2]        |
-| `SPLUNK_CONFIG` ()       | Configuration file to use. [1]                     |
-| `SPLUNK_REALM` ()        | Realm configured for the exporter endpoint. [1][2] |
+| Name (default value)          | Description                                        |
+| :-------------------:         | :-----------------------------------:              |
+| `SPLUNK_ACCESS_TOKEN` ()      | Access token added to exported data. [1][2]        |
+| `SPLUNK_CONFIG` ()            | Configuration file to use. [1]                     |
+| `SPLUNK_REALM` ()             | Realm configured for the exporter endpoint. [1][2] |
 
 - [1]: Either `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM` MUST be defined or
   `SPLUNK_CONFIG` MUST be defined. If `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM`
@@ -88,6 +89,64 @@ environment variables:
   [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
   If `SPLUNK_CONFIG` is defined then these options are not required but MAY be
   defined.
+
+### Kubernetes Package Management Solutions
+
+While Kubernetes supports container technology that can be configured using
+environment variables, package management solutions such as Helm charts and
+Operators require YAML-based configuration. As a result, Kubernetes package
+management solutions MUST support the YAML configuration options specified
+below.
+
+> Any option description listed as REQUIRED means a value for the option MUST
+> be specified.
+
+- `clusterName` ()             : [REQUIRED] Name of the cluster.
+- `cloudProvider` ()           : Where Kubernetes is deployed.
+- `distribution` ()            : Which distribution of Kubernetes is deployed.
+- `environment` ()             : Name of the environment; if not defined then skipped.
+- `agent`                      : Deployed as a DaemonSet.
+  - `enabled` (`true`)         : Whether agent is deployed.
+  - `config` ()                : Updates configuration. Non-list options merged, list options override.
+- `gateway`                    : Deployed as a clustered Service and receives data from agent.
+  - `enabled` (`false`)        : Whether gateway is deployed.
+  - `config` ()                : Updates configuration. Non-list options merged, list options override.
+- `clusterReceiver`            : Deployed as a single replica deployment and collects Kubernetes API cluster and event telemetry.
+  - `enabled` (`true`)         : Whether k8sClusteReceiver is deployed. Ignored if `metricsEnabled` is `false`.
+  - `config` ()                : Updates configuration. Non-list options merged, list options override.
+
+In addition, at least one of the below configuration groups,
+`splunkObservability` or `splunkPlatform`, MUST be specified.
+
+> Any option description listed as REQUIRED means a value for the option MUST
+> be specified in that section. Both `accessToken` and `token` values are
+> stored as Kubernetes secrets. The secret key names are specified after this
+> section. If Kubernetes secret keys are specified they will override the
+> values specified below. In short, `accessToken` and `token` are required only
+> if not specified in Kubernetes secrets.
+
+- `splunkObservability`
+  - `accessToken` ()           : [REQUIRED] Access token added to exported data.
+  - `realm` ()                 : [REQUIRED] Realm configured for the exporter endpoint.
+  - `logsEnabled` (`false`)    : Whether logs are collected and sent.
+  - `metricsEnabled` (`true`)  : Whether metrics are collected, received, and sent.
+  - `tracesEnabled` (`true`)   : Whether traces are received and sent.
+- `splunkPlatform`
+  - `token` ()                 : [REQUIRED] Token added to exported data.
+  - `endpoint` ()              : [REQUIRED] Where to send exported data.
+  - `logsEnabled` (`true`)     : Whether logs are collected and sent.
+  - `metricsEnabled` (`true`)  : Whether metrics are collected, received, and sent.
+
+Finally, the below Kubernetes secret configuration options MUST be
+supported:
+
+- Splunk Observability
+  - `splunk_observability_access_token`
+- Splunk Platform
+  - `splunk_platform_hec_token`
+  - `splunk_platform_hec_client_cert`
+  - `splunk_platform_hec_client_key`
+  - `splunk_platform_hec_ca_file`
 
 ## Instrumentation Libraries
 
