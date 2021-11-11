@@ -158,12 +158,14 @@ For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
 instance using the following environment variables:
 
-| Name (default value)                            | Description                                                    |
-| :------------------------------------:          | :--------------------------------------------------------:     |
-| `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                       |
-| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                              |
-| `SPLUNK_REALM` (`none`)                         | Which realm to send exported data. [2]                         |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [3] |
+| Name (default value)                            | Description                                                                     |
+| :------------------------------------:          | :--------------------------------------------------------:                      |
+| `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                                        |
+| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                                               |
+| `SPLUNK_PROFILER_ENABLED` (`false`)             | Whether profiling is enabled. [2]                                               |
+| `SPLUNK_PROFILER_LOGS_ENDPOINT` ()              | Where profiling data is sent. By default `OTLP_EXPORTER_OTLP_ENDPOINT` is used. |
+| `SPLUNK_REALM` (`none`)                         | Which realm to send exported data. [3]                                          |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [4]                  |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
@@ -174,15 +176,20 @@ instance using the following environment variables:
   [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
   This environment variable MUST work for `otlp` and `jaeger-thrift-splunk`
   exporters.
-- [2]: By default, instrumentation libraries are configured to send to a local
+- [2]: If stitching of RUM spans and APM spans is desired then this parameter
+  MUST be set to `true`.
+- [3]: By default, instrumentation libraries are configured to send to a local
   collector (see `OTEL_TRACES_EXPORTER` below). If `SPLUNK_REALM` is set to
   anything besides `none` then the `OTEL_EXPORTER_*_ENDPOINT` is set to an
   [endpoint](https://dev.splunk.com/observability/docs/realms_in_endpoints/)
   based on the defined realm. If both `SPLUNK_REALM` and
   `OTEL_EXPORTER_*_ENDPOINT` are set then `OTEL_EXPORTER_*_ENDPOINT` takes
   precedence.
-- [3]: If stitching of RUM spans and APM spans is desired then this parameter
-  MUST be set to `true`.
+- [4]: The instrumentation library SHOULD NOT allow changing the setting at
+  runtime, and the initial setting SHOULD be used for the entire lifespan of
+  the application run. An instrumentation library whose profiling capability is
+  deactivated MUST NOT introduce additional profiling-based overhead. It also
+  MUST NOT emit profiling-based data.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment
