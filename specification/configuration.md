@@ -137,7 +137,7 @@ In addition, at least one of the below configuration groups,
   - `token` ()                 : [REQUIRED] Token added to exported data.
   - `endpoint` ()              : [REQUIRED] Where to send exported data.
   - `logsEnabled` (`true`)     : Whether logs are collected and sent.
-  - `metricsEnabled` (`true`)  : Whether metrics are collected, received, and sent.
+  - `metricsEnabled` (`false`) : Whether metrics are collected, received, and sent.
 
 Finally, the below Kubernetes secret configuration options MUST be
 supported:
