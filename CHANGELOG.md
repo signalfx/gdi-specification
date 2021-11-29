@@ -2,8 +2,6 @@
 
 ## [Unreleased]
 
-## [1.2.1] - 2021-11-29
-
 ### General
 
 #### Bug fixes
