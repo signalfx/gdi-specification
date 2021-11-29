@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### General
+
+#### Bug fixes
+
+- Replaced the example for Java system properties in `specification/configuration.md`.
+
 ## [1.2.0] - 2021-11-15
 
 ### General
