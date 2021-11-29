@@ -212,7 +212,7 @@ In addition to environment variables, other ways of defining configuration also 
   Properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html):
   These properties MUST match the environment variables converting to lower
   case and replacing underscores with hyphens or periods. For example:
-  system property `splunk.trace.response.header.enabled` is equivalent to environment
+  system property `splunk.trace-response-header.enabled` is equivalent to environment
   variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
 
 ### Real User Monitoring Libraries
