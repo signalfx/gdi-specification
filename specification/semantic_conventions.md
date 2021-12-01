@@ -1,6 +1,6 @@
 # Semantic Conventions
 
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Mixed](../README.md#versioning-and-status-of-the-specification)
 
 This document defines the OpenTelemetry and Splunk specific standard attributes
 for Splunk distributions of OpenTelemetry instrumentation.
@@ -8,6 +8,8 @@ for Splunk distributions of OpenTelemetry instrumentation.
 Note: No semantic conventions for data collection exist at this time.
 
 ## OpenTelemetry Resource Attributes
+
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 **Description:** Required and recommended OpenTelemetry [resource semantic
 conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk).
@@ -29,6 +31,8 @@ not use the OpenTelemetry Resource.
 
 ## Splunk Resource Attributes
 
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+
 **Description:** Set of attributes used to uniquely identify a Splunk distro
 version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 
@@ -41,6 +45,8 @@ Note: this section does not apply to Real User Monitoring libraries, as they do
 not use the OpenTelemetry Resource.
 
 ## Real User Monitoring Spans and Attributes
+
+**Status**: [Feature-freeze](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) libraries MUST set the `service.name` resource
 attribute to the value of the `applicationName` configuration property. This is
@@ -67,7 +73,7 @@ Mobile RUM libraries (iOS, Android) MUST add device and system information to al
 | Name                | Type   | Description        |
 | ----                | ----   | -----------        |
 | `device.model.name` | string | Name of the device |
-| `os.type`           | string | `iOS` or `Android` |
+| `os.name`           | string | `iOS` or `Android` |
 | `os.version`        | string | Version of the OS  |
 
 Web RUM library MUST add the following attributes to all spans:
