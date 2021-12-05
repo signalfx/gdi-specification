@@ -10,8 +10,8 @@ instrumentation libraries that contain profiling features.
 ### Call Stack Sampling
 
 An instrumentation library that has profiling capabilities MUST be able to
-sample call stacks at a fixed interval. This default interval MUST default to 1
-second.
+sample call stacks at a fixed interval. This default interval MUST default to 10
+seconds.
 
 When a language runtime supports threading, stacks MUST be sampled across all
 process threads. The samples for all threads SHOULD be taken instantaneously
