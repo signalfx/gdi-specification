@@ -53,7 +53,8 @@ This association SHOULD happen as close to the sampling point as feasible,
 but MAY occur later in a processing pipeline.
 
 After the association has been made, the `TraceId` and `SpanId` fields of the 
-LogRecord MUST be populated (see below).
+[LogRecord](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L113)
+MUST be populated (see [below](#logrecord-fields)).
 
 ### Call Stack Ingest
 
@@ -64,15 +65,15 @@ By default, the instrumentation library MUST send logs to the value in the `OTEL
 variable. If this variable is not set, then the instrumentation library must default back to the gRPC/OTLP
 default (`https://localhost:4317`).
 
-The instrumentation library must allow the destination for profiling logs to be overridden with 
+The instrumentation library MUST allow the destination for profiling logs to be overridden with 
 the environment variable `SPLUNK_PROFILER_LOGS_ENDPOINT`.
 
 Instrumentation libraries SHOULD reuse persistent gRPC/OTLP connections from other signals (traces, metrics).
 
 ## ResourceLogs
 
-`ResourceLogs` is the upstream protobuf data type. It MUST be populated with the attributes
-from the OpenTelemetry resource.
+`ResourceLogs` is the [upstream protobuf data type](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L47). 
+It MUST be populated with the attributes from the OpenTelemetry resource.
 
 ### InstrumentationLibraryLogs
 
@@ -138,6 +139,8 @@ line is:
 
 ```
         at <namespace>.<function>(<file>:<lineno>)
+        at <namespace>.<function>(<file>:<lineno> <col>)
+        at <namespace>.<function>(<file>:<lineno>:<lineno> <col>:<col>)
 ```
 
 * OPTIONAL leading whitespace
