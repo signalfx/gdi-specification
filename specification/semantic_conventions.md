@@ -46,7 +46,7 @@ not use the OpenTelemetry Resource.
 
 ## Real User Monitoring Spans and Attributes
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Feature-freeze](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) libraries MUST set the `service.name` resource
 attribute to the value of the `applicationName` configuration property. This is
@@ -73,7 +73,7 @@ Mobile RUM libraries (iOS, Android) MUST add device and system information to al
 | Name                | Type   | Description        |
 | ----                | ----   | -----------        |
 | `device.model.name` | string | Name of the device |
-| `os.type`           | string | `iOS` or `Android` |
+| `os.name`           | string | `iOS` or `Android` |
 | `os.version`        | string | Version of the OS  |
 
 Web RUM library MUST add the following attributes to all spans:
