@@ -26,7 +26,7 @@ data.
 
 An instrumentation library that has profiling capabilities MUST be able to sample 
 call stacks at a fixed interval. This interval MUST be user-configurable at startup 
-via the `SPLUNK_PROFILER_CALL_STACK_PERIOD` environment variable. When not explicitly
+via the `SPLUNK_PROFILER_CALL_STACK_INTERVAL` environment variable. When not explicitly
 configured, the profiler SHALL use default period of 1 second.
 
 When a language runtime supports threading, stacks MUST be sampled across
