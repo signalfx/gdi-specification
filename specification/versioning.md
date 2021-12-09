@@ -59,18 +59,21 @@ repository MAY go stable even if components contained within the packaging
 are not stable.
 
 Once a component is marked as stable, the following rules MUST apply
-until the end of that component’s existence.
+until the end of that component’s existence:
 
-### Configuration Stability
-
-Backward-incompatible changes to configuration, which includes environment
-variables and system properties, MUST NOT be made unless the `MAJOR` version
-number is incremented. All existing configuration parameters MUST continue to
-function against all future `MINOR` versions of the same `MAJOR` version.
-
-### Component Stability
-
-Stable components MUST be deprecated for at least six months before being
-removed. Deprecated components MUST be removed as part of a `MAJOR` version
-number increase but MAY remain deprecated across multple `MAJOR` versions.
-Deprecated components MUST continue to function until removed.
+- **Configuration Stability**: Backward-incompatible changes to configuration,
+  which includes environment variables and system properties, MUST NOT be made
+  unless the `MAJOR` version number is incremented. All existing configuration
+  parameters MUST continue to function against all future `MINOR` versions of
+  the same `MAJOR` version.
+- **Component Stability**: Stable components MUST be deprecated for at least
+  six months before being removed. Deprecated components MUST be removed as
+  part of a `MAJOR` version number increase but MAY remain deprecated across
+  multple `MAJOR` versions. Deprecated components MUST continue to function
+  until removed.
+- **Support**: A `MAJOR` versions MUST be supported for one year following a
+  new `MAJOR` version release. Support MUST includes security and critical bug
+  fixes and SHOULD NOT include new features or enhancements. Security fixes
+  MUST be provided as the latest `PATCH` version for the latest `MINOR` version
+  of the latest `MAJOR` and SHOULD NOT be provided for previous `PATCH` or
+  `MINOR` releases.
