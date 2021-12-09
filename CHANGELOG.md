@@ -4,6 +4,7 @@
 
 ### General
 
+- Add support information into versioning specification
 - Refactor profiling into existing specification structure
 
 #### Bug fixes
