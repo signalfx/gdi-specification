@@ -108,7 +108,7 @@ instances. For each `LogRecord` instance:
 - `source.event.period` MUST contain the sampling period for call stack sampler
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 
-### LogRecord Fields
+### `LogRecord` Message Fields
 
 - [Name](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-name)
   MUST be set to the constant value `otel.profiling`.
