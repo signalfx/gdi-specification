@@ -158,14 +158,15 @@ For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
 instance using the following environment variables:
 
-| Name (default value)                            | Description                                                                     |
-| :------------------------------------:          | :--------------------------------------------------------:                      |
-| `SPLUNK_ACCESS_TOKEN` ()                        | Access token added to exported data. [1]                                        |
-| `SPLUNK_METRICS_ENDPOINT` ()                    | Endpoint for metrics data ingest.                                               |
-| `SPLUNK_PROFILER_ENABLED` (`false`)             | Whether profiling is enabled. [2]                                               |
-| `SPLUNK_PROFILER_LOGS_ENDPOINT` ()              | Where profiling data is sent. By default `OTLP_EXPORTER_OTLP_ENDPOINT` is used. |
-| `SPLUNK_REALM` (`none`)                         | Which realm to send exported data. [3]                                          |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` (`true`) | Whether `Server-Timing` header is added to HTTP responses. [4]                  |
+| Name                                   | Default | Description                                                     |
+|----------------------------------------|---------|-----------------------------------------------------------------|
+| `SPLUNK_ACCESS_TOKEN`                  | none    | Access token added to exported data. [1]                        |
+| `SPLUNK_METRICS_ENDPOINT`              | none    | Endpoint for metrics data ingest.                               |
+| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10s     | Interval at which call stacks are sampled                       |
+| `SPLUNK_PROFILER_ENABLED`              | false   | Whether profiling is enabled. [2]                               |
+| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTLP_EXPORTER_OTLP_ENDPOINT`  |
+| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                          |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` |  true   | Whether `Server-Timing` header is added to HTTP responses. [4]  |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
