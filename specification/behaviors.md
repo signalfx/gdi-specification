@@ -42,7 +42,7 @@ processing pipeline.
 
 After the association has been made, the `TraceId` and `SpanId` fields of the
 [LogRecord message](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto)
-MUST be populated (see [here](semantic_conventions.md#logrecord-fields)).
+MUST be populated (see [here](semantic_conventions.md#logrecord-message-fields)).
 
 ### Call Stack Ingest
 
