@@ -4,7 +4,7 @@
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
-This document describes the specific behavior and conventions for Splunk
+This section describes the behavior for Splunk
 instrumentation libraries that contain profiling features.
 
 ### Call Stack Sampling
