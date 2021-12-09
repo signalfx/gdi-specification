@@ -83,7 +83,7 @@ Web RUM library MUST add the following attributes to all spans:
 | `location.href`          | string | Value of [`location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href) at the moment of creating the span. |
 | `splunk.script_instance` | string | A 64bit identifier, unique to every instance of the `SplunkRum` library.                                                       |
 
-## Profiling ResourceLogs
+## Profiling `ResourceLogs` Message
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
