@@ -1,5 +1,7 @@
 # Behaviors
 
+This document describes the specific behaviors for Splunk GDI Components.
+
 ## Profiling
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
