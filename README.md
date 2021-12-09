@@ -11,7 +11,7 @@ expectations. It is applicable to GDI repositories.
 
 The following specification sections are currently in scope:
 
-- [Beahviors](specification/behaviors.md)
+- [Behaviors](specification/behaviors.md)
 - [Configuration](specification/configuration.md)
 - [Semantic Conventions](specification/semantic_conventions.md)
 - [Repository](specification/repository.md)
