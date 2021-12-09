@@ -4,13 +4,13 @@
 
 ### General
 
-- Add support information into versioning specification
-- Refactor profiling into existing specification structure
+- Add support information into versioning specification.
+- Refactor profiling into existing specification structure.
 
 #### Bug fixes
 
 - Replaced the example for Java system properties in `specification/configuration.md`.
-- Increase profiling rate from 1s to 10s
+- Increase profiling rate from 1s to 10s.
 
 ## [1.2.0] - 2021-11-15
 
