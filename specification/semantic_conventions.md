@@ -99,7 +99,7 @@ For each `InstrumentationLibraryLogs` instance:
 - `name` - MUST be set to `otel.profiling`
 - `version` - MUST be set to `0.1.0`
 
-### LogRecord Common Attributes
+### `LogRecord` Messsage Common Attributes
 
 Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord`
 instances. For each `LogRecord` instance:
