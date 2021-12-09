@@ -91,7 +91,7 @@ Web RUM library MUST add the following attributes to all spans:
 type](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L47).
 It MUST be populated with the attributes from the OpenTelemetry resource.
 
-### InstrumentationLibraryLogs
+### `InstrumentationLibraryLogs` Message
 
 Each `ResourceLogs` instance has an instance of `InstrumenationLibraryLogs`.
 For each `InstrumentationLibraryLogs` instance:
