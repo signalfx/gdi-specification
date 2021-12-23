@@ -105,8 +105,9 @@ Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord`
 instances. For each `LogRecord` instance:
 
 - `com.splunk.sourcetype` MUST be set to the value `otel.profiling`
-- `source.event.period` MUST contain the sampling period for call stack sampler
+- `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
+- `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
 
 ### `LogRecord` Message Fields
 
