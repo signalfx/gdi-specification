@@ -144,6 +144,10 @@ The metadata line consists of several space separated fields:
 - `nid=0x<n>` where `<n>` is the lowercase hexadecimal representation of the native thread id. 0 if not available.
 - The remainder of the line is a free-form text field that SHOULD indicate the status of the thread at the time the stack was captured (such as "running" or "waiting" )
 
+If none of the fields in the thread metadata line are known, then the line MAY be 
+blank/empty. That is, an empty thread metadata line indicates that no additional thread
+metadata is available for the stack trace.
+
 Following the metadata line is a line containing the implementation specific
 thread state. For example, java may provide:
 
