@@ -277,7 +277,11 @@ Other requirements:
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 By default, serverless instrumentation libraries MUST send data directly
-to Splunk Observability Cloud (direct ingest).
+to Splunk Observability Cloud (direct ingest). Therefore, following applies to exporter configuration:
+- `OTEL_TRACES_EXPORTER`
+  - MUST default to `otlp` over HTTP, as currently supported by the ingest
+  - MAY offer `jaeger-thrift-splunk` 
+Serverless distribution MAY omit `jaeger-thrift-splunk` exporter due to package size optimisation. 
 
 Apart from standard set of configuration properties for instrumentation
 libraries based on OpenTelemetry, serverless MUST honour the following:
