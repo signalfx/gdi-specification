@@ -171,7 +171,7 @@ The format of each stack trace line is:
 
 - OPTIONAL leading whitespace (tabs or spaces)
 - OPTIONAL "at "
-- `<function>` - Fully qualified name, i.e. containing the namespace, module and/or class name if applicable, of the function or method being invoked.
+- `<function>` - REQUIRED. Fully qualified name, i.e. containing the namespace, module and/or class name if applicable, of the function or method being invoked.
 - literal `(`
 - `<file>` - REQUIRED. The name of the source code file (including filename extension). If the function being
   executed is OS native, an implementation-specific indication SHOULD be used. If the source module
