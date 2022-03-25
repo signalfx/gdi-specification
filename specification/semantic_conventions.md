@@ -108,6 +108,8 @@ instances. For each `LogRecord` instance:
 - `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
+- `com.splunk.profiling.data.type` MUST be either `allocation` or `profiling`
+- `com.splunk.profiling.data.format` MUST be either `text` or `pprof-gzip-base64`
 
 ### `LogRecord` Message Fields
 
@@ -118,9 +120,9 @@ instances. For each `LogRecord` instance:
 - [SpanId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-spanid)
   MUST be populated when a call stack has been sampled within a span scope.
 - [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
-  MUST be populated with the line-terminated call stack (see below)
+  MUST be populated with appropriate payload for specified data type and format.
 
-#### Call Stack Format
+#### Call Stack Format for `text` Data Format
 
 The call stack is a series of lines separated by newlines (`\n`).
 The first line of the call stack is a REQUIRED thread metadata line.
@@ -181,3 +183,27 @@ provides a range of lines, the second `lineno` can be provided after a colon `:`
 - ` <col>` or ` <col>:<col>` - OPTIONAL - If the runtime provides a column or column range, it MAY be provided
 after the `lineno`, separated by a space.
 - literal `)`
+
+#### PPROF Profile.proto Data Format
+
+`Profile.proto` is a data representation for profiling data defined at https://github.com/google/pprof/tree/master/proto.
+Log message will contain a gzip-compressed, base64-encoded protocol buffer conforming to `profile.proto`. Each message
+contains either `allocation` or `profiling` samples determined by the data type specified for the log record.
+
+For each `allocation` and `profiling` sample:
+- label `source.event.period` of type `long` MUST contain the sampling period if this sample represents a periodic event
+- label `source.event.name` of type `string` OPTIONALLY can contain the name of the event that triggered the sampling
+- label `source.event.time` of type `long` MUST be set to the time when the sample was taken
+- label `trace_id` of type `string` MUST be set when sample was taken within a span scope
+- label `span_id` of type `string` MUST be set when sample was taken within a span scope
+- label `thread.id` of type `long` OPTIONALLY can be set to the thread identifier used by runtime environment
+- label `thread.name` of type `string` OPTIONALLY can be set to the thread name used by runtime environment
+- label `thread.native.id` of type `long` MUST be set to the thread identifier used by the operating system
+
+For each `allocation` sample:
+- value of type `long` must be set to allocation size in bytes
+
+For each `profiling` sample:
+- label `thread.status` of type `string` OPTIONALLY can be set to describe the state of the thread
+
+Missing file name and function MUST be reported as `unknown`. Missing line number MUST be reported as `-1`.
