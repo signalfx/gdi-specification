@@ -191,7 +191,6 @@ Log message will contain a gzip-compressed, base64-encoded protocol buffer confo
 contains either `allocation` or `profiling` samples determined by the data type specified for the log record.
 
 For each `allocation` and `profiling` sample:
-- label `source.event.period` of type `long` MUST contain the sampling period if this sample represents a periodic event
 - label `source.event.name` of type `string` OPTIONALLY can contain the name of the event that triggered the sampling
 - label `source.event.time` of type `long` MUST be set to the time when the sample was taken
 - label `trace_id` of type `string` MUST be set when sample was taken within a span scope
@@ -204,6 +203,7 @@ For each `allocation` sample:
 - value of type `long` must be set to allocation size in bytes
 
 For each `profiling` sample:
+- label `source.event.period` of type `long` MUST contain the sampling period if this sample represents a periodic event
 - label `thread.status` of type `string` OPTIONALLY can be set to describe the state of the thread
 
 Missing file name and function MUST be reported as `unknown`. Missing line number MUST be reported as `-1`.
