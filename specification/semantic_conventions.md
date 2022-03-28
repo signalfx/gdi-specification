@@ -111,8 +111,6 @@ instances. For each `LogRecord` instance:
 
 ### `LogRecord` Message Fields
 
-- [Name](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-name)
-  MUST be set to the constant value `otel.profiling`.
 - [Time](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-timestamp)
   MUST be set to the time that the call stack was sampled.
 - [TraceId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-traceid)
