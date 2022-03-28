@@ -108,7 +108,7 @@ instances. For each `LogRecord` instance:
 - `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
-- `com.splunk.profiling.data.type` MUST be either `allocation` or `profiling`
+- `com.splunk.profiling.data.type` MUST be either `allocation` or `cpu`
 - `com.splunk.profiling.data.format` MUST be either `text` or `pprof-gzip-base64`
 
 ### `LogRecord` Message Fields
@@ -188,9 +188,9 @@ after the `lineno`, separated by a space.
 
 `Profile.proto` is a data representation for profiling data defined at https://github.com/google/pprof/tree/master/proto.
 Log message will contain a gzip-compressed, base64-encoded protocol buffer conforming to `profile.proto`. Each message
-contains either `allocation` or `profiling` samples determined by the data type specified for the log record.
+contains either `allocation` or `cpu` samples determined by the data type specified for the log record.
 
-For each `allocation` and `profiling` sample:
+For each `allocation` and `cpu` sample:
 - label `source.event.name` of type `string` OPTIONALLY can contain the name of the event that triggered the sampling
 - label `source.event.time` of type `long` MUST be set to the time when the sample was taken
 - label `trace_id` of type `string` MUST be set when sample was taken within a span scope
@@ -202,7 +202,7 @@ For each `allocation` and `profiling` sample:
 For each `allocation` sample:
 - value of type `long` must be set to allocation size in bytes
 
-For each `profiling` sample:
+For each `cpu` sample:
 - label `source.event.period` of type `long` MUST contain the sampling period if this sample represents a periodic event
 - label `thread.status` of type `string` OPTIONALLY can be set to describe the state of the thread
 
