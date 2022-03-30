@@ -204,6 +204,6 @@ For each `allocation` sample:
 
 For each `cpu` sample:
 - label `source.event.period` of type `long` MUST contain the sampling period if this sample represents a periodic event
-- label `thread.status` of type `string` OPTIONALLY can be set to describe the state of the thread
+- label `thread.state` of type `string` OPTIONALLY can be set to describe the state of the thread
 
 Missing file name and function MUST be reported as `unknown`. Missing line number MUST be reported as `-1`.
