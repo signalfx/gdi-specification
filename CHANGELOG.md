@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2022-04-01
+
 ### General
 
 - Add support information into versioning specification.
@@ -11,6 +13,25 @@
 
 - Replaced the example for Java system properties in `specification/configuration.md`.
 - Increase profiling rate from 1s to 10s.
+
+### Configuration
+
+- Change the Kubernetes package management solutions configuration option
+  default for `metricsEnabled` to be `false`.
+- Add `SPLUNK_REALM` to required environment variables that need to be
+  supported by instrumentation libraries.
+- Add `SPLUNK_PROFILER*` environment variables
+  (`SPLUNK_PROFILER_CALL_STACK_INTERVAL`, `SPLUNK_PROFILER_ENABLED`,
+  `SPLUNK_PROFILER_LOGS_ENDPOINT`) to the required configuration for
+  instrumentation libraries.
+- Add `OTEL_TRACES_EXPORTER` to required environment variables that need to be
+  supported by serverless projects.
+
+### Semantic Conventions
+
+- Correct stability guarantee of the RUM section as experimental.
+- Use `os.name` instead of `os.type` for mobile RUM libraries.
+- Add experimental profiling semantic conventions.
 
 ## [1.2.0] - 2021-11-15
 
@@ -122,7 +143,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.3.0
 [1.2.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.2.0
 [1.1.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.1.0
 [1.0.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.0.0
