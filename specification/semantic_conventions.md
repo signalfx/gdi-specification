@@ -186,7 +186,8 @@ after the `lineno`, separated by a space.
 
 #### PPROF Profile.proto Data Format
 
-`Profile.proto` is a data representation for profiling data defined at https://github.com/google/pprof/tree/master/proto.
+[`Profile.proto`](https://github.com/google/pprof/tree/master/proto) is a data representation for profiling data. It is
+independent of the type of data being collected and the sampling process used to collect that data.
 Log message will contain a gzip-compressed, base64-encoded protocol buffer conforming to `profile.proto`. Each message
 contains either `allocation` or `cpu` samples determined by the data type specified for the log record.
 
