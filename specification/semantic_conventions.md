@@ -108,8 +108,8 @@ instances. For each `LogRecord` instance:
 - `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
-- `com.splunk.profiling.data.type` MUST be either `allocation` or `cpu`
-- `com.splunk.profiling.data.format` MUST be either `text` or `pprof-gzip-base64`
+- `profiling.data.type` MUST be either `allocation` or `cpu`
+- `profiling.data.format` MUST be either `text` or `pprof-gzip-base64`
 
 ### `LogRecord` Message Fields
 
@@ -188,7 +188,7 @@ after the `lineno`, separated by a space.
 
 [`Profile.proto`](https://github.com/google/pprof/tree/master/proto) is a data representation for profiling data. It is
 independent of the type of data being collected and the sampling process used to collect that data.
-Log message will contain a gzip-compressed, base64-encoded protocol buffer conforming to `profile.proto`. Each message
+The log message will contain a gzip-compressed, base64-encoded protocol buffer conforming to `profile.proto`. Each message
 contains either `allocation` or `cpu` samples determined by the data type specified for the log record.
 
 For each `allocation` and `cpu` sample:
@@ -196,9 +196,9 @@ For each `allocation` and `cpu` sample:
 - label `source.event.time` of type `long` MUST be set to the time when the sample was taken
 - label `trace_id` of type `string` MUST be set when sample was taken within a span scope
 - label `span_id` of type `string` MUST be set when sample was taken within a span scope
-- label `thread.id` of type `long` OPTIONALLY can be set to the thread identifier used by runtime environment
+- label `thread.id` of type `long` OPTIONALLY can be set to the thread identifier used by the runtime environment
 - label `thread.name` of type `string` OPTIONALLY can be set to the thread name used by runtime environment
-- label `thread.native.id` of type `long` MUST be set to the thread identifier used by the operating system
+- label `thread.os.id` of type `long` MUST be set to the thread identifier used by the operating system
 
 For each `allocation` sample:
 - value of type `long` must be set to allocation size in bytes
