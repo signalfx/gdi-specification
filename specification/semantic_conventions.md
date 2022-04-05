@@ -108,8 +108,8 @@ instances. For each `LogRecord` instance:
 - `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
-- `profiling.data.type` MUST be either `allocation` or `cpu`
-- `profiling.data.format` MUST be either `text` or `pprof-gzip-base64`
+- `profiling.data.type` MUST be set to either `allocation` or `cpu`
+- `profiling.data.format` MUST be set to either `text` or `pprof-gzip-base64`
 
 ### `LogRecord` Message Fields
 
