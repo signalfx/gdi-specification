@@ -190,21 +190,23 @@ after the `lineno`, separated by a space.
 independent of the type of data being collected and the sampling process used to collect that data.
 The log message will contain a gzip-compressed, base64-encoded protocol buffer conforming to `profile.proto`. Each message
 contains either `allocation` or `cpu` samples determined by the data type specified for the log record.
+Data types `int64` and `string` are protocol buffer types, consult
+[protocol buffers documentation](https://developers.google.com/protocol-buffers/docs/proto#scalar).
 
 For each `allocation` and `cpu` sample:
 - label `source.event.name` of type `string` OPTIONALLY can contain the name of the event that triggered the sampling
-- label `source.event.time` of type `long` MUST be set to the time when the sample was taken
+- label `source.event.time` of type `int64` MUST be set to the unix time in millis when the sample was taken
 - label `trace_id` of type `string` MUST be set when sample was taken within a span scope
 - label `span_id` of type `string` MUST be set when sample was taken within a span scope
-- label `thread.id` of type `long` OPTIONALLY can be set to the thread identifier used by the runtime environment
+- label `thread.id` of type `int64` OPTIONALLY can be set to the thread identifier used by the runtime environment
 - label `thread.name` of type `string` OPTIONALLY can be set to the thread name used by runtime environment
-- label `thread.os.id` of type `long` MUST be set to the thread identifier used by the operating system
+- label `thread.os.id` of type `int64` MUST be set to the thread identifier used by the operating system
 
 For each `allocation` sample:
-- value of type `long` must be set to allocation size in bytes
+- value of type `int64` must be set to allocation size in bytes
 
 For each `cpu` sample:
-- label `source.event.period` of type `long` MUST contain the sampling period if this sample represents a periodic event
+- label `source.event.period` of type `int64` MUST contain the sampling period if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe the state of the thread
 
 Missing file name and function MUST be reported as `unknown`. Missing line number MUST be reported as `-1`.
