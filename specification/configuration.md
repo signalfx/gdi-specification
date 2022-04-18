@@ -253,7 +253,7 @@ properties:
 | `beaconEndpoint` ()                    | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                         |
 | `rumAccessToken` ()                    | RUM authentication token. [1]                                                                                                                                                                               |
 | `applicationName` ()                   | Instrumented application name. [1]                                                                                                                                                                          |
-| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes) that will be added to every span produced by the RUM library. |
+| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
 | `deploymentEnvironment` ()             | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                               |
 
 - [1] Application name, authentication token and either realm or the beacon URL
