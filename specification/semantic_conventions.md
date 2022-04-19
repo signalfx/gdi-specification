@@ -199,8 +199,8 @@ For each `allocation` and `cpu` sample:
 - label `trace_id` of type `string` MUST be set when sample was taken within a span scope
 - label `span_id` of type `string` MUST be set when sample was taken within a span scope
 - label `thread.id` of type `int64` OPTIONALLY can be set to the thread identifier used by the runtime environment
-- label `thread.name` of type `string` OPTIONALLY can be set to the thread name used by runtime environment
-- label `thread.os.id` of type `int64` MUST be set to the thread identifier used by the operating system
+- label `thread.name` of type `string` OPTIONALLY can be set to the thread name used by the runtime environment
+- label `thread.os.id` of type `int64` OPTIONALLY can be set to the thread identifier used by the operating system
 
 For each `allocation` sample:
 - value of type `int64` must be set to allocation size in bytes
