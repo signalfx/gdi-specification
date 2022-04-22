@@ -7,6 +7,7 @@
 ### General
 
 - Add support information into versioning specification.
+- Add behaviors specification.
 - Refactor profiling into existing specification structure.
 
 #### Bug fixes
