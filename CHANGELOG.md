@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.3.0] - 2022-04-01
+## [1.3.0] - 2022-04-21
 
 ### General
 
@@ -17,7 +17,7 @@
 ### Configuration
 
 - Change the Kubernetes package management solutions configuration option
-  default for `metricsEnabled` to be `false`.
+  default for `splunkPlatform.metricsEnabled` to be `false`.
 - Add `SPLUNK_REALM` to required environment variables that need to be
   supported by instrumentation libraries.
 - Add `SPLUNK_PROFILER*` environment variables
@@ -25,7 +25,7 @@
   `SPLUNK_PROFILER_LOGS_ENDPOINT`) to the required configuration for
   instrumentation libraries.
 - Add `OTEL_TRACES_EXPORTER` to required environment variables that need to be
-  supported by serverless projects.
+  supported by serverless instrumentation libraries.
 
 ### Semantic Conventions
 
