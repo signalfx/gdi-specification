@@ -110,6 +110,7 @@ instances. For each `LogRecord` instance:
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
 - `profiling.data.type` MUST be set to either `allocation` or `cpu`
 - `profiling.data.format` MUST be set to either `text` or `pprof-gzip-base64`
+- `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace
 
 ### `LogRecord` Message Fields
 
@@ -201,6 +202,7 @@ For each `allocation` and `cpu` sample:
 - label `thread.id` of type `int64` OPTIONALLY can be set to the thread identifier used by the runtime environment
 - label `thread.name` of type `string` OPTIONALLY can be set to the thread name used by the runtime environment
 - label `thread.os.id` of type `int64` OPTIONALLY can be set to the thread identifier used by the operating system
+- label `thread.stack.truncated` of type `string` and with value `true` MUST be set when this sample does not contain the full stack trace
 
 For each `allocation` sample:
 - value of type `int64` must be set to allocation size in bytes
