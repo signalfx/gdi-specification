@@ -17,8 +17,13 @@
 
 ### Configuration
 
+#### Breaking Changes
+
 - Change the Kubernetes package management solutions configuration option
   default for `splunkPlatform.metricsEnabled` to be `false`.
+
+#### Enhancements
+
 - Add `SPLUNK_REALM` to required environment variables that need to be
   supported by instrumentation libraries.
 - Add `SPLUNK_PROFILER*` environment variables
@@ -30,8 +35,16 @@
 
 ### Semantic Conventions
 
-- Correct stability guarantee of the RUM section as experimental.
+#### Breaking Changes
+
 - Use `os.name` instead of `os.type` for mobile RUM libraries.
+
+#### Bugfixes
+
+- Correct stability guarantee of the RUM section as experimental.
+
+#### Enhancements
+
 - Add experimental profiling semantic conventions.
 
 ## [1.2.0] - 2021-11-15
