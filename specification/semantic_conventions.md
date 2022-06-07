@@ -99,6 +99,8 @@ For each `InstrumentationLibraryLogs` instance:
 - `name` - MUST be set to `otel.profiling`
 - `version` - MUST be set to `0.1.0`
 
+The resource field in `ResourceLogs` MUST contain the [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk) attribute.
+
 ### `LogRecord` Messsage Common Attributes
 
 Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord`
@@ -126,8 +128,10 @@ instances. For each `LogRecord` instance:
 #### Call Stack Format for `text` Data Format
 
 The call stack is a series of lines separated by newlines (`\n`).
-The first line of the call stack is a REQUIRED thread metadata line.
-An example metadata is shown here:
+The first line of the call stack is a REQUIRED thread metadata line and the second line is a REQUIRED thread state line.
+The first two lines MAY be left empty, containing just the newlines.
+
+An example metadata line is shown here:
 
 ```
 "pool-1-thread-30" #49 prio=5 os_prio=31 cpu=0.12ms elapsed=8.50s tid=0x00007fde4d00c000 nid=0xba03 waiting on condition  [0x000070000ba40000]
@@ -149,11 +153,10 @@ If none of the fields in the thread metadata line are known, then the line MAY b
 blank/empty. That is, an empty thread metadata line indicates that no additional thread
 metadata is available for the stack trace.
 
-Following the metadata line is a line containing the implementation specific
-thread state. For example, java may provide:
+Following the metadata line is a line containing the implementation specific thread state. For example, Java may provide:
 
 ```
-   java.lang.Thread.State: TIMED_WAITING (sleeping)
+  java.lang.Thread.State: TIMED_WAITING (sleeping)
 ```
 
 The thread states for other runtimes are currently undefined.
@@ -163,26 +166,21 @@ the top of the stack provided first and the bottom of the stack provided last.
 The format of each stack trace line is:
 
 ```
-        at <namespace>.<function>(<file>:<lineno>)
-        at <namespace>.<function>(<file>:<lineno> <col>)
-        at <namespace>.<function>(<file>:<lineno>:<lineno> <col>:<col>)
+  at <function>(<file>:<lineno>)
+  at <function>(<file>:<lineno>:<col>)
 ```
 
-- OPTIONAL leading whitespace
+- OPTIONAL leading whitespace (tabs or spaces)
 - OPTIONAL "at "
-- `<namespace>` - REQUIRED. Fully qualified namespace of the function call. For object-oriented
-  languages this SHOULD be the module/package and class name. If the function being executed is globally 
-  scoped this MUST be set to `global`. If class is unknown, the value MUST be set to `unknown`.
-- `<function>` - Name of the function or class method being invoked
+- `<function>` - REQUIRED. Fully qualified name, i.e. containing the namespace, module and/or class name if applicable, of the function or method being invoked.
 - literal `(`
 - `<file>` - REQUIRED. The name of the source code file (including filename extension). If the function being
   executed is OS native, an implementation-specific indication SHOULD be used. If the source module
-  cannot be determined (eg. when symbols have been excluded), the value MUST be `unknown`
-- literal `:` - REQUIRED if `<line>` is known, OPTIONAL otherwise.
-- `<lineno>` or `<lineno>:<lineno>` - RECOMMENDED - The line of source code that corresponds with the function invocation point. If the runtime 
-provides a range of lines, the second `lineno` can be provided after a colon `:`.
-- ` <col>` or ` <col>:<col>` - OPTIONAL - If the runtime provides a column or column range, it MAY be provided
-after the `lineno`, separated by a space.
+  cannot be determined (eg. when symbols have been excluded), the value MUST be `unknown`. The file MAY contain additional `:` characters.
+- literal `:` - REQUIRED.
+- `<lineno>` - REQUIRED. The line of source code that corresponds with the function invocation point. 0 if the line number is unknown.
+- literal `:` - REQUIRED if `<col>` is known, OPTIONAL otherwise.
+- `<col>` - OPTIONAL - If the runtime provides a column, it MAY be provided after the `lineno`, separated by `:`.
 - literal `)`
 
 #### PPROF Profile.proto Data Format
