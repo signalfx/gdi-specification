@@ -99,7 +99,7 @@ For each `InstrumentationLibraryLogs` instance:
 - `name` - MUST be set to `otel.profiling`
 - `version` - MUST be set to `0.1.0`
 
-The resource field in `ResourceLogs` MUST contain [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk) attribute.
+The resource field in `ResourceLogs` MUST contain the [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk) attribute.
 
 ### `LogRecord` Messsage Common Attributes
 
@@ -176,7 +176,7 @@ The format of each stack trace line is:
 - `<file>` - REQUIRED. The name of the source code file (including filename extension). If the function being
   executed is OS native, an implementation-specific indication SHOULD be used. If the source module
   cannot be determined (eg. when symbols have been excluded), the value MUST be `unknown`. The file MAY contain additional `:` characters.
-- literal `:`
+- literal `:` - REQUIRED.
 - `<lineno>` - REQUIRED. The line of source code that corresponds with the function invocation point. 0 if the line number is unknown.
 - literal `:` - REQUIRED if `<col>` is known, OPTIONAL otherwise.
 - `<col>` - OPTIONAL - If the runtime provides a column, it MAY be provided after the `lineno`, separated by `:`.
