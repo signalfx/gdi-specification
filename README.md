@@ -7,7 +7,7 @@ expectations. It is applicable to GDI repositories.
 
 > Anything OpenTelemetry or anything that should be in OpenTelemetry will be
 > handled upstream. For information on OpenTelemetry, see the [OpenTelemetry
-> Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md)
+> Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification)
 
 The following specification sections are currently in scope:
 
