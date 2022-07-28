@@ -112,10 +112,10 @@ instances. For each `LogRecord` instance:
 
 #### `LogRecord` Message `text` Data Format Specific Attributes
 
-- `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event (only `text` format)
-- `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling (only `text` format)
+- `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
+- `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
-- `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace (only `text` format)
+- `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace
 
 ### `LogRecord` Message Fields
 
