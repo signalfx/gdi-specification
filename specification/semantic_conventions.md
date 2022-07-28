@@ -107,23 +107,29 @@ Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord`
 instances. For each `LogRecord` instance:
 
 - `com.splunk.sourcetype` MUST be set to the value `otel.profiling`
-- `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
-- `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
-- `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
 - `profiling.data.type` MUST be set to either `allocation` or `cpu`
 - `profiling.data.format` MUST be set to either `text` or `pprof-gzip-base64`
-- `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace
+
+#### `LogRecord` Message `text` Data Format Specific Attributes
+
+- `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event (only `text` format)
+- `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling (only `text` format)
+- `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
+- `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace (only `text` format)
 
 ### `LogRecord` Message Fields
 
 - [Time](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-timestamp)
   MUST be set to the time that the call stack was sampled.
+- [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
+  MUST be populated with appropriate payload for specified data type and format.
+
+#### `LogRecord` Message for `text` Data Format Specific Fields
+
 - [TraceId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-traceid)
   MUST be populated when a call stack has been sampled within a span scope.
 - [SpanId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-spanid)
   MUST be populated when a call stack has been sampled within a span scope.
-- [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
-  MUST be populated with appropriate payload for specified data type and format.
 
 #### Call Stack Format for `text` Data Format
 
