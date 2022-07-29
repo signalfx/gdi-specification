@@ -119,13 +119,13 @@ instances. For each `LogRecord` instance:
 
 ### `LogRecord` Message Fields
 
-- [Time](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-timestamp)
-  MUST be set to the time that the call stack was sampled.
 - [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
   MUST be populated with appropriate payload for specified data type and format.
 
 #### `LogRecord` Message for `text` Data Format Specific Fields
 
+- [Time](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-timestamp)
+  MUST be set to the time that the call stack was sampled.
 - [TraceId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-traceid)
   MUST be populated when a call stack has been sampled within a span scope.
 - [SpanId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-spanid)
