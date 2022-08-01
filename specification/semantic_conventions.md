@@ -101,20 +101,28 @@ For each `InstrumentationLibraryLogs` instance:
 
 The resource field in `ResourceLogs` MUST contain the [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk) attribute.
 
-### `LogRecord` Messsage Common Attributes
+### `LogRecord` Message Common Attributes
 
 Inside each `InstrumentationLibraryLogs` instance is a list of `LogRecord`
 instances. For each `LogRecord` instance:
 
 - `com.splunk.sourcetype` MUST be set to the value `otel.profiling`
+- `profiling.data.type` MUST be set to either `allocation` or `cpu`
+- `profiling.data.format` MUST be set to either `text` or `pprof-gzip-base64`
+
+#### `LogRecord` Message `text` Data Format Specific Attributes
+
 - `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
-- `profiling.data.type` MUST be set to either `allocation` or `cpu`
-- `profiling.data.format` MUST be set to either `text` or `pprof-gzip-base64`
 - `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace
 
 ### `LogRecord` Message Fields
+
+- [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
+  MUST be populated with appropriate payload for specified data type and format.
+
+#### `LogRecord` Message for `text` Data Format Specific Fields
 
 - [Time](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-timestamp)
   MUST be set to the time that the call stack was sampled.
@@ -122,8 +130,6 @@ instances. For each `LogRecord` instance:
   MUST be populated when a call stack has been sampled within a span scope.
 - [SpanId](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-spanid)
   MUST be populated when a call stack has been sampled within a span scope.
-- [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
-  MUST be populated with appropriate payload for specified data type and format.
 
 #### Call Stack Format for `text` Data Format
 
@@ -133,7 +139,7 @@ The first two lines MAY be left empty, containing just the newlines.
 
 An example metadata line is shown here:
 
-```
+```log
 "pool-1-thread-30" #49 prio=5 os_prio=31 cpu=0.12ms elapsed=8.50s tid=0x00007fde4d00c000 nid=0xba03 waiting on condition  [0x000070000ba40000]
 ```
 
@@ -155,7 +161,7 @@ metadata is available for the stack trace.
 
 Following the metadata line is a line containing the implementation specific thread state. For example, Java may provide:
 
-```
+```java
   java.lang.Thread.State: TIMED_WAITING (sleeping)
 ```
 
@@ -165,7 +171,7 @@ The call stack details follow the thread state line. The call stack MUST have
 the top of the stack provided first and the bottom of the stack provided last.
 The format of each stack trace line is:
 
-```
+```log
   at <function>(<file>:<lineno>)
   at <function>(<file>:<lineno>:<col>)
 ```
@@ -193,6 +199,7 @@ Data types `int64` and `string` are protocol buffer types, consult
 [protocol buffers documentation](https://developers.google.com/protocol-buffers/docs/proto#scalar).
 
 For each `allocation` and `cpu` sample:
+
 - label `source.event.name` of type `string` OPTIONALLY can contain the name of the event that triggered the sampling
 - label `source.event.time` of type `int64` MUST be set to the unix time in millis when the sample was taken
 - label `trace_id` of type `string` MUST be set when sample was taken within a span scope
@@ -203,9 +210,11 @@ For each `allocation` and `cpu` sample:
 - label `thread.stack.truncated` of type `string` and with value `true` MUST be set when this sample does not contain the full stack trace
 
 For each `allocation` sample:
+
 - value of type `int64` must be set to allocation size in bytes
 
 For each `cpu` sample:
+
 - label `source.event.period` of type `int64` MUST contain the sampling period if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe the state of the thread
 
