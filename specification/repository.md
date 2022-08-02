@@ -36,7 +36,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ### Branch protection
 
-- MUST have a primary branch named `main`
+- MUST have a default branch named `main`
 - MUST NOT allow anyone (including administrators) pushing directly to `main`
 - MUST require status checks to pass before merge to `main`
 - MUST require at least one CODEOWNER to approve a PR prior to merge
