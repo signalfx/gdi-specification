@@ -112,7 +112,7 @@ instances. For each `LogRecord` instance:
 
 #### `LogRecord` Message `text` Data Format Specific Attributes
 
-- `source.event.period` MUST contain the sampling period if this `LogRecord` represents a periodic event
+- `source.event.period` MUST contain the sampling period in milliseconds if this `LogRecord` represents a periodic event
 - `source.event.name` OPTIONALLY can contain the name of the event that triggered the sampling
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
 - `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace
@@ -215,7 +215,7 @@ For each `allocation` sample:
 
 For each `cpu` sample:
 
-- label `source.event.period` of type `int64` MUST contain the sampling period if this sample represents a periodic event
+- label `source.event.period` of type `int64` MUST contain the sampling period in milliseconds if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe the state of the thread
 
 Missing file name and function MUST be reported as `unknown`. Missing line number MUST be reported as `-1`.
