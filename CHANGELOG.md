@@ -2,6 +2,31 @@
 
 ## [Unreleased]
 
+## [1.4.0] - 2022-85-15
+
+### Configuration
+
+- The RUM configuration is now stable.
+
+### Semantic Conventions
+
+#### Breaking Changes
+
+- Remove `namespace` field from stack-lines and incorporate it to the function
+  field.
+- Remove line and column ranges in stack lines.
+
+#### Bugfixes
+
+- Clarify that there are two metadata lines (thread metadata and thread state),
+  both of which can be left empty, containing only the newline.
+
+#### Enhancements
+
+- Add a required `telemetry.sdk.language` attribute to `ResourceLogs.resource`.
+- Allow `:` characters in file names.
+- Clarify `source.event.period` unit is milliseconds.
+
 ## [1.3.0] - 2022-05-19
 
 ### General
@@ -157,7 +182,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.4.0
 [1.3.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.3.0
 [1.2.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.2.0
 [1.1.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.1.0
