@@ -12,9 +12,9 @@
 
 #### Breaking Changes
 
-- Remove `namespace` field from stack-lines and incorporate it to the function
+- Remove `namespace` field from profiling stack-trace lines and incorporate it to the function
   field.
-- Remove line and column ranges in stack lines.
+- Remove line and column ranges in profiling stack-trace lines.
 
 #### Bugfixes
 
