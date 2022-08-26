@@ -193,9 +193,7 @@ instance using the following environment variables:
 - [4]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
 - [5]: Applies only to instrumentation libraries with CPU profiling capabilities.
-  Profiling is experimental status.
 - [6]: Applies only to instrumentation libraries with memory profiling capabilities.
-  Profiling is experimental status.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment
