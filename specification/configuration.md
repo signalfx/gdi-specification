@@ -158,15 +158,16 @@ For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
 instance using the following environment variables:
 
-| Name                                   | Default | Description                                                     |
-|----------------------------------------|---------|-----------------------------------------------------------------|
-| `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                        |
-| `SPLUNK_METRICS_ENDPOINT`              |         | Endpoint for metrics data ingest.                               |
-| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]           |
-| `SPLUNK_PROFILER_ENABLED`              | false   | Whether profiling is enabled. [2] [5]                           |
+| Name                                   | Default | Description                                                                               |
+|----------------------------------------|---------|-------------------------------------------------------------------------------------------|
+| `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                  |
+| `SPLUNK_METRICS_ENDPOINT`              |         | Endpoint for metrics data ingest.                                                         |
+| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]                                     |
+| `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                 |
 | `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTLP_EXPORTER_OTLP_ENDPOINT` [5]  |
-| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                          |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` |  true   | Whether `Server-Timing` header is added to HTTP responses. [4]  |
+| `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                              |
+| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                    |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` |  true   | Whether `Server-Timing` header is added to HTTP responses. [4]                            |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
@@ -191,7 +192,9 @@ instance using the following environment variables:
   precedence.
 - [4]: If stitching of RUM spans and APM spans is desired then this parameter
   MUST be set to `true`.
-- [5]: Applies only to instrumentation libraries with profiling capabilities. 
+- [5]: Applies only to instrumentation libraries with CPU profiling capabilities.
+  Profiling is experimental status.
+- [6]: Applies only to instrumentation libraries with memory profiling capabilities.
   Profiling is experimental status.
 
 In addition to Splunk-specific environment variables, the following
