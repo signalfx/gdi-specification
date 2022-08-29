@@ -47,7 +47,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST lock the versions of all build dependencies (e.g. libraries, binaries,
   scripts, docker images) or vendor them; **EXCEPTION:** tools that are
-  available out-of-the-box
+  available out-of-the-box on the CI runner
 - MUST have Dependabot configured
 
 ### GitHub Actions
