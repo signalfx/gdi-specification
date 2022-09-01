@@ -52,10 +52,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ### GitHub Actions
 
-- MUST use [GitHub
-  secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to
-  store sensitive data (auth tokens, passwords) and limit their usage to only
-  required places
+- MUST NOT use [GitHub
+  secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
 - MUST NOT use [Personal Access
   Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 - MUST [limit permissions of
