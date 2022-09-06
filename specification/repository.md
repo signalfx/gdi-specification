@@ -54,8 +54,12 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST NOT use [GitHub
   secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+  unless explicit permission has been internally granted and documented
   - Exception: Secrets creates by GitHub with `GITHUB_` prefix.
-  - Exception: Explicit permission has been internally granted and documented.
+- MUST use [GitHub
+  secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to
+  store sensitive data (auth tokens, passwords) and limit their usage to only
+  required places to reduce possible leakage
 - MUST NOT use [Personal Access
   Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 - MUST [limit permissions of
