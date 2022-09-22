@@ -228,7 +228,8 @@ are required.
 
     ```
     jaeger-thrift-splunk trace exporter is deprecated and may be removed in a future major release.
-    We suggest that you use the default otlp exporter instead. You can set the SPLUNK_REALM and SPLUNK_ACCESS_TOKEN environment variables to send spans directly to Splunk Observabilty Cloud.
+    We suggest that you use the default otlp exporter instead.
+    You can set the SPLUNK_REALM and SPLUNK_ACCESS_TOKEN environment variables to send telemetry directly to Splunk Observability Cloud.
     ```
 
 
