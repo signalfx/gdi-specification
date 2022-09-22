@@ -222,7 +222,9 @@ are required.
   - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
 - `OTEL_TRACES_EXPORTER`
   - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
-  - Non-RUM distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
+  - Non-RUM distribution MAY offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`.[^jaeger-deprecation]
+
+[^jaeger-deprecation]: `jaeger-thrift-splunk` is deprecated. Distributions SHOULD provide a deprecation warning.
 
 In addition to environment variables, other ways of defining configuration also exist:
 
