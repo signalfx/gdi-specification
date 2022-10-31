@@ -128,6 +128,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST have a signature or a checksum with signature for all release artifacts
   - SHOULD use Splunk signing key
 - MUST use [signed tags](https://docs.github.com/en/github/authenticating-to-github/signing-tags)
+- MUST have a [tag protection rule](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/configuring-tag-protection-rules)
+  for the release tags (e.g. `v*`)
 - MUST state version of OpenTelemetry repository built against if applicable
 - MUST update all examples in the [Splunk OpenTelemetry example
   repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing)
