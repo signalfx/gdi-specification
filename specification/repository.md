@@ -48,7 +48,10 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST lock the versions of all build dependencies (e.g. libraries, binaries,
   scripts, docker images) or vendor them; **EXCEPTION:** tools that are
   available out-of-the-box on the CI runner
-- MUST have Dependabot configured
+- MUST enable [Dependabot alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)
+  - MUST grant access to alerts for the approvers and maintainers teams
+  - MUST enable [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates)
+- MUST configure [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
 ### GitHub Actions
 
