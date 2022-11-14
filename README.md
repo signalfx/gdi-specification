@@ -2,8 +2,8 @@
 
 ![Release](https://img.shields.io/github/v/tag/signalfx/gdi-specification?include_prereleases&style=for-the-badge)
 
-The GDI specification describes cross-repository requirements and
-expectations. It is applicable to GDI repositories.
+The GDI specification describes cross-repository requirements and expectations.
+It is applicable to GDI repositories listed in [repositories.txt](repositories.txt).
 
 > Anything OpenTelemetry or anything that should be in OpenTelemetry will be
 > handled upstream. For information on OpenTelemetry, see the [OpenTelemetry
