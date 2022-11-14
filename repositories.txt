@@ -1,4 +1,3 @@
-https://github.com/signalfx/splunk-extension-wrapper
 https://github.com/signalfx/splunk-otel-android
 https://github.com/signalfx/splunk-otel-collector
 https://github.com/signalfx/splunk-otel-collector-operator
