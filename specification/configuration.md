@@ -220,7 +220,7 @@ are required.
   - Distribution MUST default to `12000` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` (not OpenTelemetry default)
   - Distribution MUST default to unset (unlimited) for all others (not OpenTelemetry default)
 - Zipkin exporter
-  - Distribution MUST NOT list Zipkin exporter as supported (not supported by Smart Agent)
+  - Distribution MUST NOT document the Zipkin exporter (as it not supported by Smart Agent) 
 - `OTEL_TRACES_EXPORTER`
   - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
   - Non-RUM distribution MAY offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`.
