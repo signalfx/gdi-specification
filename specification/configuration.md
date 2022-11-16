@@ -219,7 +219,7 @@ are required.
   - Distribution MUST default to `12000` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` (not OpenTelemetry default)
   - Distribution MUST default to unset (unlimited) for all others (not OpenTelemetry default)
 - `OTEL_TRACES_EXPORTER`
-  - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
+  - Non-RUM distribution MUST default to `otlp` using `grpc` or `http/protobuf` transport protocol.
   - Non-RUM distribution MAY offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`.
     **NOTE: `jaeger-thrift-splunk` is deprecated.**
     If the user selects `jaeger-thrift-splunk`, distributions MUST log a deprecation warning and suggest an alternate method. For example:
