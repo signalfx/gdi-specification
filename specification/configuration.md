@@ -161,7 +161,6 @@ instance using the following environment variables:
 | Name                                   | Default | Description                                                                               |
 |----------------------------------------|---------|-------------------------------------------------------------------------------------------|
 | `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                  |
-| `SPLUNK_METRICS_ENDPOINT`              |         | Endpoint for metrics data ingest.                                                         |
 | `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]                                     |
 | `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                 |
 | `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTLP_EXPORTER_OTLP_ENDPOINT` [5]  |
