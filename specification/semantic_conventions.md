@@ -99,7 +99,16 @@ For each `InstrumentationLibraryLogs` instance:
 - `name` - MUST be set to `otel.profiling`
 - `version` - MUST be set to `0.1.0`
 
-The resource field in `ResourceLogs` MUST contain the [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk) attribute.
+The resource field in `ResourceLogs`:
+
+- MUST contain following attributes:
+  - [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk)
+  - `service.name`
+- SHOULD contain the following resource attributes when applicable:
+  - `deployment.environment`
+  - `container.id`
+  - `host.name`
+  - `process.pid`
 
 ### `LogRecord` Message Common Attributes
 
