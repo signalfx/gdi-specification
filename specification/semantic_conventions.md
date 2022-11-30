@@ -103,12 +103,12 @@ The resource field in `ResourceLogs`:
 
 - MUST contain following attributes:
   - [`telemetry.sdk.language`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk)
-  - `service.name`
+  - [`service.name`](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#semantic-attributes-with-sdk-provided-default-value)
 - SHOULD contain the following resource attributes when applicable:
-  - `deployment.environment`
-  - `container.id`
-  - `host.name`
-  - `process.pid`
+  - [`deployment.environment`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/deployment_environment.md)
+  - [`container.id`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/container.md#container)
+  - [`host.name`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/host.md#host)
+  - [`process.pid`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/process.md#process)
 
 ### `LogRecord` Message Common Attributes
 
