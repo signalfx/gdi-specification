@@ -68,7 +68,6 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ### GitHub Applications
 
-- MUST have Jira GitHub App configured
 - SHOULD have Codecov GitHub App configured
 - SHOULD have Lychee Link Checker GitHub Action configured
 
