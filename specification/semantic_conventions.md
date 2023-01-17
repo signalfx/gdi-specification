@@ -221,5 +221,3 @@ For each `cpu` sample:
 
 - label `source.event.period` of type `int64` MUST contain the sampling period in milliseconds if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe the state of the thread
-
-Missing file name and function MUST be reported as `unknown`. Missing line number MUST be reported as `-1`.
