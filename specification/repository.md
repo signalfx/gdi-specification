@@ -141,11 +141,13 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ## Instrumentation Libraries
 
-- MUST document all supported configuration parameters
+- MUST document all configuration parameters that are relevant to Splunk Observability Cloud
+- MUST document all configuration paramenters whose default values deviate significantly from upstream
 - MUST document how to configure manual instrumentation
 - MUST document how to configure log correlation
 - MUST define minimum supported version of each auto-instrumentation framework
   - SHOULD define maximum supported version of each auto-instrumentation framework
+- MAY host the documentation in the Observability Cloud documentation repository
 
 ## Real User Monitoring Libraries
 
