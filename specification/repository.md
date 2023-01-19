@@ -137,7 +137,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 ## Data Collector
 
 - MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration paramenters whose default values deviate significantly from upstream
+- MUST document all configuration parameters whose default values deviate significantly from upstream
 - MUST document sizing guidelines for all signals
 - MAY host the documentation in the Observability Cloud documentation repository
 
