@@ -137,14 +137,14 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 ## Data Collector
 
 - MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration parameters whose default values deviate from upstream
+- MUST document all configuration parameters whose default or accepted values deviate from upstream
 - MUST document sizing guidelines for all signals
 - MAY host the documentation in the [Observability Cloud documentation repository](https://github.com/splunk/public-o11y-docs)
 
 ## Instrumentation Libraries
 
 - MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration parameters whose default values deviate from upstream
+- MUST document all configuration parameters whose default or accepted values deviate from upstream
 - MUST document how to configure manual instrumentation
 - MUST document how to configure log correlation
 - MUST define minimum supported version of each auto-instrumentation framework
@@ -154,7 +154,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 ## Real User Monitoring Libraries
 
 - MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration parameters whose default values deviate from upstream
+- MUST document all configuration parameters whose default or accepted values deviate from upstream
 - MUST document how to configure manual instrumentation
 - MUST document supported instrumentations
 - MUST document supported platforms: browsers, OS versions, API requirements
