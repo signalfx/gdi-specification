@@ -26,7 +26,7 @@ All Splunk distributions of OpenTelemetry,
 - SHOULD set the following resource attributes when applicable:
   - `telemetry.auto.version`
 
-- SHOULD set [process an process runtime resource attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.18.0/specification/resource/semantic_conventions/process.md)
+- SHOULD set [process and process runtime resource attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.18.0/specification/resource/semantic_conventions/process.md)
 
 Note: this section does not apply to Real User Monitoring libraries, as they do
 not use the OpenTelemetry Resource.
