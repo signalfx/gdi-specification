@@ -46,6 +46,15 @@ version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 Note: this section does not apply to Real User Monitoring libraries, as they do
 not use the OpenTelemetry Resource.
 
+## Runtime Environment Metrics
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+All Splunk distributions of OpenTelemetry
+SHOULD collect
+[Runtime Environment Metrics](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.18.0/specification/metrics/semantic_conventions/runtime-environment-metrics.md)
+when metrics are enabled.
+
 ## Real User Monitoring Spans and Attributes
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
