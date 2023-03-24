@@ -36,4 +36,5 @@ endif
 		cd $(TMP_DIR) && \
 		gh repo set-default $(repo) && \
 		gh issue create --title 'Adopt GDI specification $(TAG)' --body 'Adopt https://github.com/signalfx/gdi-specification/releases/tag/$(TAG)' && \
+		cd - && \
 		rm -rf $(TMP_DIR);)
