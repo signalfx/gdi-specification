@@ -132,6 +132,10 @@ instances. For each `LogRecord` instance:
 - `memory.allocated` MUST contain the allocation size if this `LogRecord` represents a memory allocation event
 - `thread.stack.truncated` MUST be set to boolean `true` when this `LogRecord` does not contain the full stack trace
 
+#### `LogRecord` Message `pprof-gzip-base64` Data Format Specific Attributes
+
+- `profiling.data.total.frame.count` MUST be set to the total number of stack frames in `cpu` or `allocation` samples contained in this message
+
 ### `LogRecord` Message Fields
 
 - [Body](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-body)
