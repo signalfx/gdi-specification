@@ -1,0 +1,38 @@
+# Release Process
+
+## Pre-Release
+
+1. Update [CHANGELOG.md](CHANGELOG.md) with new the new release.
+
+2. Push the changes to upstream and create a Pull Request on GitHub.
+
+## Tag
+
+Once the Pull Request with all the version changes has been approved
+and merged it is time to tag the merged commit.
+
+Run on the main branch and specify the commit for the merged Pull Request
+and remote where to push the tag.
+
+```sh
+make new-tag TAG=<new tag> COMMIT=<commit> REMOTE=<remote>
+```
+
+## Release
+
+Create a Release for the new `<new tag>` on GitHub.
+The release body should include all the release notes
+for this release taken from [CHANGELOG.md](CHANGELOG.md).
+
+## Post-Release
+
+Create issues for all the repositories that should comply
+ith the GDI specification
+
+> **Note**
+> Requires [GitHub CLI `gh`](https://cli.github.com/).
+> [View installation instructions.](https://github.com/cli/cli#installation)
+
+```sh
+make create-issues TAG=<new tag>
+```
