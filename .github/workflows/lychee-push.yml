@@ -8,10 +8,10 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.5.0
       - name: lychee Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@v1.0.6
+        uses: lycheeverse/lychee-action@v1.6.1
         with:
           args: -v -n "*.md" "**/*.md"
       - name: Fail if there were link errors
