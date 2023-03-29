@@ -230,7 +230,7 @@ For each `allocation` and `cpu` sample:
 
 For each `allocation` sample:
 
-- value of type `int64` must be set to allocation size in bytes
+- value of type `int64` must be set to a value that allows for comparing relative weights of the allocations, such as allocation size in bytes
 
 For each `cpu` sample:
 
