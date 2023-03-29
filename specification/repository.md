@@ -25,7 +25,9 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
   to maintainers team
 - MUST grant `Write` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to approvers team and the `signalfx/docs`, `signalfx/gdi-specification-approvers` and `signalfx/gdi-specification-maintainers` teams
+  to approvers team and the `signalfx/docs`,
+  `signalfx/gdi-specification-approvers`
+   `signalfx/gdi-specification-maintainers` teams
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to any other user nor team
@@ -75,12 +77,13 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
   - The `CHANGELOG.md` is intended to be consumed by humans, and not machines.
-  - The file SHOULD contain an `Unreleased` section at the top, which includes changes that
-  have not yet been released.
+  - The file SHOULD contain an `Unreleased` section at the top, which includes
+    changes that have not yet been released.
   - The file MUST be in reverse chronological order, with the most recent
-  releases at the top of the file, after the `Unreleased` section.
+    releases at the top of the file, after the `Unreleased` section.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
-  - Each release SHOULD contain separate sections for each major functionality area (if applicable).
+  - Each release SHOULD contain separate sections for each major functionality
+    area (if applicable).
   The following sub-sections MAY be used, as appropriate or specified.
     - `General` - General comments about the release that users should know about.
     - `Breaking Changes` - Any changes that will break backward compatibility
@@ -93,7 +96,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     of every change in the repository can use the git log for that.
 - MUST add [CODE_OF_CONDUCT.md](templates/CODE_OF_CONDUCT.md)
 - MUST add [CONTRIBUTING.md](templates/CONTRIBUTING.md)
-- MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with a maintainers team
+- MUST have a [.github/CODEOWNERS](templates/.github/CODEOWNERS) file with
+  a maintainers team
 - SHOULD have an approvers team in CODEOWNERS
 - MUST add [`LICENSE`](templates/LICENSE)
 - SHOULD have a `MIGRATING.md` if applicable
@@ -110,7 +114,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
   - MUST have license information in `README.md`
 - MAY have a `RELEASING.md` file that documents the release process, but this
   file MUST NOT document private processes. For repositories that use private release
-  jobs, the `RELEASING.md` file SHOULD be absent or, if included, just contain the following note:
+  jobs, the `RELEASING.md` file SHOULD be absent or, if included, just contain
+  the following note:
   > The release process involves signing built packages and binaries and thus
   > must be kept private and not exposed publicly.
 - MUST add the [SECURITY.md](templates/SECURITY.md)
@@ -136,15 +141,19 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ## Data Collector
 
-- MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration parameters whose default or accepted values deviate from upstream
+- MUST document all configuration parameters that are relevant
+  to Splunk Observability Cloud
+- MUST document all configuration parameters whose default or accepted values
+  deviate from upstream
 - MUST document sizing guidelines for all signals
 - MAY host the documentation in the [Observability Cloud documentation repository](https://github.com/splunk/public-o11y-docs)
 
 ## Instrumentation Libraries
 
-- MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration parameters whose default or accepted values deviate from upstream
+- MUST document all configuration parameters that are relevant
+  to Splunk Observability Cloud
+- MUST document all configuration parameters whose default or accepted values
+  deviate from upstream
 - MUST document how to configure manual instrumentation
 - MUST document how to configure log correlation
 - MUST define minimum supported version of each auto-instrumentation framework
@@ -153,8 +162,10 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ## Real User Monitoring Libraries
 
-- MUST document all configuration parameters that are relevant to Splunk Observability Cloud
-- MUST document all configuration parameters whose default or accepted values deviate from upstream
+- MUST document all configuration parameters that are relevant
+  to Splunk Observability Cloud
+- MUST document all configuration parameters whose default or accepted values
+  deviate from upstream
 - MUST document how to configure manual instrumentation
 - MUST document supported instrumentations
 - MUST document supported platforms: browsers, OS versions, API requirements
