@@ -2,6 +2,51 @@
 
 ## [Unreleased]
 
+## [1.5.0] - 2023-03-30
+
+### Configuration
+
+#### Bugfixes
+
+- Remove `SPLUNK_METRICS_ENDPOINT` from Instrumentation Libraries
+  (it was never really stable).
+
+#### Enhancements
+
+- Add `SPLUNK_PROFILER_MEMORY_ENABLED`.
+- Deprecate `jaeger-thrift-splunk` option for `OTEL_TRACES_EXPORTER`.
+- Remove the policy regarding Zipkin exporter.
+- OTLP exporter can use either `grpc` or `http/protobuf`
+  as the default transport protocol.
+
+### Repository
+
+#### Enhancements
+
+- Add tag protection rule requirement.
+- Add Dependabot security configuration requirements.
+- Grant Admin role for maintainers team.
+- Refine documentation requirements.
+
+### Semantic Conventions
+
+#### Breaking Changes
+
+- Remove `telemetry.sdk.language` attribute from `ResourceLogs.resource`.
+
+### Bugfixes
+
+- Remove redunant and conflicting statement about file and line for `ResourceLogs`.
+
+#### Enhancements
+
+- Recommened adding `container.id`, `host.id`, `process.pid` attributes
+  to `ResourceLogs.resource`.
+- Recommend setting process resource attributes.
+- Recommend collecting runtime environment metrics.
+- Add a required `profiling.data.total.frame.count` attribute to `LogRecord` for `pprof-gzip-base64`.
+- Relax the meaning of `allocation` in `LogRecord` for `pprof-gzip-base64`.
+
 ## [1.4.0] - 2022-08-16
 
 ### Configuration
@@ -182,7 +227,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.5.0
 [1.4.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.4.0
 [1.3.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.3.0
 [1.2.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.2.0
