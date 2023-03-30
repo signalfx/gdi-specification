@@ -4,7 +4,8 @@
 
 1. Update [CHANGELOG.md](CHANGELOG.md) with new the new release.
 
-2. Push the changes to upstream and create a Pull Request on GitHub.
+2. Create a pull request with `release PR` label on GitHub
+   with the changes described in the changelog.
 
 ## Tag
 
