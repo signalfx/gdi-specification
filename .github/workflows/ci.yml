@@ -19,3 +19,4 @@ jobs:
         with:
           args: -v -n "*.md" "**/*.md"
           fail: true
+        if: ${{ !contains(github.event.pull_request.labels.*.name, 'release PR') }}
