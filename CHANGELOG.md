@@ -26,7 +26,12 @@
 - Add tag protection rule requirement.
 - Add Dependabot security configuration requirements.
 - Grant Admin role for maintainers team.
-- Refine documentation requirements.
+- Allow using the documentation public repository
+  and reference it in the `CONTRIBUTING.md` template.
+- Require documenting all configuration parameters
+  that are relevant to Splunk Observability Cloud.
+- Require documenting all configuration parameters
+  whose default or accepted values deviate from upstream.
 
 ### Semantic Conventions
 
