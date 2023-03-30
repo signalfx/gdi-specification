@@ -89,7 +89,8 @@ in the given software distribution solution.
  
 Each release `MUST` clearly state the life cycle 
 status and described as: Active, Latest, Deprecated, End of Support. 
-At minimum the required information should be included in [CHAANGELOG.md](https://github.com/signalfx/gdi-specification/blob/main/specification/templates/CHANGELOG.md)
+At minimum the required information should be included in 
+[CHANGELOG.md](https://github.com/signalfx/gdi-specification/blob/main/specification/templates/CHANGELOG.md)
 and equivalent mechanism provided by system used for distributing software. 
 
 If new version is released previously released versions `MUST` be evaluated 
