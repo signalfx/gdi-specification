@@ -14,13 +14,20 @@ Name and link to repository
 ### Does the repository follow the latest tagged minor release in [GDI specification](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md)?
 
 - [ ] Has an appropriate [maintainers team](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#teams).
-- [ ] [Permissions](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#permissions) set correctly.
-- [ ] [Branch protection](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#branch-protection) in place.
-- [ ] [Dependencies](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#dependencies) appropriately locked down.
-- [ ] [GitHub Applications](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#github-applications) set up per spec.
-- [ ] Follows the [configuration requirements](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/configuration.md), if appropriate.
-- [ ] Follows the [semantic convention requirements](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/semantic_conventions.md), if appropriate.
-- [ ] [Required Files](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#required-files) in place.
+- [ ] [Permissions](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#permissions)
+      set correctly.
+- [ ] [Branch protection](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#branch-protection)
+      in place.
+- [ ] [Dependencies](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#dependencies)
+      appropriately locked down.
+- [ ] [GitHub Applications](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#github-applications)
+      set up per spec.
+- [ ] Follows the [configuration requirements](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/configuration.md),
+      if appropriate.
+- [ ] Follows the [semantic convention requirements](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/semantic_conventions.md),
+      if appropriate.
+- [ ] [Required Files](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#required-files)
+      in place.
   - [ ] CHANGELOG.md
   - [ ] CODE_OF_CONDUCT.md
   - [ ] CONTRIBUTING.md
@@ -33,7 +40,8 @@ Name and link to repository
     - [ ] Link to official Splunk docs
     - [ ] License information
   - [ ] SECURITY.md
-- [ ] [Releases](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#github-releases) done to spec.
+- [ ] [Releases](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#github-releases)
+      done to spec.
 - [ ] Type specific requirements (remove what doesn't apply)
   - [ ] [Data Collector](https://github.com/signalfx/gdi-specification/blob/v1.5.0/specification/repository.md#data-collector)
     - [ ] Documents all supported configuration parameters.
