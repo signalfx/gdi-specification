@@ -70,18 +70,18 @@ chooses what to install limiting the configuration options.
 It MUST be possible to configure a Data Collector instance using the following
 environment variables:
 
-| Name (default value)          | Description                                        |
-| :-------------------:         | :-----------------------------------:              |
-| `SPLUNK_ACCESS_TOKEN` ()      | Access token added to exported data. [1][2]        |
-| `SPLUNK_CONFIG` ()            | Configuration file to use. [1]                     |
-| `SPLUNK_REALM` ()             | Realm configured for the exporter endpoint. [1][2] |
+|   Name (default value)   |                      Description                       |
+|:------------------------:|:------------------------------------------------------:|
+| `SPLUNK_ACCESS_TOKEN` () |    Access token added to exported data. \[1\]\[2\]     |
+|    `SPLUNK_CONFIG` ()    |            Configuration file to use. \[1\]            |
+|    `SPLUNK_REALM` ()     | Realm configured for the exporter endpoint. \[1\]\[2\] |
 
-- [1]: Either `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM` MUST be defined or
+- \[1\]: Either `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM` MUST be defined or
   `SPLUNK_CONFIG` MUST be defined. If `SPLUNK_ACCESS_TOKEN` and `SPLUNK_REALM`
   are defined, `SPLUNK_CONFIG` MAY be defined. If `SPLUNK_CONFIG` is
   defined, either, neither, or both of `SPLUNK_ACCESS_TOKEN` and
   `SPLUNK_REALM` MAY be defined.
-- [2]: If the Data Collector is configured to export data to a Splunk back-end
+- \[2\]: If the Data Collector is configured to export data to a Splunk back-end
   these options MUST be defined with valid values (this is the default behavior
   for the Data Collector). If the Data Collector is configured as an agent and
   the agent is configured to send to a Data Collector running as a gateway then
@@ -109,13 +109,19 @@ below.
 - `environment` ()             : Name of the environment; if not defined then skipped.
 - `agent`                      : Deployed as a DaemonSet.
   - `enabled` (`true`)         : Whether agent is deployed.
-  - `config` ()                : Updates configuration. Non-list options merged, list options override.
-- `gateway`                    : Deployed as a clustered Service and receives data from agent.
+  - `config` ()                : Updates configuration. Non-list options merged,
+                                 list options override.
+- `gateway`                    : Deployed as a clustered Service and receives
+                                 data from agent.
   - `enabled` (`false`)        : Whether gateway is deployed.
-  - `config` ()                : Updates configuration. Non-list options merged, list options override.
-- `clusterReceiver`            : Deployed as a single replica deployment and collects Kubernetes API cluster and event telemetry.
-  - `enabled` (`true`)         : Whether k8sClusteReceiver is deployed. Ignored if `metricsEnabled` is `false`.
-  - `config` ()                : Updates configuration. Non-list options merged, list options override.
+  - `config` ()                : Updates configuration. Non-list options merged,
+                                 list options override.
+- `clusterReceiver`            : Deployed as a single replica deployment and
+                                 collects Kubernetes API cluster and event telemetry.
+  - `enabled` (`true`)         : Whether k8sClusteReceiver is deployed. Ignored
+                                 if `metricsEnabled` is `false`.
+  - `config` ()                : Updates configuration. Non-list options merged,
+                                 list options override.
 
 In addition, at least one of the below configuration groups,
 `splunkObservability` or `splunkPlatform`, MUST be specified.
@@ -158,15 +164,15 @@ For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
 instance using the following environment variables:
 
-| Name                                   | Default | Description                                                                               |
-|----------------------------------------|---------|-------------------------------------------------------------------------------------------|
-| `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                  |
-| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]                                     |
-| `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                 |
-| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTLP_EXPORTER_OTLP_ENDPOINT` [5]  |
-| `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                              |
-| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                    |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` |  true   | Whether `Server-Timing` header is added to HTTP responses. [4]                            |
+| Name                                   | Default | Description                                                                              |
+|----------------------------------------|---------|------------------------------------------------------------------------------------------|
+| `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                 |
+| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]                                    |
+| `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                |
+| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTLP_EXPORTER_OTLP_ENDPOINT` [5] |
+| `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                             |
+| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                   |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true    | Whether `Server-Timing` header is added to HTTP responses. [4]                           |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
@@ -206,30 +212,36 @@ are required.
     If the user fails to define a service name the distribution MUST log a
     warning. The warning message MUST clearly describe how to set the service
     name or link to relevant documentation. E.g.
-    ```
+
+    ```txt
     service.name attribute is not set, your service is unnamed and will be difficult to identify.
     set your service name using the OTEL_SERVICE_NAME environment variable.
     E.g. `OTEL_SERVICE_NAME="<YOUR_SERVICE_NAME_HERE>"`
     ```
+
 - `OTEL_PROPAGATORS`
   - Distribution MUST default to `"tracecontext,baggage"`
   - Distribution MUST support and document how to switch to `b3multi`
 - Span Collection Limits
-  - Distribution MUST default to `1000` for `OTEL_SPAN_LINK_COUNT_LIMIT` (not OpenTelemetry default)
-  - Distribution MUST default to `12000` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` (not OpenTelemetry default)
-  - Distribution MUST default to unset (unlimited) for all others (not OpenTelemetry default)
+  - Distribution MUST default to `1000` for `OTEL_SPAN_LINK_COUNT_LIMIT`
+    (not OpenTelemetry default)
+  - Distribution MUST default to `12000` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`
+    (not OpenTelemetry default)
+  - Distribution MUST default to unset (unlimited) for all others
+    (not OpenTelemetry default)
 - `OTEL_TRACES_EXPORTER`
-  - Non-RUM distribution MUST default to `otlp` using `grpc` or `http/protobuf` transport protocol.
+  - Non-RUM distribution MUST default to `otlp` using `grpc` or `http/protobuf`
+    transport protocol.
   - Non-RUM distribution MAY offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`.
     **NOTE: `jaeger-thrift-splunk` is deprecated.**
-    If the user selects `jaeger-thrift-splunk`, distributions MUST log a deprecation warning and suggest an alternate method. For example:
+    If the user selects `jaeger-thrift-splunk`, distributions MUST log
+    a deprecation warning and suggest an alternate method. For example:
 
-    ```
+    ```txt
     jaeger-thrift-splunk trace exporter is deprecated and may be removed in a future major release. Use the default 
     OTLP exporter instead, or set the SPLUNK_REALM and SPLUNK_ACCESS_TOKEN environment variables to send 
     telemetry directly to Splunk Observability Cloud.
     ```
-
 
 In addition to environment variables, other ways of defining configuration also exist:
 
@@ -254,14 +266,14 @@ etc.).
 RUM instrumentation libraries MUST support the following configuration
 properties:
 
-| Property (default value)               | Description                                                                                                                                                                                                 |
-| -------------------------------------- | -----------                                                                                                                                                                                                 |
-| `realm` ()                             | Splunk realm, e.g. `us0`, `us1`. If set, value of `beaconEndpoint` will be automatically computed based on this. [1] [2] [3]                                                                                |
-| `beaconEndpoint` ()                    | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                         |
-| `rumAccessToken` ()                    | RUM authentication token. [1]                                                                                                                                                                               |
-| `applicationName` ()                   | Instrumented application name. [1]                                                                                                                                                                          |
-| `globalAttributes` ()                  | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
-| `deploymentEnvironment` ()             | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                               |
+| Property (default value)   | Description                                                                                                                                                                                                |
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `realm` ()                 | Splunk realm, e.g. `us0`, `us1`. If set, value of `beaconEndpoint` will be automatically computed based on this. [1] [2] [3]                                                                               |
+| `beaconEndpoint` ()        | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                        |
+| `rumAccessToken` ()        | RUM authentication token. [1]                                                                                                                                                                              |
+| `applicationName` ()       | Instrumented application name. [1]                                                                                                                                                                         |
+| `globalAttributes` ()      | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
+| `deploymentEnvironment` () | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                              |
 
 - [1] Application name, authentication token and either realm or the beacon URL
   MUST be provided by the user. If any of these is missing, the RUM
@@ -275,6 +287,7 @@ properties:
   `realm` will be ignored SHOULD be logged.
 
 Other requirements:
+
 - RUM library MUST use the Zipkin v2 JSON span exporter by default
 - RUM library MUST limit the number of sent spans to 100 in a 30 second window
   per `component` attribute value
@@ -284,27 +297,30 @@ Other requirements:
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 By default, serverless instrumentation libraries MUST send data directly
-to Splunk Observability Cloud (direct ingest). Therefore, the following applies to exporter configuration:
+to Splunk Observability Cloud (direct ingest). Therefore, the following applies
+to exporter configuration:
+
 - `OTEL_TRACES_EXPORTER`
   - MUST default to `otlp` over HTTP, as currently supported by the ingest
-  - MAY offer `jaeger-thrift-splunk` 
+  - MAY offer `jaeger-thrift-splunk`
 
 Apart from standard set of configuration properties for instrumentation
 libraries based on OpenTelemetry, serverless MUST honour the following:
 
-| Name (default value)  | Description                                            |
-| --------------------- | ------------------------------------------------------ |
-| `SPLUNK_REALM` ()     | Splunk Observability Cloud realm [1]                   |
+| Name (default value) | Description                          |
+|----------------------|--------------------------------------|
+| `SPLUNK_REALM` ()    | Splunk Observability Cloud realm [1] |
 
 - [1] Either `SPLUNK_REALM` or relevant traces exporter endpoint property and
   `SPLUNK_METRICS_ENDPOINT` MUST be set.
 
     If `SPLUNK_REALM` is set, `SPLUNK_ACCESS_TOKEN` MUST be set as well.
 
-    With `SPLUNK_REALM` set, both traces and metrics exporter endpoints will have following values:
-    - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp`
-    - traces (all other cases):`https://ingest.REALM.signalfx.com/v2/trace`
-    - metrics: `https://ingest.${SPLUNK_REALM}.signalfx.com`
+    With `SPLUNK_REALM` set, both traces and metrics exporter endpoints will
+    have following values:
+  - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp`
+  - traces (all other cases):`https://ingest.REALM.signalfx.com/v2/trace`
+  - metrics: `https://ingest.${SPLUNK_REALM}.signalfx.com`
 
     If relevant traces exporter endpoint property (eg
     `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or
