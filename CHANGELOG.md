@@ -44,7 +44,8 @@
   to `ResourceLogs.resource`.
 - Recommend setting process resource attributes.
 - Recommend collecting runtime environment metrics.
-- Add a required `profiling.data.total.frame.count` attribute to `LogRecord` for `pprof-gzip-base64`.
+- Add a required `profiling.data.total.frame.count` attribute
+  to `LogRecord` for `pprof-gzip-base64`.
 - Relax the meaning of `allocation` in `LogRecord` for `pprof-gzip-base64`.
 
 ## [1.4.0] - 2022-08-16
