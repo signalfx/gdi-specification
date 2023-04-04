@@ -2,11 +2,11 @@
 
 Thank you for your interest in contributing to our repository! Whether it's a bug
 report, new feature, or question, we greatly value feedback and contributions from
-our community. Read through this document before submitting any issues or pull 
+our community. Read through this document before submitting any issues or pull
 requests to ensure we have all the necessary information to effectively respond
 to your bug report or contribution.
 
-In addition to this document, review our [Code of Conduct](CODE_OF_CONDUCT.md). 
+In addition to this document, review our [Code of Conduct](CODE_OF_CONDUCT.md).
 For any code of conduct questions or comments, send an email to oss@splunk.com.
 
 ## Reporting Bugs/Feature Requests
@@ -40,7 +40,7 @@ consists of step-by-step instructions, conceptual material, and decision support
 for customers. Reference documentation and development documentation is still
 hosted on this repository.
 
-To contribute documentation for this project, open a pull request in the 
+To contribute documentation for this project, open a pull request in the
 [public-o11y-docs](https://github.com/splunk/public-o11y-docs) repository. See
 the [CONTRIBUTING.md](https://github.com/splunk/public-o11y-docs/blob/main/CONTRIBUTING.md)
 guide of the Splunk Observability Cloud documentation for more information.
