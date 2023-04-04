@@ -17,13 +17,13 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
 
 ## Version 0.1.0 - 2021-04-01
 
-### Life cycle status 
+### Life cycle status
 
-Use one of:	
--   *Supported*
--	*Deprecated:* End of Support expected on 2024-04-01
--	*End of Support:* Support has ended on 2024-04-01
+Use one of:
 
+- *Supported*
+- *Deprecated:* End of Support expected on 2024-04-01
+- *End of Support:* Support has ended on 2024-04-01
 
 ### General
 
