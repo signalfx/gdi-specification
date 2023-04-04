@@ -80,11 +80,12 @@ until the end of that component’s existence:
 
 ## Release life cycle management
 
-Each repository `MUST` use [GitHub releases mechanism](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) to create snapshot of components
-and features delivered to the users. If release is also distributed via other 
-distribution channels (e.g. CDN, Registries, AppStores) it `MUST` be described 
-according to following rules by any means available in the given software 
-distribution solution. 
+Each repository `MUST` use [GitHub releases mechanism](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+to create a versioned snapshot of components and features
+delivered to the users. If the release is also distributed via other
+distribution channels (e.g. CDN, Registries, AppStores) it `MUST` state
+its life cycle status according to following rules by any means available
+in the given software distribution solution.
  
 Each release `MUST` clearly state the life cycle 
 status and described as: Supported, Deprecated, End of Support. 
