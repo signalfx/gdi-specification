@@ -87,23 +87,23 @@ according to following rules by any means available in the given software
 distribution solution. 
  
 Each release `MUST` clearly state the life cycle 
-status and described as: Active, Latest, Deprecated, End of Support. 
+status and described as: Supported, Deprecated, End of Support. 
 At minimum the required information should be included in [CHAANGELOG.md](https://github.com/signalfx/gdi-specification/blob/main/specification/templates/CHANGELOG.md)
 and equivalent mechanism provided by system used for distributing software. 
 
 If new version is released previously released versions `MUST` be evaluated 
 according to stability guarantees and marked as:
-- Latest release `SHOULD` be marked as **Latest** indicating that this is
+- Latest release `SHOULD` be marked as **Supported** indicating that this is
   version recommended to new and existing users
 - If applicable latest release of previous `MAJOR` line that is still under 
-  active development `MUST` be marked as **Active** indicating that previous 
+  active development `MUST` be marked as **Supported** indicating that previous 
   `MAJOR` line is under active development and users not ready to adopt 
   latest `MAJOR` version may use previous versions.
 - Release which was superseded by newer version, thus has entered deprecation 
   period `MUST` be marked as **Deprecated** and `MUST` indicated planned 
   end of support date. This indicates that users should plan for upgrade to 
-  latest or active version respectively before date given.
+  one of supported versions before date given.
 - Release which deprecation period has ended `MUST` be marked as 
   **End of support** and `MUST` indicate date on which the release was marked 
   as end of support. This indicates that support for given release is no longer 
-  provided and the users should immediately upgrade to newer version.
+  provided and the users should immediately upgrade to newer supported version.
