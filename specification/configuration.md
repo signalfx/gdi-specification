@@ -31,7 +31,7 @@ exhibited when considering repository-specific configuration variables.
 
 Splunk-specific configuration variables defined in the GDI specification MUST
 be prefixed with `SPLUNK_`. Furthermore, configuration specific to Splunk
-Observability Cloud MUST be prefixed with `SPLUNK_OBSERVABILITY_`, to Splunk
+Observability Cloud MUST be prefixed with `SPLUNK_OBSERVABILITY_` and to Splunk
 Enterprise or Splunk Cloud MUST be prefixed with `SPLUNK_PLATFORM_`.
 Confiugration unique to a specific GDI component (e.g. connected with a lanaguge
 feature) SHOULD be prefixed with `SPLUNK_{COMPONENT}_` (e.g. `SPLUNK_JAVA_`).
