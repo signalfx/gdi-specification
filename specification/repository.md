@@ -81,9 +81,9 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     changes that have not yet been released.
   - The file MUST be in reverse chronological order, with the most recent
     releases at the top of the file, after the `Unreleased` section.
-  - Each release MUST contain a list of relevant changes, including those from upstream
-    that are relevant to Splunk, either because they add a feature or because they fix
-    longstanding bugs reported by users.
+  - Each release MUST contain a list of relevant changes, including those
+    from upstream that are relevant to Splunk, either because they add a
+    feature or because they fix longstanding bugs reported by users.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality
     area (if applicable).
