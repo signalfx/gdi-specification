@@ -81,6 +81,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     changes that have not yet been released.
   - The file MUST be in reverse chronological order, with the most recent
     releases at the top of the file, after the `Unreleased` section.
+  - Each change MUST bear a label that indicates where the change is coming from: `(Contrib)`, `(Core)`, or `(Splunk)`.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality
     area (if applicable).
