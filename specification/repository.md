@@ -96,8 +96,6 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
   - Each release SHOULD be separated by a line separator (`---`) from the other relases.
   - Each release SHOULD contain separate sections for each major functionality
     area (if applicable).
-  - Each change coming from upstream MUST bear a label that indicates where the
-    change is coming from. For example: `(Contrib)` or `(Core)`.
   - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant
     from an end-user point of view. Anyone who is interested in all the details
     of every change in the repository can use the git log for that.
