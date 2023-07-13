@@ -89,7 +89,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     area (if applicable).
   - Each change MUST bear a label that indicates where the change is coming from.
     For example, `(Contrib)`, `(Core)`, or `(Splunk)`.
-  The following sub-sections MAY be used, as appropriate or specified.
+
+  The following sub-sections MAY be used, as appropriate or specified:
     - `General` - General comments about the release that users should know about.
     - `Breaking Changes` - Any changes that will break backward compatibility
       with previous versions. MUST list all breaking changes.
