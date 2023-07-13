@@ -77,6 +77,13 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
   - The `CHANGELOG.md` is intended to be consumed by humans, and not machines.
+  - The following sub-sections MAY be used, as appropriate or specified:
+    - `General` - General comments about the release that users should know about.
+    - `Breaking Changes` - Any changes that will break backward compatibility
+      with previous versions. MUST list all breaking changes.
+    - `Bugfixes` - Details of bugs that were fixed. SHOULD list all bug fixes.
+    - `Enhancements` - New features that have been added to the repository. SHOULD
+      list all new features.
   - The file SHOULD contain an `Unreleased` section at the top, which includes
     changes that have not yet been released.
   - The file MUST be in reverse chronological order, with the most recent
@@ -89,14 +96,6 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     area (if applicable).
   - Each change MUST bear a label that indicates where the change is coming from.
     For example, `(Contrib)`, `(Core)`, or `(Splunk)`.
-
-  The following sub-sections MAY be used, as appropriate or specified:
-    - `General` - General comments about the release that users should know about.
-    - `Breaking Changes` - Any changes that will break backward compatibility
-      with previous versions. MUST list all breaking changes.
-    - `Bugfixes` - Details of bugs that were fixed. SHOULD list all bug fixes.
-    - `Enhancements` - New features that have been added to the repository. SHOULD
-      list all new features.
   - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant
     from an end-user point of view. Anyone who is interested in all the details
     of every change in the repository can use the git log for that.
