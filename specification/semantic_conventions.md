@@ -53,9 +53,7 @@ when metrics are enabled.
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) libraries MUST set the `service.name` resource
-attribute to the value of the `applicationName` configuration property. This is
-the only resource attribute that RUM libraries are supposed to set because it's
-the only one the Zipkin exporter can understand.
+attribute to the value of the `applicationName` configuration property.
 
 The following attributes MUST be added to all spans produced by RUM libraries:
 
