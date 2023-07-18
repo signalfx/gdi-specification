@@ -32,6 +32,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to any other user nor team
 - MUST NOT grant any permission (including `Read`) to any individual
+  - **EXCEPTION:** MAY grant `Write` to an approved bot account
 
 ### Branch protection
 
