@@ -254,7 +254,7 @@ In addition to environment variables, other ways of defining configuration also 
 
 ### Real User Monitoring Libraries
 
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Expermiental](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) instrumentation libraries cannot use environment
 variables for configuration. Instead, they MUST expose a `SplunkRum`
