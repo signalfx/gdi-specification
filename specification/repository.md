@@ -68,11 +68,11 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     to just read access for the `contents` scope.
   - MUST only set the absolutely required `permissions` (least privilege)
   - MUST set `permissions` for individual `jobs`
+- SHOULD have Lychee Link Checker GitHub Action configured
 
 ### GitHub Applications
 
 - SHOULD have Codecov GitHub App configured
-- SHOULD have Lychee Link Checker GitHub Action configured
 
 ## Required Files
 
