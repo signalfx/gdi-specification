@@ -30,8 +30,9 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
    `signalfx/gdi-specification-maintainers` teams
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to any other user nor team
+  to any other team
 - MUST NOT grant any permission (including `Read`) to any individual
+  - **EXCEPTION:** MAY grant `Write` to an approved bot account
 
 ### Branch protection
 
@@ -77,20 +78,25 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST have a [CHANGELOG.md](templates/CHANGELOG.md) updated for every release
   - The `CHANGELOG.md` is intended to be consumed by humans, and not machines.
-  - The file SHOULD contain an `Unreleased` section at the top, which includes
-    changes that have not yet been released.
-  - The file MUST be in reverse chronological order, with the most recent
-    releases at the top of the file, after the `Unreleased` section.
-  - Each release SHOULD be separated by a line separator (`---`) from the other relases.
-  - Each release SHOULD contain separate sections for each major functionality
-    area (if applicable).
-  The following sub-sections MAY be used, as appropriate or specified.
+  - The following sub-sections MAY be used, as appropriate or specified:
     - `General` - General comments about the release that users should know about.
     - `Breaking Changes` - Any changes that will break backward compatibility
       with previous versions. MUST list all breaking changes.
     - `Bugfixes` - Details of bugs that were fixed. SHOULD list all bug fixes.
     - `Enhancements` - New features that have been added to the repository. SHOULD
       list all new features.
+  - The file SHOULD contain an `Unreleased` section at the top, which includes
+    changes that have not yet been released.
+  - The file MUST be in reverse chronological order, with the most recent
+    releases at the top of the file, after the `Unreleased` section.
+  - Each release MUST contain a link to the upstream release notes.
+  - Each release MAY contain a list of changes from upstream that Splunk has
+    been working on, are relevant to Splunk GDI, or fix outstanding bugs.
+  - Each change coming from upstream MUST bear a label that indicates where the
+    change is coming from. For example: `(Contrib)` or `(Core)`.
+  - Each release SHOULD be separated by a line separator (`---`) from the other relases.
+  - Each release SHOULD contain separate sections for each major functionality
+    area (if applicable).
   - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant
     from an end-user point of view. Anyone who is interested in all the details
     of every change in the repository can use the git log for that.
