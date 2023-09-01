@@ -25,7 +25,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
   to maintainers team and the `gdi-instrumentation-admins` team
 - MUST grant `Write` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to approvers team and the `signalfx/gdi-docs` and `signalfx/gdi-specification-maintainers` teams
+  to approvers team and the `signalfx/gdi-docs` and
+  `signalfx/gdi-specification-maintainers` teams
 - MUST NOT grant `Write`, `Maintain`, `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to any other team
