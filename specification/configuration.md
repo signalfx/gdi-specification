@@ -214,8 +214,8 @@ are required.
     name or link to relevant documentation. E.g.
 
     ```txt
-    service.name attribute is not set, your service is unnamed and will be difficult to identify.
-    set your service name using the OTEL_SERVICE_NAME environment variable.
+    The service.name resource attribute is not set, your service is unnamed and will be difficult to identify.
+    Set your service name using the OTEL_SERVICE_NAME or OTEL_RESOURCE_ATTRIBUTES environment variable.
     E.g. `OTEL_SERVICE_NAME="<YOUR_SERVICE_NAME_HERE>"`
     ```
 

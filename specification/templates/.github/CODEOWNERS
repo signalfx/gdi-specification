@@ -14,4 +14,4 @@
 *.md    @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs
 *.rst   @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs
 docs/   @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs
-README* @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs @signalfx/gdi-specification-approvers @signalfx/gdi-specification-maintainers
+README* @signalfx/gdi-TEAM-maintainers @signalfx/gdi-TEAM-approvers @signalfx/gdi-docs @signalfx/gdi-specification-maintainers
