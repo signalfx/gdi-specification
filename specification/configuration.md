@@ -227,7 +227,7 @@ are required.
     (not OpenTelemetry default)
   - Distribution MUST default to `12000` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`
     (not OpenTelemetry default)
-  - Distribution MUST default to unset (unlimited) for all others
+  - Distribution MUST default to unlimited for all others
     (not OpenTelemetry default)
 - `OTEL_TRACES_EXPORTER`
   - Non-RUM distribution MUST default to `otlp` using `grpc` or `http/protobuf`
