@@ -11,6 +11,10 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ### Teams
 
+- MUST have an admins team and teams MAY be shared between repositories
+  - MUST have `-admins` suffix
+  - MUST include at least two currently full-time Splunkers
+  - MUST NOT include any non-full-time Splunkers
 - MUST have a maintainers team and teams MAY be shared between repositories
   - MUST have `-maintainers` suffix
   - MUST include at least two currently full-time Splunkers
@@ -22,7 +26,10 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 - MUST grant `Admin` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
-  to maintainers team and the `gdi-instrumentation-admins` team
+  to the admins team
+- MUST grant `Admin` [permission
+  level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
+  to the maintainers team
 - MUST grant `Write` [permission
   level](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization)
   to approvers team and the `signalfx/gdi-docs` team
