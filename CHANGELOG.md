@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [1.6.0] - 2023-09-14
+
+### Configuration
+
+#### Enhancements
+
+- Update the log message when `service.name` resource attribute is not set.
+
+### Repository
+
+#### Enhancements
+
+- Update `CONTRIBUTING.md` template to require signing commits.
+- Suggest changelog sub-sections and labels.
+- Require releases to contain a link to the upstream release notes.
+- Add repiository permission exception for bot accounts.
+- Remove `signalfx/gdi-specification-*` teams from permissions.
+- Add admins team.
+
 ## [1.5.0] - 2023-03-30
 
 ### Configuration
@@ -233,7 +252,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.6.0
 [1.5.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.5.0
 [1.4.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.4.0
 [1.3.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.3.0
