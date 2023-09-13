@@ -17,7 +17,7 @@
 - Update `CONTRIBUTING.md` template to require signing commits.
 - Suggest changelog sub-sections and labels.
 - Require releases to contain a link to the upstream release notes.
-- Add repiository permission exception for bot accounts.
+- Add repository permission exception for bot accounts.
 - Remove `signalfx/gdi-specification-*` teams from permissions.
 - Add admins team.
 
