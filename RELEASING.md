@@ -37,3 +37,5 @@ ith the GDI specification
 ```sh
 make create-issues TAG=<new tag>
 ```
+
+Create a pull request updating the [GA Request template](.github/ISSUE_TEMPLATE/ga_request.md).
