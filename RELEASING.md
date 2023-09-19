@@ -25,6 +25,9 @@ Create a Release for the new `<new tag>` on GitHub.
 The release body should include all the release notes
 for this release taken from [CHANGELOG.md](CHANGELOG.md).
 
+To ease update effors for GDI components, each line in the release
+notes SHOULD contain a link to the relevant PR or commit.
+
 ## Post-Release
 
 Create issues for all the repositories that should comply
