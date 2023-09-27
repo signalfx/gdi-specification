@@ -16,7 +16,7 @@ The following specification sections are currently in scope:
 - [Semantic Conventions](specification/semantic_conventions.md)
 - [Repository](specification/repository.md)
 - [Versioning](specification/versioning.md)
-- [Status and support levels](specification/status_and_support_level.md)
+- [Status and support levels of open source components](specification/status_and_support_level.md)
 
 GDI repositories MUST adopt GDI specification changes by their next `MINOR` release
 and within three months (whichever is sooner). The GDI specification and GDI
