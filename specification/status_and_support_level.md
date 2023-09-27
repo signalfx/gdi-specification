@@ -2,6 +2,11 @@
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
+Following should be treated as guidelines built based on
+[Splunk terms and Conditions](https://www.splunk.com/en_us/legal/splunk-general-terms.html)
+and [Splunk Specific terms and Conditions](https://www.splunk.com/en_us/legal/splunk-specific-terms.html#splunk-observability-cloud)
+which are the main and only governing set of Terms and Conditions in force.
+
 ## Definitions of status levels
 
 A status level can describe the maturity of a given distribution component,
