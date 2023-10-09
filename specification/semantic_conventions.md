@@ -12,13 +12,13 @@ Note: No semantic conventions for data collection exist at this time.
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 **Description:** Required and recommended OpenTelemetry [resource semantic
-conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk).
+conventions](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource#telemetry-sdk).
 
 All Splunk distributions of OpenTelemetry,
 
 - MUST set the following OpenTelemetry resource attributes according to the
   [OpenTelemetry Semantic
-  Conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#telemetry-sdk):
+  Conventions](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource#telemetry-sdk):
   - `telemetry.sdk.name`
   - `telemetry.sdk.version`
   - `telemetry.sdk.language`
