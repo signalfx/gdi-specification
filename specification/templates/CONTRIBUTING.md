@@ -89,4 +89,3 @@ any 'help wanted' issues is a great place to start.
 
 See the [LICENSE](LICENSE) file for our repository's licensing. We will ask you to
 confirm the licensing of your contribution.
-
