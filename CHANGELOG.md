@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Repository
+
+#### Enhancements
+
+- Require a CLA Assistant GitHub workflow. (#269)
+- Update the CLA notice in `CONTRIBUTING.md` template. (#269)
+
 ## [1.6.0] - 2023-09-14
 
 ### Configuration

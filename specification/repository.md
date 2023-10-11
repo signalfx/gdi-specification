@@ -44,6 +44,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST have a default branch named `main`
 - MUST NOT allow anyone (including administrators) pushing directly to `main`
 - MUST require status checks to pass before merge to `main`
+  - MUST require a CLA Assistant status check
 - MUST require at least one CODEOWNER to approve a PR prior to merge
 - MUST require signed commits on `main`
 - MUST NOT allow merge commit (squash or rebase merging only)
@@ -73,6 +74,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     to just read access for the `contents` scope.
   - MUST only set the absolutely required `permissions` (least privilege)
   - MUST set `permissions` for individual `jobs`
+- MUST have a CLA Assistant GitHub workflow integrated with [splunk/cla-agreement](https://github.com/splunk/cla-agreement),
+  e.g. [cla.yml](../.github/workflows/cla.yml)
 - SHOULD have Lychee Link Checker GitHub Action configured
 
 ### GitHub Applications
