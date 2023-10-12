@@ -6,10 +6,10 @@ on:
     types: [opened, closed, synchronize]
 
 permissions:
-  actions: read
+  actions: write
   contents: read
   pull-requests: write
-  statuses: read
+  statuses: write
 
 jobs:
   ContributorLicenseAgreement:
