@@ -54,20 +54,22 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST lock the versions of all build dependencies (e.g. libraries, binaries,
   scripts, docker images) or vendor them; **EXCEPTION:** tools that are
   available out-of-the-box on the CI runner
-- To help keep dependencies up to date, the repo MUST be configured with 
+- To help keep dependencies up to date, the repo MUST be configured with
 [Dependabot](https://github.com/dependabot/dependabot-core) or [Renovate](https://github.com/apps/renovate).
 
-#### Dependabot:
+#### Dependabot
 
 - MUST enable [Dependabot alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)
   - MUST grant access to alerts for the approvers and maintainers teams
   - MUST enable [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates)
 - MUST configure [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
-#### Renovate:
+#### Renovate
 
 - MUST add the repo to the [list of Renovatebot repos](https://github.com/organizations/signalfx/settings/installations/41531652).
-- MUST add a [Renovate config file](https://docs.renovatebot.com/configuration-options/) to the repo.
+- MUST add a 
+[Renovate config file](https://docs.renovatebot.com/configuration-options/)
+to the repo.
 
 ### GitHub Actions
 
