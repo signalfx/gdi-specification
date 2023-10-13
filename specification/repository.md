@@ -67,7 +67,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 #### Renovate
 
 - MUST add the repo to the [list of Renovatebot repos](https://github.com/organizations/signalfx/settings/installations/41531652).
-- MUST add a 
+- MUST add a
 [Renovate config file](https://docs.renovatebot.com/configuration-options/)
 to the repo.
 
