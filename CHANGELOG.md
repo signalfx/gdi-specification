@@ -7,7 +7,7 @@
 #### Enhancements
 
 - Require a CLA Assistant GitHub workflow. (#269)
-- Update the CLA notice in `CONTRIBUTING.md` template. (#269)
+- Update the CLA notice in `CONTRIBUTING.md` template. (#269, #274)
 - Add Renovate as an acceptable alternative to Dependabot. (#271)
 - Add disk buffering configuration options for RUM (#275)
 
