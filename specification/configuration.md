@@ -274,7 +274,7 @@ properties:
 | `applicationName` ()           | Instrumented application name. [1]                                                                                                                                                                         |
 | `globalAttributes` ()          | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
 | `deploymentEnvironment` ()     | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                              |
-| `enableDiskBuffering` (false)  | **Mobile only.** Enables the storage-based buffering of telemetry                                                                                                                                          |
+| `enableDiskBuffering` (false)  | **Mobile only.** Enables the storage-based buffering of telemetry.                                                                                                                                         |
 | `limitDiskUsageMegabytes` (25) | **Mobile only.** Sets the limit of the max number of megabytes that will be used to buffer telemetry data in storage.                                                                                      |
 
 - [1] Application name, authentication token and either realm or the beacon URL
