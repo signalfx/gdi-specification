@@ -11,6 +11,11 @@
 - Add Renovate as an acceptable alternative to Dependabot. (#271)
 - Add disk buffering configuration options for RUM mobile instrumentation
   libraries. (#275)
+- Update telemetry resource attributes (#277):
+
+  - Deprecate `splunk.distro.version`,
+  - Change `telemetry.auto.version` to `telemetry.distro.version`,
+  - Add `telemetry.distro.name` resource attribute.
 
 ## [1.6.0] - 2023-09-14
 
