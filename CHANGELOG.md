@@ -12,7 +12,6 @@
 - Add disk buffering configuration options for RUM mobile instrumentation
   libraries. (#275)
 - Update telemetry resource attributes (#277):
-
   - Deprecate `splunk.distro.version`,
   - Change `telemetry.auto.version` to `telemetry.distro.version`,
   - Add `telemetry.distro.name` resource attribute.
