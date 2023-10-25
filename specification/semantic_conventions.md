@@ -24,7 +24,8 @@ All Splunk distributions of OpenTelemetry,
   - `telemetry.sdk.language`
 
 - SHOULD set the following resource attributes when applicable:
-  - `telemetry.auto.version`
+  - `telemetry.distro.name`
+  - `telemetry.distro.version`
 
 - SHOULD set [process and process runtime resource attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.18.0/specification/resource/semantic_conventions/process.md)
 
@@ -33,7 +34,7 @@ not use the OpenTelemetry Resource.
 
 ## Splunk Resource Attributes
 
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Deprecated](../README.md#versioning-and-status-of-the-specification)
 
 **Description:** Set of attributes used to uniquely identify a Splunk distro
 version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
