@@ -223,6 +223,8 @@ are required.
 - `OTEL_TRACES_EXPORTER`
   - Non-RUM distribution MUST default to `otlp` over gRPC with an endpoint of `localhost:4317`
   - Non-RUM distribution MUST offer `jaeger-thrift-splunk` that defaults to `http://127.0.0.1:9080/v1/trace`
+- `OTEL_TRACES_SAMPLER`
+  - Distribution MUST default to `always_on`.
 
 In addition to environment variables, other ways of defining configuration also exist:
 
