@@ -6,7 +6,7 @@
 
 #### Enhancements
 
-- Clarify the default sampling algorithm. (#284)[https://github.com/signalfx/gdi-specification/pull/284)]
+- Clarify the default sampling algorithm. (#284)[https://github.com/signalfx/gdi-specification/pull/284]
 - Require a CLA Assistant GitHub workflow. (#269)[https://github.com/signalfx/gdi-specification/pull/269]
 - Update the CLA notice in `CONTRIBUTING.md` template. (#269)[https://github.com/signalfx/gdi-specification/pull/269] (#274)[https://github.com/signalfx/gdi-specification/pull/274]
 - Add Renovate as an acceptable alternative to Dependabot. (#271)[https://github.com/signalfx/gdi-specification/pull/271]
