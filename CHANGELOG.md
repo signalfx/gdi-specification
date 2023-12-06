@@ -6,13 +6,13 @@
 
 #### Enhancements
 
-- Clarify the default sampling algorithm. (#284)[https://github.com/signalfx/gdi-specification/pull/284]
-- Require a CLA Assistant GitHub workflow. (#269)[https://github.com/signalfx/gdi-specification/pull/269]
-- Update the CLA notice in `CONTRIBUTING.md` template. (#269)[https://github.com/signalfx/gdi-specification/pull/269] (#274)[https://github.com/signalfx/gdi-specification/pull/274]
-- Add Renovate as an acceptable alternative to Dependabot. (#271)[https://github.com/signalfx/gdi-specification/pull/271]
+- Clarify the default sampling algorithm. [#284](https://github.com/signalfx/gdi-specification/pull/284)
+- Require a CLA Assistant GitHub workflow. [#269](https://github.com/signalfx/gdi-specification/pull/269)
+- Update the CLA notice in `CONTRIBUTING.md` template. [#269](https://github.com/signalfx/gdi-specification/pull/269) [#274](https://github.com/signalfx/gdi-specification/pull/274)
+- Add Renovate as an acceptable alternative to Dependabot. [#271](https://github.com/signalfx/gdi-specification/pull/271)
 - Add disk buffering configuration options for RUM mobile instrumentation
-  libraries. (#275)[https://github.com/signalfx/gdi-specification/pull/275]
-- Update telemetry resource attributes (#277)[https://github.com/signalfx/gdi-specification/pull/277]:
+  libraries. [#275](https://github.com/signalfx/gdi-specification/pull/275)
+- Update telemetry resource attributes [#277](https://github.com/signalfx/gdi-specification/pull/277):
   - Deprecate `splunk.distro.version`,
   - Change `telemetry.auto.version` to `telemetry.distro.version`,
   - Add `telemetry.distro.name` resource attribute.
