@@ -44,6 +44,7 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST have a default branch named `main`
 - MUST NOT allow anyone (including administrators) pushing directly to `main`
 - MUST require status checks to pass before merge to `main`
+  - MUST require a CLA Assistant status check
 - MUST require at least one CODEOWNER to approve a PR prior to merge
 - MUST require signed commits on `main`
 - MUST NOT allow merge commit (squash or rebase merging only)
@@ -53,10 +54,24 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 - MUST lock the versions of all build dependencies (e.g. libraries, binaries,
   scripts, docker images) or vendor them; **EXCEPTION:** tools that are
   available out-of-the-box on the CI runner
+- To help keep dependencies up to date, the repo MUST be configured with
+[Dependabot](https://github.com/dependabot/dependabot-core) or [Renovate](https://github.com/apps/renovate).
+
+#### Dependabot
+
 - MUST enable [Dependabot alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)
   - MUST grant access to alerts for the approvers and maintainers teams
   - MUST enable [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates)
 - MUST configure [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
+
+#### Renovate
+
+Follow the steps below if you want to use Renovate to update the dependencies.
+
+- MUST add the repo to the [list of Renovatebot repos](https://github.com/organizations/signalfx/settings/installations/41531652).
+- MUST add a
+[Renovate config file](https://docs.renovatebot.com/configuration-options/)
+to the repo.
 
 ### GitHub Actions
 
@@ -73,6 +88,8 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
     to just read access for the `contents` scope.
   - MUST only set the absolutely required `permissions` (least privilege)
   - MUST set `permissions` for individual `jobs`
+- MUST have a CLA Assistant GitHub workflow integrated with [splunk/cla-agreement](https://github.com/splunk/cla-agreement),
+  e.g. [cla.yml](../.github/workflows/cla.yml)
 - SHOULD have Lychee Link Checker GitHub Action configured
 
 ### GitHub Applications

@@ -266,14 +266,16 @@ etc.).
 RUM instrumentation libraries MUST support the following configuration
 properties:
 
-| Property (default value)   | Description                                                                                                                                                                                                |
-|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `realm` ()                 | Splunk realm, e.g. `us0`, `us1`. If set, value of `beaconEndpoint` will be automatically computed based on this. [1] [2] [3]                                                                               |
-| `beaconEndpoint` ()        | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                        |
-| `rumAccessToken` ()        | RUM authentication token. [1]                                                                                                                                                                              |
-| `applicationName` ()       | Instrumented application name. [1]                                                                                                                                                                         |
-| `globalAttributes` ()      | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
-| `deploymentEnvironment` () | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                              |
+| Property (default value)       | Description                                                                                                                                                                                                |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `realm` ()                     | Splunk realm, e.g. `us0`, `us1`. If set, value of `beaconEndpoint` will be automatically computed based on this. [1] [2] [3]                                                                               |
+| `beaconEndpoint` ()            | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                        |
+| `rumAccessToken` ()            | RUM authentication token. [1]                                                                                                                                                                              |
+| `applicationName` ()           | Instrumented application name. [1]                                                                                                                                                                         |
+| `globalAttributes` ()          | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
+| `deploymentEnvironment` ()     | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                              |
+| `enableDiskBuffering` (false)  | **Mobile only.** Enables the storage-based buffering of telemetry.                                                                                                                                         |
+| `limitDiskUsageMegabytes` (25) | **Mobile only.** Sets the limit of the max number of megabytes that will be used to buffer telemetry data in storage.                                                                                      |
 
 - [1] Application name, authentication token and either realm or the beacon URL
   MUST be provided by the user. If any of these is missing, the RUM
