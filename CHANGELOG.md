@@ -15,7 +15,7 @@
   - Deprecate `splunk.distro.version`,
   - Change `telemetry.auto.version` to `telemetry.distro.version`,
   - Add `telemetry.distro.name` resource attribute.
-- Deprecate `text` format for `profiling.data.format` (#285).
+- Deprecate `text` format for `profiling.data.format`. (#285)
 
 ## [1.6.0] - 2023-09-14
 
