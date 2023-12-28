@@ -127,7 +127,7 @@ instances. For each `LogRecord` instance:
 - `profiling.data.type` MUST be set to either `allocation` or `cpu`
 - `profiling.data.format` MUST be set to either:
   - `pprof-gzip-base64`,
-  - `text` ([deprecated](../README.md#versioning-and-status-of-the-specification)
+  - `text` ([Deprecated](../README.md#versioning-and-status-of-the-specification)
     format).
 
 #### `LogRecord` Message `text` Data Format Specific Attributes
