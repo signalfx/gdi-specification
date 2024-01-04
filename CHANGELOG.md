@@ -16,6 +16,12 @@
   - Change `telemetry.auto.version` to `telemetry.distro.version`,
   - Add `telemetry.distro.name` resource attribute.
 
+### Semantic Conventions
+
+#### Enhancements
+
+- Deprecate `text` format for `profiling.data.format`. (#285)
+
 ## [1.6.0] - 2023-09-14
 
 ### Configuration
@@ -72,7 +78,7 @@
 
 - Remove `telemetry.sdk.language` attribute from `ResourceLogs.resource`.
 
-### Bugfixes
+#### Bugfixes
 
 - Remove redunant and conflicting statement about file and line for `ResourceLogs`.
 
