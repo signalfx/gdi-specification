@@ -31,7 +31,7 @@ reading by GDI repository consumers.
   Refers to `splunk-otel-collector` repository.
 - GDI: Getting Data In
 - GDI repository: A repository in the `signalfx` GitHub that starts with
-  `splunk-otel-\*` or `o11y-\*`.
+  `splunk-otel-\*` or `o11y-\*` and exists in [repositories.txt](repositories.txt).
 - Instrumentation Library: A way to emit telemetry data from an application.
   Refers to `splunk-otel-<language>` repositories.
 - Maintainer: Someone responsible for the specification or a repository.
