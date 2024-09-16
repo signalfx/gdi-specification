@@ -31,7 +31,7 @@ reading by GDI repository consumers.
   Refers to `splunk-otel-collector` repository.
 - GDI: Getting Data In
 - GDI repository: A repository in the `signalfx` GitHub that starts with
-  `splunk-otel-\*`
+  `splunk-otel-\*` or `o11y-\*`.
 - Instrumentation Library: A way to emit telemetry data from an application.
   Refers to `splunk-otel-<language>` repositories.
 - Maintainer: Someone responsible for the specification or a repository.
@@ -40,7 +40,7 @@ reading by GDI repository consumers.
 
 ## Notation Conventions and Compliance
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in the
 specification are to be interpreted as described
 in [BCP 14](https://tools.ietf.org/html/bcp14)
