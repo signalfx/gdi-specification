@@ -11,14 +11,17 @@ approval is granted, GDI repositories MUST NOT cut a GA release.
 
 ### Teams
 
+Teams MUST only be comprised of full-time Cisco employees, which includes
+AppDynamics and Splunk employees.
+
 - MUST have an admins team and teams MAY be shared between repositories
   - MUST have `-admins` suffix
-  - MUST include at least two currently full-time Splunkers
-  - MUST NOT include any non-full-time Splunkers
-- MUST have a maintainers team and teams MAY be shared between repositories
+  - MUST include at least two current employees
+  - MUST NOT include any non-Cisco developers
+- MUST have a maintainers team, and teams MAY be shared between repositories
   - MUST have `-maintainers` suffix
-  - MUST include at least two currently full-time Splunkers
-  - MUST NOT include any non-full-time Splunkers
+  - MUST include at least two current employees
+  - MUST NOT include any non-Cisco developers
 - SHOULD have an approvers team and teams MAY be shared between repositories
   - MUST have `-approvers` suffix
 
