@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.1
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v2.0.0
+        uses: lycheeverse/lychee-action@v2.0.1
         with:
           args: -v -n "*.md" "**/*.md"
       - name: Create Issue From File
