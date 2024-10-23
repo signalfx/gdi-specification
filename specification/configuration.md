@@ -244,7 +244,8 @@ are required.
     ```
 
 - `OTEL_TRACES_SAMPLER`
-  - Distribution MUST default to `always_on`.
+  - Distribution MUST default to `always_on`
+    (not OpenTelemetry default)
 
 In addition to environment variables, other ways of defining configuration also exist:
 
