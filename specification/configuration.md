@@ -169,7 +169,7 @@ instance using the following environment variables:
 | `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                 |
 | `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]                                    |
 | `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                |
-| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTLP_EXPORTER_OTLP_ENDPOINT` [5] |
+| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTEL_EXPORTER_OTLP_ENDPOINT` [5] |
 | `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                             |
 | `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                   |
 | `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true    | Whether `Server-Timing` header is added to HTTP responses. [4]                           |
