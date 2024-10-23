@@ -125,7 +125,10 @@ instances. For each `LogRecord` instance:
 
 - `com.splunk.sourcetype` MUST be set to the value `otel.profiling`
 - `profiling.data.type` MUST be set to either `allocation` or `cpu`
-- `profiling.data.format` MUST be set to either `text` or `pprof-gzip-base64`
+- `profiling.data.format` MUST be set to either:
+  - `pprof-gzip-base64`,
+  - `text` ([Deprecated](../README.md#versioning-and-status-of-the-specification)
+    format).
 
 #### `LogRecord` Message `text` Data Format Specific Attributes
 

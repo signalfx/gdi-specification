@@ -5,13 +5,14 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.2.1
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v1.8.0
+        uses: lycheeverse/lychee-action@v2.0.2
         with:
           args: -v -n "*.md" "**/*.md"
       - name: Create Issue From File
-        uses: peter-evans/create-issue-from-file@v4.0.1
+        if: env.lychee_exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5.0.1
         with:
           title: Link Checker Report
           content-filepath: ./lychee/out.md
