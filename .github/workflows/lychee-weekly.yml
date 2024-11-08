@@ -5,9 +5,9 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v2.0.2
+        uses: lycheeverse/lychee-action@v2.1.0
         with:
           args: -v -n "*.md" "**/*.md"
       - name: Create Issue From File
