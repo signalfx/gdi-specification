@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       - name: Markdown Lint check
-        uses: DavidAnson/markdownlint-cli2-action@v17.0.0
+        uses: DavidAnson/markdownlint-cli2-action@v18.0.0
         with:
           globs: '**/*.md'
       - name: lychee Link Checker
