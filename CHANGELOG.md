@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Configuration
+
+#### Enhancements
+
+- `SPLUNK_PROFILER_CALL_STACK_INTERVAL` defaults to `1000` for single-threaded runtimes.
+
 ### Repository
 
 #### Enhancements
