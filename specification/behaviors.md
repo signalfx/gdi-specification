@@ -39,10 +39,6 @@ MUST be able to associate the call stack to the span. This association SHOULD
 happen as close to the sampling point as feasible, but MAY occur later in a
 processing pipeline.
 
-After the association has been made, the `TraceId` and `SpanId` fields of the
-[LogRecord message](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto)
-MUST be populated (see [here](semantic_conventions.md#logrecord-message-fields)).
-
 ### Call Stack Ingest
 
 Call stacks MUST be ingested as [OpenTelemetry
