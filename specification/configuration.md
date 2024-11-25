@@ -167,7 +167,7 @@ instance using the following environment variables:
 | Name                                   | Default | Description                                                                              |
 |----------------------------------------|---------|------------------------------------------------------------------------------------------|
 | `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                 |
-| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | 10000   | Interval at which call stacks are sampled (in ms) [5]                                    |
+| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | [7]     | Interval at which call stacks are sampled (in ms) [5]                                    |
 | `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                |
 | `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTEL_EXPORTER_OTLP_ENDPOINT` [5] |
 | `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                             |
@@ -199,6 +199,7 @@ instance using the following environment variables:
   MUST be set to `true`.
 - [5]: Applies only to instrumentation libraries with CPU profiling capabilities.
 - [6]: Applies only to instrumentation libraries with memory profiling capabilities.
+- [7]: `10000` for multi-threaded runtimes, `1000` for single-threaded runtimes.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment

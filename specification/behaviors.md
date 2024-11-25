@@ -12,8 +12,7 @@ instrumentation libraries that contain profiling features.
 ### Call Stack Sampling
 
 An instrumentation library that has profiling capabilities MUST be able to
-sample call stacks at a fixed interval. This default interval MUST default to 10
-seconds.
+sample call stacks at a fixed interval.
 
 When a language runtime supports threading, stacks MUST be sampled across all
 process threads. The samples for all threads SHOULD be taken instantaneously
@@ -39,10 +38,6 @@ When a call stack is sampled during the execution of a span scope, the profiler
 MUST be able to associate the call stack to the span. This association SHOULD
 happen as close to the sampling point as feasible, but MAY occur later in a
 processing pipeline.
-
-After the association has been made, the `TraceId` and `SpanId` fields of the
-[LogRecord message](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto)
-MUST be populated (see [here](semantic_conventions.md#logrecord-message-fields)).
 
 ### Call Stack Ingest
 
