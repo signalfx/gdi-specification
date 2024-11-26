@@ -244,6 +244,10 @@ are required.
     telemetry directly to Splunk Observability Cloud.
     ```
 
+- `OTEL_TRACES_SAMPLER`
+  - Distribution MUST default to `always_on`
+    (not OpenTelemetry default)
+
 In addition to environment variables, other ways of defining configuration also exist:
 
 - [Java System
