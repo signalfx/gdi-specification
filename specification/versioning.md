@@ -3,7 +3,7 @@
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 All GDI repositories MUST be versioned according to [Semantic Versioning
-2.0](https://semver.org/spec/v2.0.0.html) and versioning idiomatic to their
+2.0](https://semver.org/spec/v2.0.0.html) using the syntax idiomatic to their
 language.
 GDI repositories are versioned separately from OpenTelemetry repositories as
 Splunk-specific breaking changes MAY be introduced.
