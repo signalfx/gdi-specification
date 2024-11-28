@@ -3,25 +3,16 @@
 **Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 All GDI repositories MUST be versioned according to [Semantic Versioning
-2.0](https://semver.org/spec/v2.0.0.html). GDI repositories are versioned
-separately from OpenTelemetry repositories as Splunk-specific breaking changes
-MAY be introduced. GDI repositories MUST indicate what version of OpenTelemetry
+2.0](https://semver.org/spec/v2.0.0.html) and versioning idiomatic to their
+language.
+GDI repositories are versioned separately from OpenTelemetry repositories as
+Splunk-specific breaking changes MAY be introduced.
+GDI repositories MUST indicate what version of OpenTelemetry
 repositories they are based on through release notes and SHOULD indicate through
 logging. Additional version number constraints can be found in the sections
 below.
 
 ## Experimental
-
-Everything in the specification starts as experimental, which covers alpha,
-beta, and release candidate versions. Version numbers for releases MUST be less
-than `1.0.0` while experimental. The minor version number SHOULD be increased
-when significant or breaking changes are introduced.
-
-While any section in the specification is experimental, breaking changes and
-performance issues MAY occur. Sections SHOULD NOT be expected to be
-feature-complete. In some cases, the experiment MAY be discarded and removed
-entirely. Long-term dependencies SHOULD NOT be taken against experimental
-sections.
 
 GDI repositories MAY consist of one or more components. GDI repositories MUST be
 designed in a manner that allows experimental components to be created without

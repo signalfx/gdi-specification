@@ -85,6 +85,14 @@ document. Lifecycle stages are defined in the
 
 - [1]: See [stability guarantees](./specification/versioning.md) for details.
 
+## Experimental
+
+Everything in the specification starts as `Experimental`.
+
+`Experimental` sections SHOULD NOT be expected to be feature-complete.
+In some cases, the experiment MAY be discarded and removed entirely.
+Long-term dependencies SHOULD NOT be taken against experimental sections.
+
 ### Feature freeze
 
 In addition to the statuses above, documents may be marked as `Feature-freeze`.
