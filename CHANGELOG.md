@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.7.0] - 2024-12-11
+
 ### Configuration
 
 #### Enhancements
@@ -285,7 +287,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.7.0
 [1.6.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.6.0
 [1.5.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.5.0
 [1.4.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.4.0
