@@ -2,11 +2,14 @@
 
 ## [Unreleased]
 
+## [1.7.0] - 2025-01-07
+
 ### Configuration
 
 #### Enhancements
 
 - `SPLUNK_PROFILER_CALL_STACK_INTERVAL` defaults to `1000` for single-threaded runtimes.
+  [#325](https://github.com/signalfx/gdi-specification/pull/325)
 
 ### Repository
 
@@ -22,18 +25,22 @@
 - Add Renovate as an acceptable alternative to Dependabot.
   [#271](https://github.com/signalfx/gdi-specification/pull/271)
 - Add disk buffering configuration options for RUM mobile instrumentation
-  libraries. [#275](https://github.com/signalfx/gdi-specification/pull/275)
+  libraries.
+  [#275](https://github.com/signalfx/gdi-specification/pull/275)
 - Update telemetry resource attributes
   [#277](https://github.com/signalfx/gdi-specification/pull/277):
   - Deprecate `splunk.distro.version`,
   - Change `telemetry.auto.version` to `telemetry.distro.version`,
   - Add `telemetry.distro.name` resource attribute.
+- Relax name restrictions to include Cisco/AppDynamics.
+  [#308](https://github.com/signalfx/gdi-specification/pull/308)
 
 ### Semantic Conventions
 
 #### Enhancements
 
-- Deprecate `text` format for `profiling.data.format`. (#285)
+- Deprecate `text` format for `profiling.data.format`.
+  [#285](https://github.com/signalfx/gdi-specification/pull/285)
 
 ## [1.6.0] - 2023-09-14
 
@@ -285,7 +292,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.7.0
 [1.6.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.6.0
 [1.5.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.5.0
 [1.4.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.4.0
