@@ -1,4 +1,5 @@
 <!-- markdownlint-configure-file { "MD013": { "tables": false } } -->
+
 # Trace State
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
@@ -34,7 +35,7 @@ When `cisco.tracestate.enabled` is `true`, Splunk implementations MUST extract f
 from the `tracestate` and set a Span attribute with the same value. Null or missing
 values MUST be handled gracefully by simply omitting the span attributes.
 
-| tracestate field | type   | span attribute             | description                                                             | example                           | 
+| tracestate field | type   | span attribute             | description                                                             | example                           |
 |------------------|--------|----------------------------|-------------------------------------------------------------------------|-----------------------------------|
 | `appd_acct_id`   | string | `appd.upstream.account_id` | The AppDynamics account ID of the upstream component making the request | 65230, 10018b                     |
 | `appd_app_id`    | string | `appd.upstream.app_id`     | The ID of the AppDynamics instrumented application.                     | 0293845, destination-factory-9000 |
@@ -48,10 +49,10 @@ unless required elsewhere.
 When `cisco.tracestate.enabled` is `true`, Splunk implementations MUST inject the following
 resource attributes into the `tracestate` of outgoing requests.
 
-| resource attribute            | type   | tracestate field | description                                                                                                                                                                                                                            | example             | 
+| resource attribute            | type   | tracestate field | description                                                                                                                                                                                                                            | example             |
 |-------------------------------|--------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `deployment.environment.name` | string | `otel_env`       | The name of the OpenTelemetry deployment environment ([spec](https://github.com/open-telemetry/semantic-conventions/blob/4f77620fe731c10d40f7d50c543d4e5c73a46ebf/docs/attributes-registry/deployment.md#deployment-environment-name)) | production, staging |  
-| `service.name`                | string | `otel_service`   | The name of the OpenTelemetry service ([spec](https://github.com/open-telemetry/semantic-conventions/blob/4f77620fe731c10d40f7d50c543d4e5c73a46ebf/docs/attributes-registry/service.md#service-name))                                  | checkout, cart      |  
+| `deployment.environment.name` | string | `otel_env`       | The name of the OpenTelemetry deployment environment ([spec](https://github.com/open-telemetry/semantic-conventions/blob/4f77620fe731c10d40f7d50c543d4e5c73a46ebf/docs/attributes-registry/deployment.md#deployment-environment-name)) | production, staging |
+| `service.name`                | string | `otel_service`   | The name of the OpenTelemetry service ([spec](https://github.com/open-telemetry/semantic-conventions/blob/4f77620fe731c10d40f7d50c543d4e5c73a46ebf/docs/attributes-registry/service.md#service-name))                                  | checkout, cart      |
 
 All other resource attributes SHOULD be ignored and not placed into the `tracestate`,
 unless required elsewhere.
