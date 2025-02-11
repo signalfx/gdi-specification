@@ -26,7 +26,7 @@ components.
 ### Configuration
 
 OpenTelemetry-based implementations will already have the ability to inject and
-extract fields into the tracestate. Splunk otel distributions MUST provide a
+extract fields into the `tracestate`. Splunk otel distributions MUST provide a
 way for users to opt-into the passing of additional Cisco/bespoke trace state.
 
 The configuration SHOULD be named `cisco.tracestate.enabled` or an idiomatic
