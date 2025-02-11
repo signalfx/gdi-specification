@@ -10,7 +10,7 @@
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
-In order to create a more complete picture of a distributed environment, we 
+In order to create a more complete picture of a distributed environment, we
 propose the use of
 [W3C tracestate](https://www.w3.org/TR/trace-context/#tracestate-header) to
 pass extra context details between Cisco observability components.
