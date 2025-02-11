@@ -1,3 +1,4 @@
+<!-- markdownlint-configure-file { "MD013": { "tables": false } } -->
 # Trace State
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
