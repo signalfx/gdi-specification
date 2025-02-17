@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Semantic Conventions
+
+#### Enhancements
+
+- Define the `PROFILING_INSTRUMENTATION_SOURCE` attribute with valid values of `continuous` and `snapshot`
+
 ## [1.7.0] - 2025-01-07
 
 ### Configuration
