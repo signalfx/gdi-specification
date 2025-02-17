@@ -49,5 +49,5 @@ metrics).
 
 ## Trace State Interchange
 
-See [tracestate.md](tracestate.md) for specifics about exchanging `tracestate` fields
-between AppD and splunk-otel based agents.
+See [integration_context.md](integration_context.md) for specifics about exchanging additional
+context between AppD and splunk-otel based agents.
