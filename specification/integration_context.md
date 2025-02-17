@@ -11,28 +11,28 @@
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 In order to create a more complete picture of a distributed environment, we
-propose the use of additional headers to pass extra context details between 
+propose the use of additional headers to pass extra context details between
 Cisco observability components. Specifically, we are concerned with passing
 information between OpenTelemetry-based Splunk distributions and AppDynamics
 agents, in both directions.
 
 # Headers
 
-The following defines several new headers and describes their intended use. 
-All headers MUST be treated as optional -- peer services will not always 
-generate them. 
+The following defines several new headers and describes their intended use.
+All headers MUST be treated as optional -- peer services will not always
+generate them.
 
-* `cisco-ipe-acct-id` - Contains the ID of the AppDynamics account. 
+* `cisco-ipe-acct-id` - Contains the ID of the AppDynamics account.
 * `cisco-ipe-app-id` - Contains the ID of the AppDynamics application.
 * `cisco-ipe-tier-id` - Contains the ID of the AppDynamics tier.
 * `cisco-ipe-bt-id` - Contains the ID of the AppDynamics business transaction (BT).
-* `cisco-ipe-env` - Contains the [deployment.environment.name](https://opentelemetry.io/docs/specs/semconv/attributes-registry/deployment/) 
+* `cisco-ipe-env` - Contains the [deployment.environment.name](https://opentelemetry.io/docs/specs/semconv/attributes-registry/deployment/)
   resource value from an OpenTelemetry based component.
 * `cisco-ipe-service` - Contains the [service.name](https://opentelemetry.io/docs/specs/semconv/resource/#service)
  resource value from an OpenTelemetry based component.
 
 HTTP headers are capable of being multivalued. As such, implementations
-SHOULD use the _last_ value when the above headers contain multiple values. 
+SHOULD use the _last_ value when the above headers contain multiple values.
 
 ## Splunk OpenTelemetry distributions
 
