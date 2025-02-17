@@ -6,7 +6,8 @@
 
 #### Enhancements
 
-- Define the `PROFILING_INSTRUMENTATION_SOURCE` attribute with valid values of `continuous` and `snapshot`
+- Define the `profiling.instrumentation.source` attribute with valid values of `continuous` and `snapshot`.
+[#336](https://github.com/signalfx/gdi-specification/pull/336)
 
 ## [1.7.0] - 2025-01-07
 
