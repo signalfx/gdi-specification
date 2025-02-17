@@ -129,10 +129,9 @@ instances. For each `LogRecord` instance:
   - `pprof-gzip-base64`,
   - `text` ([Deprecated](../README.md#versioning-and-status-of-the-specification)
     format).
-- `profiling.instrumentation.source` MUST be set to either `continuous` or `snapshot` to 
-  identify the profiling mechanism reporting the callstacks
-  - `continuous` SHOULD be used to indicate the continuous "Always On" profiling
-  - `snapshot` SHOULD be used to indicate the trace snapshot profiling
+- `profiling.instrumentation.source` MUST be set to either:
+  - `continuous` for continuous "Always On" profiling
+  - `snapshot` for trace snapshot profiling
 
 #### `LogRecord` Message `text` Data Format Specific Attributes
 
