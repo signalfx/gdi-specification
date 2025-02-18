@@ -62,10 +62,10 @@ omitting the span attributes.
 
 | header              | span attribute             | description                                                             | example                           |
 |---------------------|----------------------------|-------------------------------------------------------------------------|-----------------------------------|
-| `cisco-ctx-acct-id` | `appd.upstream.account_id` | The AppDynamics account ID of the upstream component making the request | 65230, 10018b                     |
-| `cisco-ctx-app-id`  | `appd.upstream.app_id`     | The ID of the AppDynamics instrumented application.                     | 0293845, destination-factory-9000 |
-| `cisco-ctx-bt-id`   | `appd.upstream.bt_id`      | The ID of the upstream AppDynamics business transaction (BT)            | 209834098273                      |
-| `cisco-ctx-tier-id` | `appd.upstream.tier_id`    | The "tier id" to which the AppDynamics instrumented application belongs | 12, xdev.tier9                    |
+| `cisco-ctx-acct-id` | `appd.upstream.account.id` | The AppDynamics account ID of the upstream component making the request | 65230, 10018b                     |
+| `cisco-ctx-app-id`  | `appd.upstream.app.id`     | The ID of the AppDynamics instrumented application.                     | 0293845, destination-factory-9000 |
+| `cisco-ctx-bt-id`   | `appd.upstream.bt.id`      | The ID of the upstream AppDynamics business transaction (BT)            | 209834098273                      |
+| `cisco-ctx-tier-id` | `appd.upstream.tier.id`    | The "tier id" to which the AppDynamics instrumented application belongs | 12, xdev.tier9                    |
 
 ## Outgoing State
 
