@@ -20,7 +20,8 @@ agents, in both directions.
 
 The following defines several new headers and describes their intended use.
 All headers MUST be treated as optional -- peer services will not always
-generate them.
+generate them. These headers SHOULD be treated as opaque values of type
+string.
 
 * `cisco-ctx-acct-id` - Contains the ID of the AppDynamics account.
 * `cisco-ctx-app-id` - Contains the ID of the AppDynamics application.
