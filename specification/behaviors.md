@@ -49,5 +49,5 @@ metrics).
 
 ## Trace State Interchange
 
-See [integration_context.md](integration_context.md) for specifics about 
+See [integration_context.md](integration_context.md) for specifics about
 exchanging additional context between AppD and splunk-otel based agents.
