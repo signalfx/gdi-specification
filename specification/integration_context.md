@@ -67,6 +67,10 @@ omitting the span attributes.
 | `cisco-ctx-bt-id`   | `appd.upstream.bt.id`      | The ID of the upstream AppDynamics business transaction (BT)            | 209834098273                      |
 | `cisco-ctx-tier-id` | `appd.upstream.tier.id`    | The "tier id" to which the AppDynamics instrumented application belongs | 12, xdev.tier9                    |
 
+Note: the `upstream` prefix is intentional here. It indicates that the value is being
+copied from an upstream source and helps to differentiate from the same IDs that could
+originate in a simultaneous AppDynamics instrumentation.
+
 ## Outgoing State
 
 When `cisco.ctx.enabled` is `true`, Splunk implementations MUST
