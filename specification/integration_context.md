@@ -34,7 +34,7 @@ string.
   resource value from an OpenTelemetry based component.
 
 HTTP headers are capable of being multivalued. As such, implementations
-SHOULD use the _last_ value when the above headers contain multiple values.
+SHOULD use the _first_ value when the above headers contain multiple values.
 
 ## Splunk OpenTelemetry distributions
 
