@@ -13,8 +13,10 @@
 In order to create a more complete picture of a distributed environment, we
 propose the use of additional headers to pass extra context details between
 Cisco observability components. Specifically, we are concerned with passing
-information between OpenTelemetry-based Splunk distributions and AppDynamics
-agents, in both directions.
+pieces of OpenTelemetry resource information and AppDynamics app
+structure and business transactions. This additional data is intended to
+augment any existing trace context, and will be carried in requests between
+splunk-otel and AppDynamics agents.
 
 # Headers
 
