@@ -57,7 +57,7 @@ MUST be `false` or equivalent language-specific non-truthy value.
 
 ## Incoming State
 
-When `cisco.ctx.enabled` is `true`, Splunk implementations MUST
+When `cisco.ctx.enabled` configuration is `true`, Splunk implementations MUST
 extract fields from the `cisco-ctx-*` headers (above) and add extra
 attributes to any Spans created as part of the incoming request context.
 Null or missing values MUST be handled gracefully by simply
