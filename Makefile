@@ -32,7 +32,7 @@ ifndef TAG
 endif
 	rm -rf $(TMP_DIR)
 	$(foreach repo,$(GDI_REPOS),\
-		gh repo clone $(repo) $(TMP_DIR) && \
+		gh repo clone $(repo) $(TMP_DIR) -- --depth=1 && \
 		cd $(TMP_DIR) && \
 		gh repo set-default $(repo) && \
 		gh issue create --title 'Adopt GDI specification $(TAG)' --body 'Adopt https://github.com/signalfx/gdi-specification/releases/tag/$(TAG)' && \
