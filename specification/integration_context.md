@@ -35,9 +35,6 @@ string.
 * `cisco-ctx-service` - Contains the [service.name](https://opentelemetry.io/docs/specs/semconv/resource/#service)
   resource value from an OpenTelemetry based component.
 
-HTTP headers are capable of being multivalued. As such, implementations
-SHOULD use the _first_ value when the above headers contain multiple values.
-
 ## Splunk OpenTelemetry distributions
 
 This section applies to Splunk distributions of OpenTelemetry instrumentation
