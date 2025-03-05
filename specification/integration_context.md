@@ -52,6 +52,11 @@ equivalent for each language. If using environment variables, the
 configuration SHOULD be named `CISCO_CTX_ENABLED`. The default value
 MUST be `false` or equivalent language-specific non-truthy value.
 
+**User note**: If you opt into using this feature, the name of your
+deployment environment and service will be exposed externally
+in headers. If you have made a terrible mistake by putting sensitive or
+secret information in these fields, you should not use this feature.
+
 ## Incoming State
 
 When `cisco.ctx.enabled` configuration is `true`, Splunk implementations MUST
