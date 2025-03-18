@@ -129,6 +129,9 @@ instances. For each `LogRecord` instance:
   - `pprof-gzip-base64`,
   - `text` ([Deprecated](../README.md#versioning-and-status-of-the-specification)
     format).
+- `profiling.instrumentation.source` MUST be set to either:
+  - `continuous` for continuous "Always On" profiling
+  - `snapshot` for trace snapshot profiling
 
 #### `LogRecord` Message `text` Data Format Specific Attributes
 
