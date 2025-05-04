@@ -29,9 +29,6 @@ All Splunk distributions of OpenTelemetry,
 
 - SHOULD set [process and process runtime resource attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.18.0/specification/resource/semantic_conventions/process.md)
 
-Note: this section does not apply to Real User Monitoring libraries, as they do
-not use the OpenTelemetry Resource.
-
 ## Splunk Resource Attributes
 
 **Status**: [Deprecated](../README.md#versioning-and-status-of-the-specification)
@@ -42,9 +39,6 @@ version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 | Attribute  | Type | Description  | Examples  | Required |
 |---|---|---|---|---|
 | `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0` | Yes |
-
-Note: this section does not apply to Real User Monitoring libraries, as they do
-not use the OpenTelemetry Resource.
 
 ## Runtime Environment Metrics
 
@@ -60,9 +54,7 @@ when metrics are enabled.
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
 Real User Monitoring (RUM) libraries MUST set the `service.name` resource
-attribute to the value of the `applicationName` configuration property. This is
-the only resource attribute that RUM libraries are supposed to set because it's
-the only one the Zipkin exporter can understand.
+attribute to the value of the `applicationName` configuration property.
 
 The following attributes MUST be added to all spans produced by RUM libraries:
 
