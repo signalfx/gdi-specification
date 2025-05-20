@@ -18,7 +18,7 @@ structure and business transactions. This additional data is intended to
 augment any existing trace context, and will be carried in requests between
 splunk-otel and AppDynamics agents.
 
-# Headers
+## Headers
 
 The following defines several new headers and describes their intended use.
 All headers MUST be treated as optional -- peer services will not always
@@ -35,14 +35,14 @@ string.
 * `cisco-ctx-service` - Contains the [service.name](https://opentelemetry.io/docs/specs/semconv/resource/#service)
   resource value from an OpenTelemetry based component.
 
-## Splunk OpenTelemetry distributions
+### Splunk OpenTelemetry distributions
 
 This section applies to Splunk distributions of OpenTelemetry instrumentation
 components. In brief, Splunk OTel distributions will need to understand when
 spans are being created as part of an AppDynamics "Business Transaction" (BT),
 and will add span attributes to clarify the AppDynamics invocation context.
 
-### Configuration
+#### Configuration
 
 Splunk OTel distributions MUST provide a way for users to opt-into the
 consumption and propagation of additional Cisco (bespoke) integration context.
@@ -57,7 +57,7 @@ deployment environment and service will be exposed externally
 in headers. If you have made a terrible mistake by putting sensitive or
 secret information in these fields, you should not use this feature.
 
-## Incoming State
+### Incoming State
 
 When `cisco.ctx.enabled` configuration is `true`, Splunk implementations MUST
 extract fields from the `cisco-ctx-*` headers (above) and add extra
@@ -76,7 +76,7 @@ Note: the `upstream` prefix is intentional here. It indicates that the value
 is being copied from an upstream source and helps to differentiate from the
 same IDs that could originate in a simultaneous AppDynamics instrumentation.
 
-## Outgoing State
+### Outgoing State
 
 When `cisco.ctx.enabled` is `true`, Splunk implementations MUST
 generate extra headers that contain certain values obtained from the
@@ -90,6 +90,6 @@ OTel Resource:
 All other resource attributes SHOULD be ignored and not placed into
 any headers, unless required elsewhere.
 
-# AppDynamics agents
+## AppDynamics agents
 
 TBD
