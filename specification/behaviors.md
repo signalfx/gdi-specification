@@ -46,3 +46,8 @@ Logs](https://github.com/open-telemetry/opentelemetry-specification/tree/main/sp
 The logs containing profiling data MUST be sent via OTLP. Instrumentation
 libraries SHOULD reuse persistent OTLP connections from other signals (traces,
 metrics).
+
+## Trace State Interchange
+
+See [integration_context.md](integration_context.md) for specifics about
+exchanging additional context between AppD and splunk-otel based agents.
