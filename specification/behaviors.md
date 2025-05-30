@@ -51,3 +51,32 @@ metrics).
 
 See [integration_context.md](integration_context.md) for specifics about
 exchanging additional context between AppD and splunk-otel based agents.
+
+## Trace Snapshot Volume
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+### Context Propagation
+
+The trace snapshot volume MUST be propagated using the OpenTelemetry [`baggage`](https://opentelemetry.io/docs/concepts/signals/baggage/).
+The baggage key MUST be `splunk.trace.snapshot.volume` with a value as listed in [semantic_conventions.md](semantic_conventions.md).
+
+### Trace Selection
+Agents SHOULD make a trace selection decision when a trace root is detected. Trace selection MUST be randomized with the 
+following constraints:
+* Default selection rate of 0.01
+* Maximum selection rate of 0.10
+
+Agents SHOULD make trace selection decisions based on trace ID when `splunk.trace.snapshot.volume` has not been set.
+Trace ID-based selection MUST follow the same approach as described in (https://github.com/open-telemetry/opentelemetry-specification/blob/9eee5293f95b9fd74f6f1c280b97f87aaec872d7/specification/trace/sdk.md#traceidratiobased-sampler-algorithm)
+
+When a trace is selected for snapshotting the `splunk.trace.snapshot.volume` value MUST be set to `highest`.
+When a trace is not selected for snapshotting the `splunk.trace.snapshot.volume` value MUST be set to `off`.
+
+When baggage entry is set:
+* Agents MUST use previously set `splunk.trace.snapshot.volume` value internally.
+* Agents MUST propagate the same `splunk.trace.snapshot.volume` value to downstream agents
+* Agents MUST NOT set the `splunk.trace.snapshot.volume` baggage entry to any other value
+
+When baggage entry is not set:
+* Agents SHOULD use a value of `unspecified` internally.

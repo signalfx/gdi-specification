@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Semantic Conventions
+
+#### Enhancements
+
+- Define the `splunk.trace.snapshot.volume` OpenTelemetry baggage entry with valid vales
+  of `highest`, `off`, and `unspecified`.
+  [#342](https://github.com/signalfx/gdi-specification/pull/342)
+
+#### Behaviors
+
+- Define how traces should be selected for snapshotting and how the `splunk.trace.snapshot.volume` baggage entry should
+  be propagated.
+  [#342](https://github.com/signalfx/gdi-specification/pull/342)
+
 ## [1.7.0] - 2025-01-07
 
 ### Configuration
