@@ -272,3 +272,23 @@ For each `cpu` sample:
   in milliseconds if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe
   the state of the thread
+
+## Trace Snapshot Volume
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+The trace snapshot volume MUST be propagated using the OpenTelemetry [`baggage`](https://opentelemetry.io/docs/concepts/signals/baggage/)
+
+Trace snapshot volume is specified by the `splunk.trace.snapshot.volume` baggage key. Valid values are as follows:
+* `highest`
+* `off`
+* `unspecified`
+
+Note: a value of `highest` rather than `on` was chosen intentionally to allow for potential volume ranges in the future.
+
+The `splunk.trace.snapshot.volume` baggage entry MUST be set to either `highest` or `off` when a snapshotting selection
+decision is made by an agent. When the `splunk.trace.snapshot.volume` the value assumed is assumed to be `unspecified`.
+
+When a `splunk.trace.snapshot.volume` other than `unspecified` is set an agent MUST use that value internally. 
+
+Agents MUST NOT set the `splunk.trace.snapshot.volume` baggage entry to any other value when already set by an upstream agent.
