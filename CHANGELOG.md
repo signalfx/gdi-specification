@@ -8,7 +8,7 @@
 
 - Define the `profiling.instrumentation.source` attribute with valid values
   of `continuous` and `snapshot`.
-  [#336](https://github.com/signalfx/gdi-specification/pull/336)
+  [#337](https://github.com/signalfx/gdi-specification/pull/337)
 
 ## [1.7.0] - 2025-01-07
 
