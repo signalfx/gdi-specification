@@ -272,3 +272,20 @@ For each `cpu` sample:
   in milliseconds if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe
   the state of the thread
+
+## Trace Snapshot Profiling
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+Unless stated otherwise Agents MUST follow the `Profiling `ResourceLogs` Message`
+semantic conventions.
+
+Trace Snapshot Profiling Configuration Options
+
+| Name                                         | Type   | Description                                         | Valid Values                 | Default |
+|----------------------------------------------|--------|-----------------------------------------------------|------------------------------| ------- |
+| `splunk.snapshot.profiler.enabled`           | string | Enable or Disable trace snapshot profiling          | `true` or `false`            | `false` |
+| `splunk.snapshot.profiler.sampling.interval` | string | Interval in which to take trace stack trace samples | Any valid duration `string`  | `10ms`  |
+
+The span attribute `splunk.snapshot.profiling` with a value of `true` indicates that 
+a trace within a service has been profiled.

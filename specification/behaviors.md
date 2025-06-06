@@ -51,3 +51,69 @@ metrics).
 
 See [integration_context.md](integration_context.md) for specifics about
 exchanging additional context between AppD and splunk-otel based agents.
+
+## Trace Snapshot Profiling
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+This section describes the behavior for Splunk instrumentation libraries 
+that contain trace snapshot profiling features.
+
+### Instrumentation Source
+
+Agents MUST specify set the `profiling.instrumentation.source` value to `snapshot`
+
+### Starting Trace Profiler
+
+The OpenTelemetry Baggage entry for `splunk.snapshot.volume` MUST be used to 
+decide whether to profile a trace. A value of `higest` is the signal to begin 
+profiling where as a value of `off` is an explicit signal to not profile.
+
+When profiling a trace, the profiler SHOULD be started when an entry span is 
+detected. An entry span is defined as either the root span of the trace or 
+any other span within a trace whose parent span is remote.
+
+When a trace is profiled agents MUST add the span attribute `splunk.snapshot.profiling` 
+with a value of `true` to the entry span.
+
+Agents SHOULD take an initial stack trace sample when starting to profile a trace.
+
+### Trace Profiling
+An instrumentation library that has trace snapshot profiling capabilities MUST
+be able to sample call stacks for specific trace ids at a fixed interval.
+
+When a language runtime supports threading, stacks MUST be sampled only for 
+trace ids selected for snapshotting. The samples for profiled threads SHOULD be 
+taken instantaneously and MAY be taken at separate times.
+
+Agents MUST sample threads associated with the entry span for the duration of 
+the span's life.
+
+### Call Stack Span Association
+
+Agents SHOULD keep track of the current span for each profiled thread. Agents 
+are RECOMMENDED to use the OpenTelemetry Context for determining when the current 
+span changes.
+
+When available, agents MUST use the span id from the profiled thread's current span
+as the span id
+
+### Stopping Trace Profiler
+Trace profiling MUST be stopped when the entry span of a service ends.
+
+Agents SHOULD take a final stack trace sample when stopping profiling 
+for a trace.
+
+### Exporting Stack Traces
+It is RECOMMENDED to export stack traces in batches to take advantage of the pprof 
+data format.
+
+Agents SHOULD attempt to export any remaining stack traces during the Agent shutdown phase. 
+
+### Call Stack Ingest
+
+Call stacks MUST be ingested as [OpenTelemetry
+Logs](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs).
+The logs containing profiling data MUST be sent via OTLP. Instrumentation
+libraries SHOULD reuse persistent OTLP connections from other signals (traces,
+metrics).
