@@ -198,7 +198,7 @@ configuration for packaging, distributing, and/or installing `splunk-otel`
 GDI software. Typically, these are 3rd-party frameworks like ansible, puppet,
 chef, cloudfoundry, etc.
 The `splunk-otel-collector`
-[distributions](https://github.com/signalfx/splunk-otel-collector/tree/main/deployments)
+[deployments](https://github.com/signalfx/splunk-otel-collector/tree/main/deployments)
 are a good example of this.
 
 - Splunk O11y GDI repos MAY include one or more distributions.
