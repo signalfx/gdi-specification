@@ -194,13 +194,13 @@ to the repo.
 ## Deployments
 
 For this section, "deployments" refers to software tools, utilities, and/or configuration
-for packaging, distributing, and/or installing `splunk-otel` GDI software. Typically, these are 
-3rd-party frameworks like ansible, puppet, chef, cloudfoundry, etc. 
+for packaging, distributing, and/or installing `splunk-otel` GDI software. Typically, these are
+3rd-party frameworks like ansible, puppet, chef, cloudfoundry, etc.
 The `splunk-otel-collector` [distributions](https://github.com/signalfx/splunk-otel-collector/tree/main/deployments)
 are a good example of this.
 
 - Splunk O11y GDI repos MAY include one or more distributions
-- The distributions for a given GDI project MUST each exist within a separate subdirectory of a 
+- The distributions for a given GDI project MUST each exist within a separate subdirectory of a
   repo root directory named `distributions`.
 - An historical exemption is provided for `splunk-otel-collector-chart`, which MAY live in a
   separate repository.
