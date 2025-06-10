@@ -257,48 +257,6 @@ In addition to environment variables, other ways of defining configuration also 
   system property `splunk.trace-response-header.enabled` is equivalent to environment
   variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
 
-### Real User Monitoring Libraries
-
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
-
-Real User Monitoring (RUM) instrumentation libraries cannot use environment
-variables for configuration. Instead, they MUST expose a `SplunkRum`
-object/class/namespace (depending on the language used) that allows setting the
-properties listed below (in a language-specific way: Java may use builders,
-Swift can use named parameters with default values, JavaScript can use objects,
-etc.).
-
-RUM instrumentation libraries MUST support the following configuration
-properties:
-
-| Property (default value)       | Description                                                                                                                                                                                                |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `realm` ()                     | Splunk realm, e.g. `us0`, `us1`. If set, value of `beaconEndpoint` will be automatically computed based on this. [1] [2] [3]                                                                               |
-| `beaconEndpoint` ()            | RUM beacon URL, e.g. `https://rum-ingest.<realm>.signalfx.com/v1/rum`. If both `realm` and `beaconEndpoint` are set, `beaconEndpoint` takes precedence. [1] [2] [3]                                        |
-| `rumAccessToken` ()            | RUM authentication token. [1]                                                                                                                                                                              |
-| `applicationName` ()           | Instrumented application name. [1]                                                                                                                                                                         |
-| `globalAttributes` ()          | OpenTelemetry [Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#attribute) that will be added to every span produced by the RUM library. |
-| `deploymentEnvironment` ()     | Sets the environment (`deployment.environment` span attribute) for all spans.                                                                                                                              |
-| `enableDiskBuffering` (false)  | **Mobile only.** Enables the storage-based buffering of telemetry.                                                                                                                                         |
-| `limitDiskUsageMegabytes` (25) | **Mobile only.** Sets the limit of the max number of megabytes that will be used to buffer telemetry data in storage.                                                                                      |
-
-- [1] Application name, authentication token and either realm or the beacon URL
-  MUST be provided by the user. If any of these is missing, the RUM
-  instrumentation library MUST fail to start.
-- [2] Systems that allow implementations to enforce the `beaconEndpoint` value
-  is https (i.e. not Android) MUST do so. These implementations need to
-  reject/fail to start if this condition is not meet. Implementations MAY offer
-  an unrecommended `allowInsecureBeacon` option (default false) that turns off
-  the check.
-- [3] If both `realm` and `beaconEndpoint` are set, a warning saying that
-  `realm` will be ignored SHOULD be logged.
-
-Other requirements:
-
-- RUM library MUST use the Zipkin v2 JSON span exporter by default
-- RUM library MUST limit the number of sent spans to 100 in a 30 second window
-  per `component` attribute value
-
 ### Serverless
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
