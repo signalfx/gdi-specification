@@ -204,8 +204,8 @@ are a good example of this.
 - Splunk O11y GDI repos MAY include one or more distributions.
 - The distributions for a given GDI project MUST each exist within a separate
   subdirectory of a repo root directory named `distributions`.
-- An historical exemption is provided for `splunk-otel-collector-chart`, which MAY live in a
-  separate repository.
+- An historical exemption is provided for `splunk-otel-collector-chart`, which
+  MAY live in a separate repository.
 
 ## Real User Monitoring Libraries
 
