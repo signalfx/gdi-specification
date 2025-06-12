@@ -1,4 +1,3 @@
-https://github.com/signalfx/splunk-otel-android
 https://github.com/signalfx/splunk-otel-collector
 https://github.com/signalfx/splunk-otel-collector-operator
 https://github.com/signalfx/splunk-otel-collector-chart
@@ -6,11 +5,8 @@ https://github.com/signalfx/splunk-otel-collector-heroku
 https://github.com/signalfx/splunk-otel-cpp
 https://github.com/signalfx/splunk-otel-dotnet
 https://github.com/signalfx/splunk-otel-go
-https://github.com/signalfx/splunk-otel-ios
-https://github.com/signalfx/splunk-otel-ios-crashreporting
 https://github.com/signalfx/splunk-otel-java
 https://github.com/signalfx/splunk-otel-js
-https://github.com/signalfx/splunk-otel-js-web
 https://github.com/signalfx/splunk-otel-lambda
 https://github.com/signalfx/splunk-otel-python
 https://github.com/signalfx/splunk-otel-react-native
