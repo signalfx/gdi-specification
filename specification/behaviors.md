@@ -96,7 +96,7 @@ are RECOMMENDED to use the OpenTelemetry Context for determining when the curren
 span changes.
 
 When available, agents MUST use the span id from the profiled thread's current span
-as the span id
+as the span id.
 
 ### Stopping Trace Profiler
 Trace profiling MUST be stopped when the entry span of a service ends.
