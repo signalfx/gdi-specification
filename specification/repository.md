@@ -201,7 +201,7 @@ The `splunk-otel-collector`
 [deployments](https://github.com/signalfx/splunk-otel-collector/tree/main/deployments)
 are a good example of this.
 
-- Splunk O11y GDI repos MAY include one or more distributions.
+- Splunk O11y GDI repos MAY include one or more deployments.
 - The distributions for a given GDI project MUST each exist within a separate
   subdirectory of a repo root directory named `deployments`.
 - An historical exemption is provided for `splunk-otel-collector-chart`, which
