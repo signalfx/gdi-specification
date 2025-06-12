@@ -65,7 +65,7 @@ Agents MUST specify set the `profiling.instrumentation.source` value to `snapsho
 
 ### Starting Trace Profiler
 
-The OpenTelemetry Baggage entry for `splunk.snapshot.volume` MUST be used to 
+The OpenTelemetry Baggage entry for `splunk.trace.snapshot.volume` MUST be used to 
 decide whether to profile a trace. A value of `higest` is the signal to begin 
 profiling where as a value of `off` is an explicit signal to not profile.
 
