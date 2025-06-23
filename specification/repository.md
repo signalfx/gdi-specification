@@ -191,6 +191,22 @@ to the repo.
   - SHOULD define maximum supported version of each auto-instrumentation framework
 - MAY host the documentation in the [Observability Cloud documentation repository](https://github.com/splunk/public-o11y-docs)
 
+## Deployments
+
+For this section, "deployments" refers to software tools, utilities, and
+configuration for packaging, distributing, and installing GDI software.
+Typically, these are 3rd-party frameworks like Ansible, Puppet, Chef,
+CloudFoundry, etc.
+The `splunk-otel-collector`
+[deployments](https://github.com/signalfx/splunk-otel-collector/tree/main/deployments)
+are a good example of this.
+
+- Repository MAY include one or more deployments.
+- Each deployment MUST be in its own subdirectory under
+  the `deployments` folder at the repository root.
+- An historical exemption is provided for `splunk-otel-collector-chart`, which
+  MAY live in a separate repository.
+
 ## Real User Monitoring Libraries
 
 - MUST document all configuration parameters that are relevant
