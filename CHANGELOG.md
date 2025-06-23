@@ -10,6 +10,9 @@
 
 - `SPLUNK_PROFILER_CALL_STACK_INTERVAL` defaults to `1000` for single-threaded runtimes.
   [#325](https://github.com/signalfx/gdi-specification/pull/325)
+- Fix information how to contribute to documentation in
+  CONTRIBUTING template.
+  [#347](https://github.com/signalfx/gdi-specification/pull/347)
 
 ### Repository
 
