@@ -12,6 +12,9 @@
   [#325](https://github.com/signalfx/gdi-specification/pull/325)
 - Fix link to Splunk documentation in `CONTRIBUTING.md` template.
   [#346](https://github.com/signalfx/gdi-specification/pull/346)
+- Fix information how to contribute to documentation in
+  `CONTRIBUTING.md` template.
+  [#347](https://github.com/signalfx/gdi-specification/pull/347)
 
 ### Repository
 
