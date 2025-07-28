@@ -51,11 +51,6 @@ Name and link to repository
     - [ ] Documents how to configure manual instrumentation.
     - [ ] Documents how to configure log correlation.
     - [ ] Documents minimum supported version of each auto-instrumentation framework.
-  - [ ] [Real User Monitoring Library](https://github.com/signalfx/gdi-specification/blob/v1.6.0/specification/repository.md#real-user-monitoring-libraries)
-    - [ ] Documents all supported configuration parameters.
-    - [ ] Documents how to configure manual instrumentation.
-    - [ ] Documents supported instrumentation.
-    - [ ] Documents supported platforms.
 
 ### How long has the GDI repository been public?
 

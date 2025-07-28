@@ -206,14 +206,3 @@ are a good example of this.
   the `deployments` folder at the repository root.
 - An historical exemption is provided for `splunk-otel-collector-chart`, which
   MAY live in a separate repository.
-
-## Real User Monitoring Libraries
-
-- MUST document all configuration parameters that are relevant
-  to Splunk Observability Cloud
-- MUST document all configuration parameters whose default or accepted values
-  deviate from upstream
-- MUST document how to configure manual instrumentation
-- MUST document supported instrumentations
-- MUST document supported platforms: browsers, OS versions, API requirements
-- MAY host the documentation in the [Observability Cloud documentation repository](https://github.com/splunk/public-o11y-docs)
