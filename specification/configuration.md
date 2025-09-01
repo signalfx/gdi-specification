@@ -173,6 +173,7 @@ instance using the following environment variables:
 | `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                             |
 | `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                   |
 | `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true    | Whether `Server-Timing` header is added to HTTP responses. [4]                           |
+| `SPLUNK_SNAPSHOT_PROFILER_ENABLED`     | false   | Whether Trace Snapshot CPU profiling is enabled. [2] [5]                                 |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
