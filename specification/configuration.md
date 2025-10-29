@@ -259,7 +259,7 @@ In addition to environment variables, other ways of defining configuration also 
 
 ### Snapshot Profiler
 
-This feature MAY also be referred to as "Call Graph" or "CalL Stack Sampling".
+This feature MAY also be referred to as "Call Graph" or "Call Stack Sampling".
 For agents that include a snapshot profiler feature, the following environment
 variable configurations MUST be available:
 
@@ -270,7 +270,7 @@ variable configurations MUST be available:
 | `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY` | 0.01    | The probability of a trace being sampled. MUST be 0 <= n <= 1 |
 
 - [1]: The default sampling interval is runtime-specific. Known values are:
-  - dotnet: 20ms 
+  - dotnet: 20ms
   - java: 10ms
   - node-js: 1ms
 
