@@ -257,6 +257,23 @@ In addition to environment variables, other ways of defining configuration also 
   system property `splunk.trace-response-header.enabled` is equivalent to environment
   variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
 
+### Snapshot Profiler
+
+This feature MAY also be referred to as "Call Graph" or "CalL Stack Sampling".
+For agents that include a snapshot profiler feature, the following environment
+variable configurations MUST be available:
+
+| Name                                    | Default | Description                                                   |
+|-----------------------------------------|---------|---------------------------------------------------------------|
+| `SPLUNK_SNAPSHOT_PROFILER_ENABLED`      | false   | Set to `true` to enable the snapshot profiler.                |
+| `SPLUNK_SNAPSHOT_SAMPLING_INTERVAL`     | [1]     | The time period between call stack samples. See note [1].     |
+| `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY` | 0.01    | The probability of a trace being sampled. MUST be 0 <= n <= 1 |
+
+- [1]: The default sampling interval is runtime-specific. Known values are:
+  - dotnet: 20ms 
+  - java: 10ms
+  - node-js: 1ms
+
 ### Serverless
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
