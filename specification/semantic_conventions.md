@@ -36,9 +36,9 @@ All Splunk distributions of OpenTelemetry,
 **Description:** Set of attributes used to uniquely identify a Splunk distro
 version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 
-| Attribute  | Type | Description  | Examples  | Required |
-|---|---|---|---|---|
-| `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0` | Yes |
+| Attribute               | Type   | Description                                               | Examples | Required |
+|-------------------------|--------|-----------------------------------------------------------|----------|----------|
+| `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0`  | Yes      |
 
 ## Runtime Environment Metrics
 
