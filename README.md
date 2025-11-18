@@ -76,12 +76,12 @@ The support guarantees and allowed changes are governed by the lifecycle of the
 document. Lifecycle stages are defined in the
 [versioning](./specification/versioning.md) document.
 
-|Status              |Explanation|
-|--------------------|-----------|
-|No explicit "Status"|Equivalent to Experimental.|
-|Experimental        |Breaking changes are allowed.|
-|Stable              |Breaking changes are no longer allowed. [1]|
-|Deprecated          |Changes are no longer allowed, except for editorial changes.|
+| Status               | Explanation                                                  |
+|----------------------|--------------------------------------------------------------|
+| No explicit "Status" | Equivalent to Experimental.                                  |
+| Experimental         | Breaking changes are allowed.                                |
+| Stable               | Breaking changes are no longer allowed. [1]                  |
+| Deprecated           | Changes are no longer allowed, except for editorial changes. |
 
 - [1]: See [stability guarantees](./specification/versioning.md) for details.
 
