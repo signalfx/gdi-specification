@@ -259,34 +259,56 @@ In addition, Splunk specific configuration MUST have their own root-level config
 The following is an example covering the common configuration values:
 
 ```yaml
-splunk:
-  # Common values across language distributions.
-  realm: "eu0"
-  accessToken: "${SPLUNK_ACCESS_TOKEN}"
-  tracing:
-    enabled: true
-    responseHeaderEnabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
-  profiling:
-    enabled: true # SPLUNK_PROFILER_ENABLED
-    endpoint: "" # SPLUNK_PROFILER_LOGS_ENDPOINT
-    memoryProfilingEnabled: true # SPLUNK_PROFILER_MEMORY_ENABLED
-  callgraphs:
-    enabled: true # SPLUNK_SNAPSHOT_PROFILER_ENABLED
-    samplingInterval: 10 # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
-    selectionProbability: 0.01 # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
-  # Language specific configurations
-  runtime:
-    nodejs:
-      metrics:
-        instrumentationMetricsEnabled: true # SPLUNK_INSTRUMENTATION_METRICS_ENABLED
-      runtimeMetrics:
-        enabled: true # SPLUNK_RUNTIME_METRICS_ENABLED
-        collectionInterval: 30000 # SPLUNK_RUNTIME_METRICS_COLLECTION_INTERVAL
-      autoInstrumentPackages:
-        - "MyApiService"
-        - "MyOtherService"
-    java:
-      ...
+distribution:
+  splunk:
+    tracing:
+      disabled: false
+      response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
+    profiling:
+      disabled: false # SPLUNK_PROFILER_ENABLED
+      endpoint: "" # SPLUNK_PROFILER_LOGS_ENDPOINT
+      memory_profiling_enabled: true # SPLUNK_PROFILER_MEMORY_ENABLED
+    callgraphs:
+      disabled: false # SPLUNK_SNAPSHOT_PROFILER_ENABLED
+      sampling_interval: 10 # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
+      selection_probability: 0.01 # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
+    # Language specific configurations
+    runtime:
+      nodejs:
+        metrics:
+          runtime_metrics:
+            enabled: true # SPLUNK_RUNTIME_METRICS_ENABLED
+            collection_interval: 30000 # SPLUNK_RUNTIME_METRICS_COLLECTION_INTERVAL
+          instrumentation_metrics_enabled: true # SPLUNK_INSTRUMENTATION_METRICS_ENABLED
+          autoinstrument_packages:
+            - "MyApiService"
+            - "MyOtherService"
+        java:
+          ...
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: ""
+            headers:
+              - name: "X-SF-TOKEN"
+              - value: ""
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_http:
+            endpoint: ""
+            headers:
+              - name: "X-SF-TOKEN"
+              - value: ""
+logger_provider:
+  processors:
+    - batch:
+        exporter:
+            otlp_http:
+              endpoint: ""
 ```
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
