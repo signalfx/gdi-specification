@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Specification
+
+#### Enhancements
+
+- Change Experimental status to Development to follow the OpenTelemetry
+  Specification terminology.
+  [#361](https://github.com/signalfx/gdi-specification/pull/361)
+
 ## [1.7.0] - 2025-01-07
 
 ### Configuration
