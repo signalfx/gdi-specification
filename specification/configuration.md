@@ -261,30 +261,24 @@ The following is an example covering the common configuration values:
 ```yaml
 distribution:
   splunk:
-    tracing:
-      disabled: false
-      response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
     profiling:
-      disabled: false # SPLUNK_PROFILER_ENABLED
-      endpoint: "" # SPLUNK_PROFILER_LOGS_ENDPOINT
-      memory_profiling_enabled: true # SPLUNK_PROFILER_MEMORY_ENABLED
-    callgraphs:
-      disabled: false # SPLUNK_SNAPSHOT_PROFILER_ENABLED
-      sampling_interval: 10 # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
-      selection_probability: 0.01 # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
-    # Language specific configurations
-    runtime:
-      nodejs:
-        metrics:
-          runtime_metrics:
-            enabled: true # SPLUNK_RUNTIME_METRICS_ENABLED
-            collection_interval: 30000 # SPLUNK_RUNTIME_METRICS_COLLECTION_INTERVAL
-          instrumentation_metrics_enabled: true # SPLUNK_INSTRUMENTATION_METRICS_ENABLED
-          autoinstrument_packages:
-            - "MyApiService"
-            - "MyOtherService"
-        java:
-          ...
+      exporter:
+        otlp_http:
+          endpoint: ""              # SPLUNK_PROFILER_LOGS_ENDPOINT
+      cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
+        sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
+      memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
+      callgraphs:                   # SPLUNK_SNAPSHOT_PROFILER_ENABLED
+        sampling_interval: 10       # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
+        selection_probability: 0.01 # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
+    # Language specific configuration that is shared between distros
+    general:
+      js:
+        instrumentation_metrics_enabled: true # SPLUNK_INSTRUMENTATION_METRICS_ENABLED
+        nextjs_cardinality_reduction: true
+        autoinstrument_packages:
+          - "MyApiService"
+          - "MyOtherService"
 tracer_provider:
   processors:
     - batch:
@@ -309,6 +303,17 @@ logger_provider:
         exporter:
             otlp_http:
               endpoint: ""
+instrumentation/development:
+  js:
+    "@splunk/instrumentation-runtime-metrics":
+      disabled: false               # SPLUNK_RUNTIME_METRICS_ENABLED
+      collection_interval: 30000    # SPLUNK_RUNTIME_METRICS_COLLECTION_INTERVAL
+    "@opentelemetry/instrumentation-http":
+      response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
+      capture_uri_parameters:
+        - "userId"
+    "@opentelemetry/instrumentation-redis":
+      include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
 ```
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
