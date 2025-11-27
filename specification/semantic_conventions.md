@@ -1,6 +1,7 @@
 # Semantic Conventions
 
-**Status**: [Mixed](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification),
+except where otherwise specified
 
 This document defines the OpenTelemetry and Splunk specific standard attributes
 for Splunk distributions of OpenTelemetry instrumentation.
@@ -8,8 +9,6 @@ for Splunk distributions of OpenTelemetry instrumentation.
 Note: No semantic conventions for data collection exist at this time.
 
 ## OpenTelemetry Resource Attributes
-
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 **Description:** Required and recommended OpenTelemetry [resource semantic
 conventions](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource#telemetry-sdk).
@@ -42,7 +41,7 @@ version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 
 ## Runtime Environment Metrics
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 All Splunk distributions of OpenTelemetry
 SHOULD collect
@@ -51,7 +50,7 @@ when metrics are enabled.
 
 ## Profiling `ResourceLogs` Message
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 `ResourceLogs` is the [upstream protobuf data
 type](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L47).

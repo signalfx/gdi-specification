@@ -1,6 +1,7 @@
 # Configuration
 
-**Status**: [Mixed](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Stable](../README.md#versioning-and-status-of-the-specification),
+except where otherwise specified
 
 One or more configuration variables may be needed to properly configure GDI
 repositories. Components that can be configured with environment variables MUST
@@ -9,7 +10,7 @@ component that cannot be configured with environment variables MUST support
 configuration of these variables using an alternate method. Any component MAY
 support configuration of these variables by additional methods.
 
-GDI repositories MUST adopt stable and SHOULD adopt experimental configuration
+GDI repositories MUST adopt stable and SHOULD adopt development configuration
 variables in the [OpenTelemetry
 Specification](https://github.com/open-telemetry/opentelemetry-specification)
 before proposing variables to the GDI specification. If a new configuration
@@ -65,7 +66,7 @@ chooses what to install limiting the configuration options.
 
 ## Data Collector
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 It MUST be possible to configure a Data Collector instance using the following
 environment variables:
@@ -92,7 +93,7 @@ environment variables:
 
 ### Kubernetes Package Management Solutions
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 While Kubernetes supports container technology that can be configured using
 environment variables, package management solutions such as Helm charts and
@@ -157,8 +158,6 @@ supported:
   - `splunk_platform_hec_ca_file`
 
 ## Instrumentation Libraries
-
-**Status**: [Stable](../README.md#versioning-and-status-of-the-specification)
 
 For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
@@ -259,6 +258,8 @@ In addition to environment variables, other ways of defining configuration also 
 
 ### Snapshot Profiler
 
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
+
 This feature MAY also be referred to as "Call Graph" or "Call Stack Sampling".
 For agents that include a snapshot profiler feature, the following environment
 variable configurations MUST be available:
@@ -276,7 +277,7 @@ variable configurations MUST be available:
 
 ### Serverless
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 By default, serverless instrumentation libraries MUST send data directly
 to Splunk Observability Cloud (direct ingest). Therefore, the following applies

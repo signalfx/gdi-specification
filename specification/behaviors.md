@@ -4,7 +4,7 @@ This document describes the specific behaviors for Splunk GDI Components.
 
 ## Profiling
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 This section describes the behavior for Splunk
 instrumentation libraries that contain profiling features.

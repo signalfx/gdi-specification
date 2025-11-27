@@ -78,20 +78,20 @@ document. Lifecycle stages are defined in the
 
 | Status               | Explanation                                                  |
 |----------------------|--------------------------------------------------------------|
-| No explicit "Status" | Equivalent to Experimental.                                  |
-| Experimental         | Breaking changes are allowed.                                |
+| No explicit "Status" | Equivalent to Development.                                   |
+| Development          | Breaking changes are allowed.                                |
 | Stable               | Breaking changes are no longer allowed. [1]                  |
 | Deprecated           | Changes are no longer allowed, except for editorial changes. |
 
 - [1]: See [stability guarantees](./specification/versioning.md) for details.
 
-## Experimental
+## Development
 
-Everything in the specification starts as `Experimental`.
+Everything in the specification starts as `Development`.
 
-`Experimental` sections SHOULD NOT be expected to be feature-complete.
+`Development` sections SHOULD NOT be expected to be feature-complete.
 In some cases, the experiment MAY be discarded and removed entirely.
-Long-term dependencies SHOULD NOT be taken against experimental sections.
+Long-term dependencies SHOULD NOT be taken against Development sections.
 
 ### Feature freeze
 
@@ -106,13 +106,6 @@ the support requirements for the document, feature freeze only indicates the
 current focus of the specification community. The feature freeze label may be
 applied to a document at any lifecycle stage. By definition, deprecated
 documents have a feature freeze in place.
-
-### Mixed
-
-Some documents have individual sections with different statues. These documents
-MUST be marked with the status `Mixed` at the top, for clarity. If a document's
-status is marked as `Mixed` then it MUST define at least two different statuses
-in sections that follow within the document.
 
 ## Contributions
 

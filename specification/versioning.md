@@ -13,28 +13,28 @@ repositories they are based on through release notes and SHOULD indicate through
 logging. Additional version number constraints can be found in the sections
 below.
 
-## Experimental
+## Development
 
 GDI repositories MAY consist of one or more components. GDI repositories MUST be
-designed in a manner that allows experimental components to be created without
+designed in a manner that allows development components to be created without
 breaking the stability guarantees of existing components. GDI repositories MUST NOT
 be designed in a manner that breaks existing users when a new component beyond
-the repository's first component transitions from experimental to stable. This
+the repository's first component transitions from development to stable. This
 would punish users of the release candidate component, and hinder adoption.
 
 Terms which denote stability, such as `experimental` MUST NOT be used as part
 of a directory or import name. Package version numbers MAY include a suffix,
 such as `-alpha`, `-beta`, `-rc`, or `-experimental`, to differentiate stable
-and experimental components.
+and development components.
 
-GDI repository components SHOULD start as experimental. All non-OpenTelemetry
-experimental components MUST be disabled by default, MUST require a
-configuration variable to enable, and MUST clearly be marked as experimental.
+GDI repository components SHOULD start as development. All non-OpenTelemetry
+development components MUST be disabled by default, MUST require a
+configuration variable to enable, and MUST clearly be marked as development.
 
 ## Stable
 
 The initial stable release version number for GDI repositories MUST be `1.0.0`.
-Once an experimental component has gone through rigorous beta testing, it MAY
+Once an development component has gone through rigorous beta testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
 component. When a new stable component is introduced to a GDI repository with an
 existing stable release, the `MINOR` version number MUST be incremented and the

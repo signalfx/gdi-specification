@@ -8,7 +8,7 @@
 
 # Integration Context
 
-**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+**Status**: [Development](../README.md#versioning-and-status-of-the-specification)
 
 In order to create a more complete picture of a distributed environment, we
 propose the use of additional headers to pass extra context details between
