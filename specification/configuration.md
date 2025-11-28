@@ -274,6 +274,8 @@ distribution:
     # Language specific configuration that is shared between distros
     general:
       js:
+        runtime_metrics:
+          collection_interval: 30000
         instrumentation_metrics_enabled: true # SPLUNK_INSTRUMENTATION_METRICS_ENABLED
         nextjs_cardinality_reduction: true
         autoinstrument_packages:
@@ -305,15 +307,14 @@ logger_provider:
               endpoint: ""
 instrumentation/development:
   js:
-    "@splunk/instrumentation-runtime-metrics":
-      disabled: false               # SPLUNK_RUNTIME_METRICS_ENABLED
-      collection_interval: 30000    # SPLUNK_RUNTIME_METRICS_COLLECTION_INTERVAL
     "@opentelemetry/instrumentation-http":
       response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
       capture_uri_parameters:
         - "userId"
     "@opentelemetry/instrumentation-redis":
       include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
+    "@opentelemetry/instrumentation-pg":
+      disabled: true
 ```
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
