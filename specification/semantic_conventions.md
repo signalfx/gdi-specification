@@ -99,6 +99,10 @@ instances. For each `LogRecord` instance:
 
 - `profiling.data.total.frame.count` MUST be set to the total number of stack
   frames in `cpu` or `allocation` samples contained in this message
+- `profiling.instrumentation.source` MUST be set to `snapshot` for profiled
+trace snapshots
+- `profiling.instrumentation.source` OPTIONALLY can be set to `continuous` for
+continuous profiler
 
 ### `LogRecord` Message Fields
 

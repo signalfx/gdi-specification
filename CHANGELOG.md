@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+### Configuration
+
+#### Enhancements
+
+### Repository
+
+#### Enhancements
+
+### Behaviors
+
+#### Enhancements
+
+- Describe Trace Snapshot Profiling.
+[#362](https://github.com/signalfx/gdi-specification/pull/362)
+
+### Semantic Conventions
+
+#### Enhancements
+
+- Define the `profiling.instrumentation.source` attribute with valid values
+  of `continuous` and `snapshot`.
+[#362](https://github.com/signalfx/gdi-specification/pull/362)
+
 ## [1.7.0] - 2025-01-07
 
 ### Configuration
