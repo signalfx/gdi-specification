@@ -92,7 +92,6 @@ to downstream agents
 * Agents MUST NOT set the `splunk.trace.snapshot.volume` baggage entry
 to any other value
 
-
 ### Starting Trace Profiler
 
 Trace profiling SHOULD be started when an entry span is detected.
