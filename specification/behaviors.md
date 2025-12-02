@@ -92,9 +92,6 @@ to downstream agents
 * Agents MUST NOT set the `splunk.trace.snapshot.volume` baggage entry
 to any other value
 
-When baggage entry is not set:
-
-* Agents SHOULD use a value of `unspecified` internally.
 
 ### Starting Trace Profiler
 
