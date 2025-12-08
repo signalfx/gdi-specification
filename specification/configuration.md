@@ -267,22 +267,22 @@ distribution:
     profiling:
       exporter:
         otlp_http:
-          endpoint: ""              # SPLUNK_PROFILER_LOGS_ENDPOINT
+          endpoint: ""                # SPLUNK_PROFILER_LOGS_ENDPOINT
       # always_on, cpu_profiler, memory_profiler, callgraphs may contain language specific key value pairs.
       always_on:
         cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
           sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
         memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
-        callgraphs:                   # SPLUNK_SNAPSHOT_PROFILER_ENABLED
-          sampling_interval: 10       # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
-          selection_probability: 0.01 # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
+      callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
+        sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
+        selection_probability: 0.01   # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
     # Language specific configuration.
     general:
       # Language distro specific key-value pairs, e.g. for Node.js:
       runtime_metrics:
         collection_interval: 30000
       nextjs_cardinality_reduction: true
-      autoinstrument_packages:
+      package_name_filter:
         - "MyApiService"
         - "MyOtherService"
 tracer_provider:
@@ -311,13 +311,13 @@ logger_provider:
               endpoint: ""
 instrumentation/development:
   js:
-    "@opentelemetry/instrumentation-http":
+    http:
       splunk_trace_response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
       splunk_capture_uri_parameters:
         - "userId"
-    "@opentelemetry/instrumentation-redis":
+    redis:
       splunk_include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
-    "@opentelemetry/instrumentation-pg":
+    pg:
       disabled: true
 ```
 
