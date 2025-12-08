@@ -248,14 +248,16 @@ are required.
   - Distribution MUST default to `always_on`
     (not OpenTelemetry default)
 
-In addition to environment variables, other ways of defining configuration also exist:
+In addition to environment variables, other ways of defining configuration exist:
 
 ### File based configuration
 
-OpenTelemetry's [declarative configuration](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/README.md#declarative-configuration) SHOULD be supported via
-[`OTEL_EXPERIMENTAL_CONFIG_FILE`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#via-otel_experimental_config_file) environment variable.
+OpenTelemetry's [declarative configuration](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/README.md#declarative-configuration)
+SHOULD be supported via [`OTEL_EXPERIMENTAL_CONFIG_FILE`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#via-otel_experimental_config_file)
+environment variable.
 
-In addition, Splunk specific configuration MUST have their own root-level configuration block named `splunk`.
+In addition, Splunk specific configuration MUST have their own root-level
+configuration block named `splunk`.
 
 The following is a configuration blueprint covering the common values:
 
