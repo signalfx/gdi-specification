@@ -36,9 +36,9 @@ All Splunk distributions of OpenTelemetry,
 **Description:** Set of attributes used to uniquely identify a Splunk distro
 version in combination with OpenTelemetry's `telemetry.sdk.*` attributes.
 
-| Attribute  | Type | Description  | Examples  | Required |
-|---|---|---|---|---|
-| `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0` | Yes |
+| Attribute               | Type   | Description                                               | Examples | Required |
+|-------------------------|--------|-----------------------------------------------------------|----------|----------|
+| `splunk.distro.version` | string | The version number of the Splunk distribution being used. | `1.5.0`  | Yes      |
 
 ## Runtime Environment Metrics
 
@@ -99,6 +99,10 @@ instances. For each `LogRecord` instance:
 
 - `profiling.data.total.frame.count` MUST be set to the total number of stack
   frames in `cpu` or `allocation` samples contained in this message
+- `profiling.instrumentation.source` MUST be set to `snapshot` for profiled
+trace snapshots
+- `profiling.instrumentation.source` OPTIONALLY can be set to `continuous` for
+continuous profiler
 
 ### `LogRecord` Message Fields
 

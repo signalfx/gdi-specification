@@ -7,11 +7,11 @@ assignees: ''
 
 ---
 
-### Which GDI repository do you wish to GA?
+## Which GDI repository do you wish to GA?
 
 Name and link to repository
 
-### Does the repository follow the latest tagged minor release in [GDI specification](https://github.com/signalfx/gdi-specification/blob/v1.6.0/specification/repository.md)?
+## Does the repository follow the latest tagged minor release in [GDI specification](https://github.com/signalfx/gdi-specification/blob/v1.6.0/specification/repository.md)?
 
 - [ ] Has an appropriate [maintainers team](https://github.com/signalfx/gdi-specification/blob/v1.6.0/specification/repository.md#teams).
 - [ ] [Permissions](https://github.com/signalfx/gdi-specification/blob/v1.6.0/specification/repository.md#permissions)
@@ -52,18 +52,18 @@ Name and link to repository
     - [ ] Documents how to configure log correlation.
     - [ ] Documents minimum supported version of each auto-instrumentation framework.
 
-### How long has the GDI repository been public?
+## How long has the GDI repository been public?
 
 Approximate amount of time
 
-### Is the repository known to be used today?
+## Is the repository known to be used today?
 
 yes/no
 
-### Is there a date by which this approval is needed?**
+## Is there a date by which this approval is needed?**
 
 Enter date or no
 
-### Additional context
+## Additional context
 
 Add any other context or screenshots about the feature request here.
