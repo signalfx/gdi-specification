@@ -256,7 +256,7 @@ OpenTelemetry's [declarative configuration](https://github.com/open-telemetry/op
 
 In addition, Splunk specific configuration MUST have their own root-level configuration block named `splunk`.
 
-The following is an example covering the common configuration values:
+The following is a configuration blueprint covering the common values:
 
 ```yaml
 distribution:
@@ -265,22 +265,23 @@ distribution:
       exporter:
         otlp_http:
           endpoint: ""              # SPLUNK_PROFILER_LOGS_ENDPOINT
-      cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
-        sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
-      memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
-      callgraphs:                   # SPLUNK_SNAPSHOT_PROFILER_ENABLED
-        sampling_interval: 10       # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
-        selection_probability: 0.01 # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
-    # Language specific configuration that is shared between distros
+      # always_on, cpu_profiler, memory_profiler, callgraphs may contain language specific key value pairs.
+      always_on:
+        cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
+          sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
+        memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
+        callgraphs:                   # SPLUNK_SNAPSHOT_PROFILER_ENABLED
+          sampling_interval: 10       # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
+          selection_probability: 0.01 # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
+    # Language specific configuration.
     general:
-      js:
-        runtime_metrics:
-          collection_interval: 30000
-        instrumentation_metrics_enabled: true # SPLUNK_INSTRUMENTATION_METRICS_ENABLED
-        nextjs_cardinality_reduction: true
-        autoinstrument_packages:
-          - "MyApiService"
-          - "MyOtherService"
+      # Language distro specific key-value pairs, e.g. for Node.js:
+      runtime_metrics:
+        collection_interval: 30000
+      nextjs_cardinality_reduction: true
+      autoinstrument_packages:
+        - "MyApiService"
+        - "MyOtherService"
 tracer_provider:
   processors:
     - batch:
@@ -308,14 +309,16 @@ logger_provider:
 instrumentation/development:
   js:
     "@opentelemetry/instrumentation-http":
-      response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
-      capture_uri_parameters:
+      splunk_trace_response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
+      splunk_capture_uri_parameters:
         - "userId"
     "@opentelemetry/instrumentation-redis":
-      include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
+      splunk_include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
     "@opentelemetry/instrumentation-pg":
       disabled: true
 ```
+
+Splunk specific keys MUST have the `splunk_` prefix.
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
 
