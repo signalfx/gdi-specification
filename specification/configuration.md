@@ -259,6 +259,8 @@ In addition to environment variables, other ways of defining configuration also 
 
 ### Snapshot Profiler
 
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
 This feature MAY also be referred to as "Call Graph" or "Call Stack Sampling".
 For agents that include a snapshot profiler feature, the following environment
 variable configurations MUST be available:
