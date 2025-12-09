@@ -276,15 +276,6 @@ distribution:
       callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
         sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
         selection_probability: 0.01   # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
-    # Language specific configuration.
-    general:
-      # Language distro specific key-value pairs, e.g. for Node.js:
-      runtime_metrics:
-        collection_interval: 30000
-      nextjs_cardinality_reduction: true
-      package_name_filter:
-        - "MyApiService"
-        - "MyOtherService"
 tracer_provider:
   processors:
     - batch:
@@ -311,14 +302,24 @@ logger_provider:
               endpoint: ""
 instrumentation/development:
   js:
-    http:
-      splunk_trace_response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
-      splunk_capture_uri_parameters:
-        - "userId"
-    redis:
-      splunk_include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
-    pg:
-      disabled: true
+    # Language specific distro configuration.
+    # splunk keyword is for general distro config.
+    splunk:
+      use_bundled_instrumentations: false
+      package_name_filter:
+        - "MyApiGw"
+    metrics:
+      splunk_runtime_metrics:
+        collection_interval: 30000
+    traces:
+      http:
+        splunk_trace_response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
+        splunk_capture_uri_parameters:
+          - "userId"
+      redis:
+        splunk_include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
+      pg:
+        disabled: true
 ```
 
 Splunk specific keys MUST have the `splunk_` prefix.
