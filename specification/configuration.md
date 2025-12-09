@@ -252,6 +252,8 @@ In addition to environment variables, other ways of defining configuration exist
 
 ### File based configuration
 
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
 OpenTelemetry's [declarative configuration](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/README.md#declarative-configuration)
 SHOULD be supported via [`OTEL_EXPERIMENTAL_CONFIG_FILE`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#via-otel_experimental_config_file)
 environment variable.
