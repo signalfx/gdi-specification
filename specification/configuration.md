@@ -248,7 +248,8 @@ are required.
   - Distribution MUST default to `always_on`
     (not OpenTelemetry default)
 
-In addition to environment variables, other ways of defining configuration also exist:
+In addition to environment variables, other ways of defining configuration also
+exist:
 
 - [Java System
   Properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html):
