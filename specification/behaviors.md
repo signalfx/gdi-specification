@@ -63,8 +63,8 @@ that contain trace snapshot profiling features.
 
 The trace snapshot volume MUST be propagated using the OpenTelemetry [`baggage`](https://opentelemetry.io/docs/concepts/signals/baggage/).
 
-The OpenTelemetry Baggage entry for `splunk.trace.snapshot.volume` MUST be used to
-decide whether to profile a trace. A value of `highest` is the signal to begin
+The OpenTelemetry Baggage entry for `splunk.trace.snapshot.volume` MUST be used
+to decide whether to profile a trace. A value of `highest` is the signal to begin
 profiling where as a value of `off` is an explicit signal to not profile.
 
 ### Trace Selection
