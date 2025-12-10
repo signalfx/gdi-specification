@@ -302,29 +302,10 @@ logger_provider:
         exporter:
             otlp_http:
               endpoint: ""
-instrumentation/development:
-  js:
-    # Language specific distro configuration.
-    # splunk keyword is for general distro config.
-    splunk:
-      use_bundled_instrumentations: false
-      package_name_filter:
-        - "MyApiGw"
-    metrics:
-      splunk_runtime_metrics:
-        collection_interval: 30000
-    traces:
-      http:
-        splunk_trace_response_header_enabled: true # SPLUNK_TRACE_RESPONSE_HEADER_ENABLED
-        splunk_capture_uri_parameters:
-          - "userId"
-      redis:
-        splunk_include_command_args: true    # SPLUNK_REDIS_INCLUDE_COMMAND_ARGS
-      pg:
-        disabled: true
 ```
 
-Splunk specific keys MUST have the `splunk_` prefix.
+Language distributions MAY specify additional configuration values in locations
+where it makes the most sense convention and usability wise.
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
 
