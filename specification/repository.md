@@ -119,7 +119,8 @@ to the repo.
     been working on, are relevant to Splunk GDI, or fix outstanding bugs.
   - Each change coming from upstream MUST bear a label that indicates where the
     change is coming from. For example: `(Contrib)` or `(Core)`.
-  - Each release SHOULD be separated by a line separator (`---`) from the other relases.
+  - Each release SHOULD be separated by a line separator (`---`) from the other
+    releases.
   - Each release SHOULD contain separate sections for each major functionality
     area (if applicable).
   - The CHANGELOG.md SHOULD NOT list every PR, but only changes significant
