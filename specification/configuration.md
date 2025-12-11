@@ -239,8 +239,8 @@ are required.
     a deprecation warning and suggest an alternate method. For example:
 
     ```txt
-    jaeger-thrift-splunk trace exporter is deprecated and may be removed in a future major release. Use the default 
-    OTLP exporter instead, or set the SPLUNK_REALM and SPLUNK_ACCESS_TOKEN environment variables to send 
+    jaeger-thrift-splunk trace exporter is deprecated and may be removed in a future major release. Use the default
+    OTLP exporter instead, or set the SPLUNK_REALM and SPLUNK_ACCESS_TOKEN environment variables to send
     telemetry directly to Splunk Observability Cloud.
     ```
 
@@ -248,15 +248,71 @@ are required.
   - Distribution MUST default to `always_on`
     (not OpenTelemetry default)
 
-In addition to environment variables, other ways of defining configuration also
-exist:
+In addition to environment variables, other ways of defining configuration exist:
 
-- [Java System
-  Properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html):
-  These properties MUST match the environment variables converting to lower
-  case and replacing underscores with hyphens or periods. For example:
-  system property `splunk.trace-response-header.enabled` is equivalent to environment
-  variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
+### File based configuration
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+OpenTelemetry's [declarative configuration](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/README.md#declarative-configuration)
+SHOULD be supported via [`OTEL_EXPERIMENTAL_CONFIG_FILE`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#via-otel_experimental_config_file)
+environment variable.
+
+In addition, Splunk specific configuration MUST have their own root-level
+configuration block named `splunk`.
+
+The following is a configuration blueprint covering the common values:
+
+```yaml
+distribution:
+  splunk:
+    profiling:
+      exporter:
+        otlp_log_http:
+          endpoint: ""                # SPLUNK_PROFILER_LOGS_ENDPOINT
+      # always_on, cpu_profiler, memory_profiler, callgraphs may contain language specific key value pairs.
+      always_on:
+        cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
+          sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
+        memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
+      callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
+        sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
+        selection_probability: 0.01   # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: ""
+            headers:
+              - name: "X-SF-TOKEN"
+              - value: ${SPLUNK_ACCESS_TOKEN}
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_http:
+            endpoint: ""
+            headers:
+              - name: "X-SF-TOKEN"
+              - value: ${SPLUNK_ACCESS_TOKEN}
+logger_provider:
+  processors:
+    - batch:
+        exporter:
+            otlp_http:
+              endpoint: ""
+```
+
+Language distributions MAY specify additional configuration values in locations
+where it makes the most sense convention and usability wise.
+
+#### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
+
+These properties MUST match the environment variables converted to lower
+case and replacing underscores with hyphens or periods. For example:
+system property `splunk.trace-response-header.enabled` is equivalent to environment
+variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
 
 ### Snapshot Profiler
 
