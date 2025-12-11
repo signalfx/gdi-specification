@@ -286,7 +286,7 @@ tracer_provider:
             endpoint: ""
             headers:
               - name: "X-SF-TOKEN"
-              - value: ""
+              - value: ${SPLUNK_ACCESS_TOKEN}
 meter_provider:
   readers:
     - periodic:
@@ -295,7 +295,7 @@ meter_provider:
             endpoint: ""
             headers:
               - name: "X-SF-TOKEN"
-              - value: ""
+              - value: ${SPLUNK_ACCESS_TOKEN}
 logger_provider:
   processors:
     - batch:
