@@ -268,7 +268,7 @@ distribution:
   splunk:
     profiling:
       exporter:
-        otlp_http:
+        otlp_log_http:
           endpoint: ""                # SPLUNK_PROFILER_LOGS_ENDPOINT
       # always_on, cpu_profiler, memory_profiler, callgraphs may contain language specific key value pairs.
       always_on:
