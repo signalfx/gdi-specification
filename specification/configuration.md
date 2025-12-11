@@ -309,7 +309,7 @@ where it makes the most sense convention and usability wise.
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
 
-These properties MUST match the environment variables converting to lower
+These properties MUST match the environment variables converted to lower
 case and replacing underscores with hyphens or periods. For example:
 system property `splunk.trace-response-header.enabled` is equivalent to environment
 variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
