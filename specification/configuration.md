@@ -329,7 +329,7 @@ variable configurations MUST be available:
 | `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY` | 0.01    | The probability of a trace being sampled. MUST be 0 < n <= 1  |
 
 - [1]: The default sampling interval is runtime-specific. Known values are:
-  - .NET: 20ms
+  - .NET: 40ms
   - Java: 10ms
   - Node.js: 1ms
 
