@@ -40,16 +40,16 @@
 
 #### Breaking changes
 
-- Removed definitions for Real User Monitoring.
+- Remove definitions for Real User Monitoring.
   [#344](https://github.com/signalfx/gdi-specification/pull/344)
 
 #### Enhancements
 
-- Experimental configuration definition for snapshot profiling.
+- Add experimental configuration definition for snapshot profiling.
   [#353](https://github.com/signalfx/gdi-specification/pull/353),
   [#358](https://github.com/signalfx/gdi-specification/pull/358),
   [#368](https://github.com/signalfx/gdi-specification/pull/368)
-- Experimental definition for Splunk specific fields for file
+- Add experimental definition for Splunk specific fields for file
   based configuration.
   [#355](https://github.com/signalfx/gdi-specification/pull/355)
 
@@ -72,7 +72,7 @@
 
 #### Enhancements
 
-- Experimental definitions for context propagation between
+- Add experimental definitions for context propagation between
   Splunk and AppD agents.
   [#335](https://github.com/signalfx/gdi-specification/pull/335),
   [#338](https://github.com/signalfx/gdi-specification/pull/338)
