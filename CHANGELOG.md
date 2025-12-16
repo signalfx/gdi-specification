@@ -14,8 +14,48 @@
 
 #### Enhancements
 
+### Semantic Conventions
+
+#### Enhancements
+
+## [1.8.0] - 2025-12-16
+
+### Configuration
+
+#### Enhancements
+
+- Removed definitions for Real User Monitoring.
+  [#344](https://github.com/signalfx/gdi-specification/pull/344)
+- Experimental configuration definition for snapshot profiling.
+  [#353](https://github.com/signalfx/gdi-specification/pull/353),
+  [#358](https://github.com/signalfx/gdi-specification/pull/358),
+  [#368](https://github.com/signalfx/gdi-specification/pull/368),
+- Experimental definition for Splunk specific fields for file
+  based configuration.
+  [#355](https://github.com/signalfx/gdi-specification/pull/3355)
+
+### Repository
+
+#### Enhancements
+
+- Define where to store deployment repositories.
+  [#345](https://github.com/signalfx/gdi-specification/pull/345)
+- Fix link to Splunk documentation in `CONTRIBUTING.md` template.
+  [#346](https://github.com/signalfx/gdi-specification/pull/346)
+- Fix information how to contribute to documentation in
+  `CONTRIBUTING.md` template.
+  [#347](https://github.com/signalfx/gdi-specification/pull/347)
+
+### Behaviors
+
+#### Enhancements
+
+- Experimental definitions for context propagation between
+  Splunk and AppD agents.
+  [#335](https://github.com/signalfx/gdi-specification/pull/335),
+  [#338](https://github.com/signalfx/gdi-specification/pull/338)
 - Describe Trace Snapshot Profiling.
-[#362](https://github.com/signalfx/gdi-specification/pull/362)
+  [#362](https://github.com/signalfx/gdi-specification/pull/362)
 
 ### Semantic Conventions
 
@@ -23,7 +63,7 @@
 
 - Define the `profiling.instrumentation.source` attribute with valid values
   of `continuous` and `snapshot`.
-[#362](https://github.com/signalfx/gdi-specification/pull/362)
+  [#362](https://github.com/signalfx/gdi-specification/pull/362)
 
 ## [1.7.0] - 2025-01-07
 
@@ -33,11 +73,6 @@
 
 - `SPLUNK_PROFILER_CALL_STACK_INTERVAL` defaults to `1000` for single-threaded runtimes.
   [#325](https://github.com/signalfx/gdi-specification/pull/325)
-- Fix link to Splunk documentation in `CONTRIBUTING.md` template.
-  [#346](https://github.com/signalfx/gdi-specification/pull/346)
-- Fix information how to contribute to documentation in
-  `CONTRIBUTING.md` template.
-  [#347](https://github.com/signalfx/gdi-specification/pull/347)
 
 ### Repository
 
