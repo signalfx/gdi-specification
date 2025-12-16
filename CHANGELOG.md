@@ -29,10 +29,10 @@
 - Experimental configuration definition for snapshot profiling.
   [#353](https://github.com/signalfx/gdi-specification/pull/353),
   [#358](https://github.com/signalfx/gdi-specification/pull/358),
-  [#368](https://github.com/signalfx/gdi-specification/pull/368),
+  [#368](https://github.com/signalfx/gdi-specification/pull/368)
 - Experimental definition for Splunk specific fields for file
   based configuration.
-  [#355](https://github.com/signalfx/gdi-specification/pull/3355)
+  [#355](https://github.com/signalfx/gdi-specification/pull/355)
 
 ### Repository
 
