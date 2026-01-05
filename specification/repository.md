@@ -170,6 +170,8 @@ to the repo.
 - MUST update all examples in the [Splunk OpenTelemetry example
   repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing)
   that depends on the repository to use the latest release.
+- MUST list any upstream changes associated with the release, reproducing fragments of the upstream changelog as needed.
+  - MUST call out any breaking change associated with an upstream release, adding and linking to documentation steps to address the change.
 
 ## Data Collector
 
