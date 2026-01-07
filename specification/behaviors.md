@@ -75,9 +75,14 @@ Trace selection MUST be randomized with the following constraints:
 * Default selection rate of 0.01
 * Maximum selection rate of 0.10
 
-Agents SHOULD make trace selection decisions based on trace ID when
-`splunk.trace.snapshot.volume` has not been set.
-Trace ID-based selection MUST follow the same approach as described in [`traceidratiobased-sampler-algorithm`](https://github.com/open-telemetry/opentelemetry-specification/blob/9eee5293f95b9fd74f6f1c280b97f87aaec872d7/specification/trace/sdk.md#traceidratiobased-sampler-algorithm)
+When `splunk.trace.snapshot.volume` is not set,
+agents MUST select traces in a way that meets the specified selection rate.
+The selection algorithm SHOULD be independent of the approach described in the
+[`traceidratiobased-sampler-algorithm`](https://github.com/open-telemetry/opentelemetry-specification/blob/9eee5293f95b9fd74f6f1c280b97f87aaec872d7/specification/trace/sdk.md#traceidratiobased-sampler-algorithm).
+This ensures that snapshot profiling decisions are not influenced by
+trace sampling decisions.
+If this independence is not maintained,
+it may result in skewed metrics (such as span latency) when sampling is applied.
 
 When a trace is selected for snapshotting
 the `splunk.trace.snapshot.volume` value MUST be set to `highest`.
