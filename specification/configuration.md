@@ -335,13 +335,13 @@ variable configurations MUST be available:
 
 ### OpAMP
 
-Agents MAY include the ability to connect to an OpAMP server. This feature MUST be opt-in and not 
-enabled by default. 
+Agents MAY include the ability to connect to an OpAMP server. This feature
+MUST be opt-in and not enabled by default.
 
 #### OpAMP environment
 
-When using environment-variable based agent configuration, the following MUST be provided
-when opting in to OpAMP:
+When using environment-variable based agent configuration, the following
+MUST be provided when opting in to OpAMP:
 
 | Name                    | Default | Description                                              |
 |-------------------------|---------|----------------------------------------------------------|
@@ -356,7 +356,8 @@ The following optional configuration options MAY be provided:
 
 #### OpAMP declarative yaml
 
-If a declarative yaml file is used to configure the agent, the OpAMP config looks like this:
+If a declarative yaml file is used to configure the agent, the OpAMP config
+looks like this:
 
 ```yaml
 distribution:
