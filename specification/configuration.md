@@ -346,7 +346,7 @@ MUST be provided when opting in to OpAMP:
 | Name                    | Default | Description                                              |
 |-------------------------|---------|----------------------------------------------------------|
 | `SPLUNK_OPAMP_ENABLED`  | false   | Set to `true` to opt into connecting to an OpAMP server. |
-| `SPLUNK_OPAMP_ENDPOINT` | <none>  | The URL endpoint of the OpAMP server to use.             |
+| `SPLUNK_OPAMP_ENDPOINT` | (none)  | The URL endpoint of the OpAMP server to use.             |
 
 The following optional configuration options MAY be provided:
 
