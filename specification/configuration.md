@@ -343,7 +343,6 @@ enabled by default.
 When using environment-variable based agent configuration, the following MUST be provided
 when opting in to OpAMP:
 
-
 | Name                    | Default | Description                                              |
 |-------------------------|---------|----------------------------------------------------------|
 | `SPLUNK_OPAMP_ENABLED`  | false   | Set to `true` to opt into connecting to an OpAMP server. |
@@ -355,8 +354,18 @@ The following optional configuration options MAY be provided:
 |---------------------------------|---------|--------------------------------------------------|
 | `SPLUNK_OPAMP_POLLING_INTERVAL` | 30      | Number of seconds between agent-to-server polls. |
 
-
 #### OpAMP declarative yaml
+
+If a declarative yaml file is used to configure the agent, the OpAMP config looks like this:
+
+```yaml
+distribution:
+  splunk:
+    opamp:
+      enabled: true
+      endpoint: http://some.opamp-host.com:7777/v1/opamp
+      polling_interval: 12
+```
 
 ### Serverless
 
