@@ -333,6 +333,31 @@ variable configurations MUST be available:
   - Java: 10ms
   - Node.js: 1ms
 
+### OpAMP
+
+Agents MAY include the ability to connect to an OpAMP server. This feature MUST be opt-in and not 
+enabled by default. 
+
+#### OpAMP environment
+
+When using environment-variable based agent configuration, the following MUST be provided
+when opting in to OpAMP:
+
+
+| Name                    | Default | Description                                              |
+|-------------------------|---------|----------------------------------------------------------|
+| `SPLUNK_OPAMP_ENABLED`  | false   | Set to `true` to opt into connecting to an OpAMP server. |
+| `SPLUNK_OPAMP_ENDPOINT` | <none>  | The URL endpoint of the OpAMP server to use.             |
+
+The following optional configuration options MAY be provided:
+
+| Name                            | Default | Description                                      |
+|---------------------------------|---------|--------------------------------------------------|
+| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30      | Number of seconds between agent-to-server polls. |
+
+
+#### OpAMP declarative yaml
+
 ### Serverless
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
