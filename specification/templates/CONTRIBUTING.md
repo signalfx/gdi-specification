@@ -69,7 +69,7 @@ To send us a pull request:
 7. Pay attention to any automated CI failures reported in the pull request, and
    stay involved in the conversation.
 
-GitHub provides additional documentation on 
+GitHub provides additional documentation on
 [forking a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 and
 [creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
