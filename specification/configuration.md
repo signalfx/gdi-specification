@@ -350,9 +350,9 @@ MUST be provided when opting in to OpAMP:
 
 The following optional configuration options MAY be provided:
 
-| Name                            | Default | Description                                      |
-|---------------------------------|---------|--------------------------------------------------|
-| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30      | Number of seconds between agent-to-server polls. |
+| Name                            | Default | Description                                           |
+|---------------------------------|---------|-------------------------------------------------------|
+| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30000   | Number of milliseconds between agent-to-server polls. |
 
 #### OpAMP declarative yaml
 
@@ -363,10 +363,12 @@ looks like this:
 distribution:
   splunk:
     opamp:
-      enabled: true
       endpoint: http://some.opamp-host.com:7777/v1/opamp
       polling_interval: 12
 ```
+
+_Note: When the opamp endpoint node is present in the yaml, it implies that the feature should
+be enabled._
 
 ### Serverless
 
