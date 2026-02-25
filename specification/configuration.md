@@ -367,8 +367,8 @@ distribution:
       polling_interval: 12
 ```
 
-_Note: When the opamp endpoint node is present in the yaml, it implies that the feature should
-be enabled._
+_Note: When the opamp endpoint node is present in the yaml, it implies that
+the feature should be enabled._
 
 ### Serverless
 
