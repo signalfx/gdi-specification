@@ -69,9 +69,10 @@ To send us a pull request:
 7. Pay attention to any automated CI failures reported in the pull request, and
    stay involved in the conversation.
 
-GitHub provides additional documentation on [forking a
-repository](https://help.github.com/articles/fork-a-repo/) and [creating a pull
-request](https://help.github.com/articles/creating-a-pull-request/).
+GitHub provides additional documentation on 
+[forking a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+and
+[creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
 Before your contribution can be accepted, you will be asked to sign our
 [Splunk Contributor License Agreement (CLA)](https://github.com/splunk/cla-agreement/blob/main/CLA.md).
