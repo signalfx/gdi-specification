@@ -8,6 +8,9 @@
 
 #### Enhancements
 
+- Add initial configuration for OpAMP clients.
+  [#375](https://github.com/signalfx/gdi-specification/pull/375)
+
 #### Bugfixes
 
 ### Repository
