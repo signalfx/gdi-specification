@@ -359,9 +359,9 @@ libraries based on OpenTelemetry, serverless MUST honour the following:
 
     With `SPLUNK_REALM` set, both traces and metrics exporter endpoints will
     have following values:
-  - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.signalfx.com/v2/trace/otlp`
-  - traces (all other cases):`https://ingest.REALM.signalfx.com/v2/trace`
-  - metrics: `https://ingest.${SPLUNK_REALM}.signalfx.com`
+  - traces (in case of `otlp`): `https://ingest.${SPLUNK_REALM}.observability.splunkcloud.com/v2/trace/otlp`
+  - traces (all other cases):`https://ingest.${SPLUNK_REALM}.observability.splunkcloud.com/v2/trace`
+  - metrics: `https://ingest.${SPLUNK_REALM}.observability.splunkcloud.com`
 
     If relevant traces exporter endpoint property (eg
     `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` for `otlp`) or
