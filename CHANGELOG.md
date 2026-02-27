@@ -6,6 +6,9 @@
 
 #### Breaking changes
 
+- Updated ingestion URL templates to replace `signalfx.com`
+  endpoints with `observability.splunkcloud.com`.
+
 #### Enhancements
 
 #### Bugfixes
