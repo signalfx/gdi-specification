@@ -8,7 +8,7 @@ an OpAMP server. For more information about OpAMP, please see the
 
 ## Identifying Attributes
 
-The `AgentDescription` message includes a set of 
+The `AgentDescription` message includes a set of
 [identifying attributes](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md#agentdescriptionidentifying_attributes).
 Agents MUST copy these attributes from the OpenTelemetry resource and
 MUST use existing semantic conventions when they exist. Any attribute

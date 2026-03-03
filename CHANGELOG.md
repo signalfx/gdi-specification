@@ -36,8 +36,10 @@
 
 ### OpAMP Data Model
 
-####
-- 
+#### Enhancements
+
+- Add initial data model for identity
+  [#379](https://github.com/signalfx/gdi-specification/pull/379)
 
 ## [1.8.0] - 2025-12-17
 
