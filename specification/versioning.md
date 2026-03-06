@@ -68,3 +68,35 @@ until the end of that component’s existence:
   MUST be provided as the latest `PATCH` version for the latest `MINOR` version
   of the latest `MAJOR` and SHOULD NOT be provided for previous `PATCH` or
   `MINOR` releases.
+
+## Release life cycle management
+
+Each repository `MUST` use [GitHub releases mechanism](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+to create a versioned snapshot of components and features
+delivered to the users. If the release is also distributed via other
+distribution channels (e.g. CDN, Registries, AppStores) it `MUST` state
+its life cycle status according to following rules by any means available
+in the given software distribution solution.
+
+Each release `MUST` clearly state the life cycle
+status and described as: Supported, Deprecated, End of Support.
+At minimum the required information should be included in [CHAANGELOG.md](https://github.com/signalfx/gdi-specification/blob/main/specification/templates/CHANGELOG.md)
+and equivalent mechanism provided by system used for distributing software.
+
+If new version is released previously released versions `MUST` be evaluated
+according to stability guarantees and marked as:
+
+- Latest release `SHOULD` be marked as **Supported** indicating that this is
+  version recommended to new and existing users
+- If applicable latest release of previous `MAJOR` line that is still under
+  active development `MUST` be marked as **Supported** indicating that previous
+  `MAJOR` line is under active development and users not ready to adopt
+  latest `MAJOR` version may use previous versions.
+- Release which was superseded by newer version, thus has entered deprecation
+  period `MUST` be marked as **Deprecated** and `MUST` indicated planned
+  end of support date. This indicates that users should plan for upgrade to
+  one of supported versions before date given.
+- Release which deprecation period has ended `MUST` be marked as
+  **End of support** and `MUST` indicate date on which the release was marked
+  as end of support. This indicates that support for given release is no longer
+  provided and the users should immediately upgrade to newer supported version.
