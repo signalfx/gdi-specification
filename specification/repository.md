@@ -78,12 +78,12 @@ to the repo.
 
 ### GitHub Actions
 
-- MUST use [GitHub
-  secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to
-  store sensitive data (auth tokens, passwords) and limit their usage to only
-  required places
+- MUST use
+  [GitHub secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)
+  to store sensitive data (auth tokens, passwords) and limit their usage to
+  only required places
 - MUST NOT use [Personal Access
-  Tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+  Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 - MUST [limit permissions of
   `GITHUB_TOKEN`](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token)
   when used
