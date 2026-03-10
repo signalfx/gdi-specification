@@ -2,8 +2,9 @@
 
 **Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
 
-This document describes agent data model fields when configured to speak with
-an OpAMP server. For more information about OpAMP, please see the
+This document describes data model fields used by *language agents*
+when configured to communicate with an OpAMP server. For more information
+about OpAMP, please see the
 [opamp-spec](https://github.com/open-telemetry/opamp-spec).
 
 ## Identifying Attributes
