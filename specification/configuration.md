@@ -335,6 +335,8 @@ variable configurations MUST be available:
 
 ### OpAMP
 
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
 Agents MAY include the ability to connect to an OpAMP server. This feature
 MUST be opt-in and not enabled by default.
 
