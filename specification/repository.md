@@ -171,15 +171,6 @@ to the repo.
   repository](https://github.com/signalfx/tracing-examples/tree/main/opentelemetry-tracing)
   that depends on the repository to use the latest release.
 
-## Data Collector
-
-- MUST document all configuration parameters that are relevant
-  to Splunk Observability Cloud
-- MUST document all configuration parameters whose default or accepted values
-  deviate from upstream
-- MUST document sizing guidelines for all signals
-- MAY host the documentation in the [Observability Cloud documentation repository](https://github.com/splunk/public-o11y-docs)
-
 ## Instrumentation Libraries
 
 - MUST document all configuration parameters that are relevant
@@ -190,7 +181,6 @@ to the repo.
 - MUST document how to configure log correlation
 - MUST define minimum supported version of each auto-instrumentation framework
   - SHOULD define maximum supported version of each auto-instrumentation framework
-- MAY host the documentation in the [Observability Cloud documentation repository](https://github.com/splunk/public-o11y-docs)
 
 ## Deployments
 
