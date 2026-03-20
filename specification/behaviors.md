@@ -68,10 +68,12 @@ Trace selection MUST be randomized with the following constraints:
 * Maximum selection rate of 0.10
 
 Agents SHOULD make trace selection decisions based on trace ID.
-Snapshot profiling SHOULD use different trace selection algorithm than sampler do to avoid possible metrics skew.
+Snapshot profiling SHOULD use different trace selection algorithm than sampler
+do to avoid possible metrics skew.
 
 The recommended algorithm of trace selection:
-```
+
+```text
 IF selectionProbability < 0.0 OR selectionProbability > 1.0 THEN
   ReportError
 ENDIF
