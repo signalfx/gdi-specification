@@ -79,7 +79,7 @@ ENDIF
 SET threshold to HexString(selectionProbability * 0xFFFFFFF)
 SET randomness to last 7 characters of traceId that is 32 characters long hex string 
 
-IF randomness < threshold THEN
+IF randomness <= threshold THEN
   Trace selected for snaphot
 ELSE
   Trace skipped
