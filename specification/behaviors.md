@@ -68,7 +68,23 @@ Trace selection MUST be randomized with the following constraints:
 * Maximum selection rate of 0.10
 
 Agents SHOULD make trace selection decisions based on trace ID.
-Trace ID-based selection MUST follow the same approach as described in [`traceidratiobased-sampler-algorithm`](https://github.com/open-telemetry/opentelemetry-specification/blob/9eee5293f95b9fd74f6f1c280b97f87aaec872d7/specification/trace/sdk.md#traceidratiobased-sampler-algorithm)
+Snapshot profiling SHOULD use different trace selection algorithm than sampler do to avoid possible metrics skew.
+
+The recommended algorithm of trace selection:
+```
+IF selectionProbability < 0.0 OR selectionProbability > 1.0 THEN
+  ReportError
+ENDIF
+
+SET threshold to HexString(selectionProbability * 0xFFFFFFF)
+SET randomness to last 7 characters of traceId that is 32 characters long hex string 
+
+IF randomness < threshold THEN
+  Trace selected for snaphot
+ELSE
+  Trace skipped
+END
+```
 
 ### Starting Trace Profiler
 
