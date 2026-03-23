@@ -68,7 +68,7 @@ Trace selection MUST be randomized with the following constraints:
 * Maximum selection rate of 0.10
 
 Agents SHOULD make trace selection decisions based on trace ID.
-Snapshot profiling SHOULD use different trace selection algorithm than sampler
+Snapshot profiling SHOULD use different trace selection algorithm than samplers
 do to avoid possible metrics skew.
 
 The recommended algorithm of trace selection:
@@ -82,7 +82,7 @@ SET threshold to HexString(selectionProbability * 0xFFFFFFF)
 SET randomness to last 7 characters of traceId that is 32 characters long hex string 
 
 IF randomness <= threshold THEN
-  Trace selected for snaphot
+  Trace selected for snapshot
 ELSE
   Trace skipped
 END
