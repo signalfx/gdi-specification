@@ -64,8 +64,8 @@ that contain trace snapshot profiling features.
 Agents SHOULD make a trace selection decision when a trace root is detected.
 Trace selection MUST be randomized with the following constraints:
 
-* Default selection rate of 0.01
-* Maximum selection rate of 0.10
+* Default selection probability of 0.01
+* Selection probability in range [0.0, 1.0]
 
 Agents SHOULD make trace selection decisions based on trace ID.
 Snapshot profiling SHOULD use different trace selection algorithm than samplers
@@ -74,10 +74,6 @@ do to avoid possible metrics skew.
 The recommended algorithm of trace selection:
 
 ```text
-IF selectionProbability < 0.0 OR selectionProbability > 1.0 THEN
-  ReportError
-ENDIF
-
 SET threshold to HexString(selectionProbability * 0xFFFFFFF)
 SET randomness to last 7 characters of traceId that is 32 characters long hex string 
 
