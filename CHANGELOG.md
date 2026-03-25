@@ -6,11 +6,11 @@
 
 #### Breaking changes
 
+#### Enhancements
+
 - Change ingestion URL templates by replacing `signalfx.com`
   endpoints with `observability.splunkcloud.com`.
   [#378](https://github.com/signalfx/gdi-specification/pull/378)
-
-#### Enhancements
 
 #### Bugfixes
 
