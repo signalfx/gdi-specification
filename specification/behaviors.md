@@ -65,7 +65,7 @@ Agents SHOULD make a trace selection decision when a trace root is detected.
 Trace selection MUST be randomized with the following constraints:
 
 * Default selection probability of 0.01
-* Selection probability in range [0.0, 1.0]
+* Selection probability in range (0.0, 1.0]
 
 Agents SHOULD make trace selection decisions based on trace ID.
 Snapshot profiling SHOULD use different trace selection algorithm than samplers
