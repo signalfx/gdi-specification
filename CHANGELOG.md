@@ -8,10 +8,6 @@
 
 #### Enhancements
 
-- Change ingestion URL templates by replacing `signalfx.com`
-  endpoints with `observability.splunkcloud.com`.
-  [#378](https://github.com/signalfx/gdi-specification/pull/378)
-
 #### Bugfixes
 
 ### Repository
@@ -26,9 +22,6 @@
 
 #### Breaking changes
 
-- Changed selection algorithm for snapshot profiling.
-  [#381](https://github.com/signalfx/gdi-specification/pull/381)
-
 #### Enhancements
 
 #### Bugfixes
@@ -40,6 +33,23 @@
 #### Enhancements
 
 #### Bugfixes
+
+## [1.9.0] - 2026-04-02
+
+### Configuration
+
+#### Enhancements
+
+- Change ingestion URL templates by replacing `signalfx.com`
+  endpoints with `observability.splunkcloud.com`.
+  [#378](https://github.com/signalfx/gdi-specification/pull/378)
+
+### Behaviors
+
+#### Breaking changes
+
+- Changed selection algorithm for snapshot profiling.
+  [#381](https://github.com/signalfx/gdi-specification/pull/381)
 
 ## [1.8.0] - 2025-12-17
 
@@ -384,7 +394,9 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.9.0...HEAD
+[1.9.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.9.0
+[1.8.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.8.0
 [1.7.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.7.0
 [1.6.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.6.0
 [1.5.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.5.0
