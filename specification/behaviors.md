@@ -59,38 +59,30 @@ exchanging additional context between AppD and splunk-otel based agents.
 This section describes the behavior for Splunk instrumentation libraries
 that contain trace snapshot profiling features.
 
-### Trace Snapshot Volume
-
-The trace snapshot volume MUST be propagated using the OpenTelemetry [`baggage`](https://opentelemetry.io/docs/concepts/signals/baggage/).
-
-The OpenTelemetry Baggage entry for `splunk.trace.snapshot.volume` MUST be used
-to decide whether to profile a trace. A value of `highest` is the signal to begin
-profiling where as a value of `off` is an explicit signal to not profile.
-
 ### Trace Selection
 
 Agents SHOULD make a trace selection decision when a trace root is detected.
 Trace selection MUST be randomized with the following constraints:
 
-* Default selection rate of 0.01
-* Maximum selection rate of 0.10
+* Default selection probability of 0.01
+* Selection probability in range (0.0, 1.0]
 
-Agents SHOULD make trace selection decisions based on trace ID when
-`splunk.trace.snapshot.volume` has not been set.
-Trace ID-based selection MUST follow the same approach as described in [`traceidratiobased-sampler-algorithm`](https://github.com/open-telemetry/opentelemetry-specification/blob/9eee5293f95b9fd74f6f1c280b97f87aaec872d7/specification/trace/sdk.md#traceidratiobased-sampler-algorithm)
+Agents SHOULD make trace selection decisions based on trace ID.
+Snapshot profiling SHOULD use different trace selection algorithm than samplers
+do to avoid possible metrics skew.
 
-When a trace is selected for snapshotting
-the `splunk.trace.snapshot.volume` value MUST be set to `highest`.
-When a trace is not selected for snapshotting
-the `splunk.trace.snapshot.volume` value MUST be set to `off`.
+The recommended algorithm of trace selection:
 
-When baggage entry is set:
+```text
+SET threshold to HexString(selectionProbability * 0xFFFFFFF)
+SET randomness to last 7 characters of traceId that is 32 characters long hex string 
 
-* Agents MUST use previously set `splunk.trace.snapshot.volume` value internally.
-* Agents MUST propagate the same `splunk.trace.snapshot.volume` value
-to downstream agents
-* Agents MUST NOT set the `splunk.trace.snapshot.volume` baggage entry
-to any other value
+IF randomness <= threshold THEN
+  Trace selected for snapshot
+ELSE
+  Trace skipped
+END
+```
 
 ### Starting Trace Profiler
 

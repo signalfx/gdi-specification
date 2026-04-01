@@ -26,6 +26,9 @@
 
 #### Breaking changes
 
+- Changed selection algorithm for snapshot profiling.
+  [#381](https://github.com/signalfx/gdi-specification/pull/381)
+
 #### Enhancements
 
 #### Bugfixes
