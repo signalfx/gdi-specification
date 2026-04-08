@@ -11,10 +11,6 @@
 - Add initial configuration for OpAMP clients.
   [#375](https://github.com/signalfx/gdi-specification/pull/375)
 
-- Change ingestion URL templates by replacing `signalfx.com`
-  endpoints with `observability.splunkcloud.com`.
-  [#378](https://github.com/signalfx/gdi-specification/pull/378)
-
 #### Bugfixes
 
 ### Repository
