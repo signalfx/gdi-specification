@@ -34,6 +34,13 @@
 
 #### Bugfixes
 
+### OpAMP Data Model
+
+#### Enhancements
+
+- Add initial data model for agent identify with OpAMP.
+  [#379](https://github.com/signalfx/gdi-specification/pull/379)
+
 ## [1.9.0] - 2026-04-07
 
 ### Configuration
