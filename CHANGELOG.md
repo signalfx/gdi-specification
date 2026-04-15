@@ -8,6 +8,9 @@
 
 #### Enhancements
 
+- Require referencing GitHub Actions by commit hash.
+  [#385](https://github.com/signalfx/gdi-specification/pull/385)
+
 #### Bugfixes
 
 ### Repository
