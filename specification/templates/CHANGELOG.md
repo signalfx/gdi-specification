@@ -17,6 +17,8 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
 
 ## Version 0.1.0 - 2021-04-01
 
+Status: **Deprecated** (End of Support expected on 2024-04-01)
+
 ### General
 
 - This release marks the first release of the repository.
