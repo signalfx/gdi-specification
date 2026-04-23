@@ -9,4 +9,3 @@ https://github.com/signalfx/splunk-otel-java
 https://github.com/signalfx/splunk-otel-js
 https://github.com/signalfx/splunk-otel-lambda
 https://github.com/signalfx/splunk-otel-python
-https://github.com/signalfx/splunk-otel-react-native
