@@ -48,9 +48,10 @@ agent "effective configuration" in OpAmp payloads. We have made this
 distinction because the two approaches are not fully interoperable. Put
 another way, there is no complete way to smoothly translate environment
 configs into yaml, nor is there a way to represent all declarative confing
-yaml as environment variables.
-
-<todo: link to examples of these env vars that don't yaml>
+yaml as environment variables. For reference, see
+[this comment](https://github.com/open-telemetry/opentelemetry-specification/issues/3967#issuecomment-2813435817)
+in
+[this issue](https://github.com/open-telemetry/opentelemetry-specification/issues/3967).
 
 Additionally, the [OpAmp spec says](https://opentelemetry.io/docs/specs/opamp/#configuration):
 
