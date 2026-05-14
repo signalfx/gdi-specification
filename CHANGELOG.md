@@ -43,6 +43,7 @@
 
 #### Enhancements
 
+- Align OpAMP data model guidance with upstream `opamp-spec`.
 - Add initial data model for agent identify with OpAMP.
   [#379](https://github.com/signalfx/gdi-specification/pull/379)
 
