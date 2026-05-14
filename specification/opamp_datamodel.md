@@ -145,6 +145,11 @@ OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://localhost:4318/v1/logs
 
 ## Effective Declarative Config
 
-When an agent has been started _with_ declarative configuration, it is assumed that its
-configuration is derived from environment variables and default values. This section only applies
-to agents that were started _without_ declarative configuration.
+When an agent has been started _with_ a declarative configuration yaml file, its
+"effective configuration" will be reported differently. This section only applies to agents that
+were started _with_ declarative configuration.
+
+When running with declarative configuration, the "effective configuration" body will 
+follow a similar structure, but will be a subset of 
+
+### Body Format
