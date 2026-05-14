@@ -60,7 +60,7 @@ In the spec below, for simplicity, we treat java system properties as environmen
 variables (they are indeed
 [interchangeable](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#configuring-with-environment-variables)).
 
-## Effective Environment Config
+### Effective Environment Config
 
 When an agent has been started _without_ declarative configuration, it is assumed that its
 configuration is derived from environment variables and default values. This section only applies
@@ -75,7 +75,7 @@ When reporting `EffectiveConfig`, the following MUST be followed:
   allows us to revise this format in a backwards compatible way in the future.
 * The `AgentConfigFile` body MUST conform to the body format below:
 
-### Body Format
+#### Body Format
 
 The body MUST be a list of text lines, separated by newlines. Each line MUST
 be in the form `<key>=<value>\n` where the `<key>` is the name of the configuration
@@ -143,13 +143,28 @@ OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:4318/v1/metrics
 OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://localhost:4318/v1/logs
 ```
 
-## Effective Declarative Config
+### Effective Declarative Config
 
 When an agent has been started _with_ a declarative configuration yaml file, its
 "effective configuration" will be reported differently. This section only applies to agents that
 were started _with_ declarative configuration.
 
 When running with declarative configuration, the "effective configuration" body will 
-follow a similar structure, but will be a subset of 
+follow a similar structure, but will be a subset of what the actual file supports.
 
-### Body Format
+When reporting `EffectiveConfig`, the following MUST be followed:
+
+* The `ConfigMap` MUST contain an `AgentConfigFile` under the name that exactly matches the 
+  filename provided in the `OTEL_CONFIG_FILE` environment variable. This MUST include any
+  relative or absolute path information originally included in the value. If an agent is
+  using a defaulted (not user-provided) config filename, this default filename value
+  MUST still be provided.
+* This `AgentConfigFile` MUST have a `content_type` of
+  `application/yaml; vendor=splunk; v=1`. This content type tells the remote
+  side how to interpret the content within the `AgentConfigFile` `body`. The v field
+  allows us to revise this format in a backwards compatible way in the future.
+* The `AgentConfigFile` body MUST conform to the body format below:
+
+#### Body Format
+
+The body yaml format MUST match the structure
