@@ -99,18 +99,20 @@ Here is a description of this format in Backus-Naur Form:
 
 Note: <value-char> is any character that's not a newline
 
+The order of these lines is not important. Each <key> MUST only appear in the body once.
+
 #### Required fields:
 
 The following configuration items MUST be reported in the body:
 
+* `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
+* `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
+* `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 * `SPLUNK_PROFILER_ENABLED`
 * `SPLUNK_PROFILER_MEMORY_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`
 * `SPLUNK_PROFILER_CALL_STACK_INTERVAL`
-* `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
-* `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
-* `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
 Additional configuration items SHOULD NOT be provided by agents.
 
@@ -133,14 +135,14 @@ environment variables are intentionally omitted from this format.
 * content_type: `text/plain; format=properties; vendor=splunk; v=1`
 
 ```properties
-SPLUNK_PROFILER_ENABLED=true
-SPLUNK_PROFILER_MEMORY_ENABLED=false
-SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
-SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
-SPLUNK_PROFILER_CALL_STACK_INTERVAL=0
 OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://localhost:4318/v1/traces
 OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:4318/v1/metrics
 OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://localhost:4318/v1/logs
+SPLUNK_PROFILER_ENABLED=true
+SPLUNK_PROFILER_MEMORY_ENABLED=false
+SPLUNK_PROFILER_CALL_STACK_INTERVAL=1001
+SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
+SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
 ```
 
 ### Effective Declarative Config
@@ -167,4 +169,74 @@ When reporting `EffectiveConfig`, the following MUST be followed:
 
 #### Body Format
 
-The body yaml format MUST match the structure
+The body yaml format MUST follow the structure of the
+[OpenTelemetry Declarative Configuration](https://opentelemetry.io/docs/languages/sdk-configuration/declarative-configuration/)
+specification, but will be a more minimal, filtered representation that contains only the
+configuration items that we have deemed important enough to report in "effective config".
+
+Some of these effective configuration values have a defined location in the yaml structure,
+while some are Splunk specific.
+
+#### Required fields:
+
+The following uses "dot path" shorthand for the equivalent yaml fields.
+The following configuration items SHOULD be reported in the body:
+
+* `tracer_provider.exporter.otlp_http.endpoint`
+* `meter_provider.readers[<n>].periodic.exporter.otlp_http.endpoint`
+* `logger_provider.exporter.otlp_http.endpoint`
+* `distribution.splunk.profiling.always_on.cpu_profiler.sampling_interval`
+* `distribution.splunk.profiling.always_on.memory_profiler`
+* `distribution.splunk.profiling.callgraphs.sampling_interval`
+
+Unlike the environment variable effective config, the existence of some values
+in the structure will imply that some features are enabled. For example, if
+the cpu profiler sampling interval is configured, this implies that profiling
+is enabled. Similarly, if this value is not present, it implies that the cpu profiler
+is not enabled.
+
+Because this is "effective config", default values MUST be provided even when they are
+absent in the physical yaml file on disk, unless providing a value were to change the 
+semantics of absence.
+
+The OTel declarative configuration specification allows environment variables to 
+be used inside strings via templates. When this is used, the final template evaluated
+value MUST be provided, and not the environment variable's name.
+
+Unlike the environment variable effective config, when multiple exporters are configured for a
+given signal, the agent SHOULD provide all the actively used endpoints.
+
+#### Example:
+
+```yaml
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: http://localhost:4318/v1/traces
+  meter_provider:
+    readers:
+      - periodic:
+          exporter:
+            otlp_grpc:
+              endpoint: http://localhost:4318/v1/metrics
+  logger_provider:
+    processors:
+      - simple:
+          exporter:
+            otlp_http:
+              endpoint: http://localhost:4318/v1/logs
+distribution:
+  splunk:
+    profiling:
+      always_on:
+        cpu_profiler:
+          sampling_interval: 1001
+        memory_profiler:
+      callgraphs:
+        sampling_interval: 10
+```
+
+Note: The true configuration file may be significantly larger or more complicated than what is
+actually provided via effective configuration.
