@@ -256,7 +256,8 @@ In addition to environment variables, other ways of defining configuration exist
 
 OpenTelemetry's [declarative configuration](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/README.md#declarative-configuration)
 SHOULD be supported via [`OTEL_CONFIG_FILE`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#declarative-configuration)
-environment variable. For backwards compatibility, agents MAY fall back to the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` variable.
+environment variable. For backwards compatibility, agents MAY fall back to the deprecated
+`OTEL_EXPERIMENTAL_CONFIG_FILE` variable.
 
 In addition, Splunk specific configuration MUST have their own root-level
 configuration block named `splunk`.
