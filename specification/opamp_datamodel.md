@@ -206,6 +206,9 @@ value MUST be provided, and not the environment variable's name.
 Unlike the environment variable effective config, when multiple exporters are configured for a
 given signal, the agent SHOULD provide all the actively used endpoints.
 
+Implementations MAY choose to include disabled/inactive features in the yaml 
+document with commented out lines.
+
 #### Example:
 
 ```yaml
@@ -234,9 +237,11 @@ distribution:
         cpu_profiler:
           sampling_interval: 1001
         memory_profiler:
-      callgraphs:
-        sampling_interval: 10
+#      callgraphs:
+#        sampling_interval: 10
 ```
+
+Note: The absence of callgraphs sampling_interval here indicates that the feature is not active.
 
 Note: The true configuration file may be significantly larger or more complicated than what is
 actually provided via effective configuration.
