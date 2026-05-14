@@ -28,23 +28,27 @@ OpenTelemetry `Resource` attributes belong in this field.
 
 ### Agent configuration context
 
-The [OpAMP specification](https://opentelemetry.io/docs/specs/opamp/#effectiveconfig-message)
-includes a mechanism for agents to report their effective configuration to the server.
-We interpret "effective configuration" to mean the current, active configuration being used by
-the agent, regardless of how that configuration was obtained, injected, defaulted, or
-otherwise evaluated.
+The
+[OpAMP specification](https://opentelemetry.io/docs/specs/opamp/#effectiveconfig-message)
+includes a mechanism for agents to report their effective configuration
+to the server.
+We interpret "effective configuration" to mean the current, active
+configuration being used by the agent, regardless of how that
+configuration was obtained, injected, defaulted, or otherwise evaluated.
 
 Because configuration can come in many forms, this creates several challenges.
 Configuration can be provided as environment variables,
-[declarative config](https://opentelemetry.io/docs/languages/sdk-configuration/declarative-configuration/) files (yaml),
-java system properties, and eventually remote configuration. That's at least 4 ways of
-controlling agent behavior, but some agents will have even more.
+[declarative config](https://opentelemetry.io/docs/languages/sdk-configuration/declarative-configuration/)
+files (yaml), java system properties, and eventually remote
+configuration. That's at least 4 ways of controlling agent behavior, but
+some agents will have even more.
 
 Below are two separate and distinct wire format specifications for representing
-agent "effective configuration" in OpAmp payloads. We have made this distinction
-because the two approaches are not fully interoperable. Put another way, there is
-no complete way to smoothly translate environment configs into yaml, nor is there a
-way to represent all declarative confing yaml as environment variables.
+agent "effective configuration" in OpAmp payloads. We have made this
+distinction because the two approaches are not fully interoperable. Put
+another way, there is no complete way to smoothly translate environment
+configs into yaml, nor is there a way to represent all declarative confing
+yaml as environment variables.
 
 <todo: link to examples of these env vars that don't yaml>
 
@@ -52,56 +56,63 @@ Additionally, the [OpAmp spec says](https://opentelemetry.io/docs/specs/opamp/#c
 
 > The configuration of the Agent is a collection of named configuration files
 
-This is somewhat confusing because it suggests the existence of an actual physical 
-file that exists on disk, which isn't always the case. We interpret this use of the word "file" 
-here to refer to a block of content, and not to a physical file stored on disk. 
+This is somewhat confusing because it suggests the existence of an
+actual physical file that exists on disk, which isn't always the case.
+We interpret this use of the word "file" here to refer to a block of
+content, and not to a physical file stored on disk.
 
-In the spec below, for simplicity, we treat java system properties as environment
-variables (they are indeed
+In the spec below, for simplicity, we treat java system properties as
+environment variables (they are indeed
 [interchangeable](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#configuring-with-environment-variables)).
 
 ### Effective Environment Config
 
-When an agent has been started _without_ declarative configuration, it is assumed that its
-configuration is derived from environment variables and default values. This section only applies
-to agents that were started _without_ declarative configuration.
+When an agent has been started *without* declarative configuration, it
+is assumed that its configuration is derived from environment variables
+and default values. This section only applies to agents that were
+started *without* declarative configuration.
 
 When reporting `EffectiveConfig`, the following MUST be followed:
 
-* The `ConfigMap` MUST contain an `AgentConfigFile` under the name `environment_variables`.
-* The `AgentConfigFile` under `environment_variables` MUST have a `content_type` of 
-  `text/plain; format=properties; vendor=splunk; v=1`. This content type tells the remote
-  side how to interpret the content within the `AgentConfigFile` `body`. The v field 
+* The `ConfigMap` MUST contain an `AgentConfigFile` under the name
+  `environment_variables`.
+* The `AgentConfigFile` under `environment_variables` MUST have a
+  `content_type` of
+  `text/plain; format=properties; vendor=splunk; v=1`. This content type
+  tells the remote side how to interpret the content within the
+  `AgentConfigFile` `body`. The v field
   allows us to revise this format in a backwards compatible way in the future.
 * The `AgentConfigFile` body MUST conform to the body format below:
 
 #### Body Format
 
 The body MUST be a list of text lines, separated by newlines. Each line MUST
-be in the form `<key>=<value>\n` where the `<key>` is the name of the configuration
-item and `<value>` is the value of that same configuration item. The `<key>` MUST be 
-in [`SCREAMING_SNAKE_CASE`](https://en.wikipedia.org/wiki/Snake_case) form and MUST NOT
-contain whitespace.
+be in the form `<key>=<value>\n` where the `<key>` is the name of the
+configuration item and `<value>` is the value of that same
+configuration item. The `<key>` MUST be
+in [`SCREAMING_SNAKE_CASE`](https://en.wikipedia.org/wiki/Snake_case)
+form and MUST NOT contain whitespace.
 
 Here is a description of this format in Backus-Naur Form:
 
 ```bnf
-<environment-file> ::= <entry-list> 
+<environment-file> ::= <entry-list>
 <entry-list>       ::= <entry> | <entry><newline><entry-list>
-<entry>            ::= <key><eq><value> 
+<entry>            ::= <key><eq><value>
 <key>              ::= <key-char> | <key-char><key>
 <key-char>         ::= <UPPERCASE-CHARACTER> | "_"
 <value>            ::= <value-char> | <value-char><value>
-<value-char>       ::= <character> - <newline> 
+<value-char>       ::= <character> - <newline>
 <newline>          ::= "\n"
 <eq>               ::= "="
 ```
 
-Note: <value-char> is any character that's not a newline
+Note: `<value-char>` is any character that's not a newline.
 
-The order of these lines is not important. Each <key> MUST only appear in the body once.
+The order of these lines is not important. Each `<key>` MUST only
+appear in the body once.
 
-#### Required fields:
+#### Required fields
 
 The following configuration items MUST be reported in the body:
 
@@ -119,19 +130,20 @@ Additional configuration items SHOULD NOT be provided by agents.
 If any of these configuration items is not specified via environment
 variables, then a default value MUST be provided. The value provided
 MUST be semantically equivalent to the currently used value, regardless
-of what was actually supplied in the environment. 
+of what was actually supplied in the environment.
 
 For example, even if the environment contains `SPLUNK_PROFILER_ENABLED=true`,
 but the agent could not enable the profiler due to runtime platform limitations,
-then the value reported in effective config MUST be `SPLUNK_PROFILER_ENABLED=false`. 
+then the value reported in effective config MUST be
+`SPLUNK_PROFILER_ENABLED=false`.
 
 If an agent has been configured to use more than one endpoint for any
 of its signals, the agent MUST only report the first one. Multivalued
 environment variables are intentionally omitted from this format.
 
-#### Example:
+#### Example
 
-* name: `environment` 
+* name: `environment`
 * content_type: `text/plain; format=properties; vendor=splunk; v=1`
 
 ```properties
@@ -147,23 +159,27 @@ SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
 
 ### Effective Declarative Config
 
-When an agent has been started _with_ a declarative configuration yaml file, its
-"effective configuration" will be reported differently. This section only applies to agents that
-were started _with_ declarative configuration.
+When an agent has been started *with* a declarative configuration yaml
+file, its "effective configuration" will be reported differently. This
+section only applies to agents that were started *with* declarative
+configuration.
 
-When running with declarative configuration, the "effective configuration" body will 
-follow a similar structure, but will be a subset of what the actual file supports.
+When running with declarative configuration, the "effective
+configuration" body will follow a similar structure, but will be a
+subset of what the actual file supports.
 
 When reporting `EffectiveConfig`, the following MUST be followed:
 
-* The `ConfigMap` MUST contain an `AgentConfigFile` under the name that exactly matches the 
-  filename provided in the `OTEL_CONFIG_FILE` environment variable. This MUST include any
-  relative or absolute path information originally included in the value. If an agent is
-  using a defaulted (not user-provided) config filename, this default filename value
-  MUST still be provided.
+* The `ConfigMap` MUST contain an `AgentConfigFile` under the name that
+  exactly matches the filename provided in the `OTEL_CONFIG_FILE`
+  environment variable. This MUST include any relative or absolute path
+  information originally included in the value. If an agent is using a
+  defaulted (not user-provided) config filename, this default filename
+  value MUST still be provided.
 * This `AgentConfigFile` MUST have a `content_type` of
-  `application/yaml; vendor=splunk; v=1`. This content type tells the remote
-  side how to interpret the content within the `AgentConfigFile` `body`. The v field
+  `application/yaml; vendor=splunk; v=1`. This content type tells the
+  remote side how to interpret the content within the `AgentConfigFile`
+  `body`. The v field
   allows us to revise this format in a backwards compatible way in the future.
 * The `AgentConfigFile` body MUST conform to the body format below:
 
@@ -171,13 +187,14 @@ When reporting `EffectiveConfig`, the following MUST be followed:
 
 The body yaml format MUST follow the structure of the
 [OpenTelemetry Declarative Configuration](https://opentelemetry.io/docs/languages/sdk-configuration/declarative-configuration/)
-specification, but will be a more minimal, filtered representation that contains only the
-configuration items that we have deemed important enough to report in "effective config".
+specification, but will be a more minimal, filtered representation that
+contains only the configuration items that we have deemed important
+enough to report in "effective config".
 
-Some of these effective configuration values have a defined location in the yaml structure,
-while some are Splunk specific.
+Some of these effective configuration values have a defined location in
+the yaml structure, while some are Splunk specific.
 
-#### Required fields:
+#### Required fields
 
 The following uses "dot path" shorthand for the equivalent yaml fields.
 The following configuration items SHOULD be reported in the body:
@@ -191,25 +208,27 @@ The following configuration items SHOULD be reported in the body:
 
 Unlike the environment variable effective config, the existence of some values
 in the structure will imply that some features are enabled. For example, if
-the cpu profiler sampling interval is configured, this implies that profiling
-is enabled. Similarly, if this value is not present, it implies that the cpu profiler
-is not enabled.
+the cpu profiler sampling interval is configured, this implies that
+profiling is enabled. Similarly, if this value is not present, it
+implies that the cpu profiler is not enabled.
 
-Because this is "effective config", default values MUST be provided even when they are
-absent in the physical yaml file on disk, unless providing a value were to change the 
-semantics of absence.
+Because this is "effective config", default values MUST be provided even
+when they are absent in the physical yaml file on disk, unless providing a
+value were to change the semantics of absence.
 
-The OTel declarative configuration specification allows environment variables to 
-be used inside strings via templates. When this is used, the final template evaluated
-value MUST be provided, and not the environment variable's name.
+The OTel declarative configuration specification allows environment
+variables to be used inside strings via templates. When this is used, the
+final template evaluated value MUST be provided, and not the environment
+variable's name.
 
-Unlike the environment variable effective config, when multiple exporters are configured for a
-given signal, the agent SHOULD provide all the actively used endpoints.
+Unlike the environment variable effective config, when multiple exporters
+are configured for a given signal, the agent SHOULD provide all the
+actively used endpoints.
 
-Implementations MAY choose to include disabled/inactive features in the yaml 
+Implementations MAY choose to include disabled/inactive features in the yaml
 document with commented out lines.
 
-#### Example:
+#### Example
 
 ```yaml
 tracer_provider:
@@ -241,7 +260,8 @@ distribution:
 #        sampling_interval: 10
 ```
 
-Note: The absence of callgraphs sampling_interval here indicates that the feature is not active.
+Note: The absence of `callgraphs.sampling_interval` here indicates that the
+feature is not active.
 
-Note: The true configuration file may be significantly larger or more complicated than what is
-actually provided via effective configuration.
+Note: The true configuration file may be significantly larger or more
+complicated than what is actually provided via effective configuration.
