@@ -365,7 +365,7 @@ looks like this:
 distribution:
   splunk:
     opamp:
-      endpoint: http://some.opamp-host.com:7777/v1/opamp
+      endpoint: http://some.opamp-host.com:3420/v1/opamp
       polling_interval: 12
 ```
 
