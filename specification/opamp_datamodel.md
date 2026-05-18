@@ -76,8 +76,8 @@ started *without* declarative configuration.
 When reporting `EffectiveConfig`, the following MUST be followed:
 
 * The `ConfigMap` MUST contain an `AgentConfigFile` under the name
-  `environment_variables`.
-* The `AgentConfigFile` under `environment_variables` MUST have a
+  `environment`.
+* The `AgentConfigFile` under `environment` MUST have a
   `content_type` of
   `text/plain; format=properties; vendor=splunk; v=1.0.0`. This content type
   tells the remote side how to interpret the content within the
