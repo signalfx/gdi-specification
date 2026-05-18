@@ -364,7 +364,7 @@ looks like this:
 ```yaml
 distribution:
   splunk:
-    opamp:
+    opamp:/development
       endpoint: http://some.opamp-host.com:3420/v1/opamp
       polling_interval: 12
 ```
