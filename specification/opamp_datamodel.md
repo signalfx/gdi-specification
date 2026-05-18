@@ -47,7 +47,7 @@ Below are two separate and distinct wire format specifications for representing
 agent "effective configuration" in OpAmp payloads. We have made this
 distinction because the two approaches are not fully interoperable. Put
 another way, there is no complete way to smoothly translate environment
-configs into yaml, nor is there a way to represent all declarative confing
+configs into yaml, nor is there a way to represent all declarative config
 yaml as environment variables. For reference, see
 [this comment](https://github.com/open-telemetry/opentelemetry-specification/issues/3967#issuecomment-2813435817)
 in
