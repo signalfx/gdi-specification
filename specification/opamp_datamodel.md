@@ -79,7 +79,7 @@ When reporting `EffectiveConfig`, the following MUST be followed:
   `environment_variables`.
 * The `AgentConfigFile` under `environment_variables` MUST have a
   `content_type` of
-  `text/plain; format=properties; vendor=splunk; v=1`. This content type
+  `text/plain; format=properties; vendor=splunk; v=1.0.0`. This content type
   tells the remote side how to interpret the content within the
   `AgentConfigFile` `body`. The v field
   allows us to revise this format in a backwards compatible way in the future.
@@ -145,7 +145,7 @@ environment variables are intentionally omitted from this format.
 #### Example
 
 * name: `environment`
-* content_type: `text/plain; format=properties; vendor=splunk; v=1`
+* content_type: `text/plain; format=properties; vendor=splunk; v=1.0.0`
 
 ```properties
 OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://localhost:4318/v1/traces
@@ -178,7 +178,7 @@ When reporting `EffectiveConfig`, the following MUST be followed:
   defaulted (not user-provided) config filename, this default filename
   value MUST still be provided.
 * This `AgentConfigFile` MUST have a `content_type` of
-  `application/yaml; vendor=splunk; v=1`. This content type tells the
+  `application/yaml; vendor=splunk; v=1.0.0`. This content type tells the
   remote side how to interpret the content within the `AgentConfigFile`
   `body`. The v field
   allows us to revise this format in a backwards compatible way in the future.
@@ -238,18 +238,18 @@ tracer_provider:
         exporter:
           otlp_http:
             endpoint: http://localhost:4318/v1/traces
-  meter_provider:
-    readers:
-      - periodic:
-          exporter:
-            otlp_grpc:
-              endpoint: http://localhost:4318/v1/metrics
-  logger_provider:
-    processors:
-      - simple:
-          exporter:
-            otlp_http:
-              endpoint: http://localhost:4318/v1/logs
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_grpc:
+            endpoint: http://localhost:4318/v1/metrics
+logger_provider:
+  processors:
+    - simple:
+        exporter:
+          otlp_http:
+            endpoint: http://localhost:4318/v1/logs
 distribution:
   splunk:
     profiling:
