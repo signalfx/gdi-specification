@@ -367,7 +367,7 @@ distribution:
   splunk:
     opamp:/development
       endpoint: http://some.opamp-host.com:3420/v1/opamp
-      polling_interval: 12
+      polling_interval: 30000
 ```
 
 _Note: When the opamp endpoint node is present in the yaml, it implies that
