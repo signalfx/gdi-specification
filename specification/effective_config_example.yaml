@@ -4,7 +4,7 @@ disabled: false
 log_level: "info"
 distribution:
   splunk:
-    access_token: "***********"
+    access_token: "***************"
     realm: "us0"
     trace_response_header:
       enabled: true
@@ -47,7 +47,7 @@ tracer_provider:
             compression: "gzip"
             endpoint: "http://127.0.0.1:4318/v1/traces"
             headers_list:
-              - "x-sf-token=***********"
+              - "x-sf-token=***************"
             timeout: 10000
             tls:
               ca_file: ""
@@ -69,7 +69,7 @@ meter_provider:
             default_histogram_aggregation: "explicit_bucket_histogram"
             endpoint: "http://127.0.0.1:4318/v1/metrics"
             headers_list:
-              - "x-sf-token=*************"
+              - "x-sf-token=***************"
             temporality_preference: "cumulative"
             timeout: 10000
             tls:
@@ -78,6 +78,58 @@ meter_provider:
               key_file: ""
         interval: 60000
         timeout: 30000
+  views:
+    - selector:
+        instrument_name: "http.server.request.duration"
+        instrument_type: "histogram"
+        meter_name: "io.opentelemetry.servlet"
+      stream:
+        name: "http.server.request.duration"
+        description: "Server request duration with Splunk-friendly latency buckets."
+        aggregation:
+          explicit_bucket_histogram:
+            boundaries:
+              - 0
+              - 0.001
+              - 0.0025
+              - 0.005
+              - 0.01
+              - 0.025
+              - 0.05
+              - 0.075
+              - 0.1
+              - 0.25
+              - 0.5
+              - 0.75
+              - 1
+              - 2.5
+              - 5
+              - 7.5
+              - 10
+            record_min_max: true
+        aggregation_cardinality_limit: 2000
+        attribute_keys:
+          included:
+            - "http.request.method"
+            - "http.response.status_code"
+            - "http.route"
+            - "server.address"
+            - "server.port"
+            - "url.scheme"
+          excluded:
+            - "client.address"
+            - "network.peer.address"
+            - "user_agent.original"
+    - selector:
+        instrument_name: "jvm.thread.count"
+        instrument_type: "observable_up_down_counter"
+      stream:
+        name: "jvm.thread.count"
+        description: "Thread count with reduced cardinality."
+        aggregation_cardinality_limit: 50
+        attribute_keys:
+          included:
+            - "thread.state"
 logger_provider:
   limits:
     attribute_count_limit: 128
@@ -88,7 +140,7 @@ logger_provider:
             compression: "gzip"
             endpoint: "http://127.0.0.1:4318/v1/logs"
             headers_list:
-              - "x-sf-token=**********"
+              - "x-sf-token=***************"
             timeout: 10000
             tls:
               ca_file: ""
