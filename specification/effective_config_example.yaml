@@ -2,6 +2,29 @@
 file_format: "1.0"
 disabled: false
 log_level: "info"
+distribution:
+  splunk:
+    access_token: "***********"
+    realm: "us0"
+    trace_response_header:
+      enabled: true
+    profiling:
+      exporter:
+        otlp_log_http:
+          endpoint: "http://127.0.0.1:4318/v1/logs"
+      always_on:
+        cpu_profiler:
+          enabled: true
+          sampling_interval: 1000
+        memory_profiler:
+          enabled: false
+      callgraphs:
+        enabled: false
+        sampling_interval: 10
+        selection_probability: 0.01
+    "opamp:/development":
+      endpoint: "https://opamp.example.com/v1/opamp"
+      polling_interval: 30000
 attribute_limits:
   attribute_count_limit: 128
   attribute_value_length_limit: 12000
@@ -24,7 +47,7 @@ tracer_provider:
             compression: "gzip"
             endpoint: "http://127.0.0.1:4318/v1/traces"
             headers_list:
-              - "x-sf-token=*"
+              - "x-sf-token=***********"
             timeout: 10000
             tls:
               ca_file: ""
@@ -46,7 +69,7 @@ meter_provider:
             default_histogram_aggregation: "explicit_bucket_histogram"
             endpoint: "http://127.0.0.1:4318/v1/metrics"
             headers_list:
-              - "x-sf-token=*"
+              - "x-sf-token=*************"
             temporality_preference: "cumulative"
             timeout: 10000
             tls:
@@ -65,7 +88,7 @@ logger_provider:
             compression: "gzip"
             endpoint: "http://127.0.0.1:4318/v1/logs"
             headers_list:
-              - "x-sf-token=*"
+              - "x-sf-token=**********"
             timeout: 10000
             tls:
               ca_file: ""
@@ -75,53 +98,18 @@ logger_provider:
         max_export_batch_size: 512
         max_queue_size: 2048
         schedule_delay: 1000
-distribution:
-  splunk:
-    access_token: "*************"
-    realm: "us0"
-    trace_response_header:
-      enabled: true
-    profiling:
-      exporter:
-        otlp_log_http:
-          endpoint: "http://127.0.0.1:4318/v1/logs"
-      always_on:
-        cpu_profiler:
-          enabled: true
-          sampling_interval: 1000
-        memory_profiler:
-          enabled: false
-      callgraphs:
-        enabled: false
-        sampling_interval: 10
-        selection_probability: 0.01
-    "opamp:/development":
-      endpoint: "https://opamp.example.com/v1/opamp"
-      polling_interval: 30000
 "instrumentation/development":
   general:
     stability_opt_in_list: []
   java:
     activej_http:
       enabled: true
-    activej_http_6:
-      "0":
-        enabled: true
     akka_actor:
       enabled: true
-    akka_actor_2:
-      "3":
-        enabled: true
     akka_actor_fork_join:
       enabled: true
-    akka_actor_fork_join_2:
-      "5":
-        enabled: true
     akka_http:
       enabled: true
-    akka_http_10:
-      "0":
-        enabled: true
     akka_http_client:
       enabled: true
     akka_http_server:
@@ -130,104 +118,48 @@ distribution:
       enabled: true
     alibaba_druid:
       enabled: true
-    alibaba_druid_1:
-      "0":
-        enabled: true
     annotations:
       enabled: true
     apache_dbcp:
       enabled: true
-    apache_dbcp_2:
-      "0":
-        enabled: true
     apache_dubbo:
       enabled: true
-    apache_dubbo_2:
-      "7":
-        enabled: true
     apache_elasticjob:
       enabled: true
       experimental_span_attributes: false
-    apache_elasticjob_3:
-      "0":
-        enabled: true
     apache_httpasyncclient:
       enabled: true
-    apache_httpasyncclient_4:
-      "1":
-        enabled: true
     apache_httpclient:
       enabled: true
-    apache_httpclient_2:
-      "0":
-        enabled: true
-    apache_httpclient_4:
-      "0":
-        enabled: true
-    apache_httpclient_5:
-      "0":
-        enabled: true
     apache_shenyu:
       enabled: true
       experimental_span_attributes: false
-    apache_shenyu_2:
-      "4":
-        enabled: true
     armeria:
       enabled: true
-    armeria_1:
-      "14":
-        enabled: true
-      "3":
-        enabled: true
     armeria_grpc:
       enabled: true
-    armeria_grpc_1:
-      "14":
-        enabled: true
     async_http_client:
       enabled: true
-    async_http_client_1:
-      "8":
-        enabled: true
-      "9":
-        enabled: true
-    async_http_client_2:
-      "0":
-        enabled: true
     avaje_jex:
       enabled: true
-    avaje_jex_3:
-      "0":
-        enabled: true
     aws_lambda:
       enabled: true
       flush_timeout: 10000
     aws_lambda_core:
       enabled: true
-    aws_lambda_core_1:
-      "0":
-        enabled: true
     aws_lambda_events:
       enabled: true
-    aws_lambda_events_2:
-      "2":
-        enabled: true
     aws_sdk:
       enabled: true
       experimental_record_individual_http_error: false
       experimental_span_attributes: false
       experimental_use_propagator_for_messaging: false
     aws_sdk_1:
-      "11":
-        enabled: true
       "11_core":
         enabled: true
       "11_sqs":
         enabled: true
     aws_sdk_2:
-      "2":
-        enabled: true
       "2_bedrock_runtime":
         enabled: true
       "2_core":
@@ -240,55 +172,23 @@ distribution:
         enabled: true
     axis2:
       enabled: true
-    axis2_1:
-      "6":
-        enabled: true
     azure_core:
       enabled: true
-    azure_core_1:
-      "14":
-        enabled: true
-      "19":
-        enabled: true
-      "36":
-        enabled: true
-      "53":
-        enabled: true
     c3p0:
       enabled: true
-    c3p0_0:
-      "9":
-        enabled: true
     camel:
       enabled: true
       experimental_span_attributes: false
-    camel_2:
-      "20":
-        enabled: true
     cassandra:
       enabled: true
-    cassandra_3:
-      "0":
-        enabled: true
-    cassandra_4:
-      "0":
-        enabled: true
-      "4":
-        enabled: true
     clickhouse:
       enabled: true
     clickhouse_client:
       enabled: true
     clickhouse_client_v1:
       enabled: true
-    clickhouse_client_v1_0:
-      "5":
-        enabled: true
     clickhouse_client_v2:
       enabled: true
-    clickhouse_client_v2_0:
-      "8":
-        enabled: true
     common:
       db_statement_sanitizer:
         enabled: true
@@ -319,67 +219,22 @@ distribution:
     couchbase:
       enabled: true
       experimental_span_attributes: false
-    couchbase_2:
-      "0":
-        enabled: true
-      "6":
-        enabled: true
-    couchbase_3:
-      "1":
-        "6":
-          enabled: true
-        enabled: true
-      "2":
-        enabled: true
-      "4":
-        enabled: true
     cxf:
       enabled: true
-    cxf_3:
-      "0":
-        enabled: true
-      "2":
-        enabled: true
     dropwizard_metrics:
       enabled: false
-    dropwizard_metrics_4:
-      "0":
-        enabled: true
     dropwizard_views:
       enabled: true
-    dropwizard_views_0:
-      "7":
-        enabled: true
     elasticsearch:
       capture_search_query: false
       enabled: true
       experimental_span_attributes: false
     elasticsearch_api_client:
       enabled: true
-    elasticsearch_api_client_7:
-      "16":
-        enabled: true
     elasticsearch_rest:
       enabled: true
-    elasticsearch_rest_5:
-      "0":
-        enabled: true
-    elasticsearch_rest_6:
-      "4":
-        enabled: true
-    elasticsearch_rest_7:
-      "0":
-        enabled: true
     elasticsearch_transport:
       enabled: true
-    elasticsearch_transport_5:
-      "0":
-        enabled: true
-      "3":
-        enabled: true
-    elasticsearch_transport_6:
-      "0":
-        enabled: true
     executors:
       enabled: true
       include: []
@@ -390,31 +245,16 @@ distribution:
       include: ""
     finagle_http:
       enabled: true
-    finagle_http_23:
-      "11":
-        enabled: true
     finatra:
       enabled: true
-    finatra_2:
-      "9":
-        enabled: true
     genai:
       capture_message_content: false
     geode:
       enabled: true
-    geode_1:
-      "4":
-        enabled: true
     google_http_client:
       enabled: true
-    google_http_client_1:
-      "19":
-        enabled: true
     grails:
       enabled: true
-    grails_3:
-      "0":
-        enabled: true
     graphql:
       add_operation_name_to_span_name:
         enabled: false
@@ -426,17 +266,8 @@ distribution:
         enabled: false
     graphql_java:
       enabled: true
-    graphql_java_12:
-      "0":
-        enabled: true
-    graphql_java_20:
-      "0":
-        enabled: true
     grizzly:
       enabled: true
-    grizzly_2:
-      "3":
-        enabled: true
     grpc:
       capture_metadata:
         client:
@@ -446,56 +277,26 @@ distribution:
       emit_message_events: true
       enabled: true
       experimental_span_attributes: false
-    grpc_1:
-      "6":
-        enabled: true
     guava:
       enabled: true
       experimental_span_attributes: false
-    guava_10:
-      "0":
-        enabled: true
     gwt:
       enabled: true
-    gwt_2:
-      "0":
-        enabled: true
     helidon:
       enabled: true
-    helidon_4:
-      "3":
-        enabled: true
     hibernate:
       enabled: true
       experimental_span_attributes: false
-    hibernate_3:
-      "3":
-        enabled: true
-    hibernate_4:
-      "0":
-        enabled: true
-    hibernate_6:
-      "0":
-        enabled: true
     hibernate_procedure_call:
       enabled: true
-    hibernate_procedure_call_4:
-      "3":
-        enabled: true
     hibernate_reactive:
       enabled: true
-    hibernate_reactive_1:
-      "0":
-        enabled: true
     hibernate_reactive_mutiny:
       enabled: true
     hibernate_reactive_stage:
       enabled: true
     hikaricp:
       enabled: true
-    hikaricp_3:
-      "0":
-        enabled: true
     http:
       client:
         capture_request_headers: []
@@ -522,14 +323,8 @@ distribution:
     hystrix:
       enabled: true
       experimental_span_attributes: false
-    hystrix_1:
-      "4":
-        enabled: true
     influxdb:
       enabled: true
-    influxdb_2:
-      "4":
-        enabled: true
     java_http_client:
       enabled: true
     java_http_server:
@@ -539,37 +334,21 @@ distribution:
       experimental_log_attributes: false
     javalin:
       enabled: true
-    javalin_5:
-      "0":
-        enabled: true
     jaxrs:
       enabled: true
       experimental_span_attributes: false
-    jaxrs_1:
-      "0":
-        enabled: true
     jaxrs_2:
-      "0":
-        enabled: true
       "0_annotations":
         enabled: true
     jaxrs_3:
-      "0":
-        enabled: true
       "0_annotations":
         enabled: true
     jaxrs_annotations:
       enabled: true
     jaxws:
       enabled: true
-    jaxws_2:
-      "0":
-        enabled: true
     jaxws_jws_api:
       enabled: true
-    jaxws_jws_api_1:
-      "1":
-        enabled: true
     jboss_logmanager:
       experimental:
         capture_event_name: false
@@ -577,14 +356,8 @@ distribution:
       experimental_log_attributes: false
     jboss_logmanager_appender:
       enabled: true
-    jboss_logmanager_appender_1:
-      "1":
-        enabled: true
     jboss_logmanager_mdc:
       enabled: true
-    jboss_logmanager_mdc_1:
-      "1":
-        enabled: true
     jdbc:
       enabled: true
       experimental:
@@ -599,82 +372,25 @@ distribution:
       enabled: false
     jedis:
       enabled: true
-    jedis_1:
-      "4":
-        enabled: true
-    jedis_3:
-      "0":
-        enabled: true
-    jedis_4:
-      "0":
-        enabled: true
     jersey:
       enabled: true
-    jersey_2:
-      "0":
-        enabled: true
-    jersey_3:
-      "0":
-        enabled: true
     jetty:
       enabled: true
-    jetty_11:
-      "0":
-        enabled: true
-    jetty_12:
-      "0":
-        enabled: true
-    jetty_8:
-      "0":
-        enabled: true
     jetty_httpclient:
       enabled: true
-    jetty_httpclient_12:
-      "0":
-        enabled: true
-    jetty_httpclient_9:
-      "2":
-        enabled: true
     jfinal:
       enabled: true
-    jfinal_3:
-      "2":
-        enabled: true
     jms:
       enabled: true
-    jms_1:
-      "1":
-        enabled: true
-    jms_3:
-      "0":
-        enabled: true
     jodd_http:
       enabled: true
-    jodd_http_4:
-      "2":
-        enabled: true
     jsf_mojarra:
       enabled: true
-    jsf_mojarra_1:
-      "2":
-        enabled: true
-    jsf_mojarra_3:
-      "0":
-        enabled: true
     jsf_myfaces:
       enabled: true
-    jsf_myfaces_1:
-      "2":
-        enabled: true
-    jsf_myfaces_3:
-      "0":
-        enabled: true
     jsp:
       enabled: true
       experimental_span_attributes: false
-    jsp_2:
-      "3":
-        enabled: true
     kafka:
       enabled: true
       experimental_span_attributes: false
@@ -682,66 +398,27 @@ distribution:
         enabled: true
     kafka_clients:
       enabled: true
-    kafka_clients_0:
-      "11":
-        enabled: true
     kafka_clients_metrics:
       enabled: true
-    kafka_clients_metrics_0:
-      "11":
-        enabled: true
     kafka_connect:
       enabled: true
-    kafka_connect_2:
-      "6":
-        enabled: true
     kafka_streams:
       enabled: true
-    kafka_streams_0:
-      "11":
-        enabled: true
     kotlinx_coroutines:
       enabled: true
-    kotlinx_coroutines_1:
-      "0":
-        enabled: true
     kotlinx_coroutines_flow:
       enabled: true
-    kotlinx_coroutines_flow_1:
-      "3":
-        enabled: true
     kotlinx_coroutines_opentelemetry_instrumentation_annotations:
       enabled: true
     ktor:
       enabled: true
-    ktor_2:
-      "0":
-        enabled: true
-    ktor_3:
-      "0":
-        enabled: true
     ktor_client:
       enabled: true
-    ktor_client_2:
-      "0":
-        enabled: true
-    ktor_client_3:
-      "0":
-        enabled: true
     ktor_server:
       enabled: true
-    ktor_server_2:
-      "0":
-        enabled: true
-    ktor_server_3:
-      "0":
-        enabled: true
     kubernetes_client:
       enabled: true
       experimental_span_attributes: false
-    kubernetes_client_7:
-      "0":
-        enabled: true
     lettuce:
       connection_telemetry:
         enabled: false
@@ -750,24 +427,10 @@ distribution:
         command_encoding_events:
           enabled: false
       experimental_span_attributes: false
-    lettuce_4:
-      "0":
-        enabled: true
-    lettuce_5:
-      "0":
-        enabled: true
-      "1":
-        enabled: true
     liberty:
       enabled: true
-    liberty_20:
-      "0":
-        enabled: true
     liberty_dispatcher:
       enabled: true
-    liberty_dispatcher_20:
-      "0":
-        enabled: true
     log4j_appender:
       enabled: true
       experimental:
@@ -777,25 +440,11 @@ distribution:
         capture_marker_attribute: false
         capture_mdc_attributes: []
       experimental_log_attributes: false
-    log4j_appender_1:
-      "2":
-        enabled: true
-    log4j_appender_2:
-      "17":
-        enabled: true
     log4j_context_data:
       add_baggage: false
       enabled: true
-    log4j_context_data_2:
-      "17":
-        enabled: true
-      "7":
-        enabled: true
     log4j_mdc:
       enabled: true
-    log4j_mdc_1:
-      "2":
-        enabled: true
     logback_appender:
       enabled: true
       experimental:
@@ -810,15 +459,9 @@ distribution:
         capture_mdc_attributes: []
         capture_template: false
       experimental_log_attributes: false
-    logback_appender_1:
-      "0":
-        enabled: true
     logback_mdc:
       add_baggage: false
       enabled: true
-    logback_mdc_1:
-      "0":
-        enabled: true
     messaging:
       experimental:
         capture_headers: []
@@ -828,165 +471,51 @@ distribution:
       enabled: true
     metro:
       enabled: true
-    metro_2:
-      "2":
-        enabled: true
     micrometer:
       enabled: false
-    micrometer_1:
-      "5":
-        enabled: true
     mongo:
       enabled: true
       statement_sanitizer:
         enabled: true
-    mongo_3:
-      "1":
-        enabled: true
-      "7":
-        enabled: true
-    mongo_4:
-      "0":
-        enabled: true
     mongo_async:
       enabled: true
-    mongo_async_3:
-      "3":
-        enabled: true
     mybatis:
       enabled: true
-    mybatis_3:
-      "2":
-        enabled: true
     nats:
       enabled: true
-    nats_2:
-      "17":
-        enabled: true
     netty:
       connection_telemetry:
         enabled: false
       enabled: true
       ssl_telemetry:
         enabled: false
-    netty_3:
-      "8":
-        enabled: true
-    netty_4:
-      "0":
-        enabled: true
-      "1":
-        enabled: true
     okhttp:
       enabled: true
-    okhttp_2:
-      "2":
-        enabled: true
-    okhttp_3:
-      "0":
-        enabled: true
     openai:
       enabled: true
     openai_java:
       enabled: true
-    openai_java_1:
-      "1":
-        enabled: true
     opensearch:
       enabled: true
     opensearch_java:
       enabled: true
-    opensearch_java_3:
-      "0":
-        enabled: true
     opensearch_rest:
       enabled: true
-    opensearch_rest_1:
-      "0":
-        enabled: true
-    opensearch_rest_3:
-      "0":
-        enabled: true
     opentelemetry_api:
       enabled: true
-    opentelemetry_api_1:
-      "0":
-        enabled: true
-      "10":
-        enabled: true
-      "15":
-        enabled: true
-      "27":
-        enabled: true
-      "31":
-        enabled: true
-      "32":
-        enabled: true
-      "37":
-        enabled: true
-      "38":
-        enabled: true
-      "4":
-        enabled: true
-      "40":
-        enabled: true
-      "42":
-        enabled: true
-      "47":
-        enabled: true
-      "50":
-        enabled: true
-      "52":
-        enabled: true
-      "56":
-        enabled: true
-      "57":
-        enabled: true
-      "59":
-        enabled: true
     opentelemetry_api_incubator_1:
       "31":
         enabled: true
-      "32":
-        enabled: true
-      "37":
-        enabled: true
-      "38":
-        enabled: true
-      "40":
-        enabled: true
-      "42":
-        enabled: true
-      "47":
-        enabled: true
-      "50":
-        enabled: true
-      "52":
-        enabled: true
-      "56":
-        enabled: true
     opentelemetry_extension_annotations:
       enabled: true
-    opentelemetry_extension_annotations_1:
-      "0":
-        enabled: true
     opentelemetry_extension_kotlin:
       enabled: true
-    opentelemetry_extension_kotlin_1:
-      "0":
-        enabled: true
     opentelemetry_instrumentation_annotations:
       enabled: true
-    opentelemetry_instrumentation_annotations_1:
-      "16":
-        enabled: true
     opentelemetry_instrumentation_api:
       enabled: true
     oracle_ucp:
       enabled: true
-    oracle_ucp_11:
-      "2":
-        enabled: true
     oshi:
       enabled: true
       experimental_metrics:
@@ -995,14 +524,8 @@ distribution:
       enabled: true
     pekko_actor:
       enabled: true
-    pekko_actor_1:
-      "0":
-        enabled: true
     pekko_http:
       enabled: true
-    pekko_http_1:
-      "0":
-        enabled: true
     pekko_http_client:
       enabled: true
     pekko_http_server:
@@ -1013,46 +536,21 @@ distribution:
       enabled: true
     play_mvc:
       enabled: true
-    play_mvc_2:
-      "4":
-        enabled: true
-      "6":
-        enabled: true
     play_ws:
       enabled: true
-    play_ws_1:
-      "0":
-        enabled: true
-    play_ws_2:
-      "0":
-        enabled: true
-      "1":
-        enabled: true
     powerjob:
       enabled: true
       experimental_span_attributes: false
-    powerjob_4:
-      "0":
-        enabled: true
     pulsar:
       enabled: true
       experimental_span_attributes: false
-    pulsar_2:
-      "8":
-        enabled: true
     quarkus:
       enabled: true
     quarkus_resteasy_reactive:
       enabled: true
-    quarkus_resteasy_reactive_3:
-      "0":
-        enabled: true
     quartz:
       enabled: true
       experimental_span_attributes: false
-    quartz_2:
-      "0":
-        enabled: true
     r2dbc:
       enabled: true
       experimental:
@@ -1060,78 +558,31 @@ distribution:
           enabled: false
       statement_sanitizer:
         enabled: true
-    r2dbc_1:
-      "0":
-        enabled: true
     rabbitmq:
       enabled: true
       experimental_span_attributes: false
-    rabbitmq_2:
-      "7":
-        enabled: true
     ratpack:
       enabled: true
-    ratpack_1:
-      "4":
-        enabled: true
-      "7":
-        enabled: true
     reactor:
       enabled: true
-    reactor_3:
-      "1":
-        enabled: true
-      "4":
-        enabled: true
     reactor_context_propagation_operator:
       enabled: true
     reactor_kafka:
       enabled: true
-    reactor_kafka_1:
-      "0":
-        enabled: true
     reactor_netty:
       connection_telemetry:
         enabled: false
       enabled: true
-    reactor_netty_0:
-      "9":
-        enabled: true
-    reactor_netty_1:
-      "0":
-        enabled: true
     reactor_netty_server:
       enabled: true
     rediscala:
       enabled: true
-    rediscala_1:
-      "8":
-        enabled: true
     redisson:
       enabled: true
-    redisson_3:
-      "0":
-        enabled: true
-      "17":
-        enabled: true
     resteasy:
       enabled: true
-    resteasy_3:
-      "0":
-        enabled: true
-      "1":
-        enabled: true
-    resteasy_6:
-      "0":
-        enabled: true
     restlet:
       enabled: true
-    restlet_1:
-      "1":
-        enabled: true
-    restlet_2:
-      "0":
-        enabled: true
     rmi:
       enabled: true
     rmi_client:
@@ -1143,47 +594,17 @@ distribution:
     rocketmq_client:
       enabled: true
       experimental_span_attributes: false
-    rocketmq_client_4:
-      "8":
-        enabled: true
-    rocketmq_client_5:
-      "0":
-        enabled: true
     rxjava:
       enabled: true
-    rxjava_2:
-      "0":
-        enabled: true
-    rxjava_3:
-      "0":
-        enabled: true
-      "1":
-        "1":
-          enabled: true
     scala_fork_join:
       enabled: true
-    scala_fork_join_2:
-      "8":
-        enabled: true
     servlet:
       add_trace_id_request_attribute: true
       capture_request_parameters: []
       enabled: true
       experimental_span_attributes: false
-    servlet_2:
-      "2":
-        enabled: true
-    servlet_3:
-      "0":
-        enabled: true
-    servlet_5:
-      "0":
-        enabled: true
     spark:
       enabled: true
-    spark_2:
-      "3":
-        enabled: true
     spring_batch:
       enabled: true
       experimental:
@@ -1192,81 +613,39 @@ distribution:
       experimental_span_attributes: false
       item:
         enabled: false
-    spring_batch_3:
-      "0":
-        enabled: true
     spring_boot_actuator_autoconfigure:
       enabled: true
-    spring_boot_actuator_autoconfigure_2:
-      "0":
-        enabled: true
     spring_cloud_aws:
       enabled: true
-    spring_cloud_aws_3:
-      "0":
-        enabled: true
     spring_cloud_gateway:
       enabled: true
       experimental_span_attributes: false
-    spring_cloud_gateway_2:
-      "0":
-        enabled: true
     spring_cloud_gateway_webmvc_4:
       "3":
         enabled: true
     spring_core:
       enabled: true
-    spring_core_2:
-      "0":
-        enabled: true
     spring_data:
       enabled: true
-    spring_data_1:
-      "8":
-        enabled: true
     spring_integration:
       enabled: true
       global_channel_interceptor_patterns:
         - "*"
       producer:
         enabled: false
-    spring_integration_4:
-      "1":
-        enabled: true
     spring_jms:
       enabled: true
-    spring_jms_2:
-      "0":
-        enabled: true
-    spring_jms_6:
-      "0":
-        enabled: true
     spring_kafka:
       enabled: true
-    spring_kafka_2:
-      "7":
-        enabled: true
     spring_pulsar:
       enabled: true
-    spring_pulsar_1:
-      "0":
-        enabled: true
     spring_rabbit:
       enabled: true
-    spring_rabbit_1:
-      "0":
-        enabled: true
     spring_rmi:
       enabled: true
-    spring_rmi_4:
-      "0":
-        enabled: true
     spring_scheduling:
       enabled: true
       experimental_span_attributes: false
-    spring_scheduling_3:
-      "1":
-        enabled: true
     spring_security:
       enduser:
         role:
@@ -1276,32 +655,14 @@ distribution:
           granted_authority_prefix: "SCOPE_"
     spring_security_config:
       enabled: true
-    spring_security_config_6:
-      "0":
-        enabled: true
     spring_security_config_servlet:
       enabled: true
-    spring_security_config_servlet_6:
-      "0":
-        enabled: true
     spring_security_config_webflux:
       enabled: true
-    spring_security_config_webflux_6:
-      "0":
-        enabled: true
     spring_web:
       enabled: true
-    spring_web_3:
-      "1":
-        enabled: true
-    spring_web_6:
-      "0":
-        enabled: true
     spring_webflux:
       enabled: true
-    spring_webflux_5:
-      "0":
-        enabled: true
     spring_webflux_client:
       enabled: true
     spring_webflux_server:
@@ -1309,138 +670,52 @@ distribution:
     spring_webmvc:
       enabled: true
       experimental_span_attributes: false
-    spring_webmvc_3:
-      "1":
-        enabled: true
-    spring_webmvc_6:
-      "0":
-        enabled: true
     spring_ws:
       enabled: true
-    spring_ws_2:
-      "0":
-        enabled: true
     spymemcached:
       enabled: true
       experimental_span_attributes: false
-    spymemcached_2:
-      "12":
-        enabled: true
     struts:
       enabled: true
-    struts_2:
-      "3":
-        enabled: true
-    struts_7:
-      "0":
-        enabled: true
     tapestry:
       enabled: true
-    tapestry_5:
-      "4":
-        enabled: true
     tapir_pekko_http_server:
       enabled: true
     tapir_pekko_http_server_route:
       enabled: true
     tomcat:
       enabled: true
-    tomcat_10:
-      "0":
-        enabled: true
-    tomcat_7:
-      "0":
-        enabled: true
     tomcat_jdbc:
       enabled: true
     twilio:
       enabled: true
-    twilio_6:
-      "6":
-        enabled: true
     twitter_util_core:
       enabled: true
     undertow:
       enabled: true
-    undertow_1:
-      "4":
-        enabled: true
     vaadin:
       enabled: true
-    vaadin_14:
-      "2":
-        enabled: true
     vertx:
       enabled: true
     vertx_http_client:
       enabled: true
-    vertx_http_client_3:
-      "0":
-        enabled: true
-    vertx_http_client_4:
-      "0":
-        enabled: true
-    vertx_http_client_5:
-      "0":
-        enabled: true
     vertx_kafka_client:
       enabled: true
-    vertx_kafka_client_3:
-      "6":
-        enabled: true
     vertx_redis_client:
       enabled: true
-    vertx_redis_client_4:
-      "0":
-        enabled: true
     vertx_rx_java:
       enabled: true
-    vertx_rx_java_3:
-      "5":
-        enabled: true
     vertx_sql_client:
       enabled: true
-    vertx_sql_client_4:
-      "0":
-        enabled: true
-    vertx_sql_client_5:
-      "0":
-        enabled: true
     vertx_web:
       enabled: true
-    vertx_web_3:
-      "0":
-        enabled: true
     vibur_dbcp:
       enabled: true
-    vibur_dbcp_11:
-      "0":
-        enabled: true
     wicket:
       enabled: true
-    wicket_8:
-      "0":
-        enabled: true
     xxl_job:
       enabled: true
-    xxl_job_1:
-      "9":
-        "2":
-          enabled: true
-    xxl_job_2:
-      "1":
-        "2":
-          enabled: true
-      "3":
-        "0":
-          enabled: true
     zio:
       enabled: true
-    zio_2:
-      "0":
-        enabled: true
     zio_http:
       enabled: true
-    zio_http_3:
-      "0":
-        enabled: true
