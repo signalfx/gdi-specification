@@ -59,6 +59,10 @@ actual physical file that exists on disk, which isn't always the case.
 We interpret this use of the word "file" here to refer to a block of
 content, and not to a physical file stored on disk.
 
+It should be expressly noted that the expression of an agent's 
+effective configuration does not imply that any part of the
+configuration is or is not dynamically modifiable.
+
 ### Effective Configuration
 
 Agents that have an OpAMP connection enabled MUST report their
