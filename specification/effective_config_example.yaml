@@ -50,9 +50,9 @@ tracer_provider:
               - "x-sf-token=***************"
             timeout: 10000
             tls:
-              ca_file: ""
-              cert_file: ""
-              key_file: ""
+              ca_file: "/etc/otel/tls/ca.pem"
+              cert_file: "/etc/otel/tls/client-cert.pem"
+              key_file: "/etc/otel/tls/client-key.pem"
         export_timeout: 30000
         max_export_batch_size: 512
         max_queue_size: 2048
@@ -73,9 +73,9 @@ meter_provider:
             temporality_preference: "cumulative"
             timeout: 5000
             tls:
-              ca_file: ""
-              cert_file: ""
-              key_file: ""
+              ca_file: "/etc/otel/tls/ca.pem"
+              cert_file: "/etc/otel/tls/client-cert.pem"
+              key_file: "/etc/otel/tls/client-key.pem"
         interval: 60000
         timeout: 30000
     - periodic:
@@ -156,9 +156,9 @@ logger_provider:
               - "x-sf-token=***************"
             timeout: 10000
             tls:
-              ca_file: ""
-              cert_file: ""
-              key_file: ""
+              ca_file: "/etc/otel/tls/ca.pem"
+              cert_file: "/etc/otel/tls/client-cert.pem"
+              key_file: "/etc/otel/tls/client-key.pem"
         export_timeout: 30000
         max_export_batch_size: 512
         max_queue_size: 2048
