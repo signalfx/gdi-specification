@@ -43,10 +43,10 @@ files (yaml), java system properties, and eventually remote
 configuration. That's at least 4 ways of controlling agent behavior, but
 some agents will have even more.
 
-We've decided to collapse these mechanisms into a single 
+We've decided to collapse these mechanisms into a single
 "effective configuration" wire format in OpAmp payloads. This decision
 was made in spite of the fact that some configuration will be difficult
-(or nearly impossible) to represent in this format. 
+(or nearly impossible) to represent in this format.
 It is believed that having one universal grab bag format will be better
 than two domain-specific formats.
 
@@ -61,7 +61,7 @@ content, and not to a physical file stored on disk.
 
 ### Effective Configuration
 
-Agents that have an OpAMP connection enabled MUST report their 
+Agents that have an OpAMP connection enabled MUST report their
 effective configuration to the OpAMP server.
 
 When reporting `EffectiveConfig`, the following MUST be followed:
@@ -80,13 +80,13 @@ When reporting `EffectiveConfig`, the following MUST be followed:
 * The `AgentConfigFile` body MUST conform to the body format below, and
   agents MUST NOT send effective configuration in any other format because
   it weakens our insistence on uniformity and because we are worried that
-  it could cause backend services to do more work. 
+  it could cause backend services to do more work.
 
 #### Body Format
 
-The body of the effective config "file" SHOULD closely conform to the 
+The body of the effective config "file" SHOULD closely conform to the
 yaml schema provided in the
-[upstream OpenTelemetry schema repository](https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema). 
+[upstream OpenTelemetry schema repository](https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema).
 
 This yaml MUST provide a blend of splunk-specific configuration and all
 of the existing upstream configurations that exist. This includes all
@@ -122,7 +122,7 @@ variable's name.
 
 The body of the effective configuration MUST NOT include secrets or other
 sensitive data. If a configuration being used by an agent does truly include
-sensitive values, then agent MUST overwrite these values with asterisk 
+sensitive values, then the agent MUST overwrite these values with the asterisk
 character (`*`) before the effective config is sent over OpAMP.
 
 The vague and nebulous description of what constitutes "sensitive data"
@@ -143,6 +143,6 @@ The following configuration items SHOULD be reported in the body:
 
 #### Example
 
-For brevity, an example effective config body is not proivded here,
+For brevity, an example effective config body is not provided here,
 but can be found in
 [effective_config_example.yaml](effective_config_example.yaml).
