@@ -71,13 +71,26 @@ meter_provider:
             headers_list:
               - "x-sf-token=***************"
             temporality_preference: "cumulative"
-            timeout: 10000
+            timeout: 5000
             tls:
               ca_file: ""
               cert_file: ""
               key_file: ""
         interval: 60000
         timeout: 30000
+    - periodic:
+        exporter:
+          otlp_grpc:
+            compression: "gzip"
+            default_histogram_aggregation: "explicit_bucket_histogram"
+            endpoint: "https://internal.customer.site/metrics/v9"
+            headers:
+              - name: "x-ingest-sekret"
+                value: "***************"
+            temporality_preference: "delta"
+            timeout: 10000
+        interval: 15000
+        timeout: 15000
   views:
     - selector:
         instrument_name: "http.server.request.duration"
