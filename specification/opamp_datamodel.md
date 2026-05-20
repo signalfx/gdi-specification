@@ -140,7 +140,6 @@ The following configuration items SHOULD be reported in the body:
 * `distribution.splunk.profiling.always_on.memory_profiler`
 * `distribution.splunk.profiling.callgraphs.sampling_interval`
 
-
 #### Example
 
 For brevity, an example effective config body is not provided here,
