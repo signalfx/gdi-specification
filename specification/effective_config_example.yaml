@@ -307,7 +307,7 @@ logger_provider:
     external_annotations:
       enabled: true
       exclude_methods: ""
-      include: ""
+      include: "com.griznack.Flib$Name;*"
     finagle_http:
       enabled: true
     finatra:
