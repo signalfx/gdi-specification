@@ -165,7 +165,7 @@ logger_provider:
         schedule_delay: 1000
 "instrumentation/development":
   general:
-    stability_opt_in_list: []
+    stability_opt_in_list: "http/dup,database,messaging/dup"
   java:
     activej_http:
       enabled: true
