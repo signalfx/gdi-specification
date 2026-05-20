@@ -12,6 +12,8 @@
   [#375](https://github.com/signalfx/gdi-specification/pull/375)
 - Require referencing GitHub Actions by commit hash.
   [#385](https://github.com/signalfx/gdi-specification/pull/385)
+- Update `OTEL_EXPERIMENTAL_CONFIG_FILE` to `OTEL_CONFIG_FILE`.
+  [#390](https://github.com/signalfx/gdi-specification/pull/390)
 
 #### Bugfixes
 
