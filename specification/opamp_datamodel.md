@@ -138,9 +138,7 @@ but the agent could not enable the profiler due to runtime platform limitations,
 then the value reported in effective config MUST be
 `SPLUNK_PROFILER_ENABLED=false`.
 
-If an agent has been configured to use more than one endpoint for any
-of its signals, the agent MUST only report the first one. Multivalued
-environment variables are intentionally omitted from this format.
+Multivalued environment variables are intentionally omitted from this format.
 
 #### Example
 
