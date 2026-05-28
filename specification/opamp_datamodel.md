@@ -73,7 +73,7 @@ is assumed that its configuration is derived from environment variables
 and default values. This section only applies to agents that were
 started *without* declarative configuration.
 
-When reporting `EffectiveConfig`, the following MUST be followed:
+When reporting `EffectiveConfig`, the following SHOULD be followed:
 
 * The `ConfigMap` MUST contain an `AgentConfigFile` under the name
   `environment`.
@@ -84,6 +84,9 @@ When reporting `EffectiveConfig`, the following MUST be followed:
   `AgentConfigFile` `body`. The v field
   allows us to revise this format in a backwards compatible way in the future.
 * The `AgentConfigFile` body MUST conform to the body format below:
+
+Agents MAY choose to map environment configuration into the declarative 
+format described below.
 
 #### Body Format
 
