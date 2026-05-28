@@ -85,7 +85,7 @@ When reporting `EffectiveConfig`, the following SHOULD be followed:
   allows us to revise this format in a backwards compatible way in the future.
 * The `AgentConfigFile` body MUST conform to the body format below:
 
-Agents MAY choose to map environment configuration into the declarative 
+Agents MAY choose to map environment configuration into the declarative
 format described below.
 
 #### Body Format
@@ -136,7 +136,7 @@ Additional configuration items SHOULD NOT be provided by agents.
 If any of these configuration items is not specified via environment
 variables, then a default value MUST be provided. The value provided
 MUST be semantically equivalent to the currently used value, regardless
-of what was actually supplied in the environment. String values that 
+of what was actually supplied in the environment. String values that
 do not have a default SHOULD provide `null`.
 
 For example, even if the environment contains `SPLUNK_PROFILER_ENABLED=true`,
