@@ -125,13 +125,16 @@ The following configuration items MUST be reported in the body:
 * `SPLUNK_SNAPSHOT_PROFILER_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`
 * `SPLUNK_PROFILER_CALL_STACK_INTERVAL`
+* `OTEL_CONFIG_FILE`
+* `OTEL_EXPERIMENTAL_CONFIG_FILE`
 
 Additional configuration items SHOULD NOT be provided by agents.
 
 If any of these configuration items is not specified via environment
 variables, then a default value MUST be provided. The value provided
 MUST be semantically equivalent to the currently used value, regardless
-of what was actually supplied in the environment.
+of what was actually supplied in the environment. String values that 
+do not have a default SHOULD provide `null`.
 
 For example, even if the environment contains `SPLUNK_PROFILER_ENABLED=true`,
 but the agent could not enable the profiler due to runtime platform limitations,
@@ -154,6 +157,8 @@ SPLUNK_PROFILER_MEMORY_ENABLED=false
 SPLUNK_PROFILER_CALL_STACK_INTERVAL=1001
 SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
 SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
+OTEL_CONFIG_FILE=null
+OTEL_EXPERIMENTAL_CONFIG_FILE=null
 ```
 
 ### Effective Declarative Config
@@ -204,6 +209,8 @@ The following configuration items SHOULD be reported in the body:
 * `distribution.splunk.profiling.always_on.cpu_profiler.sampling_interval`
 * `distribution.splunk.profiling.always_on.memory_profiler`
 * `distribution.splunk.profiling.callgraphs.sampling_interval`
+* `otel.config.file`
+* `otel.experimental.config.file`
 
 Unlike the environment variable effective config, the existence of some values
 in the structure will imply that some features are enabled. For example, if
@@ -230,6 +237,8 @@ document with commented out lines.
 #### Example
 
 ```yaml
+otel.config.file: /usr/otel/agent.yaml
+otel.experimental.config.file: null
 tracer_provider:
   processors:
     - batch:
