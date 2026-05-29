@@ -240,8 +240,8 @@ document with commented out lines.
 #### Example
 
 ```yaml
-otel.config.file: /usr/otel/agent.yaml
-otel.experimental.config.file: null
+otel_config_file: /usr/otel/agent.yaml
+otel_experimental_config_file: null
 tracer_provider:
   processors:
     - batch:
