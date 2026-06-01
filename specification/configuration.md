@@ -346,16 +346,17 @@ MUST be opt-in and not enabled by default.
 When using environment-variable based agent configuration, the following
 MUST be provided when opting in to OpAMP:
 
-| Name                    | Default | Description                                              |
-|-------------------------|---------|----------------------------------------------------------|
-| `SPLUNK_OPAMP_ENABLED`  | false   | Set to `true` to opt into connecting to an OpAMP server. |
-| `SPLUNK_OPAMP_ENDPOINT` | (none)  | The URL endpoint of the OpAMP server to use.             |
+| Name                         | Default | Description                                              |
+|------------------------------|---------|----------------------------------------------------------|
+| `SPLUNK_OPAMP_ENABLED`       | false   | Set to `true` to opt into connecting to an OpAMP server. |
+| `SPLUNK_OPAMP_ENDPOINT`      | (none)  | The URL endpoint of the OpAMP server to use.             |
 
 The following optional configuration options MAY be provided:
 
-| Name                            | Default | Description                                           |
-|---------------------------------|---------|-------------------------------------------------------|
-| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30000   | Number of milliseconds between agent-to-server polls. |
+| Name                            | Default | Description                                            |
+|---------------------------------|---------|--------------------------------------------------------|
+| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30000   | Number of milliseconds between agent-to-server polls.  |
+| `SPLUNK_OPAMP_REMOTE_CONFIG`    | false   | Set to `true` to enable remote configuration features. |
 
 #### OpAMP declarative yaml
 
@@ -368,6 +369,7 @@ distribution:
     opamp:/development
       endpoint: http://some.opamp-host.com:3420/v1/opamp
       polling_interval: 30000
+      remote_config: true
 ```
 
 _Note: When the opamp endpoint node is present in the yaml, it implies that
