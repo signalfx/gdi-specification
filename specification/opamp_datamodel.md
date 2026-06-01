@@ -279,6 +279,8 @@ complicated than what is actually provided via effective configuration.
 
 ## Remote Configuration
 
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
 Some agents will be able to accept remote configuration in order to modify
 their behavior at runtime. This is an opt-in feature.
 
