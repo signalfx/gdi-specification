@@ -366,10 +366,11 @@ looks like this:
 ```yaml
 distribution:
   splunk:
-    opamp:/development
+    opamp/development:
       endpoint: http://some.opamp-host.com:3420/v1/opamp
       polling_interval: 30000
-      remote_config: true
+      features:
+        remote_config:
 ```
 
 _Note: When the opamp endpoint node is present in the yaml, it implies that
