@@ -289,8 +289,38 @@ behavior, MUST accept payloads from the
 [`AgentRemoteConfig.AgentConfigMap`](https://opentelemetry.io/docs/specs/opamp/#agentremoteconfig-message)
 with the key `splunk.remote.config`.
 
+Agents SHOULD attempt to parse the payload of `splunk.remote.config` when the
+content-type is `application/yaml`.
+
 Agents MAY accept payloads from other `AgentRemoteConfig.AgentConfigMap` keys
 not defined in this specification.
 
-* The specific format of this configuration is TBD.
-* The specific configuration settings inside this configuration are TBD.
+### Data Format
+
+When agents receive a remote configuration with the key `splunk.remote.config` and
+content type `application/yaml`, they SHOULD expect the following format:
+
+```yaml
+distribution:
+  splunk:
+    profiling:
+      always_on:
+        cpu_profiler:
+          sampling_interval: 1001
+```
+
+* When `cpu_profiler` is present, it indicates that the CPU profiler should be started
+  if it is not currently running.
+* When `cpu_profiler` is omitted, it indicates that the CPU profiler should be stopped
+  if it is currently running.
+* When `sampling_interval` is present, it indicates how often the profiler should sample.
+
+Agents SHOULD detect when remote configuration differs from current effective configuration
+and SHOULD alter its internal state to match remote config. In other words, remote config
+can cause the agent to start or stop the profiler or modify the sampling interval.
+
+When an agent is able to change state based on remote configuration values,
+subsequent effective configuration reports (as requested by the server)
+MUST reflect these changes.
+
+Agents MUST NOT perform any local persistence of remote configuration values.
