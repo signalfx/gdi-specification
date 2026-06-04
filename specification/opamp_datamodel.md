@@ -276,3 +276,21 @@ feature is not active.
 
 Note: The true configuration file may be significantly larger or more
 complicated than what is actually provided via effective configuration.
+
+## Remote Configuration
+
+**Status**: [Experimental](../README.md#versioning-and-status-of-the-specification)
+
+Some agents will be able to accept remote configuration in order to modify
+their behavior at runtime. This is an opt-in feature.
+
+Agents that can accept remote configuration to dynamically modify runtime
+behavior, MUST accept payloads from the
+[`AgentRemoteConfig.AgentConfigMap`](https://opentelemetry.io/docs/specs/opamp/#agentremoteconfig-message)
+with the key `splunk.remote.config`.
+
+Agents MAY accept payloads from other `AgentRemoteConfig.AgentConfigMap` keys
+not defined in this specification.
+
+* The specific format of this configuration is TBD.
+* The specific configuration settings inside this configuration are TBD.
