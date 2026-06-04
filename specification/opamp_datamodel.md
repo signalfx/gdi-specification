@@ -309,6 +309,8 @@ distribution:
           sampling_interval: 1001
 ```
 
+Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
+
 * When `cpu_profiler` is present, it indicates that the CPU profiler should be started
   if it is not currently running.
 * When `cpu_profiler` is omitted, it indicates that the CPU profiler should be stopped
