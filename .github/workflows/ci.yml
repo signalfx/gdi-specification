@@ -9,7 +9,7 @@ jobs:
   validate-documentation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
       - name: Markdown Lint check
         uses: DavidAnson/markdownlint-cli2-action@v23.2.0
         with:
