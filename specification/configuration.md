@@ -353,9 +353,10 @@ MUST be provided when opting in to OpAMP:
 
 The following optional configuration options MAY be provided:
 
-| Name                            | Default | Description                                           |
-|---------------------------------|---------|-------------------------------------------------------|
-| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30000   | Number of milliseconds between agent-to-server polls. |
+| Name                            | Default | Description                                            |
+|---------------------------------|---------|--------------------------------------------------------|
+| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30000   | Number of milliseconds between agent-to-server polls.  |
+| `SPLUNK_OPAMP_REMOTE_CONFIG`    | false   | Set to `true` to enable remote configuration features. |
 
 #### OpAMP declarative yaml
 
@@ -365,9 +366,11 @@ looks like this:
 ```yaml
 distribution:
   splunk:
-    opamp:/development
+    opamp/development:
       endpoint: http://some.opamp-host.com:3420/v1/opamp
       polling_interval: 30000
+      features:
+        remote_config:
 ```
 
 _Note: When the opamp endpoint node is present in the yaml, it implies that
