@@ -315,11 +315,13 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
   if it is not currently running.
 * When `cpu_profiler` is omitted, it indicates that the CPU profiler should be stopped
   if it is currently running.
-* When `sampling_interval` is present, it indicates how often the profiler should sample.
+* When `sampling_interval` is present, it indicates how often the profiler should
+  sample.
 
-Agents SHOULD detect when remote configuration differs from current effective configuration
-and SHOULD alter its internal state to match remote config. In other words, remote config
-can cause the agent to start or stop the profiler or modify the sampling interval.
+Agents SHOULD detect when remote configuration differs from current effective
+configuration and SHOULD alter its internal state to match remote config. In
+other words, remote config can cause the agent to start or stop the profiler or
+modify the sampling interval.
 
 When an agent is able to change state based on remote configuration values,
 subsequent effective configuration reports (as requested by the server)
