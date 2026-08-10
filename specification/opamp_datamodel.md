@@ -127,6 +127,7 @@ The following configuration items MUST be reported in the body:
 * `SPLUNK_PROFILER_MEMORY_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`
+* `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY`
 * `SPLUNK_PROFILER_CALL_STACK_INTERVAL`
 * `OTEL_CONFIG_FILE`
 * `OTEL_EXPERIMENTAL_CONFIG_FILE`
@@ -160,6 +161,7 @@ SPLUNK_PROFILER_MEMORY_ENABLED=false
 SPLUNK_PROFILER_CALL_STACK_INTERVAL=1001
 SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
 SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
+SPLUNK_SNAPSHOT_SELECTION_PROBABILITY=0.2
 OTEL_CONFIG_FILE=null
 OTEL_EXPERIMENTAL_CONFIG_FILE=null
 ```
@@ -212,6 +214,7 @@ The following configuration items SHOULD be reported in the body:
 * `distribution.splunk.profiling.always_on.cpu_profiler.sampling_interval`
 * `distribution.splunk.profiling.always_on.memory_profiler`
 * `distribution.splunk.profiling.callgraphs.sampling_interval`
+* `distribution.splunk.profiling.callgraphs.selection_probability`
 * `otel.config.file`
 * `otel.experimental.config.file`
 
@@ -269,10 +272,11 @@ distribution:
         memory_profiler:
 #      callgraphs:
 #        sampling_interval: 10
+#        selection_probability: 0.1
 ```
 
-Note: The absence of `callgraphs.sampling_interval` here indicates that the
-feature is not active.
+Note: The absence of `callgraphs.sampling_interval` and `selection_probability`
+here indicates that the feature is not active.
 
 Note: The true configuration file may be significantly larger or more
 complicated than what is actually provided via effective configuration.
