@@ -319,20 +319,41 @@ distribution:
         cpu_profiler:
           sampling_interval: 1001
         memory_profiler:
+      callgraphs:
+        sampling_interval: 10
+        selection_probability: 0.01
 ```
 
 Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 
-* When `cpu_profiler` is present, it indicates that the CPU profiler SHOULD be started
-  if it is not currently running.
-* When `cpu_profiler` is omitted, it indicates that the CPU profiler SHOULD be stopped
-  if it is currently running.
-* When `sampling_interval` is present, it indicates how often the profiler SHOULD
-  sample.
+* When `cpu_profiler` is present, it indicates that the CPU profiler SHOULD be
+  started if it is not currently running.
+* When `cpu_profiler` is omitted, it indicates that the CPU profiler SHOULD be
+  stopped if it is currently running.
+* When `cpu_profiler.sampling_interval` is present, it specifies the CPU
+  profiler's sampling interval in milliseconds.
+* When `cpu_profiler.sampling_interval` is omitted but `cpu_profiler` is
+  present, it indicates that the CPU profiler is enabled with the default
+  sampling interval.
 * When `memory_profiler` is present, it indicates that the memory profiler
   SHOULD be started if it is not currently running.
 * When `memory_profiler` is omitted, it indicates that the memory profiler
   SHOULD be stopped if it is currently running.
+* When `callgraphs` is present, it indicates that the snapshot profiler SHOULD
+  be started if it is not currently running.
+* When `callgraphs` is omitted, it indicates that the snapshot profiler SHOULD
+  be stopped if it is currently running.
+* When `callgraphs.sampling_interval` is present, it specifies the snapshot
+  profiler's call stack sampling interval in milliseconds.
+* When `callgraphs.sampling_interval` is omitted but `callgraphs` is present,
+  it indicates that the snapshot profiler is enabled with the default sampling
+  interval.
+* When `callgraphs.selection_probability` is present, it indicates the
+  probability of selecting a trace for snapshot profiling and MUST be greater
+  than `0` and less than or equal to `1`.
+* When `callgraphs.selection_probability` is omitted but `callgraphs` is
+  present, it indicates that the snapshot profiler is enabled with the default
+  selection probability.
 
 Agents SHOULD detect when remote configuration differs from current effective
 configuration and SHOULD alter its internal state to match remote config. In
