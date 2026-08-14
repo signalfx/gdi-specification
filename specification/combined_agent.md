@@ -69,13 +69,16 @@ In Dual Signal mode, the agent SHOULD add the following attributes to OTel spans
 | `appd.tier.name` <br> `appd.request.guid` | Whenever a new or continuing Business Transaction starts within the agent, or for ROOT spans. |
 
 AppD snapshots captured in Dual Signal mode SHOULD provide the corresponding current
-`TraceId` under the *Data Collectors* section.
+`TraceId` under the `Data Collectors` section.
 
 Notes:
 
-* This functionality assumes certain alignment of AppDynamics and OTel instrumentation and is provided as the _best effort_ only.
-* A single OTel trace can contain multiple BTs, if it crosses AppD Application boundary.
-* Differences between AppDynamics and OTel instrumentation can cause a single BT instance to be composed of multiple traces.
+* This functionality assumes certain alignment of AppDynamics and OTel
+instrumentation and is provided as the _best effort_ only.
+* A single OTel trace can contain multiple BTs,
+if it crosses AppD Application boundary.
+* Differences between AppDynamics and OTel instrumentation can cause a single BT
+instance to be composed of multiple traces.
 
 ## Contributing to customer telemetry
 
