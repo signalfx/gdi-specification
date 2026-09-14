@@ -14,6 +14,8 @@
   [#385](https://github.com/signalfx/gdi-specification/pull/385)
 - Update `OTEL_EXPERIMENTAL_CONFIG_FILE` to `OTEL_CONFIG_FILE`.
   [#390](https://github.com/signalfx/gdi-specification/pull/390)
+- Add new document describing Combined Agent behavior.
+  [#408](https://github.com/signalfx/gdi-specification/pull/408)
 
 #### Bugfixes
 
