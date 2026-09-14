@@ -52,10 +52,10 @@
   [#396](https://github.com/signalfx/gdi-specification/pull/396),
   [#402](https://github.com/signalfx/gdi-specification/pull/402),
   [#406](https://github.com/signalfx/gdi-specification/pull/406)
-  [#411](https://github.com/signalfx/gdi-specification/pull/411)
 - Add support for callgraph selection probability
   in the effective configuration.
   [#409](https://github.com/signalfx/gdi-specification/pull/409)
+  [#411](https://github.com/signalfx/gdi-specification/pull/411)
 
 ## [1.9.0] - 2026-04-07
 
