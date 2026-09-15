@@ -354,10 +354,15 @@ MUST be provided when opting in to OpAMP:
 
 The following optional configuration options MAY be provided:
 
-| Name                            | Default | Description                                            |
-|---------------------------------|---------|--------------------------------------------------------|
-| `SPLUNK_OPAMP_POLLING_INTERVAL` | 30000   | Number of milliseconds between agent-to-server polls.  |
-| `SPLUNK_OPAMP_REMOTE_CONFIG`    | false   | Set to `true` to enable remote configuration features. |
+| Name                                       | Default | Description                                                   |
+|--------------------------------------------|---------|---------------------------------------------------------------|
+| `SPLUNK_OPAMP_POLLING_INTERVAL`            | 30000   | Number of milliseconds between agent-to-server polls.         |
+| `SPLUNK_OPAMP_REMOTE_CONFIG`               | false   | Set to `true` to enable remote configuration features.        |
+| `SPLUNK_OPAMP_EXPERIMENTAL_REMOTE_CONTROL` | false   | Set to `true` to accept experimental remote-control commands. |
+
+The Java system property equivalent of
+`SPLUNK_OPAMP_EXPERIMENTAL_REMOTE_CONTROL` is
+`splunk.opamp.experimental.remote.control`.
 
 #### OpAMP declarative yaml
 
@@ -372,10 +377,25 @@ distribution:
       polling_interval: 30000
       features:
         remote_config:
+        experimental_control:
 ```
 
 _Note: When the opamp endpoint node is present in the yaml, it implies that
 the feature should be enabled._
+
+#### Experimental remote control
+
+Experimental remote control is opt-in and MUST NOT be enabled by default. It
+can be enabled with the `SPLUNK_OPAMP_EXPERIMENTAL_REMOTE_CONTROL` environment
+variable, the `splunk.opamp.experimental.remote.control` Java system property,
+or the `experimental_control` declarative configuration feature shown above.
+
+OpAMP must be enabled in the agent for this feature to work. The feature is
+independent of the call graph profiler (also known as the snapshot profiler)
+and does not require `SPLUNK_SNAPSHOT_PROFILER_ENABLED` to be set.
+
+See the [OpAMP remote-control data model](opamp_datamodel.md#remote-control) for
+the command transport and behavior.
 
 ### Serverless
 

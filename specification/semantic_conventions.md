@@ -103,6 +103,8 @@ instances. For each `LogRecord` instance:
 trace snapshots
 - `profiling.instrumentation.source` OPTIONALLY can be set to `continuous` for
 continuous profiler
+- `profiling.instrumentation.source` OPTIONALLY can be set to `threaddump` for
+thread dumps
 
 ### `LogRecord` Message Fields
 
