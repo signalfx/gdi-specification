@@ -305,6 +305,13 @@ remote configuration. After that, the accepted remote configuration is the
 authoritative source for whether profilers are running and for the profiler
 settings it contains.
 
+When an `AgentRemoteConfig.config.config_map` contains no
+`splunk.remote.config` entry, the agent MUST discard any previously accepted
+`splunk.remote.config` and restore all settings represented by this
+schema to the values from the initial agent configuration established at
+startup. The initial agent configuration remains authoritative until the agent
+accepts a remote configuration containing a `splunk.remote.config` entry.
+
 ### Data Format
 
 When agents receive a remote configuration with the key `splunk.remote.config` and
