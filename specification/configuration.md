@@ -225,11 +225,15 @@ are required.
   - Distribution MUST default to `"tracecontext,baggage"`
   - Distribution MUST support and document how to switch to `b3multi`
 - Span Collection Limits
-  - Distribution MUST default to `1000` for `OTEL_SPAN_LINK_COUNT_LIMIT`
-    (not OpenTelemetry default)
+  - Distribution MUST use the OpenTelemetry default of `128` for the following
+    count limits:
+    - `OTEL_ATTRIBUTE_COUNT_LIMIT`
+    - `OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT`
+    - `OTEL_SPAN_EVENT_COUNT_LIMIT`
+    - `OTEL_SPAN_LINK_COUNT_LIMIT`
+    - `OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT`
+    - `OTEL_LINK_ATTRIBUTE_COUNT_LIMIT`
   - Distribution MUST default to `12000` for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`
-    (not OpenTelemetry default)
-  - Distribution MUST default to unlimited for all others
     (not OpenTelemetry default)
 - `OTEL_TRACES_EXPORTER`
   - Non-RUM distribution MUST default to `otlp` using `grpc` or `http/protobuf`
