@@ -51,7 +51,8 @@
 - Add support for remote config.
   [#396](https://github.com/signalfx/gdi-specification/pull/396),
   [#402](https://github.com/signalfx/gdi-specification/pull/402),
-  [#406](https://github.com/signalfx/gdi-specification/pull/406)
+  [#406](https://github.com/signalfx/gdi-specification/pull/406),
+  [#413](https://github.com/signalfx/gdi-specification/pull/413)
 - Add support for callgraph selection probability
   in the effective configuration.
   [#409](https://github.com/signalfx/gdi-specification/pull/409)

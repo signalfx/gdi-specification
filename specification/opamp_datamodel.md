@@ -300,10 +300,30 @@ not defined in this specification.
 
 Remote configuration takes precedence over startup configuration for the
 profiling settings represented by this remote configuration schema. Startup
-configuration determines the initial profiling state until the agent accepts a
-remote configuration. After that, the accepted remote configuration is the
-authoritative source for whether profilers are running and for the profiler
-settings it contains.
+configuration determines the initial profiling state until the agent
+successfully applies a remote configuration. Thereafter, the most recently
+successfully applied remote configuration is the authoritative source for
+whether profilers are running and for the profiler settings it contains.
+
+An agent receives a remote configuration when its OpAMP transport hands the
+`AgentRemoteConfig` message to the agent's remote configuration processing
+component. Agents MAY parse and validate remote configurations concurrently,
+but they MUST serialize acceptance decisions and application attempts in the
+order received. A remote configuration becomes authoritative only when its
+application succeeds. If an agent refuses a remote configuration or its
+application fails, the configuration that was authoritative before the attempt
+remains authoritative.
+
+For example, if configuration 1 is received and processing begins, then
+configuration 2 is received while configuration 1 is still being processed,
+the agent MUST decide whether to accept and, if accepted, attempt to apply
+configuration 1 before deciding whether to accept or attempting to apply
+configuration 2. If configuration 1 is refused or its application fails, the
+previously authoritative configuration remains authoritative. If configuration
+2 is accepted and successfully applied, it becomes authoritative.
+
+Agents are not responsible for detecting or correcting differences between this
+receipt order and the order in which the server sent the configurations.
 
 ### Data Format
 
