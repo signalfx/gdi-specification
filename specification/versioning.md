@@ -4,7 +4,7 @@
 
 All GDI repositories MUST be versioned according to [Semantic Versioning
 2.0](https://semver.org/spec/v2.0.0.html) using the syntax idiomatic to their
-language, except as permitted by the [Security Exception](#security-exception).
+language.
 
 GDI repositories are versioned separately from OpenTelemetry repositories as
 Splunk-specific breaking changes MAY be introduced.
@@ -54,10 +54,9 @@ until the end of that component’s existence:
 
 - **Configuration Stability**: Backward-incompatible changes to configuration,
   which includes environment variables and system properties, MUST NOT be made
-  unless the `MAJOR` version number is incremented or the change is permitted by
-  the [Security Exception](#security-exception). Unless that exception applies,
-  all existing configuration parameters MUST continue to function against all
-  future `MINOR` versions of the same `MAJOR` version.
+  unless the `MAJOR` version number is incremented. All existing configuration
+  parameters MUST continue to function against all future `MINOR` versions of
+  the same `MAJOR` version.
 - **Component Stability**: Stable components MUST be deprecated for at least
   six months before being removed. Deprecated components MUST be removed as
   part of a `MAJOR` version number increase but MAY remain deprecated across
@@ -70,14 +69,24 @@ until the end of that component’s existence:
   `MINOR` version of the latest `MAJOR` and SHOULD NOT be provided for previous
   `PATCH` or `MINOR` releases.
 
-### Security Exception
+### Security Fixes
 
-A backward-incompatible change in a GDI repository that is necessary to
-remediate or mitigate a documented security vulnerability MAY be released in a
-`MINOR` version without incrementing the `MAJOR` version when retaining the
-existing behavior by default would leave users exposed. The change MUST be
-limited to what is necessary to address the vulnerability. Release notes MUST
-identify the backward-incompatible behavior, explain its security rationale,
-and provide migration guidance. If users can explicitly restore the previous
-behavior, the release notes MUST also explain the security implications of
+Security fixes in a GDI repository MAY change observable behavior in a `PATCH`
+release, provided they preserve the public API and all functionality officially
+documented or otherwise promised to users. This includes supported configuration
+behavior and defaults.
+
+Changes outside those guarantees are considered backward-compatible for
+versioning purposes. Examples include rejecting configurations that were
+accepted but could not work as documented, or enforcing an existing backend
+limit without reducing the functionality promised to users.
+
+A security fix that makes a backward-incompatible change to the public API or
+documented or promised functionality MUST increment the `MAJOR` version.
+Providing a configuration override does not make such a change
+backward-compatible.
+
+Release notes MUST describe security-related behavior changes, their security
+rationale, and any actions users need to take. If users can explicitly restore
+the previous behavior, release notes MUST explain the security implications of
 doing so.

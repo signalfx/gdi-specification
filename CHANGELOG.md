@@ -21,9 +21,9 @@
 
 #### Enhancements
 
-- Allow narrowly scoped backward-incompatible security fixes to be released in
-  a `MINOR` version when retaining the existing behavior would leave users
-  exposed.
+- Clarify that security fixes may change observable behavior in a `PATCH`
+  release while preserving public APIs and documented or promised functionality.
+  Changes that break these guarantees still require a `MAJOR` release.
   [#415](https://github.com/signalfx/gdi-specification/pull/415)
 
 ### Repository
