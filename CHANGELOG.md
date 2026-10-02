@@ -17,6 +17,15 @@
 
 #### Bugfixes
 
+### Versioning
+
+#### Enhancements
+
+- Clarify that security fixes may change observable behavior in a `PATCH`
+  release while preserving public APIs and documented or promised functionality.
+  Changes that break these guarantees still require a `MAJOR` release.
+  [#415](https://github.com/signalfx/gdi-specification/pull/415)
+
 ### Repository
 
 #### Breaking changes
