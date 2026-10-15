@@ -85,9 +85,11 @@ validation, preventing disclosure of credentials in telemetry, and introducing
 or lowering resource limits to mitigate denial of service or resource
 exhaustion, including through unbounded telemetry collections.
 
-Changes under this exception MUST be limited to what is necessary to mitigate
-the security risk. The exception MUST NOT be used to remove or rename public
-APIs, change their signatures, rename or remove configuration parameters, bypass
+Changes under this exception MUST address an identified, concrete security risk
+and MUST be limited to what is necessary to mitigate that risk. Changes made
+solely to reduce resource consumption or improve performance do not qualify.
+The exception MUST NOT be used to remove or rename public APIs, change their
+signatures, rename or remove configuration parameters, bypass
 component deprecation or removal requirements, or make unrelated
 backward-incompatible changes.
 
