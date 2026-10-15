@@ -275,8 +275,7 @@ distribution:
 #        selection_probability: 0.1
 ```
 
-Note: The absence of `callgraphs.sampling_interval` and `selection_probability`
-here indicates that the feature is not active.
+Note: The absence of `callgraphs` node indicates that the feature is not active.
 
 Note: The true configuration file may be significantly larger or more
 complicated than what is actually provided via effective configuration.
