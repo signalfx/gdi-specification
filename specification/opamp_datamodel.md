@@ -307,20 +307,26 @@ whether profilers are running and for the profiler settings it contains.
 
 An agent receives a remote configuration when its OpAMP transport hands the
 `AgentRemoteConfig` message to the agent's remote configuration processing
-component. Agents MAY parse and validate remote configurations concurrently,
-but they MUST serialize acceptance decisions and application attempts in the
-order received. A remote configuration becomes authoritative only when its
+component.
+
+Agents MAY parse and validate multiple remote configurations concurrently,
+and these steps MAY finish out of receipt order. Acceptance decisions and
+application attempts MUST be performed sequentially in the order received.
+Before deciding whether to accept the next configuration, an agent MUST
+finish rejecting the previous configuration or complete its application
+attempt. A remote configuration becomes authoritative only when its
 application succeeds. If an agent refuses a remote configuration or its
 application fails, the configuration that was authoritative before the attempt
 remains authoritative.
 
-For example, if configuration 1 is received and processing begins, then
-configuration 2 is received while configuration 1 is still being processed,
-the agent MUST decide whether to accept and, if accepted, attempt to apply
-configuration 1 before deciding whether to accept or attempting to apply
-configuration 2. If configuration 1 is refused or its application fails, the
-previously authoritative configuration remains authoritative. If configuration
-2 is accepted and successfully applied, it becomes authoritative.
+For example, if configuration 2 is received while configuration 1 is still
+being parsed or validated, the agent MAY parse and validate configuration 2
+concurrently. Even if configuration 2 finishes these steps first, the agent
+MUST decide whether to accept configuration 1 and, if accepted, complete its
+application attempt before deciding whether to accept configuration 2. If
+configuration 1 is refused or its application fails, the previously
+authoritative configuration remains authoritative. If configuration 2 is
+accepted and successfully applied, it becomes authoritative.
 
 Agents are not responsible for detecting or correcting differences between this
 receipt order and the order in which the server sent the configurations.
@@ -332,8 +338,8 @@ payload, it MUST reject the entire payload and SHOULD continue using the
 configuration that was effective immediately before the failed update. The
 failed payload SHOULD NOT be partially applied.
 
-If the agent previously accepted remote configurations during the current
-process lifetime, the most recently accepted configuration remains
+If the agent has successfully applied a remote configuration during the current
+process lifetime, the most recently successfully applied configuration remains
 authoritative. Otherwise, the startup configuration remains authoritative.
 The absence of a remote configuration update MUST NOT change the effective
 configuration.
