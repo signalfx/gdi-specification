@@ -17,6 +17,7 @@ The following specification sections are currently in scope:
 - [Repository](specification/repository.md)
 - [Versioning](specification/versioning.md)
 - [OpAMP Data Model](specification/opamp_datamodel.md)
+- [Combined Agent](specification/combined_agent.md)
 
 GDI repositories MUST adopt GDI specification changes by their next `MINOR` release
 and within three months (whichever is sooner). The GDI specification and GDI
