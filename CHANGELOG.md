@@ -25,6 +25,16 @@
 
 #### Bugfixes
 
+### Versioning
+
+#### Enhancements
+
+- Allow narrowly scoped security-related changes to stable behavior,
+  configuration defaults, and supported values without a `MAJOR` version
+  increment, with release notes documenting the security rationale, user impact,
+  and migration options.
+  [#416](https://github.com/signalfx/gdi-specification/pull/416)
+
 ### Repository
 
 #### Breaking changes
@@ -59,7 +69,8 @@
 - Add support for remote config.
   [#396](https://github.com/signalfx/gdi-specification/pull/396),
   [#402](https://github.com/signalfx/gdi-specification/pull/402),
-  [#406](https://github.com/signalfx/gdi-specification/pull/406)
+  [#406](https://github.com/signalfx/gdi-specification/pull/406),
+  [#412](https://github.com/signalfx/gdi-specification/pull/412)
 - Add support for callgraph selection probability
   in the effective configuration.
   [#409](https://github.com/signalfx/gdi-specification/pull/409)
