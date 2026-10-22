@@ -453,7 +453,7 @@
 - Initial Collector specification defined
 
 [Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.10.0...HEAD
-[1.9.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.10.0
+[1.10.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.10.0
 [1.9.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.9.0
 [1.8.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.8.0
 [1.7.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.7.0
