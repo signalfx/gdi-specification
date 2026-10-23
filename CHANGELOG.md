@@ -6,34 +6,13 @@
 
 #### Breaking changes
 
-- Align attribute, span event, and span link count limits with the OpenTelemetry
-  default of `128` instead of using unlimited or higher defaults, mitigating
-  potential denial of service through unbounded telemetry collections. Users
-  that need higher limits can explicitly configure the affected
-  `OTEL_*_COUNT_LIMIT` variables. Values approximating the previous defaults
-  increase memory usage and exposure to resource exhaustion.
-  [#414](https://github.com/signalfx/gdi-specification/pull/414)
-
 #### Enhancements
-
-- Add initial configuration for OpAMP clients.
-  [#375](https://github.com/signalfx/gdi-specification/pull/375)
-- Require referencing GitHub Actions by commit hash.
-  [#385](https://github.com/signalfx/gdi-specification/pull/385)
-- Update `OTEL_EXPERIMENTAL_CONFIG_FILE` to `OTEL_CONFIG_FILE`.
-  [#390](https://github.com/signalfx/gdi-specification/pull/390)
 
 #### Bugfixes
 
 ### Versioning
 
 #### Enhancements
-
-- Allow narrowly scoped security-related changes to stable behavior,
-  configuration defaults, and supported values without a `MAJOR` version
-  increment, with release notes documenting the security rationale, user impact,
-  and migration options.
-  [#416](https://github.com/signalfx/gdi-specification/pull/416)
 
 ### Repository
 
@@ -58,6 +37,43 @@
 #### Enhancements
 
 #### Bugfixes
+
+### OpAMP Data Model
+
+#### Enhancements
+
+## [1.10.0] - 2026-10-23
+
+### Configuration
+
+#### Breaking changes
+
+- Align attribute, span event, and span link count limits with the OpenTelemetry
+  default of `128` instead of using unlimited or higher defaults, mitigating
+  potential denial of service through unbounded telemetry collections. Users
+  that need higher limits can explicitly configure the affected
+  `OTEL_*_COUNT_LIMIT` variables. Values approximating the previous defaults
+  increase memory usage and exposure to resource exhaustion.
+  [#414](https://github.com/signalfx/gdi-specification/pull/414)
+
+#### Enhancements
+
+- Add initial configuration for OpAMP clients.
+  [#375](https://github.com/signalfx/gdi-specification/pull/375)
+- Require referencing GitHub Actions by commit hash.
+  [#385](https://github.com/signalfx/gdi-specification/pull/385)
+- Update `OTEL_EXPERIMENTAL_CONFIG_FILE` to `OTEL_CONFIG_FILE`.
+  [#390](https://github.com/signalfx/gdi-specification/pull/390)
+
+### Versioning
+
+#### Enhancements
+
+- Allow narrowly scoped security-related changes to stable behavior,
+  configuration defaults, and supported values without a `MAJOR` version
+  increment, with release notes documenting the security rationale, user impact,
+  and migration options.
+  [#416](https://github.com/signalfx/gdi-specification/pull/416)
 
 ### OpAMP Data Model
 
@@ -436,7 +452,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.9.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.10.0...HEAD
+[1.10.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.10.0
 [1.9.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.9.0
 [1.8.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.8.0
 [1.7.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.7.0
