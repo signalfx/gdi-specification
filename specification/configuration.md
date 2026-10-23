@@ -184,8 +184,9 @@ instance using the following environment variables:
   This environment variable MUST work for `otlp` and `jaeger-thrift-splunk`
   exporters.
 - [2]: The instrumentation library uses this setting as the initial profiling
-  state. When OpAMP remote configuration is enabled and accepted, remote
-  configuration takes precedence over this setting for the current process.
+  state until it successfully applies an OpAMP remote configuration. Thereafter,
+  the most recently successfully applied remote configuration takes precedence
+  over this setting for the current process.
   An instrumentation library whose profiling capability is deactivated MUST NOT
   introduce additional profiling-based overhead. It also MUST NOT emit
   profiling-based data.
