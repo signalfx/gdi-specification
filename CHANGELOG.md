@@ -36,6 +36,8 @@
 
 #### Enhancements
 
+- Define eBPF profile mapping, unsupported measurements, and exporter telemetry.
+
 #### Bugfixes
 
 ### OpAMP Data Model
