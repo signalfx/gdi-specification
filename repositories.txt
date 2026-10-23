@@ -1,4 +1,3 @@
-https://github.com/signalfx/splunk-otel-collector-heroku
 https://github.com/signalfx/splunk-otel-dotnet
 https://github.com/signalfx/splunk-otel-go
 https://github.com/signalfx/splunk-otel-java
