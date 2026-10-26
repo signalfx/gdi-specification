@@ -30,8 +30,9 @@ notes SHOULD contain a link to the relevant PR or commit.
 
 ## Post-Release
 
-Create issues for all the repositories that should comply
-ith the GDI specification
+Create adoption issues for repositories listed in
+[repositories.txt](repositories.txt), except those in `GDI_ISSUE_EXCLUSIONS`
+in the [Makefile](Makefile).
 
 > **Note**
 > Requires [GitHub CLI `gh`](https://cli.github.com/).
