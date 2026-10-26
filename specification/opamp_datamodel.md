@@ -130,9 +130,6 @@ The following configuration items MUST be reported in the body:
 * `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY`
 * `SPLUNK_PROFILER_CALL_STACK_INTERVAL`
 * `OTEL_CONFIG_FILE`
-* `OTEL_EXPERIMENTAL_CONFIG_FILE`
-
-Additional configuration items SHOULD NOT be provided by agents.
 
 If any of these configuration items is not specified via environment
 variables, then a default value MUST be provided. The value provided
@@ -146,6 +143,11 @@ then the value reported in effective config MUST be
 `SPLUNK_PROFILER_ENABLED=false`.
 
 Multivalued environment variables are intentionally omitted from this format.
+
+#### Optional fields
+
+Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
+variable MAY report its value in the body.
 
 #### Example
 
@@ -163,7 +165,6 @@ SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
 SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
 SPLUNK_SNAPSHOT_SELECTION_PROBABILITY=0.2
 OTEL_CONFIG_FILE=null
-OTEL_EXPERIMENTAL_CONFIG_FILE=null
 ```
 
 ### Effective Declarative Config
@@ -216,7 +217,6 @@ The following configuration items SHOULD be reported in the body:
 * `distribution.splunk.profiling.callgraphs.sampling_interval`
 * `distribution.splunk.profiling.callgraphs.selection_probability`
 * `otel.config.file`
-* `otel.experimental.config.file`
 
 Unlike the environment variable effective config, the existence of some values
 in the structure will imply that some features are enabled. For example, if
@@ -240,11 +240,15 @@ actively used endpoints.
 Implementations MAY choose to include disabled/inactive features in the yaml
 document with commented out lines.
 
+#### Optional fields
+
+Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
+variable MAY report its value as `otel.experimental.config.file` in the body.
+
 #### Example
 
 ```yaml
 otel_config_file: /usr/otel/agent.yaml
-otel_experimental_config_file: null
 tracer_provider:
   processors:
     - batch:
