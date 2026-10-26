@@ -43,9 +43,6 @@ Name and link to repository
 - [ ] [Releases](https://github.com/signalfx/gdi-specification/blob/v1.10.0/specification/repository.md#github-releases)
       done to spec.
 - [ ] Type specific requirements (remove what doesn't apply)
-  - [ ] [Data Collector](https://github.com/signalfx/gdi-specification/blob/v1.10.0/specification/repository.md#data-collector)
-    - [ ] Documents all supported configuration parameters.
-    - [ ] Documents sizing guidelines
   - [ ] [Instrumentation Library](https://github.com/signalfx/gdi-specification/blob/v1.10.0/specification/repository.md#instrumentation-libraries)
     - [ ] Documents all supported configuration parameters.
     - [ ] Documents how to configure manual instrumentation.
