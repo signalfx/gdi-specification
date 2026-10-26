@@ -42,6 +42,9 @@
 
 #### Enhancements
 
+- Make reporting `OTEL_EXPERIMENTAL_CONFIG_FILE` in effective configuration
+  optional for agents that support the variable.
+
 ## [1.10.0] - 2026-10-23
 
 ### Configuration
