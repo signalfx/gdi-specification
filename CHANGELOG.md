@@ -57,7 +57,7 @@
 
 #### Enhancements
 
-- Define eBPF profile mapping, unsupported measurements, and exporter telemetry.
+- Define eBPF profile mapping and unsupported measurements.
 
 #### Bugfixes
 
