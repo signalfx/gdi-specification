@@ -8,6 +8,9 @@
 
 #### Enhancements
 
+- Define optional lock reporting settings for Always On CPU and snapshot
+  profilers.
+
 #### Bugfixes
 
 ### Versioning
@@ -28,6 +31,9 @@
 
 #### Enhancements
 
+- Describe lock information and independent lock reporting controls for
+  Always On CPU and snapshot profilers.
+
 #### Bugfixes
 
 ### Semantic Conventions
@@ -44,6 +50,10 @@
 
 - Make reporting `OTEL_EXPERIMENTAL_CONFIG_FILE` in effective configuration
   optional for agents that support the variable.
+- Describe reporting lock information in effective configuration for
+  multithreaded runtimes.
+- Define management of lock reporting with remote configuration for
+  multithreaded runtimes.
 
 ## [1.10.0] - 2026-10-23
 

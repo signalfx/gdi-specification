@@ -149,8 +149,7 @@ Multivalued environment variables are intentionally omitted from this format.
 Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
 variable MAY report its value in the body.
 
-Agents for languages that support multithreading SHOULD report the following
-items:
+Agents for multithreaded runtimes SHOULD report the following items:
 
 * `SPLUNK_PROFILER_LOCKS_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED`
@@ -253,14 +252,13 @@ document with commented out lines.
 Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
 variable MAY report its value as `otel.experimental.config.file` in the body.
 
-Agents for languages that support multithreading SHOULD report the following
-items:
+Agents for multithreaded runtimes SHOULD report the following items:
 
 * `distribution.splunk.profiling.always_on.cpu_profiler.report_locks`
 * `distribution.splunk.profiling.callgraphs.report_locks`
 
-Their presence indicates if lock related data is gathered by corresponding
-profiler.
+Their presence indicates that the corresponding profiler gathers lock
+information used to diagnose thread contention.
 
 #### Example
 
