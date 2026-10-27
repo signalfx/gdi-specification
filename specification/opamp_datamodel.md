@@ -149,6 +149,12 @@ Multivalued environment variables are intentionally omitted from this format.
 Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
 variable MAY report its value in the body.
 
+Agents for languages that support multithreading SHOULD report the following
+items:
+
+* `SPLUNK_PROFILER_LOCKS_ENABLED`
+* `SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED`
+
 #### Example
 
 * name: `environment`
@@ -159,9 +165,11 @@ OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://localhost:4318/v1/traces
 OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:4318/v1/metrics
 OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://localhost:4318/v1/logs
 SPLUNK_PROFILER_ENABLED=true
+SPLUNK_PROFILER_LOCKS_ENABLED=true
 SPLUNK_PROFILER_MEMORY_ENABLED=false
 SPLUNK_PROFILER_CALL_STACK_INTERVAL=1001
 SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
+SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED=false
 SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
 SPLUNK_SNAPSHOT_SELECTION_PROBABILITY=0.2
 OTEL_CONFIG_FILE=null
@@ -245,6 +253,15 @@ document with commented out lines.
 Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
 variable MAY report its value as `otel.experimental.config.file` in the body.
 
+Agents for languages that support multithreading SHOULD report the following
+items:
+
+* `distribution.splunk.profiling.always_on.cpu_profiler.report_locks`
+* `distribution.splunk.profiling.callgraphs.report_locks`
+
+Their presence indicates if lock related data is gathered by corresponding
+profiler.
+
 #### Example
 
 ```yaml
@@ -273,10 +290,12 @@ distribution:
       always_on:
         cpu_profiler:
           sampling_interval: 1001
+          report_locks:
         memory_profiler:
 #      callgraphs:
 #        sampling_interval: 10
 #        selection_probability: 0.1
+#        report_locks:
 ```
 
 Note: The absence of `callgraphs` node indicates that the feature is not active.
@@ -341,6 +360,7 @@ distribution:
       always_on:
         cpu_profiler:
           sampling_interval: 1001
+          report_locks:
         memory_profiler:
       callgraphs:
         sampling_interval: 10
@@ -358,6 +378,10 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 * When `cpu_profiler.sampling_interval` is omitted but `cpu_profiler` is
   present, it indicates that the CPU profiler is enabled with the default
   sampling interval.
+* When `cpu_profiler.report_locks` is present,
+  it specifies the CPU profiler SHOULD gather locks related data.
+* When `cpu_profiler.report_locks` is omitted but `cpu_profiler` is present,
+  it indicates that the CPU profiler MUST NOT gather locks related data.
 * When `memory_profiler` is present, it indicates that the memory profiler
   SHOULD be started if it is not currently running.
 * When `memory_profiler` is omitted, it indicates that the memory profiler
@@ -377,6 +401,10 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 * When `callgraphs.selection_probability` is omitted but `callgraphs` is
   present, it indicates that the snapshot profiler is enabled with the default
   selection probability.
+* When `callgraphs.report_locks` is present,
+  it specifies the snapshot profiler SHOULD gather locks related data.
+* When `callgraphs.report_locks` is omitted but `callgraphs` is present,
+  it indicates that the snapshot profiler MUST NOT gather locks related data.
 
 Agents SHOULD detect when remote configuration differs from current effective
 configuration and SHOULD alter its internal state to match remote config. In
