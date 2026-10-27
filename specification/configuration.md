@@ -85,8 +85,13 @@ environment variables:
   these options MUST be defined with valid values (this is the default behavior
   for the Data Collector). If the Data Collector is configured as an agent and
   the agent is configured to send to a Data Collector running as a gateway then
-  these options are not required but MAY be defined (to support
-  [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
+  these options are not required but MAY be defined. Access tokens can be
+  forwarded through the gateway using the
+  [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+  and the
+  [`headers_setter` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension#configuration).
+  This requires `include_metadata: true` on the receiver and preserving the
+  token header in `metadata_keys` if a batch processor is used.
   If `SPLUNK_CONFIG` is defined then these options are not required but MAY be
   defined.
 
@@ -179,8 +184,9 @@ instance using the following environment variables:
   agent. The agent MAY define the access token that is used. If the
   instrumentation library is configured to send data directly to a Splunk
   back-end then this variable MUST be defined. Even when sending to an agent,
-  instrumentation libraries MAY define this option (to support
-  [`access_token_passthrough`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#configuration)).
+  instrumentation libraries MAY define this option when the agent is configured
+  to forward access tokens using the
+  [`headers_setter` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension#configuration).
   This environment variable MUST work for `otlp` and `jaeger-thrift-splunk`
   exporters.
 - [2]: The instrumentation library uses this setting as the initial profiling

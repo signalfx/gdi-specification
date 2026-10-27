@@ -10,6 +10,10 @@
 
 #### Bugfixes
 
+- Replace references to the removed SignalFx receiver's
+  `access_token_passthrough` option with guidance for forwarding access tokens
+  using the OTLP receiver and `headers_setter` extension.
+
 ### Versioning
 
 #### Enhancements
