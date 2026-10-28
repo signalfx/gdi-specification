@@ -28,6 +28,7 @@ jobs:
       actions: write # Rerun the previous failed CLA check after a contributor signs.
       contents: read
       pull-requests: write # Post CLA comments and lock the PR conversation after merge.
+      statuses: write # Retain the permission documented by CLA Assistant v2.6.1.
     steps:
       - name: "CLA Assistant" # zizmor: ignore[archived-uses] Existing CLA integration retained intentionally.
         # Retained for compatibility with splunk/cla-agreement; upstream is archived.
