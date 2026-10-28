@@ -257,7 +257,7 @@ Agents for multithreaded runtimes SHOULD report the following items:
 * `distribution.splunk.profiling.always_on.cpu_profiler.report_locks`
 * `distribution.splunk.profiling.callgraphs.report_locks`
 
-Their presence indicates that the corresponding profiler gathers lock
+Their presence indicates that the corresponding profiler gathers thread lock
 information used to diagnose thread contention.
 
 #### Example
@@ -377,9 +377,9 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
   present, it indicates that the CPU profiler is enabled with the default
   sampling interval.
 * When `cpu_profiler.report_locks` is present,
-  it specifies the CPU profiler SHOULD gather locks related data.
+  it indicates that the CPU profiler SHOULD gather thread lock information.
 * When `cpu_profiler.report_locks` is omitted but `cpu_profiler` is present,
-  it indicates that the CPU profiler MUST NOT gather locks related data.
+  it indicates that the CPU profiler MUST NOT gather thread lock information.
 * When `memory_profiler` is present, it indicates that the memory profiler
   SHOULD be started if it is not currently running.
 * When `memory_profiler` is omitted, it indicates that the memory profiler
@@ -400,9 +400,9 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
   present, it indicates that the snapshot profiler is enabled with the default
   selection probability.
 * When `callgraphs.report_locks` is present,
-  it specifies the snapshot profiler SHOULD gather locks related data.
+  it indicates that the snapshot profiler SHOULD gather lock information.
 * When `callgraphs.report_locks` is omitted but `callgraphs` is present,
-  it indicates that the snapshot profiler MUST NOT gather locks related data.
+  it indicates that the snapshot profiler MUST NOT gather lock information.
 
 Agents SHOULD detect when remote configuration differs from current effective
 configuration and SHOULD alter its internal state to match remote config. In

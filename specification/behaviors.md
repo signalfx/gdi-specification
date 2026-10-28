@@ -32,13 +32,13 @@ The profiler SHOULD NOT collect call stacks from undesirable threads. If this
 is not possible, the profiler SHOULD filter these out afterward and omit these
 call stacks from ingest.
 
-### Lock Reporting
+### Thread Lock Reporting
 
-Instrumentation libraries MAY support lock reporting on multithreaded
-runtimes. The reported lock information helps diagnose thread contention
-and describes locks held by threads, locks they are waiting to acquire,
-and the threads that own those locks. The available details depend on the
-runtime and profiler implementation.
+Instrumentation libraries MAY support thread lock reporting on multithreaded
+runtimes. The reported information helps diagnose thread contention and
+describes locks held by threads, locks they are waiting to acquire, and the
+threads that own those locks. The available details depend on the runtime and
+profiler implementation.
 
 When lock reporting is enabled, the profiler SHOULD include available lock
 information with its call stack samples. This applies to both Always On CPU
