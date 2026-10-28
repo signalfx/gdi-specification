@@ -18,7 +18,7 @@ jobs:
   ContributorLicenseAgreement:
     name: Check contributor license agreement
     if: >-
-      github.repository == 'signalfx/gdi-specification' &&
+      github.event.repository.fork == false &&
       (github.event_name == 'pull_request_target' ||
        (github.event.issue.pull_request &&
         (github.event.comment.body == 'recheck' ||
