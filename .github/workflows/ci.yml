@@ -52,3 +52,22 @@ jobs:
           advanced-security: false
           annotations: true
           persona: pedantic
+
+  ci-status:
+    name: CI status
+    needs: [validate-documentation, zizmor]
+    if: always()
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    steps:
+      - name: Report CI status
+        shell: bash
+        env:
+          CI_SUCCESS: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && !contains(needs.*.result, 'skipped') }}
+        run: |
+          if [ "$CI_SUCCESS" = "true" ]; then
+            echo 'All CI checks passed'
+          else
+            echo 'One or more CI checks failed, were cancelled, or were skipped'
+            exit 1
+          fi
