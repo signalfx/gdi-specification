@@ -1,23 +1,73 @@
+name: CI
+
 on:
-  push: 
+  push:
     branches: [ main ]
   pull_request:
     types: [opened, synchronize, reopened, labeled, unlabeled]
   workflow_dispatch:
 
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate-documentation:
+    name: Validate documentation
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Markdown Lint check
-        uses: DavidAnson/markdownlint-cli2-action@v25.0.0
+        uses: DavidAnson/markdownlint-cli2-action@696eb3f2509270d7b882d2aa68347bc676e7af34 # v25.0.0
         with:
           globs: '**/*.md'
       - name: lychee Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@v2.9.0
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           args: -v -n "*.md" "**/*.md"
           fail: true
         if: ${{ !contains(github.event.pull_request.labels.*.name, 'release PR') }}
+
+  zizmor:
+    name: Scan GitHub Actions
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@53290badfa369cb0bf7ad16342cb62c2fa47ac7b # v0.8.0
+        with:
+          advanced-security: false
+          annotations: true
+          persona: pedantic
+
+  ci-status:
+    name: CI status
+    needs: [validate-documentation, zizmor]
+    if: always()
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    steps:
+      - name: Report CI status
+        shell: bash
+        env:
+          CI_SUCCESS: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && !contains(needs.*.result, 'skipped') }}
+        run: |
+          if [ "$CI_SUCCESS" = "true" ]; then
+            echo 'All CI checks passed'
+          else
+            echo 'One or more CI checks failed, were cancelled, or were skipped'
+            exit 1
+          fi
