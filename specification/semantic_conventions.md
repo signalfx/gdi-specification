@@ -230,3 +230,59 @@ For each `cpu` sample:
   in milliseconds if this sample represents a periodic event
 - label `thread.state` of type `string` OPTIONALLY can be set to describe
   the state of the thread
+
+#### eBPF Profile Mapping
+
+An eBPF profile MUST be classified by the quantity it measures, not by its
+sample type name or unit alone. Each `LogRecord` MUST contain samples for one
+supported profile type. CPU and allocation samples MUST NOT be combined in the
+same profile.
+
+##### On-CPU Profiles
+
+- Samples captured while a thread is executing on a CPU MUST use
+  `profiling.data.type=cpu`.
+- The pprof sample type, unit, and values MUST retain the source measurement.
+  An on-CPU profile MAY represent measured CPU time directly, or represent
+  periodic observations as `samples` with unit `count` and a period type of
+  `cpu` with a time unit. In the latter case, sample values remain sample
+  counts; they MUST NOT be presented as CPU time.
+- For periodic CPU profiles, `source.event.period` MUST contain the sampling
+  period converted to milliseconds. The timestamp for each sample MUST be the
+  time that sample was captured, as defined above.
+
+##### Allocation Profiles
+
+- Profiles of memory allocation events MUST use
+  `profiling.data.type=allocation`.
+- Sample values MUST represent allocation weight, such as allocated bytes
+  (`alloc_space`/`bytes`) or allocated object count (`alloc_objects`/`count`).
+  The pprof sample type, unit, and values MUST retain the source measurement.
+- Allocation samples MUST use the time each allocation was observed. They MUST
+  NOT be assigned a periodic sampling period unless the source data is actually
+  periodic.
+- Allocation profiles describe memory allocated during the profile interval;
+  they do not describe how much memory remains allocated at the end of that
+  interval.
+
+##### Unsupported eBPF Profiles
+
+The following profile measurements are not supported by this convention:
+
+- Off-CPU, blocked, waiting, or wall-clock duration profiles. These measure
+  elapsed time while a thread is not executing on a CPU and MUST NOT be labeled
+  as `cpu`. Examples include `off_cpu`/`nanoseconds` and `wall` profiles.
+- Resident, in-use, retained, or heap-at-snapshot profiles. These measure
+  memory currently retained, not allocation events, and MUST NOT be labeled as
+  `allocation`. Examples include `inuse_space`/`bytes` and
+  `inuse_objects`/`count`.
+- Hardware-counter profiles, probe/event counts, and other measurements that do
+  not describe on-CPU samples or memory allocation events. Examples include
+  instruction, cycle, and cache-miss counts.
+- Profiles whose measurement semantics cannot be determined unambiguously.
+
+Exporters MUST NOT relabel unsupported or ambiguous profiles as `cpu` or
+`allocation`, or send them with another `profiling.data.type`. Exporters SHOULD
+omit the unsupported profile and report a non-retryable diagnostic identifying
+the unsupported sample type and unit. Supported profiles in the same batch MAY
+still be exported.
