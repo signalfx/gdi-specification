@@ -32,6 +32,27 @@ The profiler SHOULD NOT collect call stacks from undesirable threads. If this
 is not possible, the profiler SHOULD filter these out afterward and omit these
 call stacks from ingest.
 
+### Thread Lock Reporting
+
+Instrumentation libraries MAY support thread lock reporting on multithreaded
+runtimes. The reported information helps diagnose thread contention and
+describes locks held by threads, locks they are waiting to acquire, and the
+threads that own those locks. The available details depend on the runtime and
+profiler implementation.
+
+When lock reporting is enabled, the profiler SHOULD include available lock
+information with its call stack samples. This applies to both Always On CPU
+profiling and snapshot profiling.
+
+Lock reporting is disabled by default and is controlled independently for
+each profiler by
+[`SPLUNK_PROFILER_LOCKS_ENABLED`](configuration.md#instrumentation-libraries)
+and
+[`SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED`](configuration.md#snapshot-profiler).
+Enabling lock reporting MUST NOT start a disabled profiler. When lock
+reporting is disabled for a profiler, that profiler MUST NOT gather or emit
+lock information.
+
 ### Call Stack Span Association
 
 When a call stack is sampled during the execution of a span scope, the profiler

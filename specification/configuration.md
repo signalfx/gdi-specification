@@ -165,15 +165,16 @@ For all use-cases that support environment variables (e.g. applications and
 serverless), it MUST be possible to configure an Instrumentation Library
 instance using the following environment variables:
 
-| Name                                   | Default | Description                                                                              |
-|----------------------------------------|---------|------------------------------------------------------------------------------------------|
-| `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                 |
-| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | [7]     | Interval at which call stacks are sampled (in ms) [5]                                    |
-| `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                |
-| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTEL_EXPORTER_OTLP_ENDPOINT` [5] |
-| `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                             |
-| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                   |
-| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true    | Whether `Server-Timing` header is added to HTTP responses. [4]                           |
+| Name                                   | Default | Description                                                                                               |
+|----------------------------------------|---------|-----------------------------------------------------------------------------------------------------------|
+| `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                                  |
+| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | [7]     | Interval at which call stacks are sampled (in ms) [5]                                                     |
+| `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                                 |
+| `SPLUNK_PROFILER_LOCKS_ENABLED`        | false   | Whether CPU profiling includes [thread lock information](behaviors.md#thread-lock-reporting). [2] [5] [8] |
+| `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTEL_EXPORTER_OTLP_ENDPOINT` [5]                  |
+| `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                                              |
+| `SPLUNK_REALM`                         | `none`  | Which realm to send exported data. [3]                                                                    |
+| `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED` | true    | Whether `Server-Timing` header is added to HTTP responses. [4]                                            |
 
 - [1]: Not user required if another system performs the authentication. For
   example, instrumentation libraries SHOULD send data to a locally running
@@ -203,6 +204,10 @@ instance using the following environment variables:
 - [5]: Applies only to instrumentation libraries with CPU profiling capabilities.
 - [6]: Applies only to instrumentation libraries with memory profiling capabilities.
 - [7]: `10000` for multi-threaded runtimes, `1000` for single-threaded runtimes.
+- [8]: This setting has no effect when the CPU profiler is disabled and does
+  not enable the CPU profiler by itself. The setting is required only for
+  instrumentation libraries that support thread lock reporting on
+  multithreaded runtimes.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment
@@ -282,10 +287,12 @@ distribution:
       always_on:
         cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
           sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
+          report_locks:               # SPLUNK_PROFILER_LOCKS_ENABLED
         memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
       callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
         sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
         selection_probability: 0.01   # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
+        report_locks:                 # SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED
 tracer_provider:
   processors:
     - batch:
@@ -315,6 +322,11 @@ logger_provider:
 Language distributions MAY specify additional configuration values in locations
 where it makes the most sense convention and usability wise.
 
+In declarative configuration, the presence of a `report_locks` node means
+lock reporting SHOULD be enabled when the corresponding profiler is running.
+When the node is omitted, lock reporting MUST be disabled. The node does
+not enable the profiler by itself.
+
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
 
 These properties MUST match the environment variables converted to lower
@@ -328,18 +340,25 @@ variable `SPLUNK_TRACE_RESPONSE_HEADER_ENABLED`.
 
 This feature MAY also be referred to as "Call Graph" or "Call Stack Sampling".
 For agents that include a snapshot profiler feature, the following environment
-variable configurations MUST be available:
+variables MUST be supported.
 
-| Name                                    | Default | Description                                                   |
-|-----------------------------------------|---------|---------------------------------------------------------------|
-| `SPLUNK_SNAPSHOT_PROFILER_ENABLED`      | false   | Set to `true` to enable the snapshot profiler.                |
-| `SPLUNK_SNAPSHOT_SAMPLING_INTERVAL`     | [1]     | The time period between call stack samples. See note [1].     |
-| `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY` | 0.01    | The probability of a trace being sampled. MUST be 0 < n <= 1  |
+| Name                                     | Default | Description                                                                                            |
+|------------------------------------------|---------|--------------------------------------------------------------------------------------------------------|
+| `SPLUNK_SNAPSHOT_PROFILER_ENABLED`       | false   | Set to `true` to enable the snapshot profiler.                                                         |
+| `SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED` | false   | Whether snapshot profiling includes [thread lock information](behaviors.md#thread-lock-reporting). [2] |
+| `SPLUNK_SNAPSHOT_SAMPLING_INTERVAL`      | [1]     | The time period between call stack samples. See note [1].                                              |
+| `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY`  | 0.01    | The probability of a trace being sampled. MUST be 0 < n <= 1                                           |
 
 - [1]: The default sampling interval is runtime-specific. Known values are:
   - .NET: 40ms
   - Java: 10ms
   - Node.js: 1ms
+
+- [2]: The thread lock reporting setting is required only for agents that
+  support lock reporting on multithreaded runtimes. This setting has no effect
+  when the snapshot profiler is disabled and does not enable the snapshot
+  profiler by itself. It sets the initial lock reporting state; accepted
+  OpAMP remote configuration takes precedence for the current process.
 
 ### OpAMP
 
