@@ -52,7 +52,8 @@
 - Fixed inconsistency between configuration options and reported effective
   configuration.
   Effective config now reports `SPLUNK_SNAPSHOT_SAMPLING_INTERVAL` instead of
-  `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`
+  `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`.
+  [#424](https://github.com/signalfx/gdi-specification/pull/424)
 
 ## [1.10.0] - 2026-10-23
 
