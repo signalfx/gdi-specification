@@ -287,12 +287,12 @@ distribution:
       always_on:
         cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
           sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
-          report_locks:               # SPLUNK_PROFILER_LOCKS_ENABLED
+          report_locks: true          # SPLUNK_PROFILER_LOCKS_ENABLED
         memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
       callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
         sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
         selection_probability: 0.01   # SPLUNK_SNAPSHOT_SELECTION_PROBABILITY
-        report_locks:                 # SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED
+        report_locks: false           # SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED
 tracer_provider:
   processors:
     - batch:
@@ -322,10 +322,12 @@ logger_provider:
 Language distributions MAY specify additional configuration values in locations
 where it makes the most sense convention and usability wise.
 
-In declarative configuration, the presence of a `report_locks` node means
-lock reporting SHOULD be enabled when the corresponding profiler is running.
-When the node is omitted, lock reporting MUST be disabled. The node does
-not enable the profiler by itself.
+Both `distribution.splunk.profiling.always_on.cpu_profiler.report_locks` and
+`distribution.splunk.profiling.callgraphs.report_locks` are boolean properties
+with a default value of `false`. When set to `true`, lock reporting SHOULD be
+enabled when the corresponding profiler is running. When set to `false` or
+omitted, lock reporting MUST be disabled. The property does not enable the
+profiler by itself.
 
 #### [Java SystemProperties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html)
 

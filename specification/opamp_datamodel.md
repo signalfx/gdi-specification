@@ -257,8 +257,10 @@ Agents for multithreaded runtimes SHOULD report the following items:
 * `distribution.splunk.profiling.always_on.cpu_profiler.report_locks`
 * `distribution.splunk.profiling.callgraphs.report_locks`
 
-Their presence indicates that the corresponding profiler gathers thread lock
-information used to diagnose thread contention.
+These properties MUST be booleans. A value of `true` indicates that the
+corresponding profiler gathers thread lock information used to diagnose thread
+contention. A value of `false` indicates that it does not gather this
+information.
 
 #### Example
 
@@ -288,12 +290,12 @@ distribution:
       always_on:
         cpu_profiler:
           sampling_interval: 1001
-          report_locks:
+          report_locks: true
         memory_profiler:
 #      callgraphs:
 #        sampling_interval: 10
 #        selection_probability: 0.1
-#        report_locks:
+#        report_locks: false
 ```
 
 Note: The absence of `callgraphs` node indicates that the feature is not active.
@@ -358,11 +360,12 @@ distribution:
       always_on:
         cpu_profiler:
           sampling_interval: 1001
-          report_locks:
+          report_locks: true
         memory_profiler:
       callgraphs:
         sampling_interval: 10
         selection_probability: 0.01
+        report_locks: false
 ```
 
 Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
@@ -376,10 +379,11 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 * When `cpu_profiler.sampling_interval` is omitted but `cpu_profiler` is
   present, it indicates that the CPU profiler is enabled with the default
   sampling interval.
-* When `cpu_profiler.report_locks` is present,
+* When `cpu_profiler.report_locks` is `true`,
   it indicates that the CPU profiler SHOULD gather thread lock information.
-* When `cpu_profiler.report_locks` is omitted but `cpu_profiler` is present,
-  it indicates that the CPU profiler MUST NOT gather thread lock information.
+* When `cpu_profiler.report_locks` is `false` or omitted but `cpu_profiler` is
+  present, it indicates that the CPU profiler MUST NOT gather thread lock
+  information.
 * When `memory_profiler` is present, it indicates that the memory profiler
   SHOULD be started if it is not currently running.
 * When `memory_profiler` is omitted, it indicates that the memory profiler
@@ -399,10 +403,11 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 * When `callgraphs.selection_probability` is omitted but `callgraphs` is
   present, it indicates that the snapshot profiler is enabled with the default
   selection probability.
-* When `callgraphs.report_locks` is present,
+* When `callgraphs.report_locks` is `true`,
   it indicates that the snapshot profiler SHOULD gather lock information.
-* When `callgraphs.report_locks` is omitted but `callgraphs` is present,
-  it indicates that the snapshot profiler MUST NOT gather lock information.
+* When `callgraphs.report_locks` is `false` or omitted but `callgraphs` is
+  present, it indicates that the snapshot profiler MUST NOT gather lock
+  information.
 
 Agents SHOULD detect when remote configuration differs from current effective
 configuration and SHOULD alter its internal state to match remote config. In
