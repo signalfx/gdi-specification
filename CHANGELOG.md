@@ -14,6 +14,9 @@
 
 #### Enhancements
 
+- Refer to OpenTelemetry for shared experimental, stable transition, and
+  security-related change requirements while retaining GDI-specific policies.
+
 ### Repository
 
 #### Breaking changes
