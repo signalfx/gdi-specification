@@ -168,7 +168,7 @@ instance using the following environment variables:
 | Name                                   | Default | Description                                                                              |
 |----------------------------------------|---------|------------------------------------------------------------------------------------------|
 | `SPLUNK_ACCESS_TOKEN`                  |         | Access token added to exported data. [1]                                                 |
-| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | [7]     | Interval at which call stacks are sampled (in ms) [5]                                    |
+| `SPLUNK_PROFILER_CALL_STACK_INTERVAL`  | [7]     | Interval at which call stacks are sampled (in ms) [5] [8]                                |
 | `SPLUNK_PROFILER_ENABLED`              | false   | Whether CPU profiling is enabled. [2] [5]                                                |
 | `SPLUNK_PROFILER_LOGS_ENDPOINT`        | *       | Where profiling data is sent. Defaults to the value in `OTEL_EXPORTER_OTLP_ENDPOINT` [5] |
 | `SPLUNK_PROFILER_MEMORY_ENABLED`       | false   | Whether memory profiling is enabled. [2] [6]                                             |
@@ -203,6 +203,12 @@ instance using the following environment variables:
 - [5]: Applies only to instrumentation libraries with CPU profiling capabilities.
 - [6]: Applies only to instrumentation libraries with memory profiling capabilities.
 - [7]: `10000` for multi-threaded runtimes, `1000` for single-threaded runtimes.
+- [8]: Instrumentation libraries with CPU profiling capabilities MUST each define
+  and document a runtime-specific minimum AlwaysOn CPU profiling sampling
+  interval. The effective interval after any runtime-specific adjustments MUST
+  be at least the minimum defined for that runtime, for all configuration
+  sources. At startup, values below this minimum MUST be ignored and the default
+  interval specified in [7] used instead. A warning SHOULD be logged.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment
@@ -281,7 +287,7 @@ distribution:
       # always_on, cpu_profiler, memory_profiler, callgraphs may contain language specific key value pairs.
       always_on:
         cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
-          sampling_interval: 10       # SPLUNK_PROFILER_CALL_STACK_INTERVAL
+          sampling_interval: 10000    # SPLUNK_PROFILER_CALL_STACK_INTERVAL
         memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
       callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
         sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL

@@ -6,6 +6,11 @@
 
 #### Breaking changes
 
+- Require instrumentation libraries with CPU profiling capabilities to define,
+  document, and enforce a runtime-specific minimum AlwaysOn CPU profiling
+  sampling interval across all configuration sources.
+  [#430](https://github.com/signalfx/gdi-specification/pull/430)
+
 #### Enhancements
 
 #### Bugfixes
