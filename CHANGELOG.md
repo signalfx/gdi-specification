@@ -6,8 +6,9 @@
 
 #### Breaking changes
 
-- Require a minimum AlwaysOn CPU profiling sampling interval of `1000` ms for
-  .NET and Java across all configuration sources.
+- Require instrumentation libraries with CPU profiling capabilities to define,
+  document, and enforce a runtime-specific minimum AlwaysOn CPU profiling
+  sampling interval across all configuration sources.
 
 #### Enhancements
 

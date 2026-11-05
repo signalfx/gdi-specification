@@ -203,12 +203,12 @@ instance using the following environment variables:
 - [5]: Applies only to instrumentation libraries with CPU profiling capabilities.
 - [6]: Applies only to instrumentation libraries with memory profiling capabilities.
 - [7]: `10000` for multi-threaded runtimes, `1000` for single-threaded runtimes.
-- [8]: For .NET and Java, the AlwaysOn CPU profiling sampling interval MUST be
-  at least `1000` ms (one second). This conservative lower bound limits the
-  frequency of collecting call stacks from all process threads. It applies to
-  the effective interval after any runtime-specific adjustments, for all
-  configuration sources. At startup, values below this minimum MUST be ignored
-  and the default interval of `10000` ms used instead. A warning SHOULD be logged.
+- [8]: Instrumentation libraries with CPU profiling capabilities MUST each define
+  and document a runtime-specific minimum AlwaysOn CPU profiling sampling
+  interval. The effective interval after any runtime-specific adjustments MUST
+  be at least the minimum defined for that runtime, for all configuration
+  sources. At startup, values below this minimum MUST be ignored and the default
+  interval specified in [7] used instead. A warning SHOULD be logged.
 
 In addition to Splunk-specific environment variables, the following
 [OpenTelemetry environment
@@ -287,7 +287,7 @@ distribution:
       # always_on, cpu_profiler, memory_profiler, callgraphs may contain language specific key value pairs.
       always_on:
         cpu_profiler:                 # SPLUNK_PROFILER_ENABLED
-          sampling_interval: 1000    # SPLUNK_PROFILER_CALL_STACK_INTERVAL
+          sampling_interval: 10000    # SPLUNK_PROFILER_CALL_STACK_INTERVAL
         memory_profiler:              # SPLUNK_PROFILER_MEMORY_ENABLED
       callgraphs:                     # SPLUNK_SNAPSHOT_PROFILER_ENABLED
         sampling_interval: 10         # SPLUNK_SNAPSHOT_SAMPLING_INTERVAL
