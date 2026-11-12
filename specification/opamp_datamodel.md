@@ -328,12 +328,30 @@ remote configuration. After that, the accepted remote configuration is the
 authoritative source for whether profilers are running and for the profiler
 settings it contains.
 
+### Payload Validation
+
+Agents MUST validate the structure, types, and value constraints of every
+supported setting in a received `splunk.remote.config` payload before applying
+it. This requirement applies to all sections and fields of the remote
+configuration payload.
+
+For example, `callgraphs.selection_probability` has a valid range of
+`0 < selection_probability <= 1` and a default of `0.01`. Values greater than
+`1` MUST be replaced with `1`, and values less than or equal to `0` MUST be
+replaced with `0.01`.
+
+These corrections MUST be performed before final validation and MUST NOT by
+themselves cause the payload to be rejected. These validation and correction
+rules apply to all supported numeric settings in every section of the payload,
+according to each setting's constraints and defaults.
+
 ### Failure Behavior
 
-If an agent cannot parse, validate, or apply a received `splunk.remote.config`
-payload, it MUST reject the entire payload and SHOULD continue using the
-configuration that was effective immediately before the failed update. The
-failed payload SHOULD NOT be partially applied.
+If an agent cannot parse a received `splunk.remote.config` payload, or if
+validation or application fails after the corrections described in
+[Payload Validation](#payload-validation), it MUST reject the entire payload
+and SHOULD continue using the configuration that was effective immediately
+before the failed update. The failed payload SHOULD NOT be partially applied.
 
 If the agent previously accepted remote configurations during the current
 process lifetime, the most recently accepted configuration remains
@@ -398,8 +416,9 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
   it indicates that the snapshot profiler is enabled with the default sampling
   interval.
 * When `callgraphs.selection_probability` is present, it indicates the
-  probability of selecting a trace for snapshot profiling and MUST be greater
-  than `0` and less than or equal to `1`.
+  probability of selecting a trace for snapshot profiling. Its effective value
+  MUST be greater than `0` and less than or equal to `1` after validation and
+  correction.
 * When `callgraphs.selection_probability` is omitted but `callgraphs` is
   present, it indicates that the snapshot profiler is enabled with the default
   selection probability.
@@ -416,6 +435,6 @@ modify profiler settings.
 
 When an agent is able to change state based on remote configuration values,
 subsequent effective configuration reports (as requested by the server)
-MUST reflect these changes.
+MUST reflect the validated values actually in use, including any corrections.
 
 Agents MUST NOT perform any local persistence of remote configuration values.
