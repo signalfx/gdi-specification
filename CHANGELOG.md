@@ -50,6 +50,8 @@
 
 #### Enhancements
 
+- Require validation of all remote configuration sections and fields.
+  [#433](https://github.com/signalfx/gdi-specification/pull/433)
 - Make reporting `OTEL_EXPERIMENTAL_CONFIG_FILE` in effective configuration
   optional for agents that support the variable.
 - Describe reporting thread lock information in effective configuration for
