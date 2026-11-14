@@ -17,6 +17,10 @@
 
 #### Enhancements
 
+- Refer to OpenTelemetry for shared experimental, stable transition, and
+  security-related change requirements while retaining GDI-specific policies.
+  [#431](https://github.com/signalfx/gdi-specification/pull/431)
+
 ### Repository
 
 #### Breaking changes
