@@ -126,7 +126,7 @@ The following configuration items MUST be reported in the body:
 * `SPLUNK_PROFILER_ENABLED`
 * `SPLUNK_PROFILER_MEMORY_ENABLED`
 * `SPLUNK_SNAPSHOT_PROFILER_ENABLED`
-* `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`
+* `SPLUNK_SNAPSHOT_SAMPLING_INTERVAL`
 * `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY`
 * `SPLUNK_PROFILER_CALL_STACK_INTERVAL`
 * `OTEL_CONFIG_FILE`
@@ -168,7 +168,8 @@ SPLUNK_PROFILER_LOCKS_ENABLED=true
 SPLUNK_PROFILER_MEMORY_ENABLED=false
 SPLUNK_PROFILER_CALL_STACK_INTERVAL=1001
 SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
-SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
+SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED=false
+SPLUNK_SNAPSHOT_SAMPLING_INTERVAL=0
 SPLUNK_SNAPSHOT_SELECTION_PROBABILITY=0.2
 OTEL_CONFIG_FILE=null
 ```
@@ -294,10 +295,10 @@ distribution:
 #      callgraphs:
 #        sampling_interval: 10
 #        selection_probability: 0.1
+#        report_locks: false
 ```
 
-Note: The absence of `callgraphs.sampling_interval` and `selection_probability`
-here indicates that the feature is not active.
+Note: The absence of `callgraphs` node indicates that the feature is not active.
 
 Note: The true configuration file may be significantly larger or more
 complicated than what is actually provided via effective configuration.
@@ -364,6 +365,7 @@ distribution:
       callgraphs:
         sampling_interval: 10
         selection_probability: 0.01
+        report_locks: false
 ```
 
 Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
@@ -377,6 +379,11 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 * When `cpu_profiler.sampling_interval` is omitted but `cpu_profiler` is
   present, it indicates that the CPU profiler is enabled with the default
   sampling interval.
+* When `cpu_profiler.report_locks` is `true`,
+  it indicates that the CPU profiler SHOULD gather thread lock information.
+* When `cpu_profiler.report_locks` is `false` or omitted but `cpu_profiler` is
+  present, it indicates that the CPU profiler MUST NOT gather thread lock
+  information.
 * When `memory_profiler` is present, it indicates that the memory profiler
   SHOULD be started if it is not currently running.
 * When `memory_profiler` is omitted, it indicates that the memory profiler
@@ -396,6 +403,11 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
 * When `callgraphs.selection_probability` is omitted but `callgraphs` is
   present, it indicates that the snapshot profiler is enabled with the default
   selection probability.
+* When `callgraphs.report_locks` is `true`,
+  it indicates that the snapshot profiler SHOULD gather lock information.
+* When `callgraphs.report_locks` is `false` or omitted but `callgraphs` is
+  present, it indicates that the snapshot profiler MUST NOT gather lock
+  information.
 
 Agents SHOULD detect when remote configuration differs from current effective
 configuration and SHOULD alter its internal state to match remote config. In
