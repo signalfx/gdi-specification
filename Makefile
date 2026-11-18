@@ -23,15 +23,19 @@ endif
 	git push $(REMOTE) $(TAG)
 
 GDI_REPOS := $(shell cat repositories.txt)
+# These repositories remain in scope but redirect public issue reports elsewhere.
+GDI_ISSUE_EXCLUSIONS := https://github.com/signalfx/splunk-otel-collector \
+	https://github.com/signalfx/splunk-otel-collector-chart
+GDI_ISSUE_REPOS := $(filter-out $(GDI_ISSUE_EXCLUSIONS),$(GDI_REPOS))
 TMP_DIR = tmp
 
 .PHONY: create-issues
-create-issues: login ## Create 'Adopt GDI specification $(TAG)' GitHub issues for all related repositories.
+create-issues: login ## Create 'Adopt GDI specification $(TAG)' GitHub issues for release notification targets.
 ifndef TAG
 	$(error TAG is undefined, set the it in the vX.Y.Z format)
 endif
 	rm -rf $(TMP_DIR)
-	$(foreach repo,$(GDI_REPOS),\
+	$(foreach repo,$(GDI_ISSUE_REPOS),\
 		gh repo clone $(repo) $(TMP_DIR) -- --depth=1 && \
 		cd $(TMP_DIR) && \
 		gh repo set-default $(repo) && \

@@ -16,8 +16,14 @@
   [#390](https://github.com/signalfx/gdi-specification/pull/390)
 - Add new document describing Combined Agent behavior.
   [#408](https://github.com/signalfx/gdi-specification/pull/408)
+- Define optional thread lock reporting settings for Always On CPU and snapshot
+  profilers.
 
 #### Bugfixes
+
+### Versioning
+
+#### Enhancements
 
 ### Repository
 
@@ -33,6 +39,9 @@
 
 #### Enhancements
 
+- Describe thread lock information and independent lock reporting controls for
+  Always On CPU and snapshot profilers.
+
 #### Bugfixes
 
 ### Semantic Conventions
@@ -41,7 +50,61 @@
 
 #### Enhancements
 
+- Define eBPF profile mapping and unsupported measurements.
+
 #### Bugfixes
+
+### OpAMP Data Model
+
+#### Enhancements
+
+- Make reporting `OTEL_EXPERIMENTAL_CONFIG_FILE` in effective configuration
+  optional for agents that support the variable.
+- Describe reporting thread lock information in effective configuration for
+  multithreaded runtimes.
+- Define how remote configuration controls thread lock reporting for
+  multithreaded runtimes.
+
+#### Bugfixes
+
+- Fixed inconsistency between configuration options and reported effective
+  configuration.
+  Effective config now reports `SPLUNK_SNAPSHOT_SAMPLING_INTERVAL` instead of
+  `SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL`.
+  [#424](https://github.com/signalfx/gdi-specification/pull/424)
+
+## [1.10.0] - 2026-10-23
+
+### Configuration
+
+#### Breaking changes
+
+- Align attribute, span event, and span link count limits with the OpenTelemetry
+  default of `128` instead of using unlimited or higher defaults, mitigating
+  potential denial of service through unbounded telemetry collections. Users
+  that need higher limits can explicitly configure the affected
+  `OTEL_*_COUNT_LIMIT` variables. Values approximating the previous defaults
+  increase memory usage and exposure to resource exhaustion.
+  [#414](https://github.com/signalfx/gdi-specification/pull/414)
+
+#### Enhancements
+
+- Add initial configuration for OpAMP clients.
+  [#375](https://github.com/signalfx/gdi-specification/pull/375)
+- Require referencing GitHub Actions by commit hash.
+  [#385](https://github.com/signalfx/gdi-specification/pull/385)
+- Update `OTEL_EXPERIMENTAL_CONFIG_FILE` to `OTEL_CONFIG_FILE`.
+  [#390](https://github.com/signalfx/gdi-specification/pull/390)
+
+### Versioning
+
+#### Enhancements
+
+- Allow narrowly scoped security-related changes to stable behavior,
+  configuration defaults, and supported values without a `MAJOR` version
+  increment, with release notes documenting the security rationale, user impact,
+  and migration options.
+  [#416](https://github.com/signalfx/gdi-specification/pull/416)
 
 ### OpAMP Data Model
 
@@ -53,10 +116,12 @@
 - Add support for remote config.
   [#396](https://github.com/signalfx/gdi-specification/pull/396),
   [#402](https://github.com/signalfx/gdi-specification/pull/402),
-  [#406](https://github.com/signalfx/gdi-specification/pull/406)
+  [#406](https://github.com/signalfx/gdi-specification/pull/406),
+  [#412](https://github.com/signalfx/gdi-specification/pull/412)
 - Add support for callgraph selection probability
   in the effective configuration.
   [#409](https://github.com/signalfx/gdi-specification/pull/409)
+  [#411](https://github.com/signalfx/gdi-specification/pull/411)
 
 ## [1.9.0] - 2026-04-07
 
@@ -418,7 +483,8 @@
 - Primary focus is on Instrumentation Libraries for initial 1.0 release
 - Initial Collector specification defined
 
-[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.9.0...HEAD
+[Unreleased]: https://github.com/signalfx/gdi-specification/compare/v1.10.0...HEAD
+[1.10.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.10.0
 [1.9.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.9.0
 [1.8.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.8.0
 [1.7.0]: https://github.com/signalfx/gdi-specification/releases/tag/v1.7.0

@@ -130,9 +130,6 @@ The following configuration items MUST be reported in the body:
 * `SPLUNK_SNAPSHOT_SELECTION_PROBABILITY`
 * `SPLUNK_PROFILER_CALL_STACK_INTERVAL`
 * `OTEL_CONFIG_FILE`
-* `OTEL_EXPERIMENTAL_CONFIG_FILE`
-
-Additional configuration items SHOULD NOT be provided by agents.
 
 If any of these configuration items is not specified via environment
 variables, then a default value MUST be provided. The value provided
@@ -147,6 +144,16 @@ then the value reported in effective config MUST be
 
 Multivalued environment variables are intentionally omitted from this format.
 
+#### Optional fields
+
+Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
+variable MAY report its value in the body.
+
+Agents for multithreaded runtimes SHOULD report the following items:
+
+* `SPLUNK_PROFILER_LOCKS_ENABLED`
+* `SPLUNK_SNAPSHOT_PROFILER_LOCKS_ENABLED`
+
 #### Example
 
 * name: `environment`
@@ -157,13 +164,13 @@ OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://localhost:4318/v1/traces
 OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:4318/v1/metrics
 OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://localhost:4318/v1/logs
 SPLUNK_PROFILER_ENABLED=true
+SPLUNK_PROFILER_LOCKS_ENABLED=true
 SPLUNK_PROFILER_MEMORY_ENABLED=false
 SPLUNK_PROFILER_CALL_STACK_INTERVAL=1001
 SPLUNK_SNAPSHOT_PROFILER_ENABLED=false
 SPLUNK_SNAPSHOT_PROFILER_SAMPLING_INTERVAL=0
 SPLUNK_SNAPSHOT_SELECTION_PROBABILITY=0.2
 OTEL_CONFIG_FILE=null
-OTEL_EXPERIMENTAL_CONFIG_FILE=null
 ```
 
 ### Effective Declarative Config
@@ -216,7 +223,6 @@ The following configuration items SHOULD be reported in the body:
 * `distribution.splunk.profiling.callgraphs.sampling_interval`
 * `distribution.splunk.profiling.callgraphs.selection_probability`
 * `otel.config.file`
-* `otel.experimental.config.file`
 
 Unlike the environment variable effective config, the existence of some values
 in the structure will imply that some features are enabled. For example, if
@@ -240,11 +246,25 @@ actively used endpoints.
 Implementations MAY choose to include disabled/inactive features in the yaml
 document with commented out lines.
 
+#### Optional fields
+
+Agents that support the deprecated `OTEL_EXPERIMENTAL_CONFIG_FILE` environment
+variable MAY report its value as `otel.experimental.config.file` in the body.
+
+Agents for multithreaded runtimes SHOULD report the following items:
+
+* `distribution.splunk.profiling.always_on.cpu_profiler.report_locks`
+* `distribution.splunk.profiling.callgraphs.report_locks`
+
+These properties MUST be booleans. A value of `true` indicates that the
+corresponding profiler gathers thread lock information used to diagnose thread
+contention. A value of `false` indicates that it does not gather this
+information.
+
 #### Example
 
 ```yaml
 otel_config_file: /usr/otel/agent.yaml
-otel_experimental_config_file: null
 tracer_provider:
   processors:
     - batch:
@@ -269,6 +289,7 @@ distribution:
       always_on:
         cpu_profiler:
           sampling_interval: 1001
+          report_locks: true
         memory_profiler:
 #      callgraphs:
 #        sampling_interval: 10
@@ -306,6 +327,26 @@ remote configuration. After that, the accepted remote configuration is the
 authoritative source for whether profilers are running and for the profiler
 settings it contains.
 
+### Failure Behavior
+
+If an agent cannot parse, validate, or apply a received `splunk.remote.config`
+payload, it MUST reject the entire payload and SHOULD continue using the
+configuration that was effective immediately before the failed update. The
+failed payload SHOULD NOT be partially applied.
+
+If the agent previously accepted remote configurations during the current
+process lifetime, the most recently accepted configuration remains
+authoritative. Otherwise, the startup configuration remains authoritative.
+The absence of a remote configuration update MUST NOT change the effective
+configuration.
+
+The agent MUST report an unsuccessful update through
+[`AgentToServer.remote_config_status`](https://opentelemetry.io/docs/specs/opamp/#agenttoserverremote_config_status)
+with the status `FAILED`. Subsequent effective configuration reports MUST
+reflect the configuration actually in use after the failed update. If the
+previous configuration was fully retained, the reports MUST reflect that
+configuration.
+
 ### Data Format
 
 When agents receive a remote configuration with the key `splunk.remote.config` and
@@ -318,6 +359,7 @@ distribution:
       always_on:
         cpu_profiler:
           sampling_interval: 1001
+          report_locks: true
         memory_profiler:
       callgraphs:
         sampling_interval: 10
