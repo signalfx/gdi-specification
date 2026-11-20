@@ -328,6 +328,19 @@ remote configuration. After that, the accepted remote configuration is the
 authoritative source for whether profilers are running and for the profiler
 settings it contains.
 
+### Payload Validation
+
+Agents MUST validate the structure, types, and value constraints of every
+supported setting in a received `splunk.remote.config` payload before applying
+it. This requirement applies to all sections and fields of the remote
+configuration payload.
+
+Agents SHOULD automatically correct numeric values that fall outside a field's
+defined bounds before completing validation. Corrected values MUST satisfy all
+constraints defined for that field, including inclusive and exclusive bounds.
+This allows otherwise valid payloads to be applied when range errors can be
+corrected.
+
 ### Failure Behavior
 
 If an agent cannot parse, validate, or apply a received `splunk.remote.config`
@@ -398,8 +411,8 @@ Agents SHOULD be relaxed in parsing and SHOULD ignore all other values.
   it indicates that the snapshot profiler is enabled with the default sampling
   interval.
 * When `callgraphs.selection_probability` is present, it indicates the
-  probability of selecting a trace for snapshot profiling and MUST be greater
-  than `0` and less than or equal to `1`.
+  probability of selecting a trace for snapshot profiling. The value applied by
+  the agent MUST be greater than `0` and less than or equal to `1`.
 * When `callgraphs.selection_probability` is omitted but `callgraphs` is
   present, it indicates that the snapshot profiler is enabled with the default
   selection probability.
@@ -416,6 +429,6 @@ modify profiler settings.
 
 When an agent is able to change state based on remote configuration values,
 subsequent effective configuration reports (as requested by the server)
-MUST reflect these changes.
+MUST reflect the validated values actually in use, including any corrections.
 
 Agents MUST NOT perform any local persistence of remote configuration values.
