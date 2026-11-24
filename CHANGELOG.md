@@ -17,8 +17,9 @@
 
 #### Enhancements
 
-- Refer to OpenTelemetry for shared experimental, stable transition, and
-  security-related change requirements while retaining GDI-specific policies.
+- Allow stable components to tighten runtime or dependency version requirements
+  for security fixes. Clarify compatibility and release note requirements for
+  such fixes, and allow components to become stable after rigorous testing.
   [#431](https://github.com/signalfx/gdi-specification/pull/431)
 
 ### Repository
