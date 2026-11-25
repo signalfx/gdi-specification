@@ -34,7 +34,7 @@ configuration variable to enable, and MUST clearly be marked as experimental.
 ## Stable
 
 The initial stable release version number for GDI repositories MUST be `1.0.0`.
-Once an experimental component has gone through rigorous beta testing, it MAY
+Once an experimental component has gone through rigorous testing, it MAY
 transition to stable. Long-term dependencies MAY now be taken against this
 component. When a new stable component is introduced to a GDI repository with an
 existing stable release, the `MINOR` version number MUST be incremented and the
@@ -72,33 +72,47 @@ until the end of that component’s existence:
 
 ### Security-Related Changes
 
-Stable components MAY make backward-incompatible behavioral changes, change
-configuration defaults, or restrict supported configuration values without
-incrementing the `MAJOR` version when necessary to address a security risk. This
-exception applies even when the previous behavior, defaults, or supported values
-were documented. Such changes MAY be released as security fixes in a `PATCH`
-release, subject to the support requirements above.
+When necessary to address a security risk, stable GDI components MAY make
+backward-incompatible behavioral changes, change configuration defaults,
+restrict supported configuration values, or tighten runtime or dependency
+version requirements without incrementing the `MAJOR` version. The exception
+also applies when the previous behavior, defaults, supported values, or
+version requirements were documented. Such changes MAY be included in a
+`MINOR` or `PATCH` release, subject to the support requirements above.
 
-Examples include disabling protocols or cryptographic algorithms that are no
-longer considered safe, rejecting unsafe input, tightening certificate
-validation, preventing disclosure of credentials in telemetry, and introducing
-or lowering resource limits to mitigate denial of service or resource
-exhaustion, including through unbounded telemetry collections.
+Examples include disabling unsafe protocols or cryptographic algorithms,
+rejecting unsafe input, tightening certificate validation, and preventing
+disclosure of credentials in telemetry. Resource limits MAY be introduced or
+lowered to mitigate denial of service or resource exhaustion caused by
+unbounded telemetry collection. These changes may truncate telemetry values or
+drop attributes or records. A fix may also drop a runtime or dependency version
+that no longer receives security fixes, or a runtime version that cannot use a
+patched dependency.
 
-Changes under this exception MUST address an identified, concrete security risk
-and MUST be limited to what is necessary to mitigate that risk. Changes made
-solely to reduce resource consumption or improve performance do not qualify.
+Each change MUST address an identified, concrete security risk and MUST be
+limited to what is necessary to mitigate that risk. Changes made solely to
+reduce resource consumption or improve performance do not qualify. Fixes MUST
+preserve existing source and ABI compatibility guarantees, including for plugin
+interfaces, and MUST comply with
+[OpenTelemetry error handling][otel-error-handling].
 The exception MUST NOT be used to remove or rename public APIs, change their
-signatures, rename or remove configuration parameters, bypass
-component deprecation or removal requirements, or make unrelated
-backward-incompatible changes.
+signatures, rename or remove configuration parameters, redefine semantic
+conventions, bypass component deprecation or removal requirements, or make
+unrelated backward-incompatible changes.
 
-Release notes MUST identify the affected behavior and any affected configuration
-settings, describe the previous and new behavior (including any newly rejected
-inputs or configuration values and any dropped data), explain the security risk
-and how the change mitigates it, and document any actions users need to take.
-Where safe and feasible, implementations SHOULD provide a configuration override
-or other migration path. Release notes MUST describe any available migration
-path and the security implications of restoring the previous behavior. Providing
-an override does not make the change backward-compatible; it is permitted by
-this explicit exception.
+Release notes MUST identify what changed in behavior, configuration, and runtime
+or dependency version requirements. They MUST describe the previous and new
+behavior and requirements, including newly rejected inputs or configuration
+values and any truncated or dropped telemetry. They MUST explain the security
+risk, how the change mitigates it, and any action users need to take.
+Where safe and feasible, implementations SHOULD provide a configuration
+override or another migration path. Release notes MUST describe any available
+migration path and the security implications of restoring the previous
+behavior. A change with an override still relies on this exception for
+permission to break backward compatibility.
+
+This section adapts the OpenTelemetry specification's
+[security-related changes policy][otel-security].
+
+[otel-error-handling]: https://github.com/open-telemetry/opentelemetry-specification/blob/a847b4eadd3392bd48a32500629736191f82c823/specification/error-handling.md
+[otel-security]: https://github.com/open-telemetry/opentelemetry-specification/blob/a847b4eadd3392bd48a32500629736191f82c823/specification/versioning-and-stability.md#security-related-changes
