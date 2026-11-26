@@ -71,6 +71,7 @@
   multithreaded runtimes.
 - Clarify that OpAMP remote configuration updates carry a complete file and
   replace the previous remote configuration.
+  [#435](https://github.com/signalfx/gdi-specification/pull/435)
 
 #### Bugfixes
 
