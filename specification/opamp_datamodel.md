@@ -315,6 +315,11 @@ behavior, MUST accept payloads from the
 [`AgentRemoteConfig.AgentConfigMap`](https://opentelemetry.io/docs/specs/opamp/#agentremoteconfig-message)
 with the key `splunk.remote.config`.
 
+The OpAMP control plane MUST send the complete remote configuration file with
+each `splunk.remote.config` update. Agents MUST treat each accepted update as a
+complete replacement for the previous remote configuration. Omitted fields
+follow the rules in [Data Format](#data-format).
+
 Agents SHOULD attempt to parse the payload of `splunk.remote.config` when the
 content-type is `application/yaml`.
 

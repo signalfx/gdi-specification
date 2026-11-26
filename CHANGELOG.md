@@ -69,6 +69,8 @@
   multithreaded runtimes.
 - Define how remote configuration controls thread lock reporting for
   multithreaded runtimes.
+- Clarify that OpAMP remote configuration updates carry a complete file and
+  replace the previous remote configuration.
 
 #### Bugfixes
 
